@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  10 DEC 2014 19:20
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  10 DEC 2014 19:47
 entering extended mode
 **00_Abschlussarbeit.tex
-("Z:\Bachelor\Latex\BA Thesis\00_Abschlussarbeit.tex"
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\00_Abschlussarbeit.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -537,7 +537,7 @@ Class scrreprt Warning: Usage of package `fancyhdr' together
 (scrreprt)              I'd suggest to use 
 (scrreprt)              package `scrpage2' or `scrlayer-scrpage'.
 (scrreprt)              Nevertheless, using requested
-(scrreprt)              package `fancyhdr' on input line 31.
+(scrreprt)              package `fancyhdr' on input line 39.
 
 (C:\MikTex\tex\latex\fancyhdr\fancyhdr.sty
 \fancy@headwidth=\skip55
@@ -661,22 +661,32 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-No file 00_Abschlussarbeit.aux.
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
-LaTeX Font Info:    ... okay on input line 68.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 68.
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\00_Abschlussarbeit.aux
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\01_titel.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\02_danksagungen.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\03_zusammenfassung.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\04_einleitung.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\05_grundlagen.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\06_standdertechnik.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\07_methoden.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\08_ergebnisse.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\09_diskussion.aux))
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
+LaTeX Font Info:    ... okay on input line 76.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 76.
+
 (C:\MikTex\tex\latex\lm\t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -715,7 +725,7 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring ON on input line 68.
+Package hyperref Info: Link coloring ON on input line 76.
 (C:\MikTex\tex\latex\hyperref\nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -724,61 +734,67 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count120
 )
-LaTeX Info: Redefining \ref on input line 68.
-LaTeX Info: Redefining \pageref on input line 68.
-LaTeX Info: Redefining \nameref on input line 68.
+LaTeX Info: Redefining \ref on input line 76.
+LaTeX Info: Redefining \pageref on input line 76.
+LaTeX Info: Redefining \nameref on input line 76.
+
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\00_Abschlussarbeit.out)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\00_Abschlussarbeit.out)
 \@outlinefile=\write3
 
-("Z:\Bachelor\Latex\BA Thesis\01_titel.tex"
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 2.
- (C:\MikTex\tex\latex\lm\ot1lmr.fd
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\01_titel.tex
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 6.
+
+(C:\MikTex\tex\latex\lm\ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 2.
-
-(C:\MikTex\tex\latex\lm\omllmm.fd
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 6.
+ (C:\MikTex\tex\latex\lm\omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 2.
- (C:\MikTex\tex\latex\lm\omslmsy.fd
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 6.
+
+(C:\MikTex\tex\latex\lm\omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 2.
-
-(C:\MikTex\tex\latex\lm\omxlmex.fd
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 6.
+ (C:\MikTex\tex\latex\lm\omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 2.
+(Font)              <12> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 2.
+(Font)              <8> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 2.
-LaTeX Font Info:    Try loading font information for U+msa on input line 2.
- (C:\MikTex\tex\latex\amsfonts\umsa.fd
+(Font)              <6> on input line 6.
+LaTeX Font Info:    Try loading font information for U+msa on input line 6.
+
+(C:\MikTex\tex\latex\amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 2.
-
-(C:\MikTex\tex\latex\amsfonts\umsb.fd
+LaTeX Font Info:    Try loading font information for U+msb on input line 6.
+ (C:\MikTex\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<img/logos.jpg, id=3, 223.58531pt x 147.55125pt>
-File: img/logos.jpg Graphic file (type jpg)
- <use img/logos.jpg>
-Package pdftex.def Info: img/logos.jpg used on input line 6.
-(pdftex.def)             Requested size: 111.79237pt x 73.77544pt.
+<img/general/unilogo.png, id=67, 174.1707pt x 41.4348pt>
+File: img/general/unilogo.png Graphic file (type png)
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 2--65
- [] 
- []
+<use img/general/unilogo.png>
+Package pdftex.def Info: img/general/unilogo.png used on input line 7.
+(pdftex.def)             Requested size: 184.9429pt x 44.00095pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14.4> on input line 11.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 11.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 11.
+ [1{C:/Users/TNieter/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
-) [1
 
 
-{C:/Users/TNieter/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <Z:/Bachel
-or/Latex/BA Thesis/img/logos.jpg>]
-("Z:\Bachelor\Latex\BA Thesis\02_danksagungen.tex"
+
+ <Z:/Bachelor/Latex/git/Bachelor-Thesis/img/general/unilogo.png>]) (Z:\Bachelor
+\Latex\git\Bachelor-Thesis\02_danksagungen.tex
 LaTeX Font Info:    Try loading font information for T1+lmss on input line 1.
 
 (C:\MikTex\tex\latex\lm\t1lmss.fd
@@ -791,121 +807,104 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--8
 [1
 
 
-]) [2] ("Z:\Bachelor\Latex\BA Thesis\03_zusammenfassung.tex") [3
+]) [2] (Z:\Bachelor\Latex\git\Bachelor-Thesis\03_zusammenfassung.tex)
+[3
 
 
-]
+] (Z:\Bachelor\Latex\git\Bachelor-Thesis\00_Abschlussarbeit.toc)
 \tf@toc=\write4
  [4
 
 
 ]
-("Z:\Bachelor\Latex\BA Thesis\04_einleitung.tex"
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\04_einleitung.tex
 Kapitel 1.
 )pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.98 \include{04_einleitung}
-                             [1
+l.106 \include{04_einleitung}
+                              [1
 
 
-] ("Z:\Bachelor\Latex\BA Thesis\05_grundlagen.tex"
+]
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\05_grundlagen.tex
 Kapitel 2.
-<img/starwars.jpg, id=38, 642.4pt x 296.10625pt>
-File: img/starwars.jpg Graphic file (type jpg)
- <use img/starwars.jpg>
-Package pdftex.def Info: img/starwars.jpg used on input line 9.
-(pdftex.def)             Requested size: 321.19922pt x 148.05275pt.
 
-
-LaTeX Warning: Reference `fig:starwars' on page 2 undefined on input line 13.
-
-
-LaTeX Warning: Citation `test' on page 2 undefined on input line 13.
+LaTeX Warning: Citation `test' on page 2 undefined on input line 8.
 
 ) [2
 
 
 
- <Z:/Bachelor/Latex/BA Thesis/img/starwars.jpg>]
-("Z:\Bachelor\Latex\BA Thesis\06_standdertechnik.tex"
+] (Z:\Bachelor\Latex\git\Bachelor-Thesis\06_standdertechnik.tex
 Kapitel 3.
 ) [3
 
 
 
-] ("Z:\Bachelor\Latex\BA Thesis\07_methoden.tex"
+] (Z:\Bachelor\Latex\git\Bachelor-Thesis\07_methoden.tex
 Kapitel 4.
 ) [4
 
 
 
-] ("Z:\Bachelor\Latex\BA Thesis\08_ergebnisse.tex"
+] (Z:\Bachelor\Latex\git\Bachelor-Thesis\08_ergebnisse.tex
 Kapitel 5.
 ) [5
 
 
 
-] ("Z:\Bachelor\Latex\BA Thesis\09_diskussion.tex"
+] (Z:\Bachelor\Latex\git\Bachelor-Thesis\09_diskussion.tex
 Kapitel 6.
 ) [6
 
 
 
-]
+] (Z:\Bachelor\Latex\git\Bachelor-Thesis\00_Abschlussarbeit.lof)
 \tf@lof=\write5
  [7
 
 
 ]
 No file 00_Abschlussarbeit.bbl.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
-("Z:\Bachelor\Latex\BA Thesis\00_Abschlussarbeit.aux"
-("Z:\Bachelor\Latex\BA Thesis\01_titel.aux")
-("Z:\Bachelor\Latex\BA Thesis\02_danksagungen.aux")
-("Z:\Bachelor\Latex\BA Thesis\03_zusammenfassung.aux")
-("Z:\Bachelor\Latex\BA Thesis\04_einleitung.aux")
-("Z:\Bachelor\Latex\BA Thesis\05_grundlagen.aux")
-("Z:\Bachelor\Latex\BA Thesis\06_standdertechnik.aux")
-("Z:\Bachelor\Latex\BA Thesis\07_methoden.aux")
-("Z:\Bachelor\Latex\BA Thesis\08_ergebnisse.aux")
-("Z:\Bachelor\Latex\BA Thesis\09_diskussion.aux"))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 127.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 127.
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\00_Abschlussarbeit.aux
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\01_titel.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\02_danksagungen.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\03_zusammenfassung.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\04_einleitung.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\05_grundlagen.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\06_standdertechnik.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\07_methoden.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\08_ergebnisse.aux)
+(Z:\Bachelor\Latex\git\Bachelor-Thesis\09_diskussion.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 127.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 127.
+Package rerunfilecheck Info: File `00_Abschlussarbeit.out' has not changed.
+(rerunfilecheck)             Checksum: DBA82DE49B2FE5B4245DE940564468AE;969.
 
-
-Package rerunfilecheck Warning: File `00_Abschlussarbeit.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `00_Abschlussarbeit.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  DBA82DE49B2FE5B4245DE940564468AE;969.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 127.
  ) 
 Here is how much of TeX's memory you used:
- 8587 strings out of 493921
- 126020 string characters out of 3154494
- 258044 words of memory out of 3000000
- 11669 multiletter control sequences out of 15000+200000
- 51842 words of font info for 44 fonts, out of 3000000 for 9000
+ 8661 strings out of 493921
+ 128672 string characters out of 3154494
+ 263595 words of memory out of 3000000
+ 11713 multiletter control sequences out of 15000+200000
+ 71396 words of font info for 61 fonts, out of 3000000 for 9000
  843 hyphenation exceptions out of 8191
- 40i,14n,48p,787b,341s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,12n,48p,769b,411s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/MikTex/fonts/enc/dvips/lm/lm-ec.enc}<C:/MikTex/fonts/type1/public/lm/lmbx
-12.pfb><C:/MikTex/fonts/type1/public/lm/lmcsc10.pfb><C:/MikTex/fonts/type1/publ
-ic/lm/lmr10.pfb><C:/MikTex/fonts/type1/public/lm/lmr12.pfb><C:/MikTex/fonts/typ
-e1/public/lm/lmssbx10.pfb>
-Output written on 00_Abschlussarbeit.pdf (12 pages, 199003 bytes).
+12.pfb><C:/MikTex/fonts/type1/public/lm/lmr12.pfb><C:/MikTex/fonts/type1/public
+/lm/lmr17.pfb><C:/MikTex/fonts/type1/public/lm/lmri12.pfb><C:/MikTex/fonts/type
+1/public/lm/lmssbx10.pfb>
+Output written on 00_Abschlussarbeit.pdf (12 pages, 178771 bytes).
 PDF statistics:
- 104 PDF objects out of 1000 (max. 8388607)
- 31 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 168 PDF objects out of 1000 (max. 8388607)
+ 30 named destinations out of 1000 (max. 500000)
+ 134 words of extra memory for PDF output out of 10000 (max. 10000000)
 

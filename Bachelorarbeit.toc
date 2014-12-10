@@ -1,0 +1,5 @@
+\select@language {ngerman}
+\contentsline {part}{\numberline {I}Hauptteil}{3}
+\contentsline {section}{\numberline {0.1}Einleitung}{4}
+\contentsline {section}{\numberline {0.2}Vorwort}{4}
+\contentsline {subsection}{\numberline {0.2.1}Images}{4}

@@ -1,4 +1,0 @@
-Bachelor-Thesis
-===============
-
-Bachelorarbeit

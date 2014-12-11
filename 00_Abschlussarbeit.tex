@@ -1,127 +1,397 @@
-%Dokumentklasse
-\documentclass[a4paper,12pt]{scrreprt}
-\usepackage[left= 2.5cm,right = 2cm, bottom = 4 cm]{geometry}
-%\usepackage[onehalfspacing]{setspace}
-% ============= Packages =============
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Masterarbeit im Fachbereich 1
+% Systems Engineering - HTW Berlin
+% 
+% Thema:
+% Lorem Ipsum
+%
+% \newcommand{\draftdate}{140910}
+% \newcommand{\rev}{108}
+% %
 \newcommand{\thesisopening}{01. Dezember 2014}
 \newcommand{\thesisclosing}{09. Februar 2015}
 \newcommand{\thesisrelease}{09. Februar 2015}
-
-
-
-% Dokumentinformationen
-\usepackage[
-	pdftitle={Titel der Abschlussarbeit},
-	pdfsubject={},
-	pdfauthor={Euer Name},
-	pdfkeywords={}
-	pdftex=true, 
-	colorlinks=true,
- 	breaklinks=true,
-	citecolor=black,
-	linkcolor=black,	
-	menucolor=black,	
-	urlcolor=black
-]{hyperref}
-
-
-% Standard Packages
-\usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{graphicx}
-\usepackage{graphicx, subfigure}
-\graphicspath{{img/}}
-\usepackage{fancyhdr}
-\usepackage{lmodern}
-\usepackage{color}
-\usepackage{transparent}
-
-% zusätzliche Schriftzeichen der American Mathematical Society
-\usepackage{amsfonts}
-\usepackage{amsmath}
-
-% nicht einrücken nach Absatz
-\setlength{\parindent}{0pt}
-
-
-% ============= Kopf- und Fußzeile =============
-\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%
 %
-\lhead{}
-\chead{}
-\rhead{\slshape \leftmark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% D O K U M E N T K O N F I G U R A T I O N E N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
 %%
-\lfoot{}
-\cfoot{}
-\rfoot{\thepage}
+%%% 
+% Dokumentformatierung
+\documentclass
+[a4paper,german,
+11pt												% ersatzweise 12pt, wenn mehr Seiten entstehen sollen
+]
+{scrreprt}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% P A C K A G E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%% Textformatierung %%%
+%
+\usepackage[onehalfspacing]{setspace}				% Zeilenabstand bestimmen
+\usepackage[table]{xcolor}							% farbiger Text
+\usepackage{colortbl}								% Tabellen mit Hintergrundfarben versehen
+\usepackage{lettrine}								% Kapitelbeginn mit großem Buchstaben
+\usepackage{fancybox}								% Schattierungen und Rahmen für Grafiken
+\usepackage{wrapfig}								% Paket zur Positionierung von Grafiken
+\usepackage{capt-of}								% Untertitel von Abbildungen, Tabellen usw. in Gleitumgebung
+\usepackage[ngerman]{babel,translator}				% Silbentrennung nach der neuen deutschen Rechtschreibung, z.B.: Sys-tem
+\usepackage{paralist}								% Kompakte Aufzaehlungen erstellen
+\usepackage[bottom]{footmisc}							% Fussnoten am Seitenende
+\usepackage{fancyhdr}								% Kopf- und Fußzeilenformatierung
+\usepackage{pdfpages}								% für die Einbindung kompletter pdf-*Seiten*
+\usepackage{eso-pic}								% Wasserzeichen z.B. "`ENTWURF"' auf .pdf erzeugen
+\usepackage[hyphens]{url}							% für \url{http://www}, Option hyp erlaubt auch Umbruch nach "-"
+\usepackage[numbers,square]{natbib}					% Für \setlength{\bibsep}{3mm}; square macht eckige Klammern
+\usepackage{bibgerm}								% Styles für Literaturverzeichnisse
+\usepackage{titlesec, blindtext, color}				% Styles für Kapitelüberschriften
+\usepackage[printonlyused,withpage]{acronym}		% Abkürzungsverzeichnis
+%
+\usepackage[utf8]{inputenc}							% Zeichensatz, ermöglicht die direkte Eingabe von Umlauten im Editor
+\usepackage[T1]{fontenc}							% Optimiert Umlautverwendung
+\usepackage{lmodern}								% Schriften aufgrund von 'fontenc' glätten
+\usepackage{graphicx}								% Einbindung von Grafiken (pdf, png, jpg)
+\usepackage{float}									% bietet Option [H] für bombenfestes Verankern
+\usepackage{enumerate}								% verbessert Aufzählungen
+\usepackage{expdlist}								% erweiterter Funktionssatz für description
+\usepackage{chngcntr}								% Konfiguration des Fußnotenzählers ermöglichen
+\usepackage{array}									% für Tabellen: bindet tabular-Umgebung ein
+\usepackage{parskip}								% zw. Absätzen: eine knappe Leerzeile statt hängender Einzüge
+\usepackage[right]{eurosym}							% Eurosymbol
+\usepackage{makeidx}								% Package zur Indexerstellung
+\usepackage{multicol}								% zur Indexerstellung in zwei Spalten
+\usepackage{multirow}								% Verbinden von Zellen in Tabellen
+\usepackage{booktabs}								% Tabellenlayout anpassen
+\usepackage{longtable}								% Tabellen über mehrere Seiten strecken
+\usepackage{chngcntr}								% Nummeriegung der Abbildungen beeinflussen (z.B. nach Kapitel/fortlaufend)
+\usepackage[outercaption]{sidecap}					% Bildunterschriften rechts neben der Abbildung positionieren
+\usepackage[bf]{caption}							% Kuerzel und Nummerierung von Bildunterschriften "`fett"' schreiben
+\usepackage{amssymb}								% Erweiterte Symboldarstellung
 %%
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% ============= Package Einstellungen & Sonstiges ============= 
-
-%Besondere Trennungen
-\hyphenation{De-zi-mal-tren-nung St-rei-fen-licht-scan-nern}
-
-%römische Aufzählungen mit \RM{Zahl}
-\newcommand{\RM}[1]{\MakeUppercase{\romannumeral #1}}
-
-
-% ============= Dokumentbeginn =============
-
-\begin{document}
-
-\pagestyle{empty}
-\include{01_titel}
-
-% \part im Inhaltsverzeichnis nicht nummerieren
+% Packagehinweise
+% Folgende Packete müssen zusätzlich von MiKTeX bereitgestellt werden:
+% setspace, xcolor, colortbl, lettrine, fancybox, wrapfig, capt-of, translator, paralist, expdlist, footmisc, fancyhdr, pdfpages, eso-pic, url,
+% natbib, bibgerm, titlesec, blindtext, acronym, suffix, xstring, glossaries, etoolbox, textcase, xfor, datatool-base, substr, fp, supertabular,
+% mptopdf
+%%
+%%%%%%%%%% NEW FOR TESTING %%%%%%%%%%
+%
+%%
+%%% Abstellgleis %%%
+%
+%Options: Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, Bjornstrup
+%\usepackage[Glenn]{fncychap}
+%%
+%%% Referenzierung / Dokumentenlinks %%%
+% LINK packages IMMER zuletzt einbinden!!!
+\usepackage{hyperref}			% Package für Textlinks in pdf-Datei / Option [colorlinks] färbt Text rot!
+\usepackage[toc,nonumberlist,nopostdot]{glossaries}	% Automatisches Glossar erstellen
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% W A S S E R Z E I C H E N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\AddToShipoutPicture{%
+    \AtTextCenter{%
+      \makebox(0,0)[c]{\resizebox{\textwidth}{!}{%
+        \rotatebox{45}{\textsf{\textbf{\color{lightgray}DRAFT//\draftdate}}}}} 
+    }
+  }
+\ClearShipoutPicture
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% D E F I N E %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\definecolor{darkred}{rgb}{0.7,0.0,0.0}				% Textfarben definieren
+\definecolor{hellgrau}{rgb}{0.95,0.95,0.95}
+\definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
+\sloppy												% großzügiger Zeilenumbruch -> keine rechts rausragenden Zeilen mehr
+%
+\def\TReg{\textsuperscript{\textregistered}}
+\def\TCop{\textsuperscript{\textcopyright}}
+\def\TTra{\textsuperscript{\texttrademark}}
+%
+\newcommand{\ctab}{\centering\arraybackslash}		% Text in Tabellenzellen zentrieren
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % Text spaltenweise zentrieren
+%
+% Abstand zwischen Nummerierung und Text veraendern
 \makeatletter
-\let\partbackup\l@part
-\renewcommand*\l@part[2]{\partbackup{#1}{}}
+\renewcommand*\l@figure{\@dottedtocline{1}{1.5em}{3em}}
+\renewcommand*\l@table{\@dottedtocline{1}{1.5em}{3em}}
+\makeatother
+%
+% Farben fuer Verknuepfungen/Verweise anpassen
+\hypersetup{
+	linktocpage			= true,
+	colorlinks			= true,
+	linkcolor			= black,
+	citecolor			= green,
+	filecolor			= magenta,
+	urlcolor			= cyan,
+	pdftitle			= {Thesis M. Musterfrau},
+	pdfauthor			= Monika Musterfrau,
+	pdfsubject			= {Untersuchungen zum Vernetzen der Netze},
+	pdfdisplaydoctitle	= true,
+%	bookmarks			= true,
+	bookmarksnumbered	= true,
+	pdfpagemode			= UseOutlines,
+	pdfpagelayout		= SinglePage,
+	pdfprintscaling		= None,
+}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% F O O T N O T E S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fortlaufende Fußnoten (regulär wird der Zähler zu Beginn eines neuen Kapitels zurückgesetzt)
+%
+\counterwithout{footnote}{chapter}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% C A P T I O N S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Beschriftung für Abbildungen und Tabellen formatieren
+\addto\captionsngerman{\renewcommand\figurename{Abb.}}
+\addto\captionsngerman{\renewcommand\tablename{Tab.}}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%% L I T E R A T U R V E R Z E I C H N I S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Literaturverzeichnis mit BibTeX
+%
+\bibliographystyle{alphadin}						% 
+\setlength{\bibsep}{3mm}							% Abstände im Literaturverzeichnis
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% K O P F - & F U ß Z E I L E %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Größenanpassungen
+%
+\setlength{\headheight}{16pt}						% Höhe der Kopfzeile anpassen
+\setlength{\unitlength}{1cm}
+\setlength{\oddsidemargin}{0.3cm}
+\setlength{\evensidemargin}{0.3cm}
+\setlength{\textwidth}{16.5cm}
+\setlength{\topmargin}{-1.2cm}
+\setlength{\textheight}{24.5cm}
+\columnsep 0.5cm
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% I N H A L T S V E R Z E I C H N I S %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Strukturtiefe des Inhaltsverzeichnis
+%
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% T R E N N U N G S R E G E L N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Anmerkung: für Wörter mit Umlauten muss das Paket \usepackage[T1]{fontenc} eingebunden werden --
+% in der vorliegenden Version funktionieren *keine* Umlaute!!
+% 
+\hyphenation{Samm-lung-en Samm-lung Stau-beck-en Vor-na-me-in-i-ti-al Ver-stär-ker-aus-gang Nach-na-me Kurz-be-zeich-nung deutsch-spra-chige
+deutsch-sprachig Screen-shot Screen-shots schluss-end-lich Schluss-end-lich Make-In-dex Da-tei-name Da-tei-namen Ur-instinkt Ur-instinkte
+Lea-sing-part-ner  Va-li-da-tion In-fra-struk-tur-en Ver-ant-wort-lich-keit
+exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-men-tie-rung}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% G L O S S A R %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\loadglsentries{glossary/glossary}					% Externes Glossarverzeichnis laden
+\makeglossaries										% Aufruf zur automatischen Erstellung des Glossars
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%% T E X T F L U S S - P A R A M E T E R %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\clubpenalty = 10000 
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+\interlinepenalty = 5000							% u.a. sauberen Umbruch bei Eintraegen in Verzeichnissen!
+%%%
+%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% D O K U M E N T E R S T E L L U N G %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%
+%%%
+\begin{document}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% I N L I N E T I T L E P A G E %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dokumentinformationen zur automatischen Erstellung einer Titelseite
+% Ist nur erforderlich, wenn keine eigenständige Titelseite eingebunden wird!
 
-%Seitennummerierung neu beginnen, Zahlen [arabic], röm.Zahlen [roman,Roman], Buchstaben [alph,Alph]
-\pagenumbering{Roman}
-
-\newpage
-\include{02_danksagungen}
-
-\include{03_zusammenfassung}
-
-\newpage
-\pagestyle{fancy}
-%Inhaltsverzeichnis
+%\title{TEST}										% Legt den Titel des Dokuments fest
+%\author{M. Musterfrau  }							% Angabe über den/die Autor(en)
+%\date{\today}										% Liefert das aktuelle Datum bei Dokumenterstellung
+% maketitel											% Aufruf zum Erstellen und Einbinden der Titelseite
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% T I T E L S E I T E %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginn der ersten Seite im Dokument
+%
+\pagenumbering{Alph}								% Formatierung der Seitennummerierung auf große Buchstaben
+%
+\include{01_Titel}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% V O R S P A N N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\clearpage \setcounter{page}{-1}						% Start der Seitennummerierung, da Titelseite ohne Seitenzahl
+%
+\include{02_Erklaerung}
+\include{03_Sperrvermerk}
+\include{04_Vorwort}
+% 
+\clearpage											% Wechsel auf die nächste freie Seite
+\pagenumbering{Roman}								% Seitenzahlen auf große römische Zahlen setzen
+\setcounter{page}{0}								% Fortfahren mit Seitenzahl des letzten Abschnitts
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% V E R Z E I C H N I S S E %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%% Anfang des Inhaltsverzeichnisses
+\pdfbookmark{Inhaltsverzeichnis}{toc}				% Bookmark zum Inhaltsverzeichnis
 \tableofcontents
-
-\newpage
-%Seitennummerierung neu beginnen, Zahlen [arabic], röm.Zahlen [roman,Roman], Buchstaben [alph,Alph]
-\pagenumbering{arabic}
-% pagestyle für gesamtes Dokument aktivieren
-\pagestyle{fancy}
-
-\newpage
-\include{04_einleitung}
-
-\include{05_grundlagen}
-
-\include{06_standdertechnik}
-
-\include{07_methoden}
-
-\include{08_ergebnisse}
-
-\include{09_diskussion}
-
-%Verzeichnis aller Bilder
-\newpage
+\clearpage
+%
+%%% Anfang des Abbildungsverzeichnisses
 \listoffigures
-
-%Literaturverzeichnis
-\newpage
-\bibliographystyle{unsrtdin}
-\bibliography{Literatur}
-
+\protect \addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\clearpage
+%
+%%% Anfang des Tabellensverzeichnisses
+\listoftables
+\protect \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\clearpage
+%
+%%% Anfang des Abkürzungsverzeichnis
+\phantomsection \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\renewcommand\refname{Abkürzungsverzeichnis} \chapter*{Abkürzungsverzeichnis}
+%\renewcommand*\bflabel[1]{\textbf{#1}\hfill}
+%
+\input{abbreviation}
+\clearpage
+%
+%%% Glossarverzeichnis
+%\glsaddall
+\printglossary[style=altlisthypergroup]
+\clearpage
+%%%
+%
+%%% Änderungshistorie
+%\input{basix/history}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%% S E I T E N L A Y O U T  E I N S T E L L E N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\clearpage \pagenumbering{arabic}					% Seitenzahlen zurücksetzen und Formatierung auf Arabisch
+%
+\pagestyle{plain}									% Eigenen Seitenstil aktivieren
+%
+\renewcommand{\chaptermark}[1]{\markboth{\uppercase{\thechapter\ #1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\lhead{}
+\chead{\leftmark}
+\rhead{}
+\lfoot{\slshape \nouppercase \rightmark}
+\cfoot{}
+\rfoot{\bfseries \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+%%%
+%
+%%%%%%%%%%%%%%%%%%%% K A P I T E L Ü B E R S C H R I F T  A N P A S S E N %%%%%%%%%%%%%%%%%%%%%%%%%
+%###
+\titleformat{\part}[display]{\centering\normalfont\fontsize{36}{48}\selectfont\bfseries}{\MakeUppercase{\partname} \thepart}{40pt}{\Huge}
+\titlespacing*{\part}{0pt}{50pt}{20pt}
+%
+% Redefinition con \@currentlabelname fuer \part aufgrund des \titleformat
+%
+\makeatletter
+\let\titlesec@part\part
+\renewcommand{\part}{\@ifstar\part@star\part@nostar}
+\def\part@star#1{\NR@gettitle{#1}\titlesec@part*{#1}}
+\def\part@nostar{\@ifnextchar[\part@nostar@opt\part@nostar@nopt}
+\def\part@nostar@nopt#1{\NR@gettitle{#1}\titlesec@part{#1}}
+\def\part@nostar@opt[#1]#2{\NR@gettitle{#2}\titlesec@part[#1]{#2}}
+\makeatother
+%
+%\titleformat{\chapter}[frame]{\normalfont}{\filright\large\enspace KAPITEL \thechapter\enspace}{10pt}{\Huge\bfseries\filcenter}
+ %\titlespacing{überschriftenklasse}{linker einzug}{platz oberhalb}{platz unterhalb}[rechter einzug]
+%\titlespacing*{\chapter}{0pt}{-\topskip}{40pt}
+%###
+%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGINN der wissenschaftlichen Arbeit %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%
+%%%
+\include{10_Einleitung} 
+\include{part/02_theorie}
+\include{part/03_analyse_konzeptentwicklung}
+%%%
+%%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ENDE der wissenschaftlichen Arbeit %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%%
+%%%
+%\protect \addtocontents{toc}{\protect\newpage}  	% Seitenumbruch im Inhaltsverzeichnis
+\clearpage
+%
+%%% Abschlussbetrachtung / Ausblick
+\include{part/04_abschlussbetrachtung}
+%
+\clearpage \pagenumbering{roman}
+%
+%\pagestyle{plain}									% Seitenlayout (Standard) mit zentrierter Seitennummerierung				!!! ÜBERFLÜSSIG???!!!
+%
+%### Kapiteltitel auf Standardlayout zurücksetzen
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+%###%
+%
+%%%%%%%%%%%%%%%%%% L I T E R A T U R V E R Z E I C H N I S & A N H A N G %%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\part{Literatur und Anhang}
+\label{part_anhang}
+\interlinepenalty = 10000
+%
+%%% Literaturverzeichnis, mit BibTeX
+%
+\phantomsection \addcontentsline{toc}{chapter}{Literaturverzeichnis}
+%\nocite{*} 										% auch die nicht verwendeten bibtex-Einträge einblenden
+\bibliography{bibtex/bibliografie}
+%
+\clearpage
+\include{appendix/appendix}
+%\include{part/05_bib_appendix}
+%%%
+%
+% Schmutzblatt (leere Seite am Ende)
+%
+\newpage                                    
+\pagestyle{empty}
+\begin{figure}[H]
+\centering
+%\includegraphics[width=0.9\textwidth]{pix/general/leer.png}
+\end{figure}
+%
 \end{document}
+%
+%%% CODE - ARCHIV %%%
+%\let\origitemize\itemize							% Zeilenabstand in \itemize-Umgebung global verringern
+%\def\itemize{\origitemize\itemsep-7pt}
+%

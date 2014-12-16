@@ -16,6 +16,11 @@
 %%%
 %%
 %
+
+
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% D O K U M E N T K O N F I G U R A T I O N E N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -222,6 +227,9 @@ exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-
 %
 %%
 %%%
+
+
+
 \begin{document}
 %%%
 %
@@ -282,7 +290,7 @@ exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-
 \clearpage
 %
 %%% Glossarverzeichnis
-%\glsaddall
+\glsaddall
 \printglossary[style=altlisthypergroup]
 \clearpage
 %%%
@@ -295,42 +303,23 @@ exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-
 %
 \clearpage \pagenumbering{arabic}					% Seitenzahlen zurücksetzen und Formatierung auf Arabisch
 %
-\pagestyle{plain}									% Eigenen Seitenstil aktivieren
+
+\pagestyle{fancy}									% Eigenen Seitenstil aktivieren
 %
 \renewcommand{\chaptermark}[1]{\markboth{\uppercase{\thechapter\ #1}}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
-\lhead{}
-\chead{\leftmark}
-\rhead{}
-\lfoot{\slshape \nouppercase \rightmark}
-\cfoot{}
-\rfoot{\bfseries \thepage}
+\lhead{\slshape \nouppercase \leftmark }
+\chead{}
+\rhead{\slshape \nouppercase \rightmark }
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
 \renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
 %%%
 %
-%%%%%%%%%%%%%%%%%%%% K A P I T E L Ü B E R S C H R I F T  A N P A S S E N %%%%%%%%%%%%%%%%%%%%%%%%%
-%###
-\titleformat{\part}[display]{\centering\normalfont\fontsize{36}{48}\selectfont\bfseries}{\MakeUppercase{\partname} \thepart}{40pt}{\Huge}
-\titlespacing*{\part}{0pt}{50pt}{20pt}
-%
-% Redefinition con \@currentlabelname fuer \part aufgrund des \titleformat
-%
-\makeatletter
-\let\titlesec@part\part
-\renewcommand{\part}{\@ifstar\part@star\part@nostar}
-\def\part@star#1{\NR@gettitle{#1}\titlesec@part*{#1}}
-\def\part@nostar{\@ifnextchar[\part@nostar@opt\part@nostar@nopt}
-\def\part@nostar@nopt#1{\NR@gettitle{#1}\titlesec@part{#1}}
-\def\part@nostar@opt[#1]#2{\NR@gettitle{#2}\titlesec@part[#1]{#2}}
-\makeatother
-%
-%\titleformat{\chapter}[frame]{\normalfont}{\filright\large\enspace KAPITEL \thechapter\enspace}{10pt}{\Huge\bfseries\filcenter}
- %\titlespacing{überschriftenklasse}{linker einzug}{platz oberhalb}{platz unterhalb}[rechter einzug]
-%\titlespacing*{\chapter}{0pt}{-\topskip}{40pt}
-%###
-%%
-%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGINN der wissenschaftlichen Arbeit %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -340,6 +329,7 @@ exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-
 \include{10_Einleitung} 
 \include{20_Problemstellung}
 \include{30_Konzeptentwicklung}
+\include{40_Testen_und_Validieren}
 %%%
 %%
 %

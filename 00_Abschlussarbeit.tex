@@ -39,6 +39,7 @@
 %
 %%% Textformatierung %%%
 %
+
 \usepackage[onehalfspacing]{setspace}				% Zeilenabstand bestimmen
 \usepackage[table]{xcolor}							% farbiger Text
 \usepackage{colortbl}								% Tabellen mit Hintergrundfarben versehen
@@ -230,6 +231,7 @@ exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-
 
 
 
+
 \begin{document}
 %%%
 %
@@ -284,6 +286,12 @@ exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-
 %%% Anfang des Abkürzungsverzeichnis
 \phantomsection \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
 \renewcommand\refname{Abkürzungsverzeichnis} \chapter*{Abkürzungsverzeichnis}
+
+\begin{acronym}[MySQL]
+\acro {SQL}{Structured Query Language}
+\acro {ER}{Entity-Relationship}
+\end{acronym}
+
 %\renewcommand*\bflabel[1]{\textbf{#1}\hfill}
 %
 \input{abbreviation}

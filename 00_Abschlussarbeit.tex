@@ -9,9 +9,9 @@
 % \newcommand{\draftdate}{140910}
 % \newcommand{\rev}{108}
 % %
-\newcommand{\thesisopening}{01. Dezember 2014}
-\newcommand{\thesisclosing}{09. Februar 2015}
-\newcommand{\thesisrelease}{09. Februar 2015}
+\newcommand{\thesisopening}{05. Januar 2015}
+\newcommand{\thesisclosing}{16. März 2015}
+\newcommand{\thesisrelease}{16. März 2015}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
 %%
@@ -113,6 +113,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% D E F I N E %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+
+
 \definecolor{darkred}{rgb}{0.7,0.0,0.0}				% Textfarben definieren
 \definecolor{hellgrau}{rgb}{0.95,0.95,0.95}
 \definecolor{dunkelgrau}{rgb}{0.8,0.8,0.8}
@@ -287,10 +289,10 @@ exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-
 \phantomsection \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
 \renewcommand\refname{Abkürzungsverzeichnis} \chapter*{Abkürzungsverzeichnis}
 
-\begin{acronym}[MySQL]
-\acro {SQL}{Structured Query Language}
-\acro {ER}{Entity-Relationship}
-\end{acronym}
+
+
+
+
 
 %\renewcommand*\bflabel[1]{\textbf{#1}\hfill}
 %
@@ -335,7 +337,8 @@ exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-
 %%
 %%%
 \include{10_Einleitung} 
-\include{20_Problemstellung}
+\include{Grundlagen}
+\include{Anforderungsanalyse}
 \include{30_Konzeptentwicklung}
 \include{40_Testen_und_Validieren}
 %%%
@@ -363,15 +366,15 @@ exis-tie-ren-der Ver-si-on-en Netz-werk-la-tenz-en Re-fe-renz-um-ge-bung Im-ple-
 %
 %%%%%%%%%%%%%%%%%% L I T E R A T U R V E R Z E I C H N I S & A N H A N G %%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-\part{Literatur und Anhang}
-\label{part_anhang}
-\interlinepenalty = 10000
+%\part{Literatur und Anhang}
+%\label{part_anhang}
+%\interlinepenalty = 10000
 %
 %%% Literaturverzeichnis, mit BibTeX
 %
 \phantomsection \addcontentsline{toc}{chapter}{Literaturverzeichnis}
-%\nocite{*} 										% auch die nicht verwendeten bibtex-Einträge einblenden
-\bibliography{bibtex/bibliografie}
+\nocite{*} 										% auch die nicht verwendeten bibtex-Einträge einblenden
+\bibliography{Literatur}
 %
 \clearpage
 \include{appendix/appendix}

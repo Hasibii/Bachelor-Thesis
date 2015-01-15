@@ -1,0 +1,14 @@
+% This file was created with JabRef 2.10.
+% Encoding: UTF8
+
+
+@Book{saake2010datenbanken,
+  Title                    = {Datenbanken: Konzepte und Sprachen},
+  Author                   = {Saake, G. and Sattler, K.U. and Heuer, A.},
+  Publisher                = {mitp},
+  Year                     = {2010},
+  Series                   = {Biber-Buch},
+
+  ISBN                     = {9783826690570}
+}
+

@@ -30,6 +30,17 @@ Das Gesamtsystem setzt sich aus drei Untersystemen zusammen:
 \end{itemize}
 
 \end{itemize}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{img/general/BlockPlan.pdf}
+\caption{Gesamt System}
+\label{Gesamt_System}
+\end{center}
+\end{figure}
+
+
 \subsection{Mess-Slave}
 \label{section_Mess-Slave}
 
@@ -74,27 +85,35 @@ Daraus ergibt sich folgendes Protokoll.
 \section{Datenbank}
 \label{section_EntwurfDatenbank}
 
-Die Datenbank muss folgende Daten für die Parameter der Mess-Slaves aufnehmen:\\
+Aus den Anforderungen ergibt sich folgendes \ac{ERM} (siehe Abbildung \ref{ERM}). \\
 
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}\hline
-Parameter & Beschreibung \\ \hline
-DAC & Vorverstärker Wert\\ 
-duration\_int1 & Dauer der Zeit die Werte im 1.Interval aufgenommen werden in Tagen\\ 
-duration\_int2 & Dauer der Zeit die Werte im 2.Interval aufgenommen werden in Tagen\\ 
-interval\_1 & Abstand zwischen den Messungen im 1. Interval in Minuten\\ 
-interval\_2 & Abstand zwischen den Messungen im 2. Interval in Minuten\\ 
-interval\_3 & Abstand zwischen den Messungen nach dem 2. Interval in Minuten\\ \hline
-\end{tabular}
-\caption{Parameter Tabelle}
-\label{table_Parameter}
-\end{table}
-
-\begin{figure}[h]
+\begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{img/general/ER_Diagramm.pdf}
 \caption{Entity Relationship Modell}
 \label{ERM}
 \end{center}
 \end{figure}
+
+
+Die Datenbank muss folgende Daten für die Parameter der Mess-Slaves aufnehmen:\\
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|l|}\hline
+Parameter & Beschreibung \\ \hline
+DAC & Vorverstärkung\\ 
+duration\_int1 & Dauer der Zeit die Werte im 1.Interval aufgenommen werden in Tagen\\ 
+duration\_int2 & Dauer der Zeit die Werte im 2.Interval aufgenommen werden in Tagen\\ 
+interval\_1 & Abstand zwischen den Messungen im 1. Interval in Minuten\\ 
+interval\_2 & Abstand zwischen den Messungen im 2. Interval in Minuten\\ 
+interval\_3 & Abstand zwischen den Messungen nach dem 2. Interval in Minuten\\ \hline
+\end{tabular}
+\caption{Tabelle Setting}
+\label{table_TabelleSetting}
+\end{center}
+\end{table}
+
+
+
+

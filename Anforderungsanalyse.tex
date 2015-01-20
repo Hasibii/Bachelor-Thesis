@@ -11,7 +11,14 @@ Folgende Anforderungen werden dabei an das neue System gestellt:
 \end{itemize}
 \ \\
 \textbf{Individuelle Parametrierung der \acp{DUT}}\\
-Immer 64 \acp{DUT} vom selben Typ befinden sich auf einem Testboard.
+Immer 64 \acp{DUT} vom selben Typ befinden sich auf einem Testboard. Dabei sollen verschiedene Parameter für die \acp{DUT} berücksichtigt werden. \\
+Es müssen die Intervalle zwischen den Messungen in mehreren Stufen einstellbar sein. Das erfolgt durch die Bestimmung von Intervallen und von Zeiträumen in denen diese Intervalle befolgt werden. Außerdem DAC.
 
-\textbf{Autmatische Erfassung der Messdaten}\\
-Die Messdaten der \acp{DUT} sollen zyklisch erfasst werden. Dabei sollen die Intervalle zwischen den Messungen konfigurierbar sein. 
+
+
+\textbf{Automatische Erfassung der Messdaten}\\
+Die Messdaten der \acp{DUT} sollen zyklisch erfasst werden. Dabei sollen, wie bereits erwähnt, die Intervalle zwischen den Messungen konfigurierbar sein.\\
+Für den einfachen Zugriff auf die Daten, sollen diese in einer \ac{SQL} Datenbank abgelegt werden. Dafür ist eine Kommunikationsschnittstelle zwischen der Datenbank und den Testboards erforderlich. Durch gegebene Hardwarekonfigurationen soll RS232 dafür verwendet werden.
+
+\textbf{Auswertung der Messdaten via Fernzugriff}\\
+Zur Auswertung der Messdaten, soll es möglich sein, von einem PC-Arbeitsplatz aus eine Verbindung zu den Messdaten aufzubauen. Außerdem sollen die Messdaten ausgewertet und dargestellt werden.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  16 JAN 2015 19:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  20 JAN 2015 18:14
 entering extended mode
 **00_Abschlussarbeit.tex
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\00_Abschlussarbeit.tex
@@ -47,17 +47,17 @@ Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             for `lot' on input line 119.
 Package tocbasic Info: defining new hook before heading of `' on input line 114
 1.
-Package scrreprt Info: You've used standard option `11pt'.
+Package scrreprt Info: You've used standard option `12pt'.
 (scrreprt)             This is correct!
-(scrreprt)             Internally I'm using `fontsize=11pt'.
+(scrreprt)             Internally I'm using `fontsize=12pt'.
 (scrreprt)             If you'd like to set the option with \KOMAoptions,
-(scrreprt)             you'd have to use `fontsize=11pt' there
-(scrreprt)             instead of `11pt', too.
-Class scrreprt Info: File `scrsize11pt.clo' used to setup font sizes on input l
+(scrreprt)             you'd have to use `fontsize=12pt' there
+(scrreprt)             instead of `12pt', too.
+Class scrreprt Info: File `scrsize12pt.clo' used to setup font sizes on input l
 ine 1673.
 
-(C:\Kroma\tex\latex\koma-script\scrsize11pt.clo
-File: scrsize11pt.clo 2014/10/28 v3.14 KOMA-Script font size class option (11pt
+(C:\Kroma\tex\latex\koma-script\scrsize12pt.clo
+File: scrsize12pt.clo 2014/10/28 v3.14 KOMA-Script font size class option (12pt
 )
 )
 (C:\Kroma\tex\latex\koma-script\typearea.sty
@@ -80,21 +80,21 @@ Package typearea Info: You've used standard option `a4paper'.
 \ta@temp=\skip44
 \footheight=\skip45
 Package typearea Info: These are the values describing the layout:
-(typearea)             DIV  = 10
+(typearea)             DIV  = 12
 (typearea)             BCOR = 0.0pt
 (typearea)             \paperwidth      = 597.50793pt
-(typearea)              \textwidth      = 418.25555pt
+(typearea)              \textwidth      = 448.13095pt
 (typearea)              DIV departure   = -6%
-(typearea)              \evensidemargin = 17.3562pt
-(typearea)              \oddsidemargin  = 17.3562pt
+(typearea)              \evensidemargin = 2.4185pt
+(typearea)              \oddsidemargin  = 2.4185pt
 (typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 595.80026pt
-(typearea)              \topmargin      = -25.16531pt
-(typearea)              \headheight     = 17.0pt
-(typearea)              \headsep        = 20.40001pt
-(typearea)              \topskip        = 11.0pt
-(typearea)              \footskip       = 47.6pt
-(typearea)              \baselineskip   = 13.6pt
+(typearea)              \textheight     = 635.5pt
+(typearea)              \topmargin      = -41.72441pt
+(typearea)              \headheight     = 18.125pt
+(typearea)              \headsep        = 21.75pt
+(typearea)              \topskip        = 12.0pt
+(typearea)              \footskip       = 50.75pt
+(typearea)              \baselineskip   = 14.5pt
 (typearea)              on input line 1340.
 )
 \c@part=\count80
@@ -1290,7 +1290,7 @@ LaTeX Font Info:    Try loading font information for OMX+lmex on input line 6.
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 6.
+(Font)              <12> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 6.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1304,14 +1304,18 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 6.
  (C:\MikTex\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<img/general/unilogo.png, id=83, 174.1707pt x 41.4348pt>
+<img/general/unilogo.png, id=87, 174.1707pt x 41.4348pt>
 File: img/general/unilogo.png Graphic file (type png)
 
 <use img/general/unilogo.png>
 Package pdftex.def Info: img/general/unilogo.png used on input line 7.
 (pdftex.def)             Requested size: 184.9429pt x 44.00095pt.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 11.
+(Font)              <14.4> on input line 11.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 11.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 11.
  [1{C:/Users/TNieter/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
@@ -1346,9 +1350,9 @@ LaTeX Font Info:    Try loading font information for T1+ppl on input line 7.
 (C:\MikTex\tex\latex\psnfss\t1ppl.fd
 File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <22.26686> not available
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.31786> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 7.
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <31.81494> not available
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <34.74281> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 7.
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 18.
  (C:\MikTex\tex\latex\lm\t1lmtt.fd
@@ -1411,49 +1415,56 @@ Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              a package that still implements the
 (scrreprt)              deprecated \float@addtolist interface .
 
+Package acronym Info: Label `acro:LED' newly defined as it shall be overridden
+although it is yet undefined on input line 17.
 ) [1
 
 
 
 
-] (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Grundlagen.tex
+] [2] (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Grundlagen.tex
 Kapitel 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--10
+
+ []
+
 Package acronym Info: Label `acro:GUI' newly defined as it shall be overridden
-although it is yet undefined on input line 11.
+although it is yet undefined on input line 15.
 Package acronym Info: Label `acro:IDE' newly defined as it shall be overridden
-although it is yet undefined on input line 15.
+although it is yet undefined on input line 19.
 Package acronym Info: Label `acro:SDK' newly defined as it shall be overridden
-although it is yet undefined on input line 15.
+although it is yet undefined on input line 19.
 
-Underfull \hbox (badness 10000) in paragraph at lines 11--17
+Underfull \hbox (badness 10000) in paragraph at lines 15--21
 
  []
 
 
-Underfull \hbox (badness 2165) in paragraph at lines 11--17
-\T1/lmr/m/n/10.95 Als Ent-wick-lungs-um-ge-bung (eng-lisch: [][][]Integrated De
--ve-lo-pe-ment En-vi-ron-ment ([])[]) dient
+Underfull \hbox (badness 2359) in paragraph at lines 15--21
+\T1/lmr/m/n/12 Als Ent-wick-lungs-um-ge-bung (eng-lisch: [][][]Integrated De-ve
+-lo-pe-ment En-vi-ron-ment ([])[])
  []
 
-<img/general/QtCreator.png, id=192, 963.6pt x 770.88pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--21
+
+ []
+
+[3
+
+
+
+] <img/general/QtCreator.png, id=210, 963.6pt x 770.88pt>
 File: img/general/QtCreator.png Graphic file (type png)
 
 <use img/general/QtCreator.png>
-Package pdftex.def Info: img/general/QtCreator.png used on input line 20.
+Package pdftex.def Info: img/general/QtCreator.png used on input line 24.
 (pdftex.def)             Requested size: 469.47046pt x 375.57018pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2
-
-
-
-]
+ [4 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/QtCreator.png>]
 Package acronym Info: Label `acro:SQL' newly defined as it shall be overridden
-although it is yet undefined on input line 38.
- [3 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/QtCreator.png>]
-) [4]
+although it is yet undefined on input line 40.
+) [5]
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Anforderungsanalyse.tex
 Kapitel 3.
 
@@ -1465,30 +1476,30 @@ LaTeX Font Info:    Try loading font information for OMS+lmr on input line 8.
 (C:\MikTex\tex\latex\lm\omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10.95> not available
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 8.
 Package acronym Info: Label `acro:DUT' newly defined as it shall be overridden
 although it is yet undefined on input line 8.
-) [5
+) [6
 
 
 
-]
+] [7]
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\30_Konzeptentwicklung.tex
 Kapitel 4.
-<img/general/BlockPlan.pdf, id=217, 671.50874pt x 843.15pt>
+<img/general/BlockPlan.pdf, id=235, 671.50874pt x 843.15pt>
 File: img/general/BlockPlan.pdf Graphic file (type pdf)
 
 <use img/general/BlockPlan.pdf>
 Package pdftex.def Info: img/general/BlockPlan.pdf used on input line 37.
 (pdftex.def)             Requested size: 469.47046pt x 589.46765pt.
- [6
+ [8
 
 
 
 ]
 
-LaTeX Warning: Reference `MessSlaveBlockPlan' on page 7 undefined on input line
+LaTeX Warning: Reference `MessSlaveBlockPlan' on page 9 undefined on input line
  48.
 
 
@@ -1496,7 +1507,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--58
 
  []
 
-[7 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/BlockPlan.pdf>]
+[9 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/BlockPlan.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
@@ -1508,13 +1519,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
-<img/general/ER_Diagramm.pdf, id=230, 844.15375pt x 733.74126pt>
+<img/general/ER_Diagramm.pdf, id=248, 844.15375pt x 733.74126pt>
 File: img/general/ER_Diagramm.pdf Graphic file (type pdf)
 
 <use img/general/ER_Diagramm.pdf>
 Package pdftex.def Info: img/general/ER_Diagramm.pdf used on input line 92.
 (pdftex.def)             Requested size: 469.47046pt x 408.07092pt.
- [8]
+ [10]
 Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
@@ -1522,11 +1533,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [9 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/ER_Diagramm.pd
-f>] [10]
+) [11 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/ER_Diagramm.p
+df>] [12]
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\40_Testen_und_Validieren.tex
 Kapitel 5.
-) [11
+) [13
 
 
 
@@ -1564,34 +1575,35 @@ x) (C:\Users\TNieter\Documents\git\Bachelor-Thesis\appendix/appendix.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 393.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 393.
 Package rerunfilecheck Info: File `00_Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 4262A20AD4CD548FC6E91AA9C8B5C682;1191.
+(rerunfilecheck)             Checksum: 7E820B98AD72D7FCD5009438779911B0;1272.
 
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 393.
  ) 
 Here is how much of TeX's memory you used:
- 17419 strings out of 493921
- 260726 string characters out of 3154494
- 465922 words of memory out of 3000000
- 20104 multiletter control sequences out of 15000+200000
- 87789 words of font info for 62 fonts, out of 3000000 for 9000
+ 17445 strings out of 493921
+ 260974 string characters out of 3154494
+ 467030 words of memory out of 3000000
+ 20123 multiletter control sequences out of 15000+200000
+ 89850 words of font info for 70 fonts, out of 3000000 for 9000
  867 hyphenation exceptions out of 8191
  57i,13n,77p,2231b,541s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/MikTex/fonts/enc/dvips/lm/lm-ec.enc}{C:/MikTex/fonts/enc/dvips/lm/lm-math
 sy.enc}{C:/MikTex/fonts/enc/dvips/fontname/8r.enc}<C:/MikTex/fonts/type1/public
-/lm/lmbx10.pfb><C:/MikTex/fonts/type1/public/lm/lmbx12.pfb><C:/MikTex/fonts/typ
-e1/public/lm/lmcsc10.pfb><C:/MikTex/fonts/type1/public/lm/lmr10.pfb><C:/MikTex/
-fonts/type1/public/lm/lmr12.pfb><C:/MikTex/fonts/type1/public/lm/lmr17.pfb><C:/
-MikTex/fonts/type1/public/lm/lmr8.pfb><C:/MikTex/fonts/type1/public/lm/lmri10.p
-fb><C:/MikTex/fonts/type1/public/lm/lmri12.pfb><C:/MikTex/fonts/type1/public/lm
-/lmro10.pfb><C:/MikTex/fonts/type1/public/lm/lmssbx10.pfb><C:/MikTex/fonts/type
-1/public/lm/lmsy10.pfb><C:/MikTex/fonts/type1/public/lm/lmtt10.pfb><C:/MikTex/f
-onts/type1/urw/palatino/uplb8a.pfb>
-Output written on 00_Abschlussarbeit.pdf (22 pages, 864871 bytes).
+/lm/lmbx12.pfb><C:/MikTex/fonts/type1/public/lm/lmcsc10.pfb><C:/MikTex/fonts/ty
+pe1/public/lm/lmr12.pfb><C:/MikTex/fonts/type1/public/lm/lmr17.pfb><C:/MikTex/f
+onts/type1/public/lm/lmr8.pfb><C:/MikTex/fonts/type1/public/lm/lmri12.pfb><C:/M
+ikTex/fonts/type1/public/lm/lmro12.pfb><C:/MikTex/fonts/type1/public/lm/lmssbx1
+0.pfb><C:/MikTex/fonts/type1/public/lm/lmsy10.pfb><C:/MikTex/fonts/type1/public
+/lm/lmtt12.pfb><C:/MikTex/fonts/type1/urw/palatino/uplb8a.pfb>
+Output written on 00_Abschlussarbeit.pdf (24 pages, 804565 bytes).
 PDF statistics:
- 495 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 505 PDF objects out of 1000 (max. 8388607)
+ 71 named destinations out of 1000 (max. 500000)
+ 189 words of extra memory for PDF output out of 10000 (max. 10000000)
 

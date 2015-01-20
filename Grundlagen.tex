@@ -1,25 +1,29 @@
 \chapter{Grundlagen}
 \label{chapter_Grundlagen}
 
-Bei der Entwicklung des Teststandes kommen verschiedene Systeme, Schnittstellen und Konzepte zum Einsatz. Die Grundlagen dazu werden im folgenden Kapitel kurz erläutert.
+Bei der Entwicklung des Teststandes kommen verschiedene Systeme, Schnittstellen und Konzepte zum Einsatz. Dieses Kapitel befasst sich mit der C++ Klassenbibliothek Qt und der RS232 Schnittstelle. Des Weiteren wird auf das Konzept einer Datenbank und den Vergleich der beiden Datenbanksysteme MySQL und SQLite eingegangen.
 
 \section{Degradation}
-what do
+Der Hauptgrund für mechanisches Versagen im Lebenszyklus eines Systems oder Bauelementes, liegt an der langsamen Ansammlung von nicht reversiblen Schäden. Dieser Prozess ist bekannt als Degradation, vgl. \cite{zhou2011}:1586.\\
+Die Schwierigkeit liegt in der Feststellung des mechanischen Versagen in messbaren Schritten. So ist die Bestimmung der Lebenszeit über die Zeit bis zum Ausfall zeitaufwändig. Einfacher ist es die Leistung des Bauelementes oder Systems zu erfassen, z.B. die optische Leistung einer LED. Auf diesem Weg kann ein Trend ausgemacht werden.\\
+Um die Länge des Lebenszyklus eines Bauelementes bestimmen zu können, wird die Leistung dessen unter Last über einen langen Zeitraum hinweg aufgezeichnet. Anhand der daraus resultierenden Daten kann die zu erwartende Länge des Lebenszyklus ermittelt werden.\\
+
+ 
 
 
-\section{QT}
-QT ist eine umfangreiche C++-Klassenbibliothek zur Gestaltung und Entwicklung von Anwendungen.Vor allem bei Applikationen mit grafischen Benutzeroberflächen (englisch: \ac{GUI}) ist QT sehr beliebt. \\
-Zusätzlich bringt QT eine große Auswahl an Tools und Modulen mit sich, welche die Programmierung erheblich erleichtern (z.B. Netzwerkprogrammierung, Datenbankanbindung, OpenGL, etc.). \\
-Ein weiterer Vorteil ist die Plattformunabhängigkeit. So unterstützt QT aktuell (Version 5.4, 10. Dezember 2014) einen Großteil der aktuellen Betriebssystem wie Windows, Linux, Android, iOS und einige mehr.
+\section{Qt}
+Qt ist eine umfangreiche C++-Klassenbibliothek zur Gestaltung und Entwicklung von Anwendungen. Vor allem bei Applikationen mit grafischen Benutzeroberflächen (englisch: \ac{GUI}) ist Qt sehr beliebt. \\
+Zusätzlich bringt Qt eine große Auswahl an Tools und Modulen mit sich, welche die Programmierung erheblich erleichtern (z.B. Netzwerkprogrammierung, Datenbankanbindung, OpenGL, etc.). \\
+Ein weiterer Vorteil ist die Plattformunabhängigkeit. So unterstützt Qt aktuell (Version 5.4, 10. Dezember 2014) einen Großteil der aktuellen Betriebssystem wie Windows, Linux, Android, iOS und einige mehr.
 \\\\
-Als Entwicklungsumgebung (englisch: \ac{IDE}) dient der QT Creator (siehe Abbildung \ref{QTCreator}), welcher Teil des \ac{SDK} von QT ist und sowohl auf Linux, Windows und auch Mac OS X zur Verfügung steht. Er kommt mit einem Debugger, einem integrierten grafischen \ac{GUI} Designer und einem Texteditor mit Funktionen wie Syntax-Hervorhebung und automatischer Vervollständigung. \\
-Es können alle gängigen Compiler verwendet werden und es besteht die Möglichkeit eigene Toolchains anzulegen. 
+Als Entwicklungsumgebung (englisch: \ac{IDE}) dient der Qt Creator (siehe Abbildung \ref{QtCreator}), welcher Teil des \ac{SDK} von Qt ist und sowohl auf Linux, Windows als auch Mac OS X zur Verfügung steht. Er kommt mit einem Debugger, einem integrierten grafischen \ac{GUI} Designer und einem Texteditor mit Funktionen wie Syntax-Hervorhebung und automatischer Vervollständigung. \\
+Dabei kommen gängigen Compiler wie MinGW unter Windows zum Einsatz und es besteht die Möglichkeit eigene Toolchains anzulegen. \\
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=\textwidth]{img/general/QtCreator.png}
 \caption{QtCreator Version 2.0.1}
-\label{QTCreator}
+\label{QtCreator}
 \end{center}
 \end{figure}
 \newpage
@@ -29,8 +33,6 @@ Es können alle gängigen Compiler verwendet werden und es besteht die Möglichk
 %http://wiki.ubuntuusers.de/Qt
 %http://en.wikipedia.org/wiki/Qt_Creator
 
-\section{RS232}
-Bei RS232 handelt es sich um eine serielle Schnittstelle zu Datenübertragung.
 
 \section{Datenbank}
 \label{section_Datenbank}

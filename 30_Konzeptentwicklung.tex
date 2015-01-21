@@ -10,22 +10,22 @@ Das Gesamtsystem setzt sich aus drei Untersystemen zusammen:
 
 \begin{itemize}
 
-\item Mess-Slave
+\item Mess-Client
 \begin{itemize}
 \item Übernimmt die lokale Ansteuerung der \acp{DUT}
 \item Nimmt Messdaten auf und stellt sie zur Verfügung
 \end{itemize}
 
-\item Mess-Master
+\item Mess-Server
 \begin{itemize}
-\item Verwaltet angeschlossene Mess-Slaves
+\item Verwaltet angeschlossene Mess-Clients
 \item Speichert alle Messdaten
-\item Bildet das Bindeglied zwischen Mess-Slave und dem PC
+\item Bildet das Bindeglied zwischen Mess-Client und dem PC-Client
 \end{itemize}
 
-\item PC Verwaltung
+\item PC-Client
 \begin{itemize}
-\item Parametriert die Mess-Slaves
+\item Parametriert die Mess-Clients
 \item Wertet Messdaten aus und stellt sie leserlich da
 \end{itemize}
 
@@ -41,29 +41,29 @@ Das Gesamtsystem setzt sich aus drei Untersystemen zusammen:
 \end{figure}
 
 
-\subsection{Mess-Slave}
-\label{section_Mess-Slave}
+\subsection{Mess-Client}
+\label{section_Mess-Client}
 
-Das Herzstück des Mess-Slave bildet ein STM8  8-Bit Mikrocontroller der Firma STMicroelectronics.
-Auf jedem Mess-Slave sind 64 \acp{DUT} befestigt. In zyklischen Abständen werden die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt (siehe Abbildung \ref{MessSlaveBlockPlan}.\\
+Das Herzstück des Mess-Clients bildet ein STM8  8-Bit Mikrocontroller der Firma STMicroelectronics.
+Auf jedem Mess-Client sind 64 \acp{DUT} befestigt. In zyklischen Abständen werden die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt (siehe Abbildung \ref{MessSlaveBlockPlan}.\\
 Dieses System war zum großen Teil bereits gegeben, so dass lediglich die Übertragung der RS232 Schnittstelle geregelt werden musste. Dazu wurde ein Protokoll für die Kommunikation entworfen (sieht Abschnitt \ref{section_RS232_Protokoll}).
 \\
 %\begin{figure}[h]
 %\begin{center}
 %\includegraphics[width=\textwidth]{}
-%\caption{Mess-Slave Blockschaltplan}
+%\caption{Mess-Client Blockschaltplan}
 %\label{MessSlaveBlockPlan}
 %\end{center}
 %\end{figure}
 
 
-\subsection{Mess-Master}
-\label{section_Mess-Master}
+\subsection{Mess-Server}
+\label{section_Mess-Server}
 
-Als Mess-Master wird ein BeagleBone Black von Texas Instruments eingesetzt. Dabei handelt es sich um einen Einplatinen-Computer, der mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor arbeitet. Das Betriebssystem ist eine Embedded Linux Debian Lösung.
+Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt. Dabei handelt es sich um einen Einplatinen-Computer, der mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor arbeitet. Das Betriebssystem ist eine Embedded Linux Debian Lösung.
 
 
-\subsection{PC Verwaltung}
+\subsection{PC-Client}
 \label{section_Verwaltung}
 asdasad
 
@@ -96,9 +96,9 @@ Aus den Anforderungen ergibt sich folgendes \ac{ERM} (siehe Abbildung \ref{ERM})
 \end{figure}
 
 
-Die Datenbank muss folgende Daten für die Parameter der Mess-Slaves aufnehmen:\\
+Die Datenbank muss folgende Daten für die Parameter der Mess-Clients aufnehmen:\\
 
-\begin{table}[h]
+\begin{table}[H]
 \begin{center}
 \begin{tabular}{|l|l|}\hline
 Parameter & Beschreibung \\ \hline

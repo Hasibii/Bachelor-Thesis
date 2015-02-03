@@ -1,0 +1,200 @@
+\subsection{RS232 Protokoll}
+\label{section_RS232_Protokoll}
+Das Protokoll für die Kommunikation über die RS232 Schnittstelle ist nötig, um die Validität, Vollständigkeit und Zuverlässigkeit der Übertragungen sicherzustellen.\ \\
+
+Folgende Kriterien sollen dabei erfüllt werden:
+\begin{itemize}
+\item Adressierung individueller Kommunikationspartner
+\item Senden verschiedener Befehle
+\item Variable Größe der Daten
+\item Sicherstellung der Validität der Übertragung
+\item Erweiterbar
+\end{itemize}
+\ \\
+
+\subsubsection{Aufbau}
+\begin{table}[H]
+\begin{center}
+\begin{tabularx}{\textwidth}{|c|c|c|c|X|X|}\hline
+ 1. Byte & 2. Byte & 3. Byte & 4. Byte & 5. Byte und folgend & Letztes Byte\\ \hline
+  Adresse \& R/W & Länge & Befehl & Unterbefehl & Nutzdaten & Checksumme\\ \hline
+\end{tabularx}
+\caption{Übertragungsrahmen}
+\label{table_Frame}
+\end{center}
+\end{table}
+
+Ein Rahmen des Protokolls besteht aus 4 Steuerbytes, 1 Checksummenbyte und maximal 30 Datenbytes. Durch diesen Aufbau können die Anforderungen erfüllt werden. Im folgenden Abschnitt wird auf die Zusammensetzung und die Funktion der einzelnen Bytes eingegangen.
+
+
+\textbf{1. Byte: Adresse \& Read/Write}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}\hline
+ 7. Bit & 6. Bit & 5. Bit & 4. Bit & 3. Bit & 2. Bit & 1. Bit & 0. Bit\\ \hline
+ R/W & Addr6 & Addr5 & Addr4 & Addr3 & Addr2 & Addr1 & Addr0\\ \hline
+\end{tabularx}
+\caption{1. Byte: Adresse \& Read/Write}
+\label{table_1Byte}
+\end{center}
+\end{table}
+
+Das erste Byte des Übertragungsrahmens setzt sich aus 7 Adressbits und einem Lese-/Schreibbit zusammen. Die ersten 7 Bits (Addr0 - Addr6) bilden die Adresse des anzusteuernden Mess-Clients. Daraus ergibt sich ein Adressraum von möglichen 128 Adressen, wobei Adresse 0 für neue Mess-Clients zur einmaligen Anmeldung im System reserviert ist.\\
+Das höchste Bit ist das Lese-/Schreibbit. Der Mess-Client unterscheidet mithilfe dieses Bits, ob ein Befehl als Lese- oder Schreibzugriff interpretiert werden soll.\\
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|}\hline
+ R/W Bit & Beschreibung \\ \hline
+ 0 & Die Steuereinheit möchte lesen \\ \hline
+ 1 & Die Steuereinheit möchte schreiben \\ \hline
+\end{tabular}
+\caption{Read/Write}
+\label{table_RW}
+\end{center}
+\end{table}
+
+
+\textbf{2. Byte: Rahmenlänge}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}\hline
+ 7. Bit & 6. Bit & 5. Bit & 4. Bit & 3. Bit & 2. Bit & 1. Bit & 0. Bit\\ \hline
+ Len7 & Len6 & Len5 & Len4 & Len3 & Len2 & Len1 & Len0\\ \hline
+\end{tabularx}
+\caption{2. Byte: Rahmenlänge}
+\label{table_2Byte}
+\end{center}
+\end{table}
+
+Das zweite Byte gibt die Länge des gesamten Rahmens inklusive Steuerbytes, Nutzdaten und Checksumme an.\\ Die minimale Rahmenlänge beträgt 5 Byte. Dabei handelt es sich um eine Übertragung ohne Nutzdaten und es werden lediglich die 4 Steuerbytes und das Byte für die Checksumme übertragen. Dies geschieht beispielsweise bei einer Leseanfrage.\\
+Die maximale Rahmenlänge beträgt 35 Byte. Hierbei werden zusätzlich zu den 4 Steuerbytes und dem Byte für die Checksumme auch die maximale Nutzlast von 30 Byte übertragen. Dieser Fall kann beispielsweise bei Schreibzugriffen auftreten.\\
+Anhand der Länge kann eine erste Prüfung der Validität des Rahmens durchgeführt werden. Sollte die Zahl der empfangenen Bytes sich von der Rahmenlänge unterscheiden, kann von einem ungültigen Rahmen ausgegangen werden.
+
+
+\textbf{3. Byte: Befehl}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}\hline
+ 7. Bit & 6. Bit & 5. Bit & 4. Bit & 3. Bit & 2. Bit & 1. Bit & 0. Bit\\ \hline
+ Cmd7 & Cmd6 & Cmd5 & Cmd4 & Cmd3 & Cmd2 & Cmd1 & Cmd0\\ \hline
+\end{tabularx}
+\caption{3. Byte: Befehl}
+\label{table_3Byte}
+\end{center}
+\end{table}
+
+Das dritte Byte repräsentiert den Befehl. Dieser gibt an, welche Aktion ausgeführt oder welcher Parameter angesprochen wird. Da insgesamt ein Byte für den Befehl zur Verfügung steht, sind bis zu 256 unterschiedliche Befehle zulässig.
+
+
+\textbf{4. Byte: Unterbefehl}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}\hline
+ 7. Bit & 6. Bit & 5. Bit & 4. Bit & 3. Bit & 2. Bit & 1. Bit & 0. Bit\\ \hline
+ Scmd7 & Scmd6 & Scmd5 & Scmd4 & Scmd3 & Scmd2 & Scmd1 & Scmd0\\ \hline
+\end{tabularx}
+\caption{4. Byte: Unterbefehl}
+\label{table_4Byte}
+\end{center}
+\end{table}
+
+Das vierte Byte ist der Unterbefehl. Damit ist es möglich einen Befehl genauer zu definieren. So kann beispielsweise der Befehl zum Auslesen eines \ac{ADC} Wertes durch den Unterbefehl genau auf einen von 64 \acp{ADC} präzisiert werden.
+
+
+\textbf{5. Byte und folgend: Nutzdaten}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}\hline
+ 7. Bit & 6. Bit & 5. Bit & 4. Bit & 3. Bit & 2. Bit & 1. Bit & 0. Bit\\ \hline
+ Data7 & Data6 & Data5 & Data4 & Data3 & Data2 & Data1 & Data0\\ \hline
+\end{tabularx}
+\caption{5. Byte und folgend: Nutzdaten}
+\label{table_5Byte}
+\end{center}
+\end{table}
+
+Das fünfte Byte und die darauf folgenden, tragen die Nutzdaten des Rahmens. Die Größe der Nutzdaten ist variable und lässt dich auf der Rahmenlänge ableiten. Bei zwei Byte Daten wird immer das höhere Byte zuerst übertragen.
+
+
+\textbf{Letztes Byte: Checksumme}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|X|}\hline
+ 7. Bit & 6. Bit & 5. Bit & 4. Bit & 3. Bit & 2. Bit & 1. Bit & 0. Bit\\ \hline
+ CKS7 & CKS6 & CKS5 & CKS4 & CKS3 & CKS2 & CKS1 & CKS0\\ \hline
+\end{tabularx}
+\caption{Letztes Byte: Checksumme}
+\label{table_LastByte}
+\end{center}
+\end{table}
+
+Das letzte Byte ist immer die Checksumme um sicherzustellen, dass alle Daten komplett und fehlerfrei übertragen wurden.\\
+Der Sender bildet dabei die Checksumme mittels einer XOR Verknüpfung aller Bytes eines Übertragungsrahmens. Beim Empfänger werden alle Bytes inklusive Checksumme erneut mit XOR Verknüpft, wobei ohne Fehler immer 0 das Ergebnis sein muss.
+
+\textbf{Beispiel}
+
+Sender:
+ 
+Es wird angenommen das folgender Rahmen übertragen werden soll.
+
+\begin{tabular}{|c|c|c|c|}\hline
+  Adresse & Länge & Befehl & Unterbefehl \\ \hline
+  1 & 5 & 9 & 0 \\ \hline
+\end{tabular}
+
+Aus dem Rahmen wird dann mittels XOR die Checksumme gebildet.
+
+\begin{center}
+{\Large$1 \oplus 4 \oplus 9 \oplus 0 = 13$}\\
+\end{center}
+
+Anschließend wird die Checksumme als letztes Byte an den Rahmen an gehangen.
+
+\begin{tabular}{|c|c|c|c|c|}\hline
+  Adresse & Länge & Befehl & Unterbefehl & Checksumme \\ \hline
+  1 & 5 & 9 & 0 & 13 \\ \hline
+\end{tabular}
+
+
+Empfänger:
+
+Sobald der Empfänger den rahmen erhält, verknüpft er alle Bytes erneut mittels XOR um die Gültigkeit zu prüfen.
+
+\begin{center}
+{\Large $1 \oplus 4 \oplus 9 \oplus 0 \oplus 13 = 0$}\\
+\end{center}
+
+Das Ergebnis 0 repräsentiert einen gültigen Rahmen und die Checksummenprüfung war erfolgreich.
+
+
+\subsubsection{Befehle und Unterbefehle}
+
+Für die Funktion des Systems sind verschiedene Befehle notwendig. Sie dienen zu Kommunikation zwischen den Akteuren.
+Eine Übersicht über die vorhandenen Befehle findet sich in Tabelle \ref{table_Commands}.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabularx}{\textwidth}{|X|c|X|c|}\hline 
+ Command & Code & Subcommand & Datenbytes \\ \hline
+ ADC-Value & 0x00 & MUX-Kanal (0..63) & 2  \\ \hline
+ Number Of Pulses & 0x04 & - & 1  \\ \hline
+ Pulsewidth and -period & 0x05 & Pulsnummer (1..20) & 4  \\ \hline
+ Perform Pulseupdate & 0x06 & - & 0   \\ \hline
+ DAC-Value & 0x07 & - & 2 \\ \hline
+ Temperature & 0x08 & - & 1  \\ \hline
+ LTT Name & 0x09 & - & 1..30  \\ \hline
+ Rs232-Address & 0x0A & - & 1 \\ \hline
+ Error & 0x0B & MUX-Channel (0..63) & 2  \\ \hline
+ Measurement Intervall & 0x0C & Intervallnummer (0..2) & 4 \\ \hline
+\end{tabularx}
+\caption{Befehlsliste}
+\label{table_Commands}
+\end{center}
+\end{table}

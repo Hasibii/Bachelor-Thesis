@@ -1,6 +1,6 @@
-\subsection{RS232 Protokoll}
+\section{RS232 Protokoll}
 \label{section_RS232_Protokoll}
-Das Protokoll für die Kommunikation über die RS232 Schnittstelle ist nötig, um die Validität, Vollständigkeit und Zuverlässigkeit der Übertragungen sicherzustellen.\ \\
+Das Protokoll für die Kommunikation über die RS232 Schnittstelle dient dazu die Validität, Vollständigkeit und Zuverlässigkeit der Übertragungen sicherzustellen.\\
 
 Folgende Kriterien sollen dabei erfüllt werden:
 \begin{itemize}
@@ -10,9 +10,13 @@ Folgende Kriterien sollen dabei erfüllt werden:
 \item Sicherstellung der Validität der Übertragung
 \item Erweiterbar
 \end{itemize}
-\ \\
 
-\subsubsection{Aufbau}
+
+
+Um eine hohe Zuverlässigkeit gewährleisten zu können, wird eine geringe Bautrate von 2400 verwendet. Da nur geringe Datenmengen in großen Abständen auftreten, vermindert dass die Anfälligkeit der Übertragung gegenüber äußeren Einflüssen ohne dabei die Performance merkbar zu beeinflussen.\\
+Des Weiteren wird ein Paritätsbit für eine Paritätsprüfung eingesetzt. Dieses Bit gibt an, ob die Anzahl der Einsen des Datenblocks gerade oder ungerade ist. Der Wert verwendeten Even-Paritätsbit ist 1, wenn die Summe der Einsen gerade ist und 0 wenn sie ungerade ist. Dadurch können grobe Fehler bei der Übertragung ausgemacht und korrigiert werden.
+
+\subsection{Aufbau}
 \begin{table}[H]
 \begin{center}
 \begin{tabularx}{\textwidth}{|c|c|c|c|X|X|}\hline
@@ -142,13 +146,13 @@ Der Sender bildet dabei die Checksumme mittels einer XOR Verknüpfung aller Byte
 
 Sender:
  
-Es wird angenommen das folgender Rahmen übertragen werden soll.
-
+Es wird angenommen das folgender Rahmen übertragen wird.
+\begin{center}
 \begin{tabular}{|c|c|c|c|}\hline
   Adresse & Länge & Befehl & Unterbefehl \\ \hline
   1 & 5 & 9 & 0 \\ \hline
 \end{tabular}
-
+\end{center}
 Aus dem Rahmen wird dann mittels XOR die Checksumme gebildet.
 
 \begin{center}
@@ -156,12 +160,12 @@ Aus dem Rahmen wird dann mittels XOR die Checksumme gebildet.
 \end{center}
 
 Anschließend wird die Checksumme als letztes Byte an den Rahmen an gehangen.
-
+\begin{center}
 \begin{tabular}{|c|c|c|c|c|}\hline
   Adresse & Länge & Befehl & Unterbefehl & Checksumme \\ \hline
   1 & 5 & 9 & 0 & 13 \\ \hline
 \end{tabular}
-
+\end{center}
 
 Empfänger:
 
@@ -174,7 +178,7 @@ Sobald der Empfänger den rahmen erhält, verknüpft er alle Bytes erneut mittel
 Das Ergebnis 0 repräsentiert einen gültigen Rahmen und die Checksummenprüfung war erfolgreich.
 
 
-\subsubsection{Befehle und Unterbefehle}
+\subsection{Befehle und Unterbefehle}
 
 Für die Funktion des Systems sind verschiedene Befehle notwendig. Sie dienen zu Kommunikation zwischen den Akteuren.
 Eine Übersicht über die vorhandenen Befehle findet sich in Tabelle \ref{table_Commands}.

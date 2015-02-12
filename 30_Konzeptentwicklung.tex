@@ -3,7 +3,7 @@
 
 Im folgenden Kapitel wird auf die Erstellung des Konzeptes eingegangen.
 
-\section{Teststand}
+\section{Übersicht}
 \label{section_Teststand}
 
 Das Gesamtsystem setzt sich aus drei Untersystemen zusammen:
@@ -58,36 +58,7 @@ Dieses System war zum großen Teil bereits gegeben, so dass lediglich die Übert
 %\end{figure}
 
 \newpage
-\subsection{Mess-Server}
-\label{section_Mess-Server}
-
-Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt. Dabei handelt es sich um einen kostengünstigen Einplatinencomputer der mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor arbeitet. Des Weiteren verfügt er über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher.
-
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{img/general/BeagleBoneBlack.jpg}
-\caption{BeagleBone Black}
-\label{figure_Beagleboneblack}
-\end{center}
-\end{figure}
-
-Trotz der Kompaktheit des BeagleBone Black, bietet er ein ausreichendes Maß an Performance. Auf ihm kommt ein Debian-GNU/Linux Betriebssystem zum Einsatz. Damit ist es möglich die umfangreichen Debian-Funktionen wie die Paketverwaltung zu nutzen. Es bietet auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu besteht und somit einfacher nutzbar ist(vgl. \cite{schroeder2009embedded}).\\
-Außerdem sind Linux Mechanismen einfach nutzbar. So kann das \ac{UART} Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden.
-
-\subsubsection{Aufbau}
-
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{img/general/UebersichtMaster.pdf}
-\caption{Aufbau BeagleBone Black}
-\label{figure_AufbauBleagleBone}
-\end{center}
-\end{figure}
-
-Das BeagleBone Black bildet das Herzstück des Systems.
-
+\input{Mess-Server}
 
 
 \newpage

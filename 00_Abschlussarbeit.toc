@@ -21,15 +21,17 @@
 \contentsline {section}{\numberline {4.2}Mess-Client}{12}{section.4.2}
 \contentsline {section}{\numberline {4.3}Mess-Server}{13}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Hardware}{14}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Software}{14}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.2}Software}{15}{subsection.4.3.2}
 \contentsline {subsubsection}{\numberline {4.3.2.1}Messdatenerfassung}{15}{subsubsection.4.3.2.1}
-\contentsline {subsubsection}{\numberline {4.3.2.2}RS232 Kommunikation}{16}{subsubsection.4.3.2.2}
-\contentsline {subsubsection}{\numberline {4.3.2.3}Datenbankanbindung}{16}{subsubsection.4.3.2.3}
-\contentsline {subsubsection}{\numberline {4.3.2.4}Ethernet Kommunikation}{16}{subsubsection.4.3.2.4}
-\contentsline {section}{\numberline {4.4}PC-Client}{17}{section.4.4}
-\contentsline {section}{\numberline {4.5}RS232 Protokoll}{18}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Aufbau}{18}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Befehle und Unterbefehle}{21}{subsection.4.5.2}
-\contentsline {section}{\numberline {4.6}Datenbank}{23}{section.4.6}
-\contentsline {chapter}{\numberline {5}Testen und Validieren}{25}{chapter.5}
-\contentsline {chapter}{Literaturverzeichnis}{i}{section*.44}
+\contentsline {subsubsection}{\numberline {4.3.2.2}Benutzeroberfl\IeC {\"a}che}{17}{subsubsection.4.3.2.2}
+\contentsline {subsubsection}{\numberline {4.3.2.3}RS232 Kommunikation}{18}{subsubsection.4.3.2.3}
+\contentsline {subsubsection}{\numberline {4.3.2.4}Ethernet Kommunikation}{19}{subsubsection.4.3.2.4}
+\contentsline {subsubsection}{\numberline {4.3.2.5}Webzugriff}{19}{subsubsection.4.3.2.5}
+\contentsline {section}{\numberline {4.4}PC-Client}{20}{section.4.4}
+\contentsline {section}{\numberline {4.5}RS232 Protokoll}{21}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Aufbau}{21}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Befehle und Unterbefehle}{24}{subsection.4.5.2}
+\contentsline {section}{\numberline {4.6}Datenbank}{26}{section.4.6}
+\contentsline {chapter}{\numberline {5}Testen und Validieren}{28}{chapter.5}
+\contentsline {chapter}{\numberline {6}Fazit und Ausblick}{29}{chapter.6}
+\contentsline {chapter}{Literaturverzeichnis}{i}{section*.50}

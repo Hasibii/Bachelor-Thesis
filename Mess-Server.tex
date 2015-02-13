@@ -13,8 +13,8 @@ Er arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512M
 \end{center}
 \end{figure}
 
-Trotz der Kompaktheit des BeagleBone Black, bietet er ein ausreichendes Maß an Performance. Auf ihm kommt ein Debian-GNU/Linux Betriebssystem zum Einsatz. Damit ist es möglich die umfangreichen Debian-Funktionen wie die Paketverwaltung zu nutzen. Es bietet auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu besteht und somit einfacher nutzbar ist(vgl. \cite{schroeder2009embedded}).\\
-Außerdem sind Linux Mechanismen einfach nutzbar. So kann das \ac{UART} Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden.
+Trotz der Kompaktheit des BeagleBone Black, bietet er ein ausreichendes Maß an Performance. Auf ihm kommt ein Debian-GNU/Linux Betriebssystem zum Einsatz. Damit ist es möglich die umfangreichen Debian-Funktionen wie die Paketverwaltung zu nutzen. Es bietet auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu besteht und somit einfacher nutzbar ist (vgl. \cite{schroeder2009embedded}).\\
+Außerdem sind Linux Mechanismen einfach nutzbar. So kann das RS232 Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden.
 
 \subsection{Hardware}
 \label{ServerHardware}
@@ -27,10 +27,23 @@ Außerdem sind Linux Mechanismen einfach nutzbar. So kann das \ac{UART} Interfac
 \end{center}
 \end{figure}
 
-Zur Kommunikation mit den Mess-Clients wird die \ac{UART} Schnittstelle des BeagleBone Black verwendet. Dafür wird ein RS232 Cape eingesetzt. Das Cape führt die seriellen Ports UART0, UART1, UART2 und UART4 auf einen 9-poligen seriellen Stecker. Es bietet die Möglichkeit zwischen den verschiedenen Ports mittels eines Jumper auf dem Cape zu wechseln.\\
-Da das BeagleBone Black kein eigenes \ac{RTC} Modul besitzt, wird auch dieses durch ein Cape hinzugefügt. Es beinhaltet eine 3,3V Knopfbatterie um auch im Falle einer Stromunterbrechung die aktuelle Zeit nicht zu verlieren.\\
-Um die Statusanzeige detailliert darstellen zu können, wird ein resistives LCD-Touchscreen Display eingesetzt. Es hat eine Größe von 4,3 Zoll bei einer Auflösung von 480x272 Pixeln. Dabei handelt es sich ebenso um ein Cape. Dadurch ist es möglich, das BeagleBone Black trotz den Erweiterungen kompakt zu halten. Denn die Capes sind untereinander Stapelbar.\\
-Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird, ist bereits vollständig einsatzbereit. Ebenso ist die Ethernet Schnittstelle, welche für den Fernzugriff auf das BeagleBone genutzt wird, bereits vollständig integriert.
+Das BeagleBone selbst ist bereits sehr Leistungsstark. Um jedoch weiter Funktionen und Schnittstellen hinzuzufügen, existieren Capes. Ein Cape ist eine für das BeagleBone konzipierte Erweiterung, die direkt auf das BeagleBone aufgesteckt werden kann. Die Treiber vieler dieser Capes sind bereits in dem Betriebssystem des BeagleBones integriert oder werden vom Hersteller bereitgestellt. Somit ist die Inbetriebnahme sehr komfortable.
+
+
+\textbf{ABBILDUNG EINES CAPES}
+
+
+Zur Kommunikation mit den Mess-Clients wird die \ac{UART} Schnittstelle des BeagleBone Black verwendet. Dafür wird ein RS232 Cape eingesetzt. Das Cape führt die seriellen Ports UART0, UART1, UART2 und UART4 auf einen 9-poligen seriellen Stecker. Es bietet die Möglichkeit zwischen den verschiedenen Ports mittels eines Jumper auf dem Cape zu wechseln. Angeschlossen wird nach dem 3-wire Prinzip. Dabei werden lediglich Rx, Tx und die Masse verbunden. Somit ist keine Hardware-Flusssteuerung möglich.\ 
+
+Da das BeagleBone Black kein eigenes \ac{RTC} Modul besitzt, wird auch dieses durch ein Cape hinzugefügt. Es beinhaltet eine 3V Knopfbatterie um auch im Falle einer Stromunterbrechung die aktuelle Zeit nicht zu verlieren. Dies ist sehr wichtig, da es erforderlich ist, dass das BeagleBone die aktuelle Uhrzeit und das aktuelle Datum jederzeit kennt. Denn beim Erfassen der Messdaten wird ein Zeitstempel angelegt um die Daten später zeitlich zuordnen zu können. Sollte dieser Zeitstempel nicht korrekt sein, sind die Daten bei der Auswertung nicht gültig.\ 
+
+Um die Statusanzeige detailliert darstellen zu können, wird ein resistives LCD-Touchscreen Display eingesetzt. Es hat eine Größe von 4,3 Zoll bei einer Auflösung von 480x272 Pixeln. Dabei handelt es sich ebenso um ein Cape. Dadurch ist es möglich, das BeagleBone Black trotz den Erweiterungen kompakt zu halten. Denn die Capes sind untereinander Stapelbar.\ 
+
+
+\textbf{ABBILDUNG gestapeltes BeagleBone}
+
+
+Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird, ist bereits vollständig einsatzbereit. Ebenso ist die Ethernet Schnittstelle, welche für den Fernzugriff auf das BeagleBone genutzt wird, bereits standardmäßig vollständig integriert.
 
 \subsection{Software}
 \label{ServerSoftware}
@@ -57,25 +70,97 @@ interval\_3 & Abstand zwischen den Messungen nach dem 2. Interval in Minuten\\ \
 \end{table}
 
 
-Ob eine Messung erforderlich ist, lässt sich aus den gegebenen Parametern ableiten. So wird zuerst geprüft, welcher Zeitraum (\textit{duration\_int1-2}) derzeit zutrifft. Dazu wird die vergangene Zeit seit der ersten Messung mit dem Zeitraum abgeglichen. Sollten noch keine Ergebnisse vorhanden sein, ergibt dies die Erforderlichkeit einer Messung. Wenn der passende Zeitraum ausgemacht ist, wird das dazugehörige Intervall zwischen den einzelnen Messungen (\textit{interval\_1-3}) ausgemacht. Dann wird geprüft, ob die vergangene Zeit seit der letzten Messung größer als dieses Intervall ist.\ 
+Ob eine Messung erforderlich ist, lässt sich aus den gegebenen Parametern ableiten. So wird zuerst geprüft, welcher Zeitraum (\textit{duration\_int1-2}) derzeit zutrifft. Dazu wird die vergangene Zeit seit der ersten Messung mit dem Zeitraum abgeglichen. Sollten noch keine Ergebnisse vorhanden sein, ergibt dies die Erforderlichkeit einer Messung. Wenn der passende Zeitraum ausgemacht ist, wird das dazugehörige Intervall zwischen den einzelnen Messungen (\textit{interval\_1-3}) ausgemacht. Dann wird geprüft, ob die vergangene Zeit seit der letzten Messung größer ist als dieses Intervall.\ 
 
-Anschließend wird geprüft ob der Mess-Client verfügbar ist. Dazu wird eine Namensanfrage über die RS232 Schnittstelle verschickt.\\
-Bei einer positiven Antwort wird dann eine Messung durchgeführt. Dabei werden alle \acp{ADC} der 64 möglichen \acp{DUT} mittels \textit{ADC-Value}-Befehls (siehe Tabelle \ref{table_Commands}) ausgelesen. Sobald alle 64 Werte erfolgreich ermittelt wurden, werden sie in der Datenbank abgelegt.
+Anschließend wird geprüft ob der Mess-Client verfügbar ist. Dazu wird eine Namensanfrage über die RS232 Schnittstelle verschickt. Bei einer positiven Antwort wird dann eine Messung durchgeführt. Dabei werden alle \acp{ADC} der 64 möglichen \acp{DUT} mittels \textit{ADC-Value}-Befehls (siehe Tabelle \ref{table_Commands}) ausgelesen. Sobald alle 64 Werte erfolgreich ermittelt sind, werden sie in der Datenbank abgelegt. \\
+Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zyklen erneut versucht eine Verbindung zu etablieren. Bei kontinuierlich erfolglosen Verbindungsversuchen, informiert das System den Nutzer nach einer festgelegten Zeit der Abwesenheit über die Unerreichbarkeit.
  
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/general/Ablaufplan_Master.pdf}
+\caption{Ablaufplan}
+\label{figure_Ablaufplan_Master}
+\end{center}
+\end{figure}
  
+\newpage
 \subsubsection{Benutzeroberfläche}
-Zur Statusüberwachnung verfügt das BeagleBone über eine \ac{GUI}. Sie bietet einen einfachen Überblick über die aktuellen Vorgänge und soll auf einen Blick den Status des Mess-Servers wiedergeben. 
+Um die Anforderung der Statusüberwachnung zu erfüllen, verfügt das BeagleBone über eine \ac{GUI}. Sie bietet einen einfachen Überblick über die aktuellen Vorgänge und soll auf einen Blick den Status des Mess-Servers wiedergeben.\\
+Am oberen Rand der \ac{GUI} (sieht u.a. Abbildung \ref{figure_MessServerGUIStatus}) wird das aktuelle Datum und die aktuelle Uhrzeit angezeigt, sowie die derzeitige IP Adresse und der aktuelle Name. Am unteren Rand wird die derzeit ausführende Aktion in einer Statusnachricht ausgegeben.
+Die \ac{GUI} ist dabei in vier Tabs unterteilt.
 
+\textbf{Status Tab}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Status1.png}
+\caption{Mess-Server GUI: Status Tab}
+\label{figure_MessServerGUIStatus}
+\end{center}
+\end{figure}
+
+Das Erste ist das Status-Tab (siehe Abbildung \ref{figure_MessServerGUIStatus}). Es zeigt die wichtigsten Statusdaten wie verfügbarer Speicher, die aktuelle Laufzeit und TCP Server Status an. Um auf einen Blick den Status des Systems zu erkennen wird mittels der Farben grün und rot ein positiver bzw. negativer Status signalisiert.
+
+\textbf{Events Tab}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Events1.png}
+\caption{Mess-Server GUI: Events Tab}
+\label{figure_MessServerGUIEvents}
+\end{center}
+\end{figure}
+
+Im Events Tab werden wichtige Ereignisse dargestellt. 
+
+\textbf{Boards Tab}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Boards1.png}
+\caption{Mess-Server GUI: Boards Tab}
+\label{figure_MessServerGUIBoards}
+\end{center}
+\end{figure}
+
+Das Boards Tab zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als aktiv werden Mess-Clients bezeichnet, die mit einer gültigen Adresse in der Datenbank eingetragen sind. Angezeigt werden der Name, die Adresse, die vergangene Zeit seit dem es das letzten mal erfolgreich kontaktiert wurde und die Anzahl der erfolgreichen aufgenommenen Messzyklen.
+
+\textbf{Debug Tab}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Debug2.png}
+\caption{Mess-Server GUI: Debug Tab}
+\label{figure_MessServerGUIDebug}
+\end{center}
+\end{figure}
+
+Der Zweck des Debug Tabs ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein Fehler einfacher zu erkennen.
 
 \subsubsection{RS232 Kommunikation}
 Die RS232 Schnittstelle wird ausschließlich zur Kommunikation mit den Mess-Clients verwendet. Um die Erfolgschancen der Anfragen zu erhöhen, werden Fehlschläge erkannt und durch den Versuch des erneuten Sendens minimiert. Zwischen jedem Sendeversuch befindet sich eine kurze Verzögerung.
  
-\subsubsection{Datenbankanbindung}
-
-Auf dem Beaglebone kommt ein MySQL Server als Datenbanksystem zum Einsatz (siehe Abschnitt \ref{section_Datenbank}). Der Zugriff erfolgt mittels der von Qt bereitgestellten QtSQL Klassen.
 
 \subsubsection{Ethernet Kommunikation}
 
 Um auf Netzwerkanfragen reagieren zu können, ist sowohl ein UDP-Server für Broadcast-Nachrichten als auch ein TCP-Server für die direkte Kommunikation realisiert.\\
 Der UDP-Server dient dabei zur dynamischen Erkennung im Netzwerk. Dabei antwortet der Mess-Server auf Broadcast-Nachrichten mit seiner IP-Adresse und seinem Namen. Dies ermöglicht die einfache Eingliederung der Mess-Server in ein Netzwerk.
+Der TCP-Server nimmt RS232- und SQL-Befehle an und leitet diese weiter. Dies ermöglicht den Fernzugriff auf die einzelnen Mess-Clients über ein Netzwerk. 
 
+\begin{table}[H]
+\begin{center}
+\begin{tabularx}{\textwidth}{|c|c|c|X|}\hline 
+ Command & Typ & Daten & Kommentar \\ \hline
+ BeagleSendYourIP & UDP & - & Das BeagleBone antwortet dem Sender mit seiner IP Adresse und seinem Namen  \\ \hline
+ BeagleUpdateConfig & UDP & - & Das BeagleBone aktualisiert seine Konfiguration aus der Config-Datei \\ \hline
+ RS232CMD: & TCP & RS232 Rahmen & Das BeagleBone sende den empfangenen Rahmen über seine RS232 Schnittstelle \\ \hline
+ SQLCMD: & TCP & SQL Anfrage & Das BeagleBone führt die SQL Anfrage aus \\ \hline
+\end{tabularx}
+\caption{Ethernet Befehlsliste}
+\label{table_EthernetCommands}
+\end{center}
+\end{table}
+
+\subsubsection{Webzugriff}
+
+Um eine Übersicht über die gesammelten Daten auf einem Mess-Server zu erhalten, ist ein lighttpd Webserver installiert.

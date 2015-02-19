@@ -69,35 +69,43 @@ Dabei kommen gängigen Compiler wie MinGW unter Windows zum Einsatz und es beste
 \section{Datenbank}
 \label{section_Datenbank}
 
-Für das Speichern der Messdaten und Betriebsparameter wird eine \ac{SQL} \ac{DB} verwendet. Bei der Wahl des \ac{DBMS}, standen mehrere Optionen zur Auswahl und die Entscheidung wurde zwischen SQLite und MySQL gefällt.
+Um große Mengen an Daten effizient verarbeiten zu können, ist der Einsatz eines \ac{DBMS} unumgänglich (vgl. \citep{saake2010datenbanken}).
+
+Für das Speichern der Messdaten und Betriebsparameter wird daher eine \ac{SQL} \ac{DB} benötigt. Bei der Wahl des \ac{DBMS}, stehen mehrere Systeme zur Auswahl. Dabei kommen SQLite und MySQL aufgrund der kostenlosen Verfügbarkeit in die engere Auswahl.
 Beide System haben ihre Vor- und Nachteile.
 
 
-\textbf{SQLite} ist ein \ac{SQL} \ac{DBMS}, welches ohne einen Server auskommt und operiert stattdessen in einer einzigen Datei. Es wird vor allem im Embedded Bereich eingesetzt, da kaum Konfigurationen oder Verwaltung notwendig ist. Deshalb eignet es sich ausgezeichnet für sich schnell weiterentwickelnde Applikationen.
+\textbf{SQLite} ist ein \ac{SQL} \ac{DBMS}, welches ohne einen Server auskommt und operiert stattdessen in einer einzigen Datei. Alle Informationen wie Tabellenstruktur und Daten sind darin enthalten. Es wird vor allem im eingebetteten Bereich eingesetzt, da kaum Konfigurationen oder Verwaltung notwendig sind. Deshalb eignet es sich ausgezeichnet für sich schnell weiterentwickelnde Applikationen.
 \\
-Aufgrund dieser Eigenschaften existieren allerdings auch Nachteile. So unterstützt SQLite nur eingeschränkt mehrere Nutzer gleichzeitig. Da das gesamte \ac{DBS} in einer einzigen Datei zusammengefasst ist, können mehrere zur selben Zeit durchgeführte Schreibzugriffe nicht unterstützt werden. Denn die einzige Sicherstellung der Datenintegrität erfolgt durch das Betriebssystem. 
+Aufgrund dieser Eigenschaften existieren allerdings auch Nachteile. So unterstützt SQLite nur eingeschränkt mehrere Nutzer die gleichzeitig auf die Datenbank zugreifen. Da das gesamte \ac{DBS} in einer einzigen Datei zusammengefasst ist, können mehrere zur selben Zeit durchgeführte Schreibzugriffe nicht unterstützt werden. Denn die einzige Zugriffskontrolle und Sicherstellung der Datenintegrität erfolgt durch das Dateisystem des Betriebssystem, was nicht immer fehlerfrei implementiert ist.
 \\
 Des Weiteren ist SQLite aufgrund des Ein-Datei-Systems nur eingeschränkt skalierbar. Bei einer größeren Datenmenge oder erhöhten Anzahl an Zugriffen ist es nicht möglich diese Datei auf mehrere Systeme zu separieren, um somit die Last gleichmäßig zu verteilen.
 
 \textbf{MySQL} ist ein weiteres \ac{SQL} \ac{DBMS}, welches allerdings auf einer Serverarchitektur beruht. 
-Es ermöglicht die Verwaltung von Nutzern und Rechte. Außerdem ist das System gut hinsichtlich Performance und Größe zu skalieren. Zusätzlich bietet MySQL viele Möglichkeiten für Performanceanpassungen, wie z.B. Query-Caching.
+Es ermöglicht die Verwaltung von Nutzern und Rechten. Außerdem ist das System gut hinsichtlich Performance und Größe zu skalieren. Zusätzlich bietet MySQL viele Möglichkeiten für Performanceanpassungen, wie z.B. Query-Caching. Beim Query-Caching werden Ergebnisse von SQL-Abfragen (englisch: SQL-Query) zwischengespeichert, so dass sie bei erneuter Abfrage bereits vorliegen.
 \\
-Jedoch gibt es auch hier Nachteile. So ist die Konfiguration wesentlich schwerer und komplexer. Durch die Notwendigkeit eines Servers benötigt MySQL mehr Ressourcen auf dem Host-System.
+Jedoch gibt es auch hier Nachteile. So ist die Konfiguration wesentlich schwerer und komplexer. Während bei SQLite kaum Konfigurationen nötig sind, müssen bei MySQL viele Einstellungen an das Host-System angepasst werden. Darunter fallen beispielsweise verschiedene Zwischenspeichergrößen und die Zugriffsrechte. Durch die Notwendigkeit eines Servers benötigt MySQL außerdem wesentlich mehr Ressourcen auf dem Host-System.
 
-Die Wahl fällt auf das relationale \ac{DBMS} MySQL. Auch wenn SQLite einige Vorteile vor allem im Embedded Bereich besitzt, ist die fehlende Unterstützen von mehreren Nutzern gleichzeitig ein Ausschlusskriterium.
-
-\cite{saake2010datenbanken}
+Für das gegebene Projekt eignet sich das relationale \ac{DBMS} MySQL besser. Auch wenn SQLite einige Vorteile vor allem im eingebetteten Bereich besitzt, ist die fehlende Unterstützen von mehreren Nutzern gleichzeitig ein Ausschlusskriterium.
 
 \newpage
 
 \section{Embedded Linux System}
 \label{section_EmbeddedLinux}
 
-Ein eingebettetes System (englisch: \textbf{embedded system}) ist laut \cite{bender2005embedded} ein Rechner, der in ein Gerät oder ein Maschine eingebettet ist und von außen nicht als solcher zu erkennen, sondern lediglich als Träger intelligenter Systemfunktionen sichtbar ist. Des Weiteren übernehme es dabei Überwachungs-, Steuerungs- oder Regelaufgaben.\\
+Ein eingebettetes System (englisch: embedded system) ist laut \cite{bender2005embedded} ein Rechner, der in ein Gerät oder eine Maschine eingebettet ist und von außen nicht als solcher zu erkennen, sondern lediglich als Träger intelligenter Systemfunktionen sichtbar ist. Des Weiteren übernehme es dabei meist Überwachungs-, Steuerungs- oder Regelaufgaben.\\
 Eingebettete Systeme sind oft spezifisch für die gegebene Aufgabe konzipiert. Dadurch ist es möglich die Hard- und Softwarekonfiguration des Systems zur Verminderung der Kosten und Maximierung der Leistung zu optimieren. Zu finden sind sie in den unterschiedlichsten Bereichen, beispielsweise in mobilen Geräten, industriellen Maschinen, Netzwerkhardware und Verbrauchergeräten.\ 
 
 Ein Embedded Linux (deutsch: eingebettetes Linux) ist ein Betriebssystem, das auf dem Linux-Kernel basiert und in einem eingebetteten System zum Einsatz kommt. \cite{yaghmour2008building} sagt, dass Embedded Linux dabei typischerweise für ein Komplettsystem, bzw. ein Betriebssystem für ein spezifisches eingebettetes Gerät steht. Außerdem verwende man dabei den normalen Linux-Kernel, der sich lediglich in betriebsbedingten Eigenschaften des Zielsystems unterscheide.\ 
 
 Das Embedded Linux System setzt sich aus einem Linux-Kernel nutzenden Rechner, dem Embedded Linux Betriebssystem mit für den Zielrechner passender Software und Werkzeugen für die Entwicklung zusammen. Diese Werkzeuge sind eine Entwicklungsumgebung mit Debugger und Cross-Compiler.
 
-Vorteil ist die Abstraktion der Hardware. Über die Schnittstelle des Kernels kann mit einfachen Systemaufrufen mit der Hardware kommuniziert werden ohne die genaue Hardware komplett zu verstehen.
+Vorteil bei der Verwendung des Linux Kernel ist u.a. die Abstraktion der Hardware. Über die Schnittstelle des Kernels kann mit einfachen Systemaufrufen mit der Hardware kommuniziert werden ohne die genaue Hardware kennen (siehe Abbildung \ref{figure_KernelHardwareLayer}).\\
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=\textwidth]{img/general/Kernel_Hardware_Layer.pdf}
+\caption{Links:Kommunikation zwischen Applikation und Hardware.\\Rechts: Beispiel Kommunikation zwischen Applikation und UART über den Kernel.}
+\label{figure_KernelHardwareLayer}
+\end{center}
+\end{figure}

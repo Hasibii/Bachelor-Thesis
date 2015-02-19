@@ -41,49 +41,11 @@ Das Gesamtsystem setzt sich aus drei Untersystemen zusammen:
 \end{figure}
 
 
-\section{Mess-Client}
-\label{section_Mess-Client}
 
-Das Herzstück des Mess-Clients bildet ein STM8  8-Bit Mikrocontroller der Firma STMicroelectronics.
-Auf jedem Mess-Client sind 64 \acp{DUT} befestigt. In zyklischen Abständen werden die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt (siehe Abbildung \ref{MessSlaveBlockPlan}.\\
-Dieses System war zum großen Teil bereits gegeben, so dass lediglich die Übertragung der RS232 Schnittstelle geregelt werden musste. Dazu wurde ein Protokoll für die Kommunikation entworfen (sieht Abschnitt \ref{section_RS232_Protokoll}).
- 
- \begin{figure}[!htb]
-\minipage{0.48\textwidth}
-  \includegraphics[width=\linewidth]{img/general/DegraBoardTop.jpg}
-  \caption{RTC Cape}\label{figure_CapeRTC}
-\endminipage\hfill
-\minipage{0.48\textwidth}%
-  \includegraphics[width=\linewidth]{img/general/DegraBoardBottom.jpg}
-  \caption{LCD Cape}\label{figure_CapeLCD}
-\endminipage
-\end{figure}
-
-
-\textbf{------- Besondere RS232 chips, können RX hochohmig schalten. -------}
-
-
-%\begin{figure}[h]
-%\begin{center}
-%\includegraphics[width=\textwidth]{}
-%\caption{Mess-Client Blockschaltplan}
-%\label{MessSlaveBlockPlan}
-%\end{center}
-%\end{figure}
-
-\newpage
 \input{Mess-Server}
 
 
-\newpage
-\section{PC-Client}
-\label{section_Verwaltung}
-asdasad
 
 \newpage
 \input{RS232_Protokoll}
-
-
-\newpage
-
 

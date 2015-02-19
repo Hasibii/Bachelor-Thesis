@@ -1,22 +1,5 @@
-\section{Mess-Server}
-\label{section_Mess-Server}
 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{img/general/BeagleBoneBlack.png}
-\caption{BeagleBone Black}
-\label{figure_Beagleboneblack}
-\end{center}
-\end{figure}
-
-
-Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt (siehe Abbildung \ref{figure_Beagleboneblack}). Dabei handelt es sich um einen kostengünstigen Einplatinencomputer mit offener Hardware. Damit ist es möglich, das BeagleBone Black auf individuelle Anforderungen anzupassen und selbst herzustellen. Auch gibt es eine große Community, die ständig die Entwicklung vorantreibt.
-Er arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher. Als Spannungsversorgung dient ein 5V 2A Netzteil.
-
-Trotz der Kompaktheit des BeagleBone Black, bietet er ein ausreichendes Maß an Performance. Auf ihm kommt ein Debian-GNU/Linux Betriebssystem zum Einsatz. Damit ist es möglich die umfangreichen Debian-Funktionen wie die Paketverwaltung zu nutzen. Es bietet auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu besteht und somit einfacher nutzbar ist (vgl. \cite{schroeder2009embedded}).\\
-Außerdem sind Linux Mechanismen einfach nutzbar. So kann das RS232 Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden.
-
-\subsection{Hardware}
+\section{Hardware}
 \label{ServerHardware}
 
 \begin{figure}[H]
@@ -63,12 +46,12 @@ Um die Statusanzeige detailliert darstellen zu können, wird ein resistives LCD-
 
 Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird, ist bereits vollständig einsatzbereit. Ebenso ist die Ethernet Schnittstelle, welche für den Fernzugriff auf das BeagleBone genutzt wird standardmäßig vollständig integriert.
 
-\subsection{Software}
+\section{Software}
 \label{ServerSoftware}
 Die Programmierung der Software erfolgt in C++ unter Verwendung der Klassenbibliothek Qt (siehe Abschnitt \ref{section_Qt}).\\
 Das Softwaredesign teilt sich in einen sequentiellen Teil für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Teil für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.\ 
 
-\subsubsection{Messdatenerfassung}
+\subsection{Messdatenerfassung}
 Der Hauptzyklus der Software ruft kontinuierlich die Messdaten von den Mess-Clients ab. Dafür wird ständig geprüft ob Messungen erforderlich sind. Dies geschieht durch den Vergleich der vergangenen Zeit zur letzten Messung und den gegebenen Parametern für die Messintervalle. In der Tabelle \ref{table_ParameterMessintervalle} finden sich diese Parameter.\\
 
 
@@ -102,7 +85,7 @@ Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zykle
 \end{figure}
  
 \newpage
-\subsubsection{Benutzeroberfläche}
+\subsection{Benutzeroberfläche}
 Um die Anforderung der Statusüberwachnung zu erfüllen, verfügt das BeagleBone über eine \ac{GUI}. Sie bietet einen einfachen Überblick über die aktuellen Vorgänge und soll auf einen Blick den Status des Mess-Servers wiedergeben.\\
 Am oberen Rand der \ac{GUI} (sieht u.a. Abbildung \ref{figure_MessServerGUIStatus}) wird das aktuelle Datum und die aktuelle Uhrzeit angezeigt, sowie die derzeitige IP Adresse und der aktuelle Name. Am unteren Rand wird die derzeit ausführende Aktion in einer Statusnachricht ausgegeben.
 Die \ac{GUI} ist dabei in vier Tabs unterteilt.
@@ -155,7 +138,7 @@ Das Boards Tab zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als akt
 
 Der Zweck des Debug Tabs ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein Fehler einfacher zu erkennen.
 
-\subsubsection{RS232 Kommunikation}
+\subsection{RS232 Kommunikation}
 \label{section_RS232Kommunikation}
 Die RS232 Schnittstelle wird ausschließlich zur Kommunikation mit den Mess-Clients verwendet. Um die Erfolgschancen der Anfragen zu erhöhen, werden Fehlschläge erkannt und durch den Versuch des erneuten Sendens minimiert. Zwischen jedem Sendeversuch befindet sich eine kurze Verzögerung.
  
@@ -185,11 +168,11 @@ Der TCP-Server nimmt RS232- und SQL-Befehle an und leitet diese weiter. Dies erm
 \end{center}
 \end{table}
 
-\subsubsection{Webzugriff}
+\subsection{Webzugriff}
 
 Um eine Übersicht über die gesammelten Daten auf einem Mess-Server zu erhalten, ist ein lighttpd Webserver installiert.
 
-\subsubsection{Datenbank}
+\subsection{Datenbank}
 \label{section_EntwurfDatenbank}
 
 Auf dem  BeagleBone kommt ein MySQL Datenbankserver zum Einsatz. 

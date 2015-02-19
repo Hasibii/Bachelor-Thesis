@@ -22,7 +22,55 @@ Von einem PC-Client wird dann auf den Mess-Server zugegriffen um die Daten abzug
 
 \section{Analyse}
 
-Die Akteure des Systems sind der Mess-Server, Mess-Client und PC-Client.
+Die Akteure des Systems sind der Mess-Server, Mess-Client und PC-Client. Im Zuge dieser Arbeit soll der Mess-Server realisiert werden. Wobei die Interaktionsfähigkeit mit den anderen Akteuren sichergestellt werden muss.
+
+
+\subsection{Mess-Client}
+\label{section_Mess-Client}
+
+Das Herzstück des Mess-Clients bildet ein STM8 8-Bit Mikrocontroller der Firma STMicroelectronics.
+Auf jedem Mess-Client sind 64 \acp{DUT} befestigt. In zyklischen Abständen werden die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\\
+Dieses System war zum großen Teil bereits gegeben, so dass lediglich die Übertragung der RS232 Schnittstelle geregelt werden musste. Dazu wurde ein Protokoll für die Kommunikation entworfen (sieht Abschnitt \ref{section_RS232_Protokoll}).
+ 
+ \begin{figure}[!htb]
+\minipage{0.48\textwidth}
+  \includegraphics[width=\linewidth]{img/general/DegraBoardTop.jpg}
+  \caption{Mess-Client Oberseite}\label{figure_DegraBoardTop}
+\endminipage\hfill
+\minipage{0.48\textwidth}%
+  \includegraphics[width=\linewidth]{img/general/DegraBoardBottom.jpg}
+  \caption{Mess-Client Unterseite}\label{figure_DegraBoardBottom}
+\endminipage
+\end{figure}
+
+
+\textbf{------- Besondere RS232 chips, können RX hochohmig schalten. -------}
+
+
+\subsection{Mess-Server}
+\label{section_Mess-Server}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/general/BeagleBoneBlack.png}
+\caption{BeagleBone Black}
+\label{figure_Beagleboneblack}
+\end{center}
+\end{figure}
+
+
+Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt (siehe Abbildung \ref{figure_Beagleboneblack}). Dabei handelt es sich um einen kostengünstigen Einplatinencomputer mit offener Hardware. Damit ist es möglich, das BeagleBone Black auf individuelle Anforderungen anzupassen und selbst herzustellen. Auch gibt es eine große Community, die ständig die Entwicklung vorantreibt.
+Er arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher. Als Spannungsversorgung dient ein 5V 2A Netzteil.
+
+Trotz der Kompaktheit des BeagleBone Black, bietet er ein ausreichendes Maß an Performance. Auf ihm kommt ein eingebettetes Debian-GNU/Linux Betriebssystem (sieht Abschnitt \ref{section_EmbeddedLinux}) zum Einsatz. Damit ist es möglich die umfangreichen Debian-Funktionen wie die Paketverwaltung zu nutzen. Es bietet auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu besteht und somit einfacher nutzbar ist (vgl. \cite{schroeder2009embedded}).\\
+Außerdem sind Linux Mechanismen einfach nutzbar. So kann das RS232 Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden.
+
+Für die Kommunikation mit den anderen Akteuren im System, muss ein RS232 Bussystem und eine Ethernet Schnittstelle realisiert werden. Des Weiteren soll ein MySQL Datenbankserver auf dem Mess-Server die effiziente Verwaltung von Daten übernehmen.
+
+\subsection{PC-Client}
+\label{section_PC-Client}
+Der PC-Client stellt eine Qt Desktopanwendung mit \ac{GUI} zur Auswertung der Messdaten.
+
 
 \section{Anforderungen}
 

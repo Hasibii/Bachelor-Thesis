@@ -20,7 +20,8 @@
 \contentsline {section}{\numberline {3.2}Analyse}{8}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Mess-Client}{8}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Mess-Server}{9}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Anforderungen}{9}{section.3.3}
+\contentsline {subsection}{\numberline {3.2.3}PC-Client}{9}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Anforderungen}{10}{section.3.3}
 \contentsline {chapter}{\numberline {4}Design}{12}{chapter.4}
 \contentsline {section}{\numberline {4.1}\IeC {\"U}bersicht}{12}{section.4.1}
 \contentsline {section}{\numberline {4.2}Hardware}{14}{section.4.2}
@@ -30,10 +31,11 @@
 \contentsline {subsection}{\numberline {4.3.3}RS232 Kommunikation}{19}{subsection.4.3.3}
 \contentsline {subsubsection}{\numberline {4.3.3.1}Ethernet Kommunikation}{20}{subsubsection.4.3.3.1}
 \contentsline {subsection}{\numberline {4.3.4}Webzugriff}{20}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Datenbank}{20}{subsection.4.3.5}
-\contentsline {section}{\numberline {4.4}RS232 Protokoll}{22}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Aufbau}{23}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Befehle und Unterbefehle}{26}{subsection.4.4.2}
-\contentsline {chapter}{\numberline {5}Testen und Validieren}{27}{chapter.5}
-\contentsline {chapter}{\numberline {6}Fazit und Ausblick}{28}{chapter.6}
-\contentsline {chapter}{Literaturverzeichnis}{i}{section*.54}
+\contentsline {subsection}{\numberline {4.3.5}Datenbank}{21}{subsection.4.3.5}
+\contentsline {subsubsection}{\numberline {4.3.5.1}Tabellen}{22}{subsubsection.4.3.5.1}
+\contentsline {section}{\numberline {4.4}RS232 Protokoll}{26}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Aufbau}{27}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Befehle und Unterbefehle}{30}{subsection.4.4.2}
+\contentsline {chapter}{\numberline {5}Testen und Validieren}{31}{chapter.5}
+\contentsline {chapter}{\numberline {6}Fazit und Ausblick}{32}{chapter.6}
+\contentsline {chapter}{Literaturverzeichnis}{i}{section*.59}

@@ -171,39 +171,162 @@ Der TCP-Server nimmt RS232- und SQL-Befehle an und leitet diese weiter. Dies erm
 \subsection{Webzugriff}
 
 Um eine Übersicht über die gesammelten Daten auf einem Mess-Server zu erhalten, ist ein lighttpd Webserver installiert.
-
+\newpage
+ 
 \subsection{Datenbank}
 \label{section_EntwurfDatenbank}
 
-Auf dem  BeagleBone kommt ein MySQL Datenbankserver zum Einsatz. 
+Wie in vorangehenden Kapiteln bereits erwähnt, werden alle Messdaten und Betriebsparameter in einer MySQL-Daten abgelegt. Der Datenbankserver läuft auf dem BeagleBone Black und ist über das Netzwerk erreichbar.
 
 Aus den Anforderungen ergibt sich folgendes \ac{ERM} (siehe Abbildung \ref{ERM}). \\
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=\textwidth]{img/general/ER_Diagramm.pdf}
+\includegraphics[width=0.9\textwidth]{img/general/ER_Diagramm.pdf}
 \caption{Entity Relationship Modell}
 \label{ERM}
 \end{center}
 \end{figure}
 
+Dieses Design ermöglicht die effiziente Verwaltung aller erforderlichen Daten. 
 
-Die Datenbank muss folgende Daten für die Parameter der Mess-Clients aufnehmen:\\
+\newpage
+\subsubsection{Tabellen}
+Im folgenden Abschnitt wird näher auf die einzelnen Tabellen eingegangen. 
+
+
+\textbf{Tabelle D\_Board}\\
 
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{|l|l|}\hline
-Parameter & Beschreibung \\ \hline
-DAC & Vorverstärkung\\ 
-duration\_int1 & Dauer der Zeit die Werte im 1.Interval aufgenommen werden in Tagen\\ 
-duration\_int2 & Dauer der Zeit die Werte im 2.Interval aufgenommen werden in Tagen\\ 
-interval\_1 & Abstand zwischen den Messungen im 1. Interval in Minuten\\ 
-interval\_2 & Abstand zwischen den Messungen im 2. Interval in Minuten\\ 
-interval\_3 & Abstand zwischen den Messungen nach dem 2. Interval in Minuten\\ \hline
+Parameter & Datentyp \\ \hline
+p\_id & INTEGER PRIMARY KEY\\ 
+address & INTEGER UNIQUE\\ 
+label & VARCHAR(255) UNIQUE\\ 
+LastOnline & TIMESTAMP\\ 
+LastChecked & TIMESTAMP\\ 
+f\_settingid & INTEGER FOREIGN KEY\\
+f\_Patternid & INTEGER FOREIGN KEY\\ \hline
+\end{tabular}
+\caption{Tabelle D\_Board}
+\label{table_TabelleD_Board}
+\end{center}
+\end{table}
+
+
+Die Tabelle D\_Board (steht für Degradations-Board) speichert alle im System registrierten Mess-Clients. Jeder Mess-Client hat eine einzigartige Identifikationsnummer (\textit{p\_id}), welche gleichzeitig den Primärschlüssel (englisch: primary key) repräsentiert. Um die Mess-Clients später leserlich auseinanderhalten zu können, verfügen sie zusätzlich über einen Namen (\textit{label}), der einzigartig sein muss. Zur Kommunikation wird jedem Board eine einzigartige Adresse (\textit{address}) zugeordnet. Boards die eine Adresse haben, werden als aktive Boards bezeichnet. Es kann davon ausgegangen werden, dass sie innerhalb des Systems erreichbar sind. Außerdem ist auch möglich, dass ein Board keine Adresse hat. In diesem Fall ist das Board als inaktiv anzusehen. Die Daten sind zwar noch in der Datenbank, jedoch ist es nicht mehr erreichbar und es werden keine neuen Messwerte aufgenommen. Diese Inaktivität entsteht, wenn ein Board für eine zu lange Zeit nicht Erreichbar ist. Denn in einem solchen Fall, wird die Adresse aufgrund des beschränkten Adressraumes freigegeben. Zusätzlich besitzt Degradationsboard einen Zeitstempel (\textit{LastOnline}) für den Zeitpunkt der letzten erfolgreichen Kontaktaufnahme. Diese Information ist notwendig um die Dauer der Abwesenheit ermitteln und den Nutzer dahingehen in Kenntnis setzen zu können. Des Weiteren gibt es noch einen Zeitstempel (\textit{LastChecked}) für den letzten Zeitpunkt des Versuches einer Kontaktaufnahme, welcher notwendig ist, um unnötig häufige Kontaktversuche zu vermeiden. So soll ein Degradationsboard nicht häufiger als alle 10 Minuten kontaktiert werden um die Performance zu erhöhen. Zusätzlich folgt jedes Board genau einer Einstellung (Tabelle Setting). Diese Relation wird durch einen Fremdschlüssel (englisch: foreign key) mit der Identifikationsnummer einer Einstellung (\textit{f\_Settingid}) referenziert. Außerdem hat jedes Board ein PulsePattern (Tabelle Pattern) zur Ansteuerung der Prüfobjekte. Dieses wird durch die Identifikationsnummer eines Patterns(\textit{f\_Patternid}) angegeben.
+
+
+\newpage
+
+\textbf{Tabelle Setting}\\
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|}\hline
+Parameter & Datentyp \\ \hline
+p\_id & INTEGER PRIMARY KEY\\ 
+DAC & INTEGER\\ 
+duration\_int1 & INTEGER\\ 
+duration\_int2 & INTEGER\\ 
+interval\_1 & INTEGER\\ 
+interval\_2 & INTEGER\\ 
+interval\_3 & INTEGER\\ \hline
 \end{tabular}
 \caption{Tabelle Setting}
 \label{table_TabelleSetting}
 \end{center}
 \end{table}
 
+In der Tabelle Setting, werden die Einstellungen  für die verschiedenen Degradationsboards abgelegt. Jede Einstellung kann dabei mehreren Boards zugeordnet sein, wobei jedes Board nur eine Einstellung besitzt.\\
+Der Primärschlüssel der Tabelle ist die Identifikationsnummer (\textit{p\_id}) jeder Einstellung. Als Nächstes gibt es die Vorverstärkung (\textit{DAC}) der Empfänger auf den Degradationsboards. Mithilfe der Vorverstärkung werden die gemessenen Signale der Prüfobjekte für die bessere Analyse durch den Analog-Digital-Konverter verstärkt. Darauf folgend kommen die Parameter zur Konfiguration der Messintervalle (siehe auch Tabelle \ref{table_ParameterMessintervalle}). Sie bestimmen die Zeiträume (\textit{duration\_int1 + 2}) und die Abstände zwischen den Messungen (\textit{interval\_1-3}) innerhalb dieser Zeiträume.\\
+
+\textbf{Tabelle DUT}\\
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|}\hline
+Parameter & Datentyp \\ \hline
+p\_id & INTEGER PRIMARY KEY\\ 
+label & VARCHAR(255)\\ 
+f\_Boardid & INTEGER FOREIGN KEY\\ \hline
+\end{tabular}
+\caption{Tabelle DUT}
+\label{table_TabelleDUT}
+\end{center}
+\end{table}
+
+Die Tabelle DUT nimmt die einzelnen Prüfobjekte (\acp{DUT}) auf. Jedes Prüfobjekt gehört fest zu einem Degradationsboard. Dies wird durch den Fremdschlüssel mit der Identifikationsnummer des zu gehörenden Boardes (\textit{f\_Boardid}) referenziert.Außerdem hat jedes Prüfobjekt eine eindeutige Identifikationsnummer (\textit{p\_id}) als Primärschlüssel. Des Weiteren hat verfügt es über eine Bezeichnung (\textit{label}), um sich von den anderen Prüfobjekten des selben Boardes zu unterscheiden.
+
+
+
+\textbf{Tabelle Pattern}\\
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|}\hline
+Parameter & Datentyp \\ \hline
+p\_id & INTEGER PRIMARY KEY\\ 
+label & VARCHAR(255)\\ \hline
+\end{tabular}
+\caption{Tabelle Pattern}
+\label{table_TabellePattern}
+\end{center}
+\end{table}
+
+In der Pattern Tabelle sind die Muster für die Signale zur Ansteuerung der Prüfobjekte. Die Muster haben eine Identifikationsnummer (\textit{p\_id}) als Primärschlüssel und eine Bezeichnung (\textit{label}) für die Leserlichkeit. Die Tabelle fasst die Signale aus der PulsePattern Tabelle zusammen um einfacher referenziert werden zu können.
+
+
+\textbf{Tabelle PulsePattern}\\
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|}\hline
+Parameter & Datentyp \\ \hline
+pf\_Patternid & INTEGER PRIMARY KEY FOREIGN KEY\\ 
+p\_no & INTEGER NOT NULL\\
+Pulse\_Duration & INTEGER\\
+Pulse\_Period & INTEGER\\ \hline
+\end{tabular}
+\caption{Tabelle PulsePattern}
+\label{table_TabellePulsePattern}
+\end{center}
+\end{table}
+
+Die Tabelle PulsePattern enthält die Signale für die Muster in Tabelle Pattern. Die Identifikationsnummer des Musters(\textit{pf\_Patternid}) und die Position im Muster (\textit{p\_no}) dienen zusammen als ein Primärschlüssel. Die Identifikationsnummer des Musters(\textit{pf\_Patternid})dient dabei gleichzeitig als Fremdschlüssel und referenziert ein Muster. Dadurch ist es möglich sowohl die Zugehörigkeit zu einem spezifischen Muster als auch die Position in ihm einzigartig zu bestimmen. Die Signaldauer (\textit{Pulse\_Duration}) beschreibt die Dauer des aktiven Pegels innerhalb des Signals, während die Signalperiode (\textit{Pulse\_Period}) die Periodendauer des Signals angibt. So ergibt sich ein High-Pegel für die Dauer von $Pulse\_Duration$ und ein Low-Pegel für die Dauer von $Pulse\_Period - Pulse\_Duration$.\\
+
+\newpage
+
+\textbf{Tabelle Measurement}\\
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|l|}\hline
+Parameter & Datentyp \\ \hline
+p\_id & INTEGER PRIMARY KEY \\ 
+Temperatur & INTEGER\\
+value & INTEGER\\
+Time & TIMESTAMP DEFAULT CURRENT\_TIMESTAMP\\ \hline
+\end{tabular}
+\caption{Tabelle Measurement}
+\label{table_TabelleMeasurement}
+\end{center}
+\end{table}
+
+In der Measurement Tabelle werden die Messwerte der einzelnen Prüfobjekte gespeichert. Der Primärschlüssel ist auch hier die Identifikationsnummer (\textit{p\_id}). Zu jedem Messeintrag gehört die aktuelle Temperatur (\textit{Temperatur}), der gelesene Messwert (\textit{value}) und die aktuelle Zeit (\textit{Time}).
+
+Wenn ein Board gelöscht wird, werden alle dazugehörigen Datenbankeinträge aus den anderen Tabellen auch gelöscht. Das soll unnötigen Daten in der Datenbank vorbeugen. Dafür sind die Fremdschlüssel in alles Tabellen außerhalb der D\_Board Tabelle mit dem Constraint \textit{ON DELETE CASCADE} versehen. Die sorgt für eine Löschung des betroffenen Eintrages, falls das referenzierte Attribut gelöscht wird. Da die Tabellen Setting und Pattern keine eigenen Verweise zu der Tabelle D\_Board haben, ist für diese Kaskadierung ein Trigger notwendig. \\
+Ein Trigger ist ein an eine Reaktion auf ein Ereignis. Das Ereignis ist die Löschung eines Eintrags in der D\_Board Tabelle. Daraufhin sollen die dazugehörigen Einträge in der Setting und der Pattern Tabelle gelöscht werden. Dafür wird ein Trigger erstellt (siehe Quellcode \ref{lst_Trigger}).\\
+
+\begin{lstlisting}[caption={onBoardDelete Trigger},label=lst_Trigger]
+Create Trigger onBoardDelete before delete on D_Board 
+for each row 
+Begin 
+delete from Setting 
+	where p_id = old.f_Settingid;
+delete from Pattern 
+	where p_id = old.f_Patternid;
+end;
+\end{lstlisting}
 

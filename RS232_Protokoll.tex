@@ -1,6 +1,6 @@
 \section{RS232 Protokoll}
 \label{section_RS232_Protokoll}
-Das Protokoll für die Kommunikation über die RS232 Schnittstelle dient dazu die Validität, Vollständigkeit und Zuverlässigkeit der Übertragungen sicherzustellen.\\
+Das Protokoll für die Kommunikation über die RS232 Schnittstelle dient zum Austausch von Informationen innerhalb des Systems zwischen den Akteuren. \\
 
 Folgende Kriterien sollen dabei erfüllt werden:
 \begin{itemize}
@@ -15,7 +15,7 @@ Folgende Kriterien sollen dabei erfüllt werden:
 
 Um eine hohe Zuverlässigkeit gewährleisten zu können, wird eine geringe Bautrate von 2400 verwendet. Da nur geringe Datenmengen in großen Abständen auftreten, vermindert dass die Anfälligkeit der Übertragung gegenüber äußeren Einflüssen ohne dabei die Performance merkbar zu beeinflussen.\\
 Des Weiteren wird ein Paritätsbit für eine Paritätsprüfung eingesetzt. Dieses Bit gibt an, ob die Anzahl der Einsen des Datenblocks gerade oder ungerade ist. Der Wert verwendeten Even-Paritätsbit ist 1, wenn die Summe der Einsen gerade ist und 0 wenn sie ungerade ist. Dadurch können grobe Fehler bei der Übertragung ausgemacht und korrigiert werden.
-
+\newpage
 \subsection{Aufbau}
 \begin{table}[H]
 \begin{center}
@@ -44,7 +44,7 @@ Ein Rahmen des Protokolls besteht aus 4 Steuerbytes, 1 Checksummenbyte und maxim
 \end{center}
 \end{table}
 
-Das erste Byte des Übertragungsrahmens setzt sich aus 7 Adressbits und einem Lese-/Schreibbit zusammen. Die ersten 7 Bits (Addr0 - Addr6) bilden die Adresse des anzusteuernden Mess-Clients. Daraus ergibt sich ein Adressraum von möglichen 128 Adressen, wobei Adresse 0 für neue Mess-Clients zur einmaligen Anmeldung im System reserviert ist.\\
+Das erste Byte des Übertragungsrahmens setzt sich aus 7 Adressbits und einem Lese-/Schreibbit zusammen. Die ersten 7 Bits (Addr0 - Addr6) bilden die Adresse des anzusteuernden Empfänger. Daraus ergibt sich ein Adressraum von möglichen 128 Adressen, wobei Adresse 0 für neue Mess-Clients zur einmaligen Anmeldung im System reserviert ist (siehe Abschnitt \ref{section_RS232Kommunikation}).\\
 Das höchste Bit ist das Lese-/Schreibbit. Der Mess-Client unterscheidet mithilfe dieses Bits, ob ein Befehl als Lese- oder Schreibzugriff interpretiert werden soll.\\
 
 \begin{table}[H]
@@ -59,6 +59,7 @@ Das höchste Bit ist das Lese-/Schreibbit. Der Mess-Client unterscheidet mithilf
 \end{center}
 \end{table}
 
+Ein Lesezugriff bedeutet immer, dass keine Daten übertragen werden.
 
 \textbf{2. Byte: Rahmenlänge}
 
@@ -202,3 +203,4 @@ Eine Übersicht über die vorhandenen Befehle findet sich in Tabelle \ref{table_
 \label{table_RS232Commands}
 \end{center}
 \end{table}
+

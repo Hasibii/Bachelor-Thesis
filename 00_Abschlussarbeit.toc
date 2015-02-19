@@ -17,23 +17,24 @@
 \contentsline {section}{\numberline {2.4}Embedded Linux System}{6}{section.2.4}
 \contentsline {chapter}{\numberline {3}Anforderungsanalyse}{7}{chapter.3}
 \contentsline {section}{\numberline {3.1}Szenario}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}Anforderungen}{8}{section.3.2}
+\contentsline {section}{\numberline {3.2}Analyse}{8}{section.3.2}
+\contentsline {section}{\numberline {3.3}Anforderungen}{8}{section.3.3}
 \contentsline {chapter}{\numberline {4}Design}{11}{chapter.4}
 \contentsline {section}{\numberline {4.1}\IeC {\"U}bersicht}{11}{section.4.1}
 \contentsline {section}{\numberline {4.2}Mess-Client}{13}{section.4.2}
 \contentsline {section}{\numberline {4.3}Mess-Server}{14}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Hardware}{15}{subsection.4.3.1}
 \contentsline {subsection}{\numberline {4.3.2}Software}{16}{subsection.4.3.2}
-\contentsline {subsubsection}{\numberline {4.3.2.1}Messdatenerfassung}{16}{subsubsection.4.3.2.1}
-\contentsline {subsubsection}{\numberline {4.3.2.2}Benutzeroberfl\IeC {\"a}che}{18}{subsubsection.4.3.2.2}
-\contentsline {subsubsection}{\numberline {4.3.2.3}RS232 Kommunikation}{19}{subsubsection.4.3.2.3}
-\contentsline {subsubsection}{\numberline {4.3.2.4}Ethernet Kommunikation}{20}{subsubsection.4.3.2.4}
-\contentsline {subsubsection}{\numberline {4.3.2.5}Webzugriff}{20}{subsubsection.4.3.2.5}
-\contentsline {subsubsection}{\numberline {4.3.2.6}Datenbank}{20}{subsubsection.4.3.2.6}
-\contentsline {section}{\numberline {4.4}PC-Client}{22}{section.4.4}
-\contentsline {section}{\numberline {4.5}RS232 Protokoll}{23}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}Aufbau}{23}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Befehle und Unterbefehle}{26}{subsection.4.5.2}
-\contentsline {chapter}{\numberline {5}Testen und Validieren}{28}{chapter.5}
-\contentsline {chapter}{\numberline {6}Fazit und Ausblick}{29}{chapter.6}
-\contentsline {chapter}{Literaturverzeichnis}{i}{section*.50}
+\contentsline {subsubsection}{\numberline {4.3.2.1}Messdatenerfassung}{17}{subsubsection.4.3.2.1}
+\contentsline {subsubsection}{\numberline {4.3.2.2}Benutzeroberfl\IeC {\"a}che}{19}{subsubsection.4.3.2.2}
+\contentsline {subsubsection}{\numberline {4.3.2.3}RS232 Kommunikation}{20}{subsubsection.4.3.2.3}
+\contentsline {subsubsection}{\numberline {4.3.2.4}Ethernet Kommunikation}{21}{subsubsection.4.3.2.4}
+\contentsline {subsubsection}{\numberline {4.3.2.5}Webzugriff}{21}{subsubsection.4.3.2.5}
+\contentsline {subsubsection}{\numberline {4.3.2.6}Datenbank}{21}{subsubsection.4.3.2.6}
+\contentsline {section}{\numberline {4.4}PC-Client}{23}{section.4.4}
+\contentsline {section}{\numberline {4.5}RS232 Protokoll}{24}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Aufbau}{25}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Befehle und Unterbefehle}{28}{subsection.4.5.2}
+\contentsline {chapter}{\numberline {5}Testen und Validieren}{29}{chapter.5}
+\contentsline {chapter}{\numberline {6}Fazit und Ausblick}{30}{chapter.6}
+\contentsline {chapter}{Literaturverzeichnis}{i}{section*.53}

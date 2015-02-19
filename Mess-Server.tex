@@ -1,17 +1,17 @@
 \section{Mess-Server}
 \label{section_Mess-Server}
 
-Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt. Dabei handelt es sich um einen kostengünstigen Einplatinencomputer mit offener Hardware. Damit ist es möglich, das BeagleBone Black auf individuelle Anforderungen anzupassen und selbst herzustellen. Auch gibt es eine große Community, die ständig die Entwicklung vorantreibt.
-Er arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher. Als Spannungsversorgung dient ein 5V 2A Netzteil.
-
-
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{img/general/BeagleBoneBlack.jpg}
+\includegraphics[width=0.6\textwidth]{img/general/BeagleBoneBlack.png}
 \caption{BeagleBone Black}
 \label{figure_Beagleboneblack}
 \end{center}
 \end{figure}
+
+
+Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt (siehe Abbildung \ref{figure_Beagleboneblack}). Dabei handelt es sich um einen kostengünstigen Einplatinencomputer mit offener Hardware. Damit ist es möglich, das BeagleBone Black auf individuelle Anforderungen anzupassen und selbst herzustellen. Auch gibt es eine große Community, die ständig die Entwicklung vorantreibt.
+Er arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher. Als Spannungsversorgung dient ein 5V 2A Netzteil.
 
 Trotz der Kompaktheit des BeagleBone Black, bietet er ein ausreichendes Maß an Performance. Auf ihm kommt ein Debian-GNU/Linux Betriebssystem zum Einsatz. Damit ist es möglich die umfangreichen Debian-Funktionen wie die Paketverwaltung zu nutzen. Es bietet auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu besteht und somit einfacher nutzbar ist (vgl. \cite{schroeder2009embedded}).\\
 Außerdem sind Linux Mechanismen einfach nutzbar. So kann das RS232 Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden.
@@ -30,20 +30,38 @@ Außerdem sind Linux Mechanismen einfach nutzbar. So kann das RS232 Interface be
 Das BeagleBone selbst ist bereits sehr Leistungsstark. Um jedoch weiter Funktionen und Schnittstellen hinzuzufügen, existieren Capes. Ein Cape ist eine für das BeagleBone konzipierte Erweiterung, die direkt auf das BeagleBone aufgesteckt werden kann. Die Treiber vieler dieser Capes sind bereits in dem Betriebssystem des BeagleBones integriert oder werden vom Hersteller bereitgestellt. Somit ist die Inbetriebnahme sehr komfortable.
 
 
-\textbf{ABBILDUNG EINES CAPES}
+\begin{figure}[!htb]
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{img/general/CapeRS232.png}
+  \caption{RS232 Cape}\label{figure_CapeRS232}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{img/general/CapeRTC.png}
+  \caption{RTC Cape}\label{figure_CapeRTC}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \includegraphics[width=\linewidth]{img/general/CapeLCD.png}
+  \caption{LCD Cape}\label{figure_CapeLCD}
+\endminipage
+\end{figure}
 
 
-Zur Kommunikation mit den Mess-Clients wird die \ac{UART} Schnittstelle des BeagleBone Black verwendet. Dafür wird ein RS232 Cape eingesetzt. Das Cape führt die seriellen Ports UART0, UART1, UART2 und UART4 auf einen 9-poligen seriellen Stecker. Es bietet die Möglichkeit zwischen den verschiedenen Ports mittels eines Jumper auf dem Cape zu wechseln. Angeschlossen wird nach dem 3-wire Prinzip. Dabei werden lediglich Rx, Tx und die Masse verbunden. Somit ist keine Hardware-Flusssteuerung möglich.\ 
+Zur Kommunikation mit den Mess-Clients wird die \ac{UART} Schnittstelle des BeagleBone Black verwendet. Dafür wird ein RS232 Cape eingesetzt (siehe Abbildung \ref{figure_CapeRS232}). Das Cape führt die seriellen Ports UART0, UART1, UART2 und UART4 auf einen 9-poligen seriellen Stecker. Es bietet die Möglichkeit zwischen den verschiedenen Ports mittels eines Jumper auf dem Cape zu wechseln. Angeschlossen wird nach dem 3-wire Prinzip. Dabei werden lediglich Rx, Tx und die Masse verbunden. Somit ist keine Hardware-Flusssteuerung möglich.\ 
 
-Da das BeagleBone Black kein eigenes \ac{RTC} Modul besitzt, wird auch dieses durch ein Cape hinzugefügt. Es beinhaltet eine 3V Knopfbatterie um auch im Falle einer Stromunterbrechung die aktuelle Zeit nicht zu verlieren. Dies ist sehr wichtig, da es erforderlich ist, dass das BeagleBone die aktuelle Uhrzeit und das aktuelle Datum jederzeit kennt. Denn beim Erfassen der Messdaten wird ein Zeitstempel angelegt um die Daten später zeitlich zuordnen zu können. Sollte dieser Zeitstempel nicht korrekt sein, sind die Daten bei der Auswertung nicht gültig.\ 
+Da das BeagleBone Black kein eigenes \ac{RTC} Modul besitzt, wird auch dieses durch ein Cape hinzugefügt (siehe Abbildung \ref{figure_CapeRTC}). Es beinhaltet eine 3V Knopfbatterie um auch im Falle einer Stromunterbrechung die aktuelle Zeit nicht zu verlieren. Dies ist sehr wichtig, da es erforderlich ist, dass das BeagleBone die aktuelle Uhrzeit und das aktuelle Datum jederzeit kennt. Denn beim Erfassen der Messdaten wird ein Zeitstempel angelegt um die Daten später zeitlich zuordnen zu können. Sollte dieser Zeitstempel nicht korrekt sein, sind die Daten bei der Auswertung nicht gültig.\ 
 
-Um die Statusanzeige detailliert darstellen zu können, wird ein resistives LCD-Touchscreen Display eingesetzt. Es hat eine Größe von 4,3 Zoll bei einer Auflösung von 480x272 Pixeln. Dabei handelt es sich ebenso um ein Cape. Dadurch ist es möglich, das BeagleBone Black trotz den Erweiterungen kompakt zu halten. Denn die Capes sind untereinander Stapelbar.\ 
-
-
-\textbf{ABBILDUNG gestapeltes BeagleBone}
+Um die Statusanzeige detailliert darstellen zu können, wird ein resistives LCD-Touchscreen Display eingesetzt. Es hat eine Größe von 4,3 Zoll bei einer Auflösung von 480x272 Pixeln. Dabei handelt es sich ebenso um ein Cape (siehe Abbildung \ref{figure_CapeLCD}) . Dadurch ist es möglich, das BeagleBone Black trotz den Erweiterungen kompakt zu halten. Denn die Capes sind untereinander stapelbar (siehe Abbildung \ref{figure_GestapelteCapes}).\ 
 
 
-Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird, ist bereits vollständig einsatzbereit. Ebenso ist die Ethernet Schnittstelle, welche für den Fernzugriff auf das BeagleBone genutzt wird, bereits standardmäßig vollständig integriert.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/general/GestapelteCapes.JPG}
+\caption{Gestapelte Capes}
+\label{figure_GestapelteCapes}
+\end{center}
+\end{figure}
+
+Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird, ist bereits vollständig einsatzbereit. Ebenso ist die Ethernet Schnittstelle, welche für den Fernzugriff auf das BeagleBone genutzt wird standardmäßig vollständig integriert.
 
 \subsection{Software}
 \label{ServerSoftware}
@@ -58,11 +76,11 @@ Der Hauptzyklus der Software ruft kontinuierlich die Messdaten von den Mess-Clie
 \begin{center}
 \begin{tabular}{|l|l|}\hline
 Parameter & Beschreibung \\ \hline
-duration\_int1 & Dauer der Zeit die Werte im 1.Interval aufgenommen werden in Tagen\\  \hline
-duration\_int2 & Dauer der Zeit die Werte im 2.Interval aufgenommen werden in Tagen\\  \hline
-interval\_1 & Abstand zwischen den Messungen im 1. Interval in Minuten\\  \hline
-interval\_2 & Abstand zwischen den Messungen im 2. Interval in Minuten\\  \hline
-interval\_3 & Abstand zwischen den Messungen nach dem 2. Interval in Minuten\\ \hline
+duration\_int1 & Dauer des 1. Zeitraums\\  \hline
+duration\_int2 & Dauer des 2. Zeitraums\\  \hline
+interval\_1 & Abstand zwischen den Messungen im 1. Zeitraum\\  \hline
+interval\_2 & Abstand zwischen den Messungen im 2. Zeitraum\\  \hline
+interval\_3 & Abstand zwischen den Messungen nach dem 2. Zeitraum\\ \hline
 \end{tabular}
 \caption{Parameter der Messintervalle}
 \label{table_ParameterMessintervalle}
@@ -138,7 +156,13 @@ Das Boards Tab zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als akt
 Der Zweck des Debug Tabs ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein Fehler einfacher zu erkennen.
 
 \subsubsection{RS232 Kommunikation}
+\label{section_RS232Kommunikation}
 Die RS232 Schnittstelle wird ausschließlich zur Kommunikation mit den Mess-Clients verwendet. Um die Erfolgschancen der Anfragen zu erhöhen, werden Fehlschläge erkannt und durch den Versuch des erneuten Sendens minimiert. Zwischen jedem Sendeversuch befindet sich eine kurze Verzögerung.
+ 
+ client anmeldung
+ 
+ client abfrage der werte
+ 
  
 
 \subsubsection{Ethernet Kommunikation}

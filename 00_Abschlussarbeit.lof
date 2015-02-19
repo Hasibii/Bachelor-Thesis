@@ -8,13 +8,19 @@
 \contentsline {figure}{\numberline {3.1.1}{\ignorespaces Szenario\relax }}{7}{figure.caption.21}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1.1}{\ignorespaces Gesamt System\relax }}{12}{figure.caption.25}
-\contentsline {figure}{\numberline {4.3.1}{\ignorespaces BeagleBone Black\relax }}{14}{figure.caption.26}
-\contentsline {figure}{\numberline {4.3.2}{\ignorespaces Aufbau Mess-Server\relax }}{15}{figure.caption.27}
-\contentsline {figure}{\numberline {4.3.3}{\ignorespaces Ablaufplan\relax }}{17}{figure.caption.32}
-\contentsline {figure}{\numberline {4.3.4}{\ignorespaces Mess-Server GUI: Status Tab\relax }}{18}{figure.caption.33}
-\contentsline {figure}{\numberline {4.3.5}{\ignorespaces Mess-Server GUI: Events Tab\relax }}{18}{figure.caption.34}
-\contentsline {figure}{\numberline {4.3.6}{\ignorespaces Mess-Server GUI: Boards Tab\relax }}{19}{figure.caption.35}
-\contentsline {figure}{\numberline {4.3.7}{\ignorespaces Mess-Server GUI: Debug Tab\relax }}{19}{figure.caption.36}
-\contentsline {figure}{\numberline {4.3.8}{\ignorespaces Entity Relationship Modell\relax }}{21}{figure.caption.39}
+\contentsline {figure}{\numberline {4.2.1}{\ignorespaces RTC Cape\relax }}{13}{figure.caption.26}
+\contentsline {figure}{\numberline {4.2.2}{\ignorespaces LCD Cape\relax }}{13}{figure.caption.26}
+\contentsline {figure}{\numberline {4.3.1}{\ignorespaces BeagleBone Black\relax }}{14}{figure.caption.27}
+\contentsline {figure}{\numberline {4.3.2}{\ignorespaces Aufbau Mess-Server\relax }}{15}{figure.caption.28}
+\contentsline {figure}{\numberline {4.3.3}{\ignorespaces RS232 Cape\relax }}{15}{figure.caption.29}
+\contentsline {figure}{\numberline {4.3.4}{\ignorespaces RTC Cape\relax }}{15}{figure.caption.29}
+\contentsline {figure}{\numberline {4.3.5}{\ignorespaces LCD Cape\relax }}{15}{figure.caption.29}
+\contentsline {figure}{\numberline {4.3.6}{\ignorespaces Gestapelte Capes\relax }}{16}{figure.caption.32}
+\contentsline {figure}{\numberline {4.3.7}{\ignorespaces Ablaufplan\relax }}{18}{figure.caption.35}
+\contentsline {figure}{\numberline {4.3.8}{\ignorespaces Mess-Server GUI: Status Tab\relax }}{19}{figure.caption.36}
+\contentsline {figure}{\numberline {4.3.9}{\ignorespaces Mess-Server GUI: Events Tab\relax }}{19}{figure.caption.37}
+\contentsline {figure}{\numberline {4.3.10}{\ignorespaces Mess-Server GUI: Boards Tab\relax }}{20}{figure.caption.38}
+\contentsline {figure}{\numberline {4.3.11}{\ignorespaces Mess-Server GUI: Debug Tab\relax }}{20}{figure.caption.39}
+\contentsline {figure}{\numberline {4.3.12}{\ignorespaces Entity Relationship Modell\relax }}{22}{figure.caption.42}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

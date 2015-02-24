@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  24 FEB 2015 18:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  24 FEB 2015 18:45
 entering extended mode
 **00_Abschlussarbeit.tex
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\00_Abschlussarbeit.tex
@@ -1361,7 +1361,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 6.
  (C:\MikTex\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<img/general/unilogo.png, id=187, 174.1707pt x 41.4348pt>
+<img/general/unilogo.png, id=183, 174.1707pt x 41.4348pt>
 File: img/general/unilogo.png Graphic file (type png)
 
 <use img/general/unilogo.png>
@@ -1445,7 +1445,7 @@ rning (ext4): destination with the same identifier (name{page.}) has been alrea
 dy used, duplicate ignored
 <to be read again> 
                    \relax 
-l.32 ...datenerfassung}{18}{subsubsection.4.3.1.2}
+l.31 ...datenerfassung}{18}{subsubsection.4.3.1.2}
                                                    [0
 
 
@@ -1522,7 +1522,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
 
 ] (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Grundlagen.tex
 Kapitel 2.
-<img/general/Degradation.png, id=420, 1138.2525pt x 578.16pt>
+<img/general/Degradation.png, id=415, 1138.2525pt x 578.16pt>
 File: img/general/Degradation.png Graphic file (type png)
 
 <use img/general/Degradation.png>
@@ -1564,7 +1564,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
-<img/general/QtCreator.png, id=441, 963.6pt x 770.88pt>
+<img/general/QtCreator.png, id=435, 963.6pt x 770.88pt>
 File: img/general/QtCreator.png Graphic file (type png)
 
 <use img/general/QtCreator.png>
@@ -1596,7 +1596,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
-<img/general/Kernel_Hardware_Layer.pdf, id=479, 852.18375pt x 274.02374pt>
+<img/general/Kernel_Hardware_Layer.pdf, id=470, 852.18375pt x 274.02374pt>
 File: img/general/Kernel_Hardware_Layer.pdf Graphic file (type pdf)
 
 <use img/general/Kernel_Hardware_Layer.pdf>
@@ -1609,7 +1609,7 @@ e_Layer.pdf>]
 Kapitel 3.
 Package acronym Info: Label `acro:LED' newly defined as it shall be overridden
 although it is yet undefined on input line 7.
-<img/general/Szenario.png, id=489, 757.83125pt x 620.3175pt>
+<img/general/Szenario.png, id=479, 757.83125pt x 620.3175pt>
 File: img/general/Szenario.png Graphic file (type png)
 
 <use img/general/Szenario.png>
@@ -1627,14 +1627,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--22
 
 
  <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/Szenario.png>]
-<img/general/DegraBoardTop.jpg, id=501, 832.5504pt x 555.0336pt>
+<img/general/DegraBoardTop.jpg, id=488, 832.5504pt x 555.0336pt>
 File: img/general/DegraBoardTop.jpg Graphic file (type jpg)
 
 <use img/general/DegraBoardTop.jpg>
 Package pdftex.def Info: img/general/DegraBoardTop.jpg used on input line 37.
 (pdftex.def)             Requested size: 225.34381pt x 150.22523pt.
 
-<img/general/DegraBoardBottom.jpg, id=502, 3468.96pt x 2312.64pt>
+<img/general/DegraBoardBottom.jpg, id=489, 3468.96pt x 2312.64pt>
 File: img/general/DegraBoardBottom.jpg Graphic file (type jpg)
 
 <use img/general/DegraBoardBottom.jpg>
@@ -1642,7 +1642,7 @@ Package pdftex.def Info: img/general/DegraBoardBottom.jpg used on input line 41
 .
 (pdftex.def)             Requested size: 225.34381pt x 150.22101pt.
 
-<img/general/BeagleBoneBlack.png, id=503, 732.8178pt x 424.9476pt>
+<img/general/BeagleBoneBlack.png, id=490, 732.8178pt x 424.9476pt>
 File: img/general/BeagleBoneBlack.png Graphic file (type png)
 
 <use img/general/BeagleBoneBlack.png>
@@ -1713,7 +1713,7 @@ Underfull \hbox (badness 3158) in paragraph at lines 134--134
 [11]) [12]
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\30_Konzeptentwicklung.tex
 Kapitel 4.
-<img/general/BlockPlan.pdf, id=538, 671.50874pt x 843.15pt>
+<img/general/BlockPlan.pdf, id=523, 671.50874pt x 843.15pt>
 File: img/general/BlockPlan.pdf Graphic file (type pdf)
 
 <use img/general/BlockPlan.pdf>
@@ -1725,7 +1725,7 @@ Package pdftex.def Info: img/general/BlockPlan.pdf used on input line 37.
 
 ]
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Mess-Server.tex
-<img/general/UebersichtMaster.pdf, id=543, 793.96625pt x 336.25626pt>
+<img/general/UebersichtMaster.pdf, id=528, 793.96625pt x 336.25626pt>
 File: img/general/UebersichtMaster.pdf Graphic file (type pdf)
 
 <use img/general/UebersichtMaster.pdf>
@@ -1734,21 +1734,21 @@ Package pdftex.def Info: img/general/UebersichtMaster.pdf used on input line 7.
 (pdftex.def)             Requested size: 469.47046pt x 198.83072pt.
  [14 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/BlockPlan.pdf>
 ]
-<img/general/CapeRS232.png, id=550, 457.71pt x 505.89pt>
+<img/general/CapeRS232.png, id=535, 457.71pt x 505.89pt>
 File: img/general/CapeRS232.png Graphic file (type png)
 
 <use img/general/CapeRS232.png>
 Package pdftex.def Info: img/general/CapeRS232.png used on input line 18.
 (pdftex.def)             Requested size: 150.23398pt x 166.04877pt.
 
-<img/general/CapeRTC.png, id=551, 457.71pt x 505.89pt>
+<img/general/CapeRTC.png, id=536, 457.71pt x 505.89pt>
 File: img/general/CapeRTC.png Graphic file (type png)
 
 <use img/general/CapeRTC.png>
 Package pdftex.def Info: img/general/CapeRTC.png used on input line 22.
 (pdftex.def)             Requested size: 150.23398pt x 166.04877pt.
 
-<img/general/CapeLCD.png, id=552, 457.71pt x 505.89pt>
+<img/general/CapeLCD.png, id=537, 457.71pt x 505.89pt>
 File: img/general/CapeLCD.png Graphic file (type png)
 
 <use img/general/CapeLCD.png>
@@ -1765,7 +1765,7 @@ ng> <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/CapeRTC.png> <C
 Package acronym Info: Label `acro:RTC' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 
-<img/general/GestapelteCapes.JPG, id=567, 3468.96pt x 2312.64pt>
+<img/general/GestapelteCapes.JPG, id=551, 3468.96pt x 2312.64pt>
 File: img/general/GestapelteCapes.JPG Graphic file (type jpg)
 
 <use img/general/GestapelteCapes.JPG>
@@ -1773,7 +1773,7 @@ Package pdftex.def Info: img/general/GestapelteCapes.JPG used on input line 41.
 
 (pdftex.def)             Requested size: 234.73523pt x 156.46698pt.
 
-<img/general/UebersichtMasterSoftware.pdf, id=568, 859.21pt x 366.36874pt>
+<img/general/UebersichtMasterSoftware.pdf, id=552, 859.21pt x 366.36874pt>
 File: img/general/UebersichtMasterSoftware.pdf Graphic file (type pdf)
 
 <use img/general/UebersichtMasterSoftware.pdf>
@@ -1793,7 +1793,7 @@ although it is yet undefined on input line 95.
 LaTeX Warning: Reference `table_Commands' on page 18 undefined on input line 95
 .
 
-<img/general/Ablaufplan_Master.pdf, id=585, 384.43625pt x 643.40375pt>
+<img/general/Ablaufplan_Master.pdf, id=567, 384.43625pt x 643.40375pt>
 File: img/general/Ablaufplan_Master.pdf Graphic file (type pdf)
 
 <use img/general/Ablaufplan_Master.pdf>
@@ -1802,7 +1802,7 @@ Package pdftex.def Info: img/general/Ablaufplan_Master.pdf used on input line 1
 (pdftex.def)             Requested size: 234.73523pt x 392.86841pt.
  [18] [19 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/Ablaufpla
 n_Master.pdf>]
-<img/GUI/Server_GUI_Status1.png, id=609, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Status1.png, id=589, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Status1.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Status1.png>
@@ -1810,7 +1810,7 @@ Package pdftex.def Info: img/GUI/Server_GUI_Status1.png used on input line 121.
 
 (pdftex.def)             Requested size: 234.73523pt x 133.01443pt.
 
-<img/GUI/Server_GUI_Events1.png, id=611, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Events1.png, id=591, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Events1.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Events1.png>
@@ -1818,7 +1818,7 @@ Package pdftex.def Info: img/GUI/Server_GUI_Events1.png used on input line 133.
 
 (pdftex.def)             Requested size: 234.73523pt x 133.01443pt.
 
-<img/GUI/Server_GUI_Boards1.png, id=612, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Boards1.png, id=592, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Boards1.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Boards1.png>
@@ -1828,7 +1828,7 @@ Package pdftex.def Info: img/GUI/Server_GUI_Boards1.png used on input line 145.
  [20 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/GUI/Server_GUI_Status1
 .png> <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/GUI/Server_GUI_Events
 1.png>]
-<img/GUI/Server_GUI_Debug2.png, id=618, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Debug2.png, id=600, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Debug2.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Debug2.png>
@@ -1856,7 +1856,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 200--201
 
  []
 
-<img/general/ER_Diagramm.pdf, id=634, 844.15375pt x 733.74126pt>
+<img/general/ER_Diagramm.pdf, id=616, 844.15375pt x 733.74126pt>
 File: img/general/ER_Diagramm.pdf Graphic file (type pdf)
 
 <use img/general/ER_Diagramm.pdf>
@@ -1985,8 +1985,8 @@ Package rerunfilecheck Warning: File `00_Abschlussarbeit.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `00_Abschlussarbeit.out':
-(rerunfilecheck)             Before: 830C5761665BFF6AFB7F24487819E4F2;3030
-(rerunfilecheck)             After:  0C1B5ECE0505B6B1C95DBEB253960DB5;2966.
+(rerunfilecheck)             Before: 868F6B7F2EFEB90224043D99468A7120;2966
+(rerunfilecheck)             After:  4B807F730849AE16FFE4BFCD538CFD06;3051.
 
 LaTeX Warning: There were undefined references.
 
@@ -1996,78 +1996,48 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 440.
  ) 
 Here is how much of TeX's memory you used:
- 19786 strings out of 493921
- 293801 string characters out of 3154494
- 512826 words of memory out of 3000000
- 22271 multiletter control sequences out of 15000+200000
+ 19774 strings out of 493921
+ 293645 string characters out of 3154494
+ 512809 words of memory out of 3000000
+ 22268 multiletter control sequences out of 15000+200000
  94475 words of font info for 98 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  57i,13n,78p,2231b,1416s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{section*.42} has been referenced but does not exi
+pdfTeX warning (dest): name{section*.39} has been referenced but does not exi
 st, replaced by a fixed one
 
-pdfTeX warning (dest): name{section*.30} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.35} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.20} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.11} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.22} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.15} has been referenced but does not exist
+pdfTeX warning (dest): name{section*.40} has been referenced but does not exist
 , replaced by a fixed one
 
 pdfTeX warning (dest): name{table.caption.45} has been referenced but does not 
 exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{table.caption.41} has been referenced but does not 
+pdfTeX warning (dest): name{table.caption.44} has been referenced but does not 
 exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{table.caption.34} has been referenced but does not 
+pdfTeX warning (dest): name{table.caption.43} has been referenced but does not 
 exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{table.caption.25} has been referenced but does not 
+pdfTeX warning (dest): name{table.caption.38} has been referenced but does not 
 exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{figure.caption.44} has been referenced but does not
+pdfTeX warning (dest): name{figure.caption.60} has been referenced but does not
  exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{figure.caption.36} has been referenced but does not
+pdfTeX warning (dest): name{figure.caption.59} has been referenced but does not
  exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{figure.caption.32} has been referenced but does not
+pdfTeX warning (dest): name{figure.caption.58} has been referenced but does not
  exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{figure.caption.27} has been referenced but does not
+pdfTeX warning (dest): name{figure.caption.57} has been referenced but does not
  exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{figure.caption.23} has been referenced but does not
- exist, replaced by a fixed one
+pdfTeX warning (dest): name{subsection.5.2.1} has been referenced but does not 
+exist, replaced by a fixed one
 
-pdfTeX warning (dest): name{figure.caption.21} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.19} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.14} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{figure.caption.10} has been referenced but does not
- exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.60} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{section*.8} has been referenced but does not exist,
- replaced by a fixed one
+pdfTeX warning (dest): name{subsubsection.4.3.4.1} has been referenced but does
+ not exist, replaced by a fixed one
 
 {C:/MikTex/fonts/enc/dvips/lm/lm-rm.enc}{C:/MikTex/fonts/enc/dvips/lm/lm-mathsy
 .enc}{C:/MikTex/fonts/enc/dvips/lm/lm-mathit.enc}{C:/MikTex/fonts/enc/dvips/fon
@@ -2078,9 +2048,9 @@ a.pfb><C:/MikTex/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/MikTex/fonts/type1/urw
 /palatino/uplb8a.pfb><C:/MikTex/fonts/type1/urw/times/utmb8a.pfb><C:/MikTex/fon
 ts/type1/urw/times/utmr8a.pfb><C:/MikTex/fonts/type1/urw/times/utmr8a.pfb><C:/M
 ikTex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00_Abschlussarbeit.pdf (48 pages, 21567620 bytes).
+Output written on 00_Abschlussarbeit.pdf (48 pages, 21566940 bytes).
 PDF statistics:
- 984 PDF objects out of 1000 (max. 8388607)
- 209 named destinations out of 1000 (max. 500000)
- 474 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 970 PDF objects out of 1000 (max. 8388607)
+ 200 named destinations out of 1000 (max. 500000)
+ 466 words of extra memory for PDF output out of 10000 (max. 10000000)
 

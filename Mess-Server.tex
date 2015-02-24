@@ -5,7 +5,7 @@
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth ]{img/general/UebersichtMaster.pdf}
-\caption{Aufbau Mess-Server}
+\caption{Übersicht Hardware}
 \label{figure_AufbauBleagleBone}
 \end{center}
 \end{figure}
@@ -48,10 +48,29 @@ Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird,
 
 \section{Software}
 \label{ServerSoftware}
-Die Programmierung der Software erfolgt in C++ unter Verwendung der Klassenbibliothek Qt (siehe Abschnitt \ref{section_Qt}).\\
-Das Softwaredesign teilt sich in einen sequentiellen Teil für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Teil für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.\ 
 
-\subsection{Messdatenerfassung}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth ]{img/general/UebersichtMasterSoftware.pdf}
+\caption{Übersicht Software}
+\label{figure_GestapelteCapes}
+\end{center}
+\end{figure}
+
+Die Programmierung der Software erfolgt in C++ unter Verwendung der Klassenbibliothek Qt (siehe Abschnitt \ref{section_Qt}).\\
+Das Softwaredesign teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
+Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.\ 
+
+
+
+\subsection{Mess-Client Verwaltung}
+Die Verwaltung der Mess-Clients ist der Hauptprozess der Software. In diesem Programmteil wird die Kommunikation mit den Mess-Clients realisiert. Dabei sind die Grundaufgaben die Messdatenerfassung, das Erkennen von neuen Mess-Clients und die automatische Eingliederung dieser in das System.
+
+\subsubsection{Mess-Client Anmeldung}
+Um in das bestehende System eingegliedert zu werden, muss jeder Mess-Client sich bei dem Mess-Server anmelden. Dafür hat jeder neue Mess-Client die RS232 Adresse 0. Der Mess-Server überprüft in regelmäßigen Abständen, ob über die Adresse 0 ein Mess-Client erreichbar ist. Sobald dies der Fall ist, übermittelt der entsprechende Mess-Client seine Parametrierung an den Mess-Server. Anhand dieser Daten legt der Mess-Server automatisch neue Datenbankeinträge an.
+
+\subsubsection{Messdatenerfassung}
+
 Der Hauptzyklus der Software ruft kontinuierlich die Messdaten von den Mess-Clients ab. Dafür wird ständig geprüft ob Messungen erforderlich sind. Dies geschieht durch den Vergleich der vergangenen Zeit zur letzten Messung und den gegebenen Parametern für die Messintervalle. In der Tabelle \ref{table_ParameterMessintervalle} finden sich diese Parameter.\\
 
 
@@ -83,6 +102,11 @@ Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zykle
 \label{figure_Ablaufplan_Master}
 \end{center}
 \end{figure}
+ 
+  client anmeldung
+ 
+ client abfrage der werte
+ 
  
 \newpage
 \subsection{Benutzeroberfläche}
@@ -138,18 +162,9 @@ Das Boards Tab zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als akt
 
 Der Zweck des Debug Tabs ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein Fehler einfacher zu erkennen.
 
-\subsection{RS232 Kommunikation}
-\label{section_RS232Kommunikation}
-Die RS232 Schnittstelle wird ausschließlich zur Kommunikation mit den Mess-Clients verwendet. Um die Erfolgschancen der Anfragen zu erhöhen, werden Fehlschläge erkannt und durch den Versuch des erneuten Sendens minimiert. Zwischen jedem Sendeversuch befindet sich eine kurze Verzögerung.
- 
- client anmeldung
- 
- client abfrage der werte
- 
- 
 
-\subsubsection{Ethernet Kommunikation}
-
+\subsection{TCP/UDP Server}
+\label{section_TCPUDPServer}
 Um auf Netzwerkanfragen reagieren zu können, ist sowohl ein UDP-Server für Broadcast-Nachrichten als auch ein TCP-Server für die direkte Kommunikation realisiert.\\
 Der UDP-Server dient dabei zur dynamischen Erkennung im Netzwerk. Dabei antwortet der Mess-Server auf Broadcast-Nachrichten mit seiner IP-Adresse und seinem Namen. Dies ermöglicht die einfache Eingliederung der Mess-Server in ein Netzwerk.
 Der TCP-Server nimmt RS232- und SQL-Befehle an und leitet diese weiter. Dies ermöglicht den Fernzugriff auf die einzelnen Mess-Clients über ein Netzwerk. 
@@ -168,12 +183,16 @@ Der TCP-Server nimmt RS232- und SQL-Befehle an und leitet diese weiter. Dies erm
 \end{center}
 \end{table}
 
-\subsection{Webzugriff}
+\subsection{Web Server und WLAN Hotspot}
+\label{section_WebServerWLANHotspot}
 
-Um eine Übersicht über die gesammelten Daten auf einem Mess-Server zu erhalten, ist ein lighttpd Webserver installiert.
+Mit Hilfe eines Web Servers ist es auch lokal möglich eine Übersicht über die gesammelten Daten auf einem Mess-Server zu erhalten. Als Schnittstelle steht ein WLAN Hotspot zur Verfügung.\\
+
+Als Webserver dient Lighttpd (auch: Lighty). Lighttpd ist laut \cite{bogus2008lighttpd} ein erweiterbarer, modularer, Single-Threaded, hoch hochperformanter Webserver, der selbst Apache oder Microsofts IIS in den meisten Einstellungen übertrifft. Besonders auf kleinen System mit begrenzten Ressourcen komme er häufig zum Einsatz. Trotzdem vertrauen auch große Webanbieter wie YouTube oder Wikipedia auf seine Effizienz.\\
+Zusätzlich sind das PHP und MySQL \ac{CGI} installiert um die Messergebnisse aus der Datenbank dynamisch darstellen zu können.
 \newpage
  
-\subsection{Datenbank}
+\subsection{Datenbank Server}
 \label{section_EntwurfDatenbank}
 
 Wie in vorangehenden Kapiteln bereits erwähnt, werden alle Messdaten und Betriebsparameter in einer MySQL-Daten abgelegt. Der Datenbankserver läuft auf dem BeagleBone Black und ist über das Netzwerk erreichbar.

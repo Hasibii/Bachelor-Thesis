@@ -1,19 +1,20 @@
 \chapter{Grundlagen}
 \label{chapter_Grundlagen}
 
-Bei der Entwicklung des Teststandes kommen verschiedene Systeme, Schnittstellen und Konzepte zum Einsatz. Dieses Kapitel befasst sich mit der C++ Klassenbibliothek Qt und der RS232 Schnittstelle. Des Weiteren wird auf das Konzept einer Datenbank und den Vergleich der beiden Datenbanksysteme MySQL und SQLite eingegangen.
+Bei der Entwicklung des Teststandes kommen verschiedene Systeme, Schnittstellen und Konzepte zum Einsatz. Dieses Kapitel befasst sich mit der C++ Klassenbibliothek Qt, der Degradation und dem Embedded-Linux-System. Des Weiteren wird auf das Konzept einer Datenbank und der Evaluierung der beiden Datenbanksysteme MySQL und SQLite eingegangen.
 
 \section{Degradation}
 \label{section_Degradation}
 Der Hauptgrund für mechanisches Versagen im Lebenszyklus eines Systems oder Bauelementes, liegt an der langsamen Ansammlung von nicht reversiblen Schäden. Dieser Prozess ist bekannt als Degradation, vgl. \cite{zhou2011}:1586.\\
 Die Schwierigkeit liegt in der Feststellung des mechanischen Versagen in messbaren Schritten. So ist die Bestimmung der Lebenszeit über die Zeit bis zum Ausfall zeitaufwändig. Einfacher ist es die Leistung des Bauelementes oder Systems zu erfassen, z.B. die optische Leistung einer LED. Auf diesem Weg kann ein Trend ausgemacht werden.\\
-Um die Länge des Lebenszyklus eines Bauelementes bestimmen zu können, wird die Leistung dessen unter Last über einen langen Zeitraum hinweg aufgezeichnet. Anhand der daraus resultierenden Daten kann die zu erwartende Länge des Lebenszyklus ermittelt werden.
+Um die Länge des Lebenszyklus eines Bauelementes bestimmen zu können, wird die Leistung dessen unter Last über einen langen Zeitraum hinweg aufgezeichnet. Anhand der daraus resultierenden Daten kann die zu erwartende Länge des Lebenszyklus ermittelt werden.\\
+In Abbildung \ref{figure_Degradation} ist ein Beispiel für erfasste Daten zu sehen. Sie zeigt die Veränderung der optischen Leistung über die Zeit. 
 
  
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{img/general/Degradation.png}
-\caption{Beispiel Degradation}
+\caption{Aufgezeichnete Degradation von verschiedenen LEDs. Zeigt die relative Abweichung der optischen Leistung über die Zeit.}
 \label{figure_Degradation}
 \end{center}
 \end{figure}

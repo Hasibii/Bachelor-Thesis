@@ -14,6 +14,13 @@
   --
 \newblock ISBN 9783540273707
 
+\bibitem[Bog08]{bogus2008lighttpd}
+\textsc{Bogus}, A.:
+\newblock \emph{Lighttpd}.
+\newblock Packt Publishing, Limited, 2008 (From Technologies to Solutions).
+\newblock \url{https://books.google.de/books?id=aId-yw-3gSoC}. --
+\newblock ISBN 9781847192110
+
 \bibitem[SGD09]{schroeder2009embedded}
 \textsc{Schr{\"o}der}, J. ; \textsc{Gockel}, T.  ; \textsc{Dillmann}, R.:
 \newblock \emph{Embedded Linux:}.

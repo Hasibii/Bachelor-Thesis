@@ -1,7 +1,7 @@
 
 \chapter{Anforderungsanalyse}
 \label{chapter_Anforderungsanalyse}
-Das Ziel dieser Arbeit ist es, einen Teststand entwickeln, der über die Messung der Degradation von optoelektronischen Sendern. Dadurch soll eine Qualifizierung der Bauelemente erfolgen. In diesem Kapitel wird zunächst das Szenario näher beschrieben und anschließend die sich daraus entwickelnden Anforderungen definiert.
+Das Ziel dieser Arbeit ist es, einen Teststand zu entwickeln, der die Messung der Degradation von optoelektronischen Sendern ermöglicht. Dadurch soll eine Qualifizierung der Bauelemente erfolgen. In diesem Kapitel wird zunächst das Szenario näher beschrieben und anschließend die sich daraus entwickelnden Anforderungen definiert.
 
 \section{Szenario}
 Ein Unternehmen stellt verschiedene optoelektronischen Sensoren her. Zur Sicherstellung der Zuverlässigkeit der verwendeten \acp{LED} sollen diese mittels eines automatisierten Teststandes bezüglich ihres Degradationsverhaltens qualifiziert werden.
@@ -60,10 +60,9 @@ Dieses System war zum großen Teil bereits gegeben, so dass lediglich die Übert
 
 
 Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt (siehe Abbildung \ref{figure_Beagleboneblack}). Dabei handelt es sich um einen kostengünstigen Einplatinencomputer mit offener Hardware. Damit ist es möglich, das BeagleBone Black auf individuelle Anforderungen anzupassen und selbst herzustellen. Auch gibt es eine große Community, die ständig die Entwicklung vorantreibt.
-Er arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher. Als Spannungsversorgung dient ein 5V 2A Netzteil.
+Die aktuelle Revision arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher. Als Spannungsversorgung dient ein 5V 2A Netzteil.
 
-Trotz der Kompaktheit des BeagleBone Black, bietet er ein ausreichendes Maß an Performance. Auf ihm kommt ein eingebettetes Debian-GNU/Linux Betriebssystem (sieht Abschnitt \ref{section_EmbeddedLinux}) zum Einsatz. Damit ist es möglich die umfangreichen Debian-Funktionen wie die Paketverwaltung zu nutzen. Es bietet auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu besteht und somit einfacher nutzbar ist (vgl. \cite{schroeder2009embedded}).\\
-Außerdem sind Linux Mechanismen einfach nutzbar. So kann das RS232 Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden.
+Trotz der Kompaktheit des BeagleBone Black, bietet er ein ausreichendes Maß an Performance. Auf ihm kommt ein eingebettetes Debian-GNU/Linux Betriebssystem (sieht Abschnitt \ref{section_EmbeddedLinux}) zum Einsatz. \cite{schroeder2009embedded} sagt, dass es dadurch möglich ist die umfangreichen Linux-Funktionen wie die Paketverwaltung zu nutzen. Es biete auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu bestehe und somit die Linux Mechanismen einfach nutzbar seien. So kann das RS232 Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden (sieht Abschnitt \ref{section_EmbeddedLinux}).
 
 Für die Kommunikation mit den anderen Akteuren im System, muss ein RS232 Bussystem und eine Ethernet Schnittstelle realisiert werden. Des Weiteren soll ein MySQL Datenbankserver auf dem Mess-Server die effiziente Verwaltung von Daten übernehmen.
 

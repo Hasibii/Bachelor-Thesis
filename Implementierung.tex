@@ -5,6 +5,12 @@
 
 \section{Software}
 
+
+Das Softwaredesign teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
+Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.\ 
+
+
+
 entwicklungsumgebung toolchain compiler linaro debugger usw. 
 
 ssh terminal
@@ -26,4 +32,8 @@ logrotate für logfiles
 hw clock aktualisierung bei ntp verbindung
 
 start up script zum starten , registriert uart4 und rtc cape
-\section{Anwendung zur Messdatenauswertung}
+
+stromverbrauch display, wlan brauch netzteil
+
+Captive Portal
+\subsection{Anwendung zur Messdatenauswertung}

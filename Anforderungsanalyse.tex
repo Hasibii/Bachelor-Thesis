@@ -27,10 +27,6 @@ Die Akteure des Systems sind der Mess-Server, Mess-Client und PC-Client. Im Zuge
 
 \subsection{Mess-Client}
 \label{section_Mess-Client}
-
-Das Herzstück des Mess-Clients bildet ein STM8 8-Bit Mikrocontroller der Firma STMicroelectronics.
-Auf jedem Mess-Client sind 64 \acp{DUT} befestigt. In zyklischen Abständen werden die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\\
-Dieses System war zum großen Teil bereits gegeben, so dass lediglich die Übertragung der RS232 Schnittstelle geregelt werden musste. Dazu wurde ein Protokoll für die Kommunikation entworfen (sieht Abschnitt \ref{section_RS232_Protokoll}).
  
  \begin{figure}[!htb]
 \minipage{0.48\textwidth}
@@ -43,9 +39,11 @@ Dieses System war zum großen Teil bereits gegeben, so dass lediglich die Übert
 \endminipage
 \end{figure}
 
+Das Herzstück des Mess-Clients (siehe Abbildung \ref{figure_DegraBoardBottom} und \ref{figure_DegraBoardTop})  bildet ein STM8 8-Bit Mikrocontroller der Firma STMicroelectronics.
+Auf jedem Mess-Client sind 64 \acp{DUT} befestigt. In zyklischen Abständen werden die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\\
+Dieses System war zum großen Teil bereits gegeben, so dass lediglich die Übertragung der RS232 Schnittstelle geregelt werden musste. Dazu wurde ein Protokoll für die Kommunikation entworfen (sieht Abschnitt \ref{section_RS232_Protokoll}).
 
-\textbf{------- Besondere RS232 chips, können RX hochohmig schalten. -------}
-
+Jedes dieser Mess-Clients wird vor dem Betrieb parametriert.
 
 \subsection{Mess-Server}
 \label{section_Mess-Server}

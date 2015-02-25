@@ -34,6 +34,13 @@
 \newblock mitp, 2010 (Biber-Buch). --
 \newblock ISBN 9783826690570
 
+\bibitem[Wir]{LinuxWireless}
+\textsc{Wireless}, Linux:
+\newblock \emph{hostapd Linux documentation page}.
+\newblock
+  \url{https://wireless.wiki.kernel.org/en/users/documentation/hostapd}. --
+\newblock Zugriff am 25.02.2015
+
 \bibitem[YMBYG08]{yaghmour2008building}
 \textsc{Yaghmour}, K. ; \textsc{Masters}, J. ; \textsc{Ben-Yossef}, G.  ;
   \textsc{Gerum}, P.:

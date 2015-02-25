@@ -72,3 +72,10 @@
   Url                      = {http://dx.doi.org/10.1214/10-AOAS448}
 }
 
+@Misc{LinuxWireless,
+  Note                     = {Zugriff am 25.02.2015},
+
+  Timestamp                = {26.01.2015},
+  Url                      = {https://wireless.wiki.kernel.org/en/users/documentation/hostapd}
+}
+

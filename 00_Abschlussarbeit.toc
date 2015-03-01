@@ -18,30 +18,30 @@
 \contentsline {chapter}{\numberline {3}Anforderungsanalyse}{8}{chapter.3}
 \contentsline {section}{\numberline {3.1}Szenario}{8}{section.3.1}
 \contentsline {section}{\numberline {3.2}Analyse}{9}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Mess-Client}{9}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Mess-Server}{10}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.1}Mess-Server}{9}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Mess-Client}{10}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}PC-Client}{10}{subsection.3.2.3}
 \contentsline {section}{\numberline {3.3}Anforderungen}{11}{section.3.3}
-\contentsline {chapter}{\numberline {4}Design}{13}{chapter.4}
-\contentsline {section}{\numberline {4.1}\IeC {\"U}bersicht}{13}{section.4.1}
-\contentsline {section}{\numberline {4.2}Hardware}{14}{section.4.2}
-\contentsline {section}{\numberline {4.3}Software}{16}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Mess-Client Verwaltung}{16}{subsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.1.1}Mess-Client Anmeldung}{16}{subsubsection.4.3.1.1}
-\contentsline {subsubsection}{\numberline {4.3.1.2}Messdatenerfassung}{17}{subsubsection.4.3.1.2}
-\contentsline {subsection}{\numberline {4.3.2}Benutzeroberfl\IeC {\"a}che}{19}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}TCP/UDP Server}{20}{subsection.4.3.3}
-\contentsline {subsection}{\numberline {4.3.4}Web Server und WLAN Hotspot}{21}{subsection.4.3.4}
-\contentsline {subsection}{\numberline {4.3.5}Datenbank Server}{22}{subsection.4.3.5}
-\contentsline {subsubsection}{\numberline {4.3.5.1}Tabellen}{23}{subsubsection.4.3.5.1}
-\contentsline {section}{\numberline {4.4}RS232 Protokoll}{27}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}Aufbau}{28}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Befehle und Unterbefehle}{31}{subsection.4.4.2}
-\contentsline {chapter}{\numberline {5}Implementieruung}{32}{chapter.5}
-\contentsline {section}{\numberline {5.1}Hardware}{32}{section.5.1}
-\contentsline {section}{\numberline {5.2}Software}{32}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Anwendung zur Messdatenauswertung}{33}{subsection.5.2.1}
-\contentsline {chapter}{\numberline {6}Testen und Validieren}{34}{chapter.6}
-\contentsline {section}{\numberline {6.1}Valgrind}{34}{section.6.1}
-\contentsline {chapter}{\numberline {7}Fazit und Ausblick}{35}{chapter.7}
+\contentsline {chapter}{\numberline {4}Design}{14}{chapter.4}
+\contentsline {section}{\numberline {4.1}\IeC {\"U}bersicht}{14}{section.4.1}
+\contentsline {section}{\numberline {4.2}Hardware}{15}{section.4.2}
+\contentsline {section}{\numberline {4.3}Software}{17}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Mess-Client Verwaltung}{17}{subsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.1.1}Mess-Client Anmeldung}{17}{subsubsection.4.3.1.1}
+\contentsline {subsubsection}{\numberline {4.3.1.2}Messdatenerfassung}{18}{subsubsection.4.3.1.2}
+\contentsline {subsection}{\numberline {4.3.2}Benutzeroberfl\IeC {\"a}che}{20}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}TCP/UDP Server}{21}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Web Server und WLAN Hotspot}{22}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Datenbank Server}{23}{subsection.4.3.5}
+\contentsline {subsubsection}{\numberline {4.3.5.1}Tabellen}{24}{subsubsection.4.3.5.1}
+\contentsline {section}{\numberline {4.4}RS232 Protokoll}{28}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Aufbau}{29}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Befehle und Unterbefehle}{32}{subsection.4.4.2}
+\contentsline {chapter}{\numberline {5}Implementieruung}{33}{chapter.5}
+\contentsline {section}{\numberline {5.1}Hardware}{33}{section.5.1}
+\contentsline {section}{\numberline {5.2}Software}{33}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Anwendung zur Messdatenauswertung}{34}{subsection.5.2.1}
+\contentsline {chapter}{\numberline {6}Testen und Validieren}{35}{chapter.6}
+\contentsline {section}{\numberline {6.1}Valgrind}{35}{section.6.1}
+\contentsline {chapter}{\numberline {7}Fazit und Ausblick}{36}{chapter.7}
 \contentsline {chapter}{Literaturverzeichnis}{i}{section*.60}

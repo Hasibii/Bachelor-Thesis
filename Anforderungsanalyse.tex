@@ -25,6 +25,25 @@ Von einem PC-Client wird dann auf den Mess-Server zugegriffen um die Daten abzug
 Die Akteure des Systems sind der Mess-Server, Mess-Client und PC-Client. Im Zuge dieser Arbeit soll der Mess-Server realisiert werden. Wobei die Interaktionsfähigkeit mit den anderen Akteuren sichergestellt werden muss.
 
 
+\subsection{Mess-Server}
+\label{section_Mess-Server}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{img/general/BeagleBoneBlack.png}
+\caption{BeagleBone Black}
+\label{figure_Beagleboneblack}
+\end{center}
+\end{figure}
+
+
+Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt (siehe Abbildung \ref{figure_Beagleboneblack}). Dabei handelt es sich um einen kostengünstigen Einplatinencomputer mit offener Hardware. Damit ist es möglich, das BeagleBone Black auf individuelle Anforderungen anzupassen und selbst herzustellen. Auch gibt es eine große Community, die ständig die Entwicklung vorantreibt.
+Die aktuelle Revision C arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher. Als Spannungsversorgung dient ein 5V 2A Netzteil. Trotz der Kompaktheit des BeagleBone Black, bietet er somit trotzdem ein ausreichendes Maß an Performance.\\
+Auf ihm kommt ein eingebettetes Debian-GNU/Linux Betriebssystem (sieht Abschnitt \ref{section_EmbeddedLinux}) zum Einsatz. Wie auch \cite{schroeder2009embedded} sagt, ist es dadurch möglich die umfangreichen Linux-Funktionen wie die Paketverwaltung zu nutzen. Es bietet auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu besteht und somit die Linux Mechanismen einfach nutzbar sind. So kann das RS232 Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden (sieht Abschnitt \ref{section_EmbeddedLinux}).
+
+Für die Kommunikation mit den anderen Akteuren im System, muss ein RS232 Bussystem und eine Ethernet Schnittstelle realisiert werden. Des Weiteren soll ein MySQL Datenbankserver auf dem Mess-Server die effiziente Verwaltung von Daten übernehmen. Zusätzlich wird eine Statusanzeige zur Überwachung des Mess-Servers entwickelt.
+
+
 \subsection{Mess-Client}
 \label{section_Mess-Client}
  
@@ -39,38 +58,17 @@ Die Akteure des Systems sind der Mess-Server, Mess-Client und PC-Client. Im Zuge
 \endminipage
 \end{figure}
 
-Das Herzstück des Mess-Clients (siehe Abbildung \ref{figure_DegraBoardBottom} und \ref{figure_DegraBoardTop})  bildet ein STM8 8-Bit Mikrocontroller der Firma STMicroelectronics.
-Auf jedem Mess-Client sind 64 \acp{DUT} befestigt. In zyklischen Abständen werden die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\\
-Dieses System war zum großen Teil bereits gegeben, so dass lediglich die Übertragung der RS232 Schnittstelle geregelt werden musste. Dazu wurde ein Protokoll für die Kommunikation entworfen (sieht Abschnitt \ref{section_RS232_Protokoll}).
+Ein Mess-Client (auch: Degradations Board) ist eine Leiterplatte auf der sich 64 optische Sensoren zur Messung von optischen Signalen befinden (siehe Abbildung \ref{figure_DegraBoardBottom} und \ref{figure_DegraBoardTop}). Auf jedem Mess-Client können somit bis zu 64 Prüfobjekte befestigt werden. In zyklischen Abständen werden mittels eines Mikrocontrollers die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\\
 
-Jedes dieser Mess-Clients wird vor dem Betrieb parametriert.
-
-\subsection{Mess-Server}
-\label{section_Mess-Server}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.6\textwidth]{img/general/BeagleBoneBlack.png}
-\caption{BeagleBone Black}
-\label{figure_Beagleboneblack}
-\end{center}
-\end{figure}
-
-
-Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt (siehe Abbildung \ref{figure_Beagleboneblack}). Dabei handelt es sich um einen kostengünstigen Einplatinencomputer mit offener Hardware. Damit ist es möglich, das BeagleBone Black auf individuelle Anforderungen anzupassen und selbst herzustellen. Auch gibt es eine große Community, die ständig die Entwicklung vorantreibt.
-Die aktuelle Revision arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher. Als Spannungsversorgung dient ein 5V 2A Netzteil.
-
-Trotz der Kompaktheit des BeagleBone Black, bietet er ein ausreichendes Maß an Performance. Auf ihm kommt ein eingebettetes Debian-GNU/Linux Betriebssystem (sieht Abschnitt \ref{section_EmbeddedLinux}) zum Einsatz. \cite{schroeder2009embedded} sagt, dass es dadurch möglich ist die umfangreichen Linux-Funktionen wie die Paketverwaltung zu nutzen. Es biete auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu bestehe und somit die Linux Mechanismen einfach nutzbar seien. So kann das RS232 Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden (sieht Abschnitt \ref{section_EmbeddedLinux}).
-
-Für die Kommunikation mit den anderen Akteuren im System, muss ein RS232 Bussystem und eine Ethernet Schnittstelle realisiert werden. Des Weiteren soll ein MySQL Datenbankserver auf dem Mess-Server die effiziente Verwaltung von Daten übernehmen.
 
 \subsection{PC-Client}
 \label{section_PC-Client}
-Der PC-Client stellt eine Qt Desktopanwendung mit \ac{GUI} zur Auswertung der Messdaten dar. Über das Netzwerk ruft er die Messdaten von dem Mess-Server ab. 
+Der PC-Client stellt eine Qt Desktop-Anwendung mit einer Benutzeroberfläche zur Auswertung der Messdaten dar, die nicht im Rahmen dieser Bachelorarbeit entwickelt wird. Über die Ethernet Schnittstelle ruft er die Messdaten von dem Mess-Server ab und bereitet sie zur genaueren Auswertung grafisch auf.\\
+Außerdem werden über die Desktop-Anwendung die Mess-Clients parametriert. Dafür wird ein Mess-Client lokal über die RS232 Schnittstelle an den PC-Client angeschlossen. Dies ist notwendig da einige Parameter in Abhängigkeit von den Prüfobjekten kalibriert werden müssen.\\
+Im laufenden Betrieb können die Mess-Clients von einem PC-Client aus per Fernzugriff verwaltet werden. Dies beinhaltet die Änderung der Parametrierung und das Auslesen der Messdaten. Dafür werden auf dem Mess-Client persistent Parameter gespeichert, welche über die RS232 Schnittstelle geschrieben und ausgelesen werden können.
 
 
 \section{Anforderungen}
-
 Folgende Anforderungen werden dabei an das System gestellt:
 \begin{itemize}
 \item Individuelle Parametrierung der \acp{DUT}

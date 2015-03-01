@@ -182,12 +182,12 @@ Das Ergebnis 0 repräsentiert einen gültigen Rahmen und die Checksummenprüfung
 \subsection{Befehle und Unterbefehle}
 
 Für die Funktion des Systems sind verschiedene Befehle notwendig. Sie dienen zu Kommunikation zwischen den Akteuren.
-Eine Übersicht über die vorhandenen Befehle findet sich in Tabelle \ref{table_RS232Commands}.
+Eine Übersicht über die vorhandenen Befehle der RS232 Schnittstelle findet sich in Tabelle \ref{table_RS232Commands}.\\
 
 \begin{table}[H]
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|c|X|c|}\hline 
- Command & Code & Subcommand & Datenbytes \\ \hline
+ Command & Code & Subcommand & Datenbytes \\ \hline \hline
  ADC-Value & 0x00 & MUX-Kanal (0..63) & 2  \\ \hline
  Number Of Pulses & 0x04 & - & 1  \\ \hline
  Pulsewidth and -period & 0x05 & Pulsnummer (1..20) & 4  \\ \hline
@@ -203,4 +203,6 @@ Eine Übersicht über die vorhandenen Befehle findet sich in Tabelle \ref{table_
 \label{table_RS232Commands}
 \end{center}
 \end{table}
+
+
 

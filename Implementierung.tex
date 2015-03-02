@@ -5,10 +5,11 @@
 
 \section{Software}
 
+Die Installation der Linux Software erfolgt mittels des Terminalemulator PuTTY \cite{putty}. Mit \mbox{PuTTY} wird eine \ac{SSH} Verbindung zu dem BeagleBone Black aufgebaut, wodurch ein direkter Zugriff auf das Linux Terminal des BeagleBone Black möglich ist. Mit dem Linux Paketmanager kann bei aktiver Internetverbindung die benötigte Software installiert werden.\ 
 
-Bei der Implementierung der eigenen Software wird wie in Kapitel \ref{chapter_Design} erwähnt, die Qt C++ Klassenbibliothek in der Version 4.8.6 verwendet. Für die komfortable Programmierung eignet sich der Qt Creator als Entwicklungsumgebung sehr gut. Er bietet die Möglichkeit direkt in der Entwicklungsumgebung eine Toolchain einzurichten. Diese erlaubt eine Programmierung des Codes auf einem normalen Windows Rechner, wobei der Code anschließend automatisch übersetzt und auf dem Zielsystem installiert wird. Verwendet wird dabei ein frei verfügbarer \ac{GCC}.\\
-
-
+Bei der Implementierung der eigenen Software wird wie in Kapitel \ref{chapter_Design} erwähnt, die Qt C++ Klassenbibliothek in der Version 4.8.6 verwendet. Für die komfortable Programmierung eignet sich der Qt Creator als Entwicklungsumgebung sehr gut. Er bietet die Möglichkeit direkt in der Entwicklungsumgebung eine Toolchain einzurichten. Diese erlaubt eine Programmierung des Codes auf einem normalen Windows Rechner, wobei der Code anschließend automatisch übersetzt und auf dem Zielsystem über eine \ac{SSH} Verbindung installiert wird. Verwendet wird dabei ein frei verfügbarer \ac{GCC}.\\
+Das Steuerungssoftware teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
+Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe Abschnitt \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.
 
 \subsection{Systemstart}
 
@@ -27,7 +28,7 @@ RestartSec=30
 WantedBy=multi-user.target
 \end{lstlisting}
 
-Im Quellcode \ref{lst_SystemdService} ist die Konfiguration des Services zu sehen. Er wird beim Systemstart automatisch gestartet und führt anschließend ein Script aus, dass das System konfiguriert und die Qt Anwendung startet. Des Weiteren wird der Service automatisch erneut ausgeführt, falls ein Fehler, der die Qt Anwendung beendet, auftritt. Dadurch soll sichergestellt werden, dass das System jederzeit verfügbar ist.\\
+Im Quellcode \ref{lst_SystemdService} ist die Konfiguration des Services zu sehen. Er wird beim Systemstart automatisch gestartet und führt anschließend ein Script aus, dass das System konfiguriert und die Qt Anwendung startet. Des Weiteren wird der Service automatisch erneut ausgeführt, falls ein Fehler, der die Qt Anwendung beendet, auftritt. Dadurch soll sichergestellt werden, dass das System jederzeit verfügbar ist.\ 
 
 Das Systemstart Script initialisiert zunächst das RS232 Cape, das \ac{RTC} Cape und die Systemuhr. Anschließend führt es die Qt Anwendung aus.\\ 
 
@@ -65,10 +66,14 @@ Im Quellcode \ref{lst_Logrotate} ist die entsprechende Konfiguration zu sehen. D
 
 
 
+\subsection{RS232 Kommunikation}
+
+\subsection{Benutzeroberfläche}
 
 
 
-ssh terminal
+
+
 
 
 
@@ -93,8 +98,7 @@ stromverbrauch display, wlan brauch netzteil
 
 Captive Portal
 
-Das Softwaredesign teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
-Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.\ 
+
 
 
 \subsection{Anwendung zur Messdatenauswertung}

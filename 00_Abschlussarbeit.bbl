@@ -33,6 +33,12 @@
 \newblock \url{http://www.linux-praxis.de/lpic1/manpages/logrotate.html}. --
 \newblock Zugriff am 02.03.2015
 
+\bibitem[QtP]{putty}
+\textsc{QtProject}:
+\newblock \emph{Qt}.
+\newblock \url{http://qt-project.org/}. --
+\newblock Zugriff am 02.03.2015
+
 \bibitem[SGD09]{schroeder2009embedded}
 \textsc{Schr{\"o}der}, J. ; \textsc{Gockel}, T.  ; \textsc{Dillmann}, R.:
 \newblock \emph{Embedded Linux:}.

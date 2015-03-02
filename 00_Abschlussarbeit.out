@@ -40,8 +40,10 @@
 \BOOKMARK [1][-]{section.5.1}{5.1 Hardware}{chapter.5}% 40
 \BOOKMARK [1][-]{section.5.2}{5.2 Software}{chapter.5}% 41
 \BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Systemstart}{section.5.2}% 42
-\BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 Anwendung zur Messdatenauswertung}{section.5.2}% 43
-\BOOKMARK [0][-]{chapter.6}{6 Testen und Validieren}{}% 44
-\BOOKMARK [1][-]{section.6.1}{6.1 Valgrind}{chapter.6}% 45
-\BOOKMARK [0][-]{chapter.7}{7 Fazit und Ausblick}{}% 46
-\BOOKMARK [0][-]{section*.62}{Literaturverzeichnis}{}% 47
+\BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 RS232 Kommunikation}{section.5.2}% 43
+\BOOKMARK [2][-]{subsection.5.2.3}{5.2.3 Benutzeroberfl\344che}{section.5.2}% 44
+\BOOKMARK [2][-]{subsection.5.2.4}{5.2.4 Anwendung zur Messdatenauswertung}{section.5.2}% 45
+\BOOKMARK [0][-]{chapter.6}{6 Testen und Validieren}{}% 46
+\BOOKMARK [1][-]{section.6.1}{6.1 Valgrind}{chapter.6}% 47
+\BOOKMARK [0][-]{chapter.7}{7 Fazit und Ausblick}{}% 48
+\BOOKMARK [0][-]{section*.63}{Literaturverzeichnis}{}% 49

@@ -13,3 +13,9 @@ A level-1 auxiliary file: 40_Testen_und_Validieren.aux
 A level-1 auxiliary file: part/04_abschlussbetrachtung.aux
 A level-1 auxiliary file: appendix/appendix.aux
 Database file #1: Literatur.bib
+Repeated entry---line 75 of file Literatur.bib
+ : @misc{putty
+ :            ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "QtProject"
+(There was 1 error message)

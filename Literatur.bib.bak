@@ -81,6 +81,15 @@
   Url                      = {http://wiki.ubuntuusers.de/PuTTY}
 }
 
+@Misc{valgrind,
+  Title                    = {Valgrind},
+
+  Author                   = {Valgrind.org},
+  Note                     = {Zugriff am 02.03.2015},
+
+  Url                      = {http://valgrind.org/}
+}
+
 @Misc{LinuxWireless,
   Title                    = {hostapd Linux documentation page},
 

@@ -52,6 +52,12 @@
 \newblock mitp, 2010 (Biber-Buch). --
 \newblock ISBN 9783826690570
 
+\bibitem[Val]{valgrind}
+\textsc{Valgrind.org}:
+\newblock \emph{Valgrind}.
+\newblock \url{http://valgrind.org/}. --
+\newblock Zugriff am 02.03.2015
+
 \bibitem[Wir]{LinuxWireless}
 \textsc{Wireless}, Linux:
 \newblock \emph{hostapd Linux documentation page}.

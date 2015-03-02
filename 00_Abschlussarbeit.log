@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  2 MAR 2015 16:27
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  2 MAR 2015 18:43
 entering extended mode
 **00_Abschlussarbeit.tex
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\00_Abschlussarbeit.tex
@@ -1361,7 +1361,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 6.
  (C:\MikTex\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<img/general/unilogo.png, id=199, 174.1707pt x 41.4348pt>
+<img/general/unilogo.png, id=203, 174.1707pt x 41.4348pt>
 File: img/general/unilogo.png Graphic file (type png)
 
 <use img/general/unilogo.png>
@@ -1418,22 +1418,26 @@ l.298 \include{03_Sperrvermerk}
 
 ]
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\04_Vorwort.tex
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 7.
+Underfull \hbox (badness 10000) in paragraph at lines 5--6
 
-(C:\MikTex\tex\latex\psnfss\t1ppl.fd
-File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
-)
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <24.16841> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 7.
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <34.5293> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 7.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--9
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--12
+
+ []
+
 )pdfTeX warning (ext4): destination with the same identifier (name{page.A}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.299 \include{04_Vorwort}
                            [1
-
 
 
 ]
@@ -1519,7 +1523,7 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
 
 ] (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Grundlagen.tex
 Kapitel 2.
-<img/general/Degradation.png, id=446, 1138.2525pt x 578.16pt>
+<img/general/Degradation.png, id=451, 1138.2525pt x 578.16pt>
 File: img/general/Degradation.png Graphic file (type png)
 
 <use img/general/Degradation.png>
@@ -1565,7 +1569,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 52--54
 
  []
 
-<img/general/QtCreator.png, id=466, 963.6pt x 770.88pt>
+<img/general/QtCreator.png, id=471, 963.6pt x 770.88pt>
 File: img/general/QtCreator.png Graphic file (type png)
 
 <use img/general/QtCreator.png>
@@ -1597,7 +1601,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
-<img/general/Kernel_Hardware_Layer.pdf, id=501, 852.18375pt x 274.02374pt>
+<img/general/Kernel_Hardware_Layer.pdf, id=506, 852.18375pt x 274.02374pt>
 File: img/general/Kernel_Hardware_Layer.pdf Graphic file (type pdf)
 
 <use img/general/Kernel_Hardware_Layer.pdf>
@@ -1610,7 +1614,7 @@ e_Layer.pdf>]
 Kapitel 3.
 Package acronym Info: Label `acro:LED' newly defined as it shall be overridden
 although it is yet undefined on input line 7.
-<img/general/Szenario.png, id=510, 757.83125pt x 620.3175pt>
+<img/general/Szenario.png, id=515, 757.83125pt x 620.3175pt>
 File: img/general/Szenario.png Graphic file (type png)
 
 <use img/general/Szenario.png>
@@ -1628,25 +1632,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--22
 
 
  <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/Szenario.png>]
-<img/general/BeagleBoneBlack.png, id=518, 732.8178pt x 424.9476pt>
+<img/general/BeagleBoneBlack.png, id=523, 427.8384pt x 230.5413pt>
 File: img/general/BeagleBoneBlack.png Graphic file (type png)
 
 <use img/general/BeagleBoneBlack.png>
 Package pdftex.def Info: img/general/BeagleBoneBlack.png used on input line 33.
 
-(pdftex.def)             Requested size: 281.68513pt x 163.34271pt.
+(pdftex.def)             Requested size: 281.68513pt x 151.79187pt.
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
  [9 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/BeagleBoneBlack
 .png (PNG copy)>]
-<img/general/DegraBoardTop.jpg, id=528, 832.5504pt x 555.0336pt>
+<img/general/DegraBoardTop.jpg, id=533, 832.5504pt x 555.0336pt>
 File: img/general/DegraBoardTop.jpg Graphic file (type jpg)
 
 <use img/general/DegraBoardTop.jpg>
 Package pdftex.def Info: img/general/DegraBoardTop.jpg used on input line 52.
 (pdftex.def)             Requested size: 225.34381pt x 150.22523pt.
 
-<img/general/DegraBoardBottom.jpg, id=529, 3468.96pt x 2312.64pt>
+<img/general/DegraBoardBottom.jpg, id=534, 3468.96pt x 2312.64pt>
 File: img/general/DegraBoardBottom.jpg Graphic file (type jpg)
 
 <use img/general/DegraBoardBottom.jpg>
@@ -1719,7 +1723,7 @@ Underfull \hbox (badness 3158) in paragraph at lines 130--130
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\30_Konzeptentwicklung.tex
 Kapitel 4.
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Mess-Server.tex
-<img/general/UebersichtMaster.pdf, id=558, 793.96625pt x 336.25626pt>
+<img/general/UebersichtMaster.pdf, id=563, 793.96625pt x 336.25626pt>
 File: img/general/UebersichtMaster.pdf Graphic file (type pdf)
 
 <use img/general/UebersichtMaster.pdf>
@@ -1731,21 +1735,21 @@ Package pdftex.def Info: img/general/UebersichtMaster.pdf used on input line 7.
 
 
 ]
-<img/general/CapeRS232.png, id=564, 457.71pt x 505.89pt>
+<img/general/CapeRS232.png, id=569, 457.71pt x 505.89pt>
 File: img/general/CapeRS232.png Graphic file (type png)
 
 <use img/general/CapeRS232.png>
 Package pdftex.def Info: img/general/CapeRS232.png used on input line 18.
 (pdftex.def)             Requested size: 150.23398pt x 166.04877pt.
 
-<img/general/CapeRTC.png, id=565, 457.71pt x 505.89pt>
+<img/general/CapeRTC.png, id=570, 457.71pt x 505.89pt>
 File: img/general/CapeRTC.png Graphic file (type png)
 
 <use img/general/CapeRTC.png>
 Package pdftex.def Info: img/general/CapeRTC.png used on input line 22.
 (pdftex.def)             Requested size: 150.23398pt x 166.04877pt.
 
-<img/general/CapeLCD.png, id=566, 457.71pt x 505.89pt>
+<img/general/CapeLCD.png, id=571, 457.71pt x 505.89pt>
 File: img/general/CapeLCD.png Graphic file (type png)
 
 <use img/general/CapeLCD.png>
@@ -1762,7 +1766,7 @@ ng> <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/CapeRTC.png> <C
 Package acronym Info: Label `acro:RTC' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 
-<img/general/GestapelteCapes.JPG, id=580, 3468.96pt x 2312.64pt>
+<img/general/GestapelteCapes.JPG, id=585, 3468.96pt x 2312.64pt>
 File: img/general/GestapelteCapes.JPG Graphic file (type jpg)
 
 <use img/general/GestapelteCapes.JPG>
@@ -1770,7 +1774,7 @@ Package pdftex.def Info: img/general/GestapelteCapes.JPG used on input line 41.
 
 (pdftex.def)             Requested size: 234.73523pt x 156.46698pt.
 
-<img/general/UebersichtMasterSoftware.pdf, id=581, 859.21pt x 366.36874pt>
+<img/general/UebersichtMasterSoftware.pdf, id=586, 859.21pt x 366.36874pt>
 File: img/general/UebersichtMasterSoftware.pdf Graphic file (type pdf)
 
 <use img/general/UebersichtMasterSoftware.pdf>
@@ -1786,7 +1790,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
 Package acronym Info: Label `acro:ADC' newly defined as it shall be overridden
 although it is yet undefined on input line 93.
-<img/general/Ablaufplan_Master.pdf, id=595, 384.43625pt x 643.40375pt>
+<img/general/Ablaufplan_Master.pdf, id=600, 384.43625pt x 643.40375pt>
 File: img/general/Ablaufplan_Master.pdf Graphic file (type pdf)
 
 <use img/general/Ablaufplan_Master.pdf>
@@ -1795,7 +1799,7 @@ Package pdftex.def Info: img/general/Ablaufplan_Master.pdf used on input line 9
 (pdftex.def)             Requested size: 234.73523pt x 392.86841pt.
  [18] [19 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/Ablaufpla
 n_Master.pdf>]
-<img/GUI/Server_GUI_Status1.png, id=617, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Status1.png, id=622, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Status1.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Status1.png>
@@ -1803,7 +1807,7 @@ Package pdftex.def Info: img/GUI/Server_GUI_Status1.png used on input line 119.
 
 (pdftex.def)             Requested size: 234.73523pt x 133.01443pt.
 
-<img/GUI/Server_GUI_Events1.png, id=619, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Events1.png, id=624, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Events1.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Events1.png>
@@ -1811,7 +1815,7 @@ Package pdftex.def Info: img/GUI/Server_GUI_Events1.png used on input line 131.
 
 (pdftex.def)             Requested size: 234.73523pt x 133.01443pt.
 
-<img/GUI/Server_GUI_Boards1.png, id=620, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Boards1.png, id=625, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Boards1.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Boards1.png>
@@ -1821,7 +1825,7 @@ Package pdftex.def Info: img/GUI/Server_GUI_Boards1.png used on input line 143.
  [20 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/GUI/Server_GUI_Status1
 .png> <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/GUI/Server_GUI_Events
 1.png>]
-<img/GUI/Server_GUI_Debug2.png, id=626, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Debug2.png, id=631, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Debug2.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Debug2.png>
@@ -1854,7 +1858,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
  []
 
-<img/general/ER_Diagramm.pdf, id=642, 844.15375pt x 733.74126pt>
+<img/general/ER_Diagramm.pdf, id=647, 844.15375pt x 733.74126pt>
 File: img/general/ER_Diagramm.pdf Graphic file (type pdf)
 
 <use img/general/ER_Diagramm.pdf>
@@ -1960,13 +1964,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
 
-[34] [35]) [36]
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+
+ []
+
+[35]
+
+LaTeX Warning: Reference `lst_MySQLIndexe' on page 36 undefined on input line 9
+4.
+
+) [36]
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\40_Testen_und_Validieren.tex
 Kapitel 6.
-
-Package natbib Warning: Citation `valgrind' on page 37 undefined on input line 
-10.
-
 )
 Underfull \hbox (badness 1077) in paragraph at lines 9--389
 \T1/ptm/m/n/12 Ein häu-fi-ger Grund für Per-for-man-ce-ein-bu-ÿen sind Spei-che
@@ -2001,6 +2011,13 @@ Underfull \hbox (badness 3439) in paragraph at lines 31--35
 $
  []
 
+
+Underfull \hbox (badness 1325) in paragraph at lines 56--60
+[]\T1/ptm/m/sc/12 Valgrind.org\T1/ptm/m/n/12 :  \T1/ptm/m/it/12 Val-grind\T1/pt
+m/m/n/12 .  [][]$\T1/pcr/m/n/12 http : / / valgrind . org/$[][]\T1/ptm/m/n/12 .
+ --  Zu-griff am
+ []
+
 [1
 
 
@@ -2012,13 +2029,13 @@ No file appendix/appendix.tex.
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 441.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 443.
 [3
 
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 441.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 443.
  (C:\Users\TNieter\Documents\git\Bachelor-Thesis\00_Abschlussarbeit.aux
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\01_Titel.aux)
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\02_Erklaerung.aux)
@@ -2032,45 +2049,38 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 441.
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\40_Testen_und_Validieren.aux)
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\part/04_abschlussbetrachtung.au
 x) (C:\Users\TNieter\Documents\git\Bachelor-Thesis\appendix/appendix.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 441.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 441.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 443.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 443.
+Package rerunfilecheck Info: File `00_Abschlussarbeit.out' has not changed.
+(rerunfilecheck)             Checksum: 131F56DE04026F5E6D4B2264CCC598CD;3376.
 
-
-Package rerunfilecheck Warning: File `00_Abschlussarbeit.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `00_Abschlussarbeit.out':
-(rerunfilecheck)             Before: 34E7667D96FC5CC67DB859BCFA9C4652;3294
-(rerunfilecheck)             After:  8E8B5AF18326674CA88FC8605FA638B2;3307.
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 441.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 443.
  ) 
 Here is how much of TeX's memory you used:
- 19950 strings out of 493921
- 295578 string characters out of 3154494
- 534184 words of memory out of 3000000
- 22408 multiletter control sequences out of 15000+200000
- 98474 words of font info for 103 fonts, out of 3000000 for 9000
+ 19959 strings out of 493921
+ 295742 string characters out of 3154494
+ 534229 words of memory out of 3000000
+ 22414 multiletter control sequences out of 15000+200000
+ 96185 words of font info for 100 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 57i,13n,78p,2231b,1955s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,13n,78p,2231b,1952s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/MikTex/fonts/enc/dvips/fontname/8r.enc}{C:/MikTex/fonts/enc/dvips/lm/lm-r
 m.enc}{C:/MikTex/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/MikTex/fonts/enc/dvips/lm
 /lm-mathit.enc}<C:/MikTex/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/MikTex/
 fonts/type1/public/lm/lmmi12.pfb><C:/MikTex/fonts/type1/public/lm/lmr17.pfb><C:
 /MikTex/fonts/type1/public/lm/lmsy10.pfb><C:/MikTex/fonts/type1/urw/courier/ucr
 r8a.pfb><C:/MikTex/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/MikTex/fonts/type1/u
-rw/palatino/uplb8a.pfb><C:/MikTex/fonts/type1/urw/times/utmb8a.pfb><C:/MikTex/f
-onts/type1/urw/times/utmr8a.pfb><C:/MikTex/fonts/type1/urw/times/utmr8a.pfb><C:
-/MikTex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00_Abschlussarbeit.pdf (52 pages, 21550002 bytes).
+rw/times/utmb8a.pfb><C:/MikTex/fonts/type1/urw/times/utmr8a.pfb><C:/MikTex/font
+s/type1/urw/times/utmr8a.pfb><C:/MikTex/fonts/type1/urw/times/utmri8a.pfb>
+Output written on 00_Abschlussarbeit.pdf (52 pages, 19545460 bytes).
 PDF statistics:
- 1065 PDF objects out of 1200 (max. 8388607)
- 232 named destinations out of 1000 (max. 500000)
- 493 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1074 PDF objects out of 1200 (max. 8388607)
+ 240 named destinations out of 1000 (max. 500000)
+ 501 words of extra memory for PDF output out of 10000 (max. 10000000)
 

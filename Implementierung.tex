@@ -1,4 +1,4 @@
-\chapter{Implementieruung}
+\chapter{Implementierung}
 \label{chapter_Implementierung}
 
 \section{Hardware}
@@ -66,8 +66,33 @@ Im Quellcode \ref{lst_Logrotate} ist die entsprechende Konfiguration zu sehen. D
 
 \subsection{RS232 Kommunikation}
 
+
 \subsection{Benutzeroberfläche}
 
+
+\subsection{Datenbank}
+
+Die Datenbank muss aus dem Netzwerk erreichbar sein, damit die Messdaten von einem PC-Client abgerufen werden können. Bei einem MySQL Server ist dies jedoch nicht von Grund auf gegeben. Standardmäßig akzeptiert der MySQL Server nur Anfragen über die Localhost Adresse (IP-Adresse: 127.0.0.1). Deshalb müssen die Zugriffsrechte erst erteilt werden.\\
+
+\begin{lstlisting}[caption={MySQL Zugriffsrechte},label=lst_MySQLZugriffsrechte]
+GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'toor';
+\end{lstlisting}
+
+Mit dem Befehl im Quellcode \ref{lst_MySQLZugriffsrechte} erhalten alle Nutzer die sich mit dem Benutzernamen \textit{root} und dem Passwort \textit{toor} identifizieren, vollen Zugriff auf alle Datenbanken. Somit ist es möglich von überall aus eine Verbindung zum Datenbankserver aufzubauen und sämtlichen Daten abzurufen.\\
+Jedoch entstehen dadurch Sicherheitsrisiken, da lediglich die Benutzernamen und Passwort Kombination einen Schutz gegen unerlaubten Zugriff bietet. Außerdem existieren keine Restriktionen für die Anfragen die an den MySQL Server gestellt werden können.\\
+
+
+Über einen langen Betriebszeitraum können sich große Mengen an Daten in der Datenbank ansammeln. Das hat zur Folge, dass die SQL-Abfragen nach nach bestimmten Daten sehr lange dauern können. Um dem Vorzubeugen werden Indexe für häufig abgefragte Daten erstellt.\\
+
+\begin{lstlisting}[caption={MySQL Indexe},label=lst_MySQLIndexe]
+
+CREATE INDEX measurement_time_idx on Measurement(Time);
+CREATE INDEX measurement_f_DUTid_idx on Measurement(f_DUTid);
+CREATE INDEX dut_f_boardid_idx on DUT(f_Boardid);
+\end{lstlisting}
+
+
+Der Quellcode \ref{lst_MySQLIndexe} zeigt die Erzeugung von drei Indices.
 
 
 
@@ -85,6 +110,8 @@ tcp server event gestuert
 rs232 timeouts messdatenerfassung
 
 datenbank index zur performanceverbesserung
+
+datenbank zugriff von außen direkt möglich
 
 LCD display energiesparmodus, wecken durch geste
 

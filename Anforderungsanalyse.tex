@@ -59,7 +59,17 @@ Für die Kommunikation mit den anderen Akteuren im System, muss ein RS232 Bussys
 \end{figure}
 
 Ein Mess-Client (auch: Degradations Board) ist eine Leiterplatte auf der sich 64 optische Sensoren zur Messung von optischen Signalen befinden (siehe Abbildung \ref{figure_DegraBoardBottom} und \ref{figure_DegraBoardTop}). Auf jedem Mess-Client können somit bis zu 64 Prüfobjekte befestigt werden. In zyklischen Abständen werden mittels eines Mikrocontrollers die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\\
+Des Weiteren steuert er die Prüfobjekte mit einem Pulsmuster (englisch: pulse pattern) an. Dieses Muster ist konfigurierbar und wird an die unterschiedlichen Prüfobjekte angepasst. Ein Pulsmuster besteht aus bis zu 20 verschiedenen Impulsen, die periodisch wiederholt werden.\\
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.35\textwidth]{img/general/Pulsepattern.PNG}
+\caption{Pulsmuster}
+\label{figure_Pulsepattern}
+\end{center}
+\end{figure}
 
+
+Außerdem ist die Vorverstärkung der \ac{ADC}, die die optischen Sensoren auslesen, konfigurierbar. Da verschiedene Prüfobjekte auch unterschiedliche Leistungsmerkmale besitzen, werden damit die gemessenen Größen normalisiert.
 
 \subsection{PC-Client}
 \label{section_PC-Client}
@@ -71,16 +81,17 @@ Im laufenden Betrieb können die Mess-Clients von einem PC-Client aus per Fernzu
 \section{Anforderungen}
 Folgende Anforderungen werden dabei an das System gestellt:
 \begin{itemize}
-\item Individuelle Parametrierung der \acp{DUT}
+\item Individuelle Parametrierung der Prüfobjekte
 \item Automatische Erfassung der Messdaten
 \item Fernzugriff auf den Mess-Server
 \end{itemize}
-\ \\
-\textbf{Individuelle Parametrierung der \acp{DUT}}\\
-Immer 64 \acp{DUT} befinden sich auf einem Mess-Client. Dabei sollen verschiedene Parameter für die \acp{DUT} berücksichtigt werden. 
-Zum einen sollen die Intervalle in denen Messwerte aufgenommen werden konfigurierbar sein. Dies soll in mindestens 3 verschiedenen Intervallen möglich sein.
+\ 
 
-Beispiel: 
+\textbf{Individuelle Parametrierung der Prüfobjekte}\\
+Immer 64 Prüfobjekte befinden sich auf einem Mess-Client. Dabei sollen verschiedene Parameter für die Prüfobjekte berücksichtigt werden. 
+Zum einen sollen die Intervalle in denen Messwerte aufgenommen werden konfigurierbar sein. Dies soll in mindestens 3 verschiedenen Intervallen möglich sein. In Tabelle \ref{table_Intervalle} ist ein Beispiel für die Messintervalle zu sehen. 
+
+ 
 
 \begin{table}[H]
 \begin{center}
@@ -88,14 +99,12 @@ Beispiel:
 Zeitraum & Zeit zwischen Messungen \\ \hline
 1. Woche & 12 Stunden\\ 
 2. bis 4. Woche & 2 Tage\\ 
-
 ab 5. Woche & 7 Tage\\ \hline
 \end{tabular}
-\caption{Intervalle}
+\caption{Beispiel: Intervalle}
 \label{table_Intervalle}
 \end{center}
 \end{table}
-
 
 
 Des Weiteren soll für jeden Mess-Client ein Pulsepattern definierbar sein. Dieses Pulsepattern wird dann als Versorgungssignal für die \acp{DUT} verwendet.
@@ -119,8 +128,7 @@ Art & Anforderung & Kommentar \\ \hline
 Nicht-Funktional & Das System soll jederzeit verfügbar sein. & Bei Fehlern soll das System ohne große Ausfallzeit wieder Einsatzbereit sein. Zuverlässigkeit ist sehr wichtig.\\ \hline
 Nicht-Funktional & Das Benutzerinterface soll zeitnah auf Anfragen reagieren. & Um Benutzerfreundlichkeit zu gewährleisten, soll auf Nutzeranfragen ohne lange Wartezeiten reagiert werden. \\ \hline
 Funktional & Das System soll das Degradationsverhalten eines \ac{DUT} aufnehmen & Hauptanforderung des Systems. Messdaten sollen zu einem \ac{DUT} gesammelt werden, um den Grad der Degradation bestimmen zu können. \\ \hline
-Funktional & Neue Mess-Clients sollen am PC-Client parametrierbar sein. & Parameter sollen auf dem Mess-Client und in einer Datenbank gespeichert werden. \\ \hline
-Funktional & Neue bereits parametrierte Mess-Clients sollen automatisch in das System integrierbar sein. & Ein parametrierter Mess-Client kann direkt an den Bus im Ofen angeschlossen werden.\\ \hline
+Funktional & Neue bereits parametrierte Mess-Clients sollen automatisch in das System integrierbar sein. & Ein parametrierter Mess-Client kann direkt an den Kommunikationsbus angeschlossen werden.\\ \hline
 Funktional & Zyklische Erfassung von Messdaten. & Intervalle der Messdatenerfassung sind konfigurierbar.\\ \hline
 Funktional & Messdaten sollen grafisch dargestellt werden. & Um die Daten auswerten zu können sollen sie grafisch aufbereitet werden.\\ \hline
 Funktional & Die Messdaten sollen in einer Datenbank abgelegt werden. & Zum einfachen und effizienten Zugriff auf die Daten.\\ \hline

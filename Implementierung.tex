@@ -79,20 +79,20 @@ GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'toor';
 \end{lstlisting}
 
 Mit dem Befehl im Quellcode \ref{lst_MySQLZugriffsrechte} erhalten alle Nutzer die sich mit dem Benutzernamen \textit{root} und dem Passwort \textit{toor} identifizieren, vollen Zugriff auf alle Datenbanken. Somit ist es möglich von überall aus eine Verbindung zum Datenbankserver aufzubauen und sämtlichen Daten abzurufen.\\
-Jedoch entstehen dadurch Sicherheitsrisiken, da lediglich die Benutzernamen und Passwort Kombination einen Schutz gegen unerlaubten Zugriff bietet. Außerdem existieren keine Restriktionen für die Anfragen die an den MySQL Server gestellt werden können.\\
+\\
 
 
 Über einen langen Betriebszeitraum können sich große Mengen an Daten in der Datenbank ansammeln. Das hat zur Folge, dass die SQL-Abfragen nach nach bestimmten Daten sehr lange dauern können. Um dem Vorzubeugen werden Indexe für häufig abgefragte Daten erstellt.\\
 
-\begin{lstlisting}[caption={MySQL Indexe},label=lst_MySQLIndexe]
+\begin{lstlisting}[caption={MySQL Index},label=lst_MySQLIndex]
 
 CREATE INDEX measurement_time_idx on Measurement(Time);
-CREATE INDEX measurement_f_DUTid_idx on Measurement(f_DUTid);
-CREATE INDEX dut_f_boardid_idx on DUT(f_Boardid);
+
 \end{lstlisting}
 
 
-Der Quellcode \ref{lst_MySQLIndexe} zeigt die Erzeugung von drei Indices.
+Der Quellcode \ref{lst_MySQLIndex} zeigt die Erzeugung eines Indexes. Der Index mit dem Namen \textit{measurement\_time\_idx} wird für die Spalte \textit{Time} in der Tabelle \textit{Measurement} angelegt. Vor Allem in der Tabelle \textit{Measurement} können sehr schnell große Mengen an Daten anfallen.\\
+Der Index für die Spalte \textit{Time} ist besonders gut geeignet. Denn um herauszufinden wann die letzte Messungen durchgeführt wurde, muss aus der Tabelle \textit{Measurement} das Messergebnis mit dem aktuellsten Zeitstempel ermittelt werden. Diese Abfrage kann bei 2 Millionen Einträgen ohne Index bis zu  2 Minuten dauern. Mit Index kann sie auf 4 Sekunden reduziert werden.
 
 
 

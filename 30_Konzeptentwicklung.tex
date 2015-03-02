@@ -1,37 +1,44 @@
 \chapter{Design}
 \label{chapter_Design}
 
-Im folgenden Kapitel wird auf die Erstellung des Konzeptes eingegangen.
+Im folgenden Kapitel wird auf das Design des Systems eingegangen. Zunächst wird auf den Aufbau der Hardware eingegangen. Anschließend wird sich näher mit dem Design und dem Aufbau der einzelnen Softwareelemente befasst. Zum Ende des Kapitels gibt es einen genaueren Einblick in die Gestaltung und den Aufbau des Protokoll für die RS232 Schnittstelle.
 
 \section{Übersicht}
 \label{section_Teststand}
 
-Das Gesamtsystem setzt sich aus drei Untersystemen zusammen:
+Das Gesamtsystem setzt sich aus drei Akteuren zusammen. Der folgenden Abschnitt gibt eine kurze Übersicht über die Hauptaufgaben der einzelnen Systeme.
 
 \begin{itemize}
-
-\item Mess-Client
-\begin{itemize}
-\item Übernimmt die lokale Ansteuerung der \acp{DUT}
-\item Nimmt Messdaten auf und stellt sie zur Verfügung
-\end{itemize}
 
 \item Mess-Server
 \begin{itemize}
-\item Verwaltet angeschlossene Mess-Clients
-\item Speichert alle Messdaten
-\item Bildet das Bindeglied zwischen Mess-Client und dem PC-Client
+\item Verwaltet angeschlossene Mess-Clients.
+\item Speichert alle Messdaten in einer Datenbank.
+\item Ermöglicht den Fernzugriff von einem PC-Client.
+\end{itemize}
+
+\item Mess-Client
+\begin{itemize}
+\item Übernimmt die lokale Ansteuerung der \acp{DUT}.
+\item Nimmt Messdaten auf und stellt sie zur Verfügung.
 \end{itemize}
 
 \item PC-Client
 \begin{itemize}
-\item Parametriert die Mess-Clients
-\item Wertet Messdaten aus und stellt sie leserlich da
+\item Parametriert die Mess-Clients.
+\item Wertet Messdaten aus und stellt sie leserlich da.
 \end{itemize}
 
 \end{itemize}
 
 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth ]{img/general/BlockPlan.pdf}
+\caption{Übersicht}
+\label{figure_Übersicht}
+\end{center}
+\end{figure}
 
 
 \input{Mess-Server}

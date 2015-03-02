@@ -6,14 +6,72 @@
 \section{Software}
 
 
-Das Softwaredesign teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
-Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.\ 
+Bei der Implementierung der eigenen Software wird wie in Kapitel \ref{chapter_Design} erwähnt, die Qt C++ Klassenbibliothek in der Version 4.8.6 verwendet. Für die komfortable Programmierung eignet sich der Qt Creator als Entwicklungsumgebung sehr gut. Er bietet die Möglichkeit direkt in der Entwicklungsumgebung eine Toolchain einzurichten. Diese erlaubt eine Programmierung des Codes auf einem normalen Windows Rechner, wobei der Code anschließend automatisch übersetzt und auf dem Zielsystem installiert wird. Verwendet wird dabei ein frei verfügbarer \ac{GCC}.\\
 
 
 
-entwicklungsumgebung toolchain compiler linaro debugger usw. 
+\subsection{Systemstart}
+
+Beim Hochfahren des Mess-Servers sorgt das Linux Hintergrundprogramm systemd für die Ausführung alle nötigen Prozesse. Um zusätzlich die Steuerungssoftware zu starten, wird ein neuer Service erstellt und dem systemd mitgeteilt.\\
+
+\begin{lstlisting}[caption={Systemd Service},label=lst_SystemdService]
+[Unit]
+Description=Boot Setup
+[Service]
+TimeoutStartSec=300
+EnvironmentFile=/etc/Bootsetup.conf
+ExecStart=/usr/bin/Bootsetup
+Restart=always
+RestartSec=30
+[Install]
+WantedBy=multi-user.target
+\end{lstlisting}
+
+Im Quellcode \ref{lst_SystemdService} ist die Konfiguration des Services zu sehen. Er wird beim Systemstart automatisch gestartet und führt anschließend ein Script aus, dass das System konfiguriert und die Qt Anwendung startet. Des Weiteren wird der Service automatisch erneut ausgeführt, falls ein Fehler, der die Qt Anwendung beendet, auftritt. Dadurch soll sichergestellt werden, dass das System jederzeit verfügbar ist.\\
+
+Das Systemstart Script initialisiert zunächst das RS232 Cape, das \ac{RTC} Cape und die Systemuhr. Anschließend führt es die Qt Anwendung aus.\\ 
+
+\begin{lstlisting}[caption={Systemstart Script},label=lst_SystemstartScript]
+#!/bin/bash
+echo BB-UART4 >/sys/devices/bone_capemgr.*/slots
+echo BBB-RTC-01:00A1 >/sys/devices/bone_capemgr.*/slots
+sleep 60
+hwclock -s -f /dev/rtc1
+sleep 60
+cd /root/Progs
+./LTT_MeasMaster_GUI -qws
+\end{lstlisting}
+
+Im Quellcode \ref{lst_SystemstartScript} ist das Systemstart Script zu sehen. Für die Initialisierung des RTC und RS232 Capes erfolgt über den für das BeagleBone Black verfügbaren Cape Manager (capemgr). Der Capemgr \cite{Capemgr} dient zum einfachen Einbinden von Capes in das System. Er lädt unter Anderem die benötigten Treiber und reserviert die nötigen \ac{GPIO} Pins.\ 
+
+Da das BeagleBone Black über keine persistente Uhr verfügt, wird nachdem die beiden Capes initialisiert sind die Systemuhr mithilfe der Uhrzeit des RTC Capes gestellt. Die Uhrzeit muss zu jeder Zeit korrekt sein, damit das System fehlerfrei funktioniert.\\
+Nach der Konfiguration wird die Qt Steuerungssoftware ausgeführt. Sie wird dabei weiterhin vom systemd überwacht und im Fehlerfall neu gestartet.\ 
+
+Alle Log-Nachrichten werden dabei in die Logdatei des systemd geschrieben. Die dadurch anfallenden Datenmengen überschreiten dabei schnell die Kapazitäten der Hardware des BeagleBone Blacks. Deshalb wird zur Organisation der Logdateien die im Linux Betriebssystem mitgelieferte Software logrotate \citep{logrotate} eingesetzt. Logrotate übernimmt die automatische Rotation, Kompression und Löschung von Logdateien. 
+
+
+
+\begin{lstlisting}[caption={Logrotate},label=lst_Logrotate]
+/var/log/daemon.log
+{
+        size 100M
+        weekly
+        rotate 4
+        compress
+}
+\end{lstlisting}
+
+Im Quellcode \ref{lst_Logrotate} ist die entsprechende Konfiguration zu sehen. Die maximale Größe der Logdateien ist dabei auf 100MB beschränkt um den internen Speicher von 4GB nicht zu sehr zu belasten. Wird diese Größe überschritten wird die Logdatei rotiert. Dabei wird ein Backup der aktuellen Logdatei erstellt und eine neue angelegt. Des Weiteren wird die Logdatei einmal pro Woche unabhängig von der Größe rotiert. Bei der Rotation werden die letzten 4 Logdateien gespeichert. Kommt eine Weitere dazu, wird die älteste gelöscht. Die maximale Größe von 100MB stellt dabei nur selten das Limit dar. So stehen die Logdateien für etwa 4 Wochen rückblickend zur Verfügung.
+
+
+
+
+
 
 ssh terminal
+
+
+
 
 backup und restore ?
 
@@ -27,13 +85,16 @@ datenbank index zur performanceverbesserung
 
 LCD display energiesparmodus, wecken durch geste
 
-logrotate für logfiles
 
 hw clock aktualisierung bei ntp verbindung
 
-start up script zum starten , registriert uart4 und rtc cape
 
 stromverbrauch display, wlan brauch netzteil
 
 Captive Portal
+
+Das Softwaredesign teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
+Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.\ 
+
+
 \subsection{Anwendung zur Messdatenauswertung}

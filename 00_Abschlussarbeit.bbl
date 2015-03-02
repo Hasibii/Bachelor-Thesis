@@ -21,6 +21,18 @@
 \newblock \url{https://books.google.de/books?id=aId-yw-3gSoC}. --
 \newblock ISBN 9781847192110
 
+\bibitem[Cap]{Capemgr}
+\textsc{Capemgr}:
+\newblock \emph{Capemgr}.
+\newblock \url{http://elinux.org/Capemgr}. --
+\newblock Zugriff am 02.03.2015
+
+\bibitem[Log]{logrotate}
+\textsc{Logrotate}:
+\newblock \emph{Logrotate}.
+\newblock \url{http://www.linux-praxis.de/lpic1/manpages/logrotate.html}. --
+\newblock Zugriff am 02.03.2015
+
 \bibitem[SGD09]{schroeder2009embedded}
 \textsc{Schr{\"o}der}, J. ; \textsc{Gockel}, T.  ; \textsc{Dillmann}, R.:
 \newblock \emph{Embedded Linux:}.

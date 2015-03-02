@@ -11,7 +11,7 @@ Bei der Implementierung der eigenen Software wird wie in Kapitel \ref{chapter_De
 Das Steuerungssoftware teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
 Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe Abschnitt \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.
 
-\subsection{Systemstart}
+\subsection{Systemkonfiguration}
 
 Beim Hochfahren des Mess-Servers sorgt das Linux Hintergrundprogramm systemd für die Ausführung alle nötigen Prozesse. Um zusätzlich die Steuerungssoftware zu starten, wird ein neuer Service erstellt und dem systemd mitgeteilt.\\
 
@@ -48,9 +48,7 @@ Im Quellcode \ref{lst_SystemstartScript} ist das Systemstart Script zu sehen. F�
 Da das BeagleBone Black über keine persistente Uhr verfügt, wird nachdem die beiden Capes initialisiert sind die Systemuhr mithilfe der Uhrzeit des RTC Capes gestellt. Die Uhrzeit muss zu jeder Zeit korrekt sein, damit das System fehlerfrei funktioniert.\\
 Nach der Konfiguration wird die Qt Steuerungssoftware ausgeführt. Sie wird dabei weiterhin vom systemd überwacht und im Fehlerfall neu gestartet.\ 
 
-Alle Log-Nachrichten werden dabei in die Logdatei des systemd geschrieben. Die dadurch anfallenden Datenmengen überschreiten dabei schnell die Kapazitäten der Hardware des BeagleBone Blacks. Deshalb wird zur Organisation der Logdateien die im Linux Betriebssystem mitgelieferte Software logrotate \citep{logrotate} eingesetzt. Logrotate übernimmt die automatische Rotation, Kompression und Löschung von Logdateien. 
-
-
+Alle Log-Nachrichten werden dabei in die Logdatei des systemd geschrieben. Die dadurch anfallenden Datenmengen überschreiten dabei schnell die Kapazitäten der Hardware des BeagleBone Blacks. Deshalb wird zur Organisation der Logdateien die im Linux Betriebssystem mitgelieferte Software logrotate \cite{logrotate} eingesetzt. Logrotate übernimmt die automatische Rotation, Kompression und Löschung von Logdateien.\\
 
 \begin{lstlisting}[caption={Logrotate},label=lst_Logrotate]
 /var/log/daemon.log

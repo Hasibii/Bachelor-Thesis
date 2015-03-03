@@ -4,7 +4,7 @@
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=\textwidth ]{img/general/UebersichtMaster.pdf}
+\includegraphics[width=0.8\textwidth ]{img/general/UebersichtMaster.pdf}
 \caption{Übersicht Hardware}
 \label{figure_AufbauBleagleBone}
 \end{center}
@@ -13,16 +13,16 @@
 Das BeagleBone selbst ist bereits sehr Leistungsstark. Um jedoch weiter Funktionen und Schnittstellen hinzuzufügen, existieren Capes. Ein Cape ist eine für das BeagleBone konzipierte Erweiterung, die direkt auf das BeagleBone aufgesteckt werden kann. Die Treiber vieler dieser Capes sind bereits in dem Betriebssystem des BeagleBones integriert oder werden vom Hersteller bereitgestellt. Somit ist die Inbetriebnahme sehr komfortable.
 
 
-\begin{figure}[!htb]
-\minipage{0.32\textwidth}
+\begin{figure}[H]
+\minipage{0.30\textwidth}
   \includegraphics[width=\linewidth]{img/general/CapeRS232.png}
   \caption{RS232 Cape}\label{figure_CapeRS232}
 \endminipage\hfill
-\minipage{0.32\textwidth}
+\minipage{0.30\textwidth}
   \includegraphics[width=\linewidth]{img/general/CapeRTC.png}
   \caption{RTC Cape}\label{figure_CapeRTC}
 \endminipage\hfill
-\minipage{0.32\textwidth}%
+\minipage{0.30\textwidth}%
   \includegraphics[width=\linewidth]{img/general/CapeLCD.png}
   \caption{LCD Cape}\label{figure_CapeLCD}
 \endminipage
@@ -38,7 +38,7 @@ Um die Statusanzeige detailliert darstellen zu können, wird ein resistives LCD-
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.5\textwidth ]{img/general/GestapelteCapes.JPG}
+\includegraphics[width=0.5\textwidth ]{img/general/GestapelteCapes2.JPG}
 \caption{Gestapelte Capes}
 \label{figure_GestapelteCapes}
 \end{center}
@@ -51,15 +51,14 @@ Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird,
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=\textwidth ]{img/general/UebersichtMasterSoftware.pdf}
+\includegraphics[width=0.8\textwidth ]{img/general/UebersichtMasterSoftware.pdf}
 \caption{Übersicht Software}
 \label{figure_GestapelteCapes}
 \end{center}
 \end{figure}
 
 Das Software System setzt sich aus zwei Teilen zusammen. Zum Einen die selbst zu programmierende Software, welche in C++ unter Verwendung der Klassenbibliothek Qt (siehe Abschnitt \ref{section_Qt}) programmiert ist und zum Anderen die verschiedenen Softwarepakete die für das Linux Betriebssystem zur Verfügung stehen.\\
-Im folgenden Abschnitt wird auf beide Software eingegangen. Zunächst werden die Bestandteile Mess-Client Verwaltung, Benutzeroberfläche und TCP/UDP-Server der Qt Software näher erläutert und anschließend wird auf Datenbankserver, den Webserver und WLAN Hotspot eingegangen.
-
+Im folgenden Abschnitt wird auf beide Softwareteile eingegangen. Zunächst werden die Bestandteile Mess-Client Verwaltung, Benutzeroberfläche und TCP/UDP-Server der Qt Anwendung näher erläutert und anschließend wird auf Datenbankserver, den Webserver und WLAN Hotspot eingegangen.
 
 \subsection{Mess-Client Verwaltung}
 Die Verwaltung der Mess-Clients ist der Hauptprozess der Software. In diesem Programmteil wird die Kommunikation mit den Mess-Clients realisiert. Dabei sind die Grundaufgaben die Messdatenerfassung, das Erkennen von neuen Mess-Clients und die automatische Eingliederung dieser in das System.
@@ -100,10 +99,6 @@ Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zykle
 \label{figure_Ablaufplan_Master}
 \end{center}
 \end{figure}
- 
-  client anmeldung
- 
- client abfrage der werte
  
  
 \newpage
@@ -165,26 +160,39 @@ Der Zweck des Debug Tabs ist es die im Programmcode erzeugten Nachrichten anzuze
 \label{section_TCPUDPServer}
 Um auf Netzwerkanfragen reagieren zu können, ist sowohl ein UDP-Server für Broadcast-Nachrichten als auch ein TCP-Server für die direkte Kommunikation realisiert.\\
 Der UDP-Server dient dabei zur dynamischen Erkennung im Netzwerk. Dabei antwortet der Mess-Server auf Broadcast-Nachrichten mit seiner IP-Adresse und seinem Namen. Dies ermöglicht die einfache Eingliederung der Mess-Server in ein Netzwerk.
-Der TCP-Server nimmt RS232- und SQL-Befehle an und leitet diese weiter. Dies ermöglicht den Fernzugriff auf die einzelnen Mess-Clients über ein Netzwerk. 
+Der TCP-Server nimmt RS232- und SQL-Befehle an und leitet diese weiter. Dies ermöglicht den Fernzugriff auf die einzelnen Mess-Clients über ein Netzwerk.\\
 
 \begin{table}[H]
 \begin{center}
 \begin{tabularx}{\textwidth}{|c|c|c|X|}\hline 
- Command & Typ & Daten & Kommentar \\ \hline
+ Befehl & Typ & Daten & Kommentar \\ \hline
  BeagleSendYourIP & UDP & - & Das BeagleBone antwortet dem Sender mit seiner IP Adresse und seinem Namen  \\ \hline
  BeagleUpdateConfig & UDP & - & Das BeagleBone aktualisiert seine Konfiguration aus der Config-Datei \\ \hline
- RS232CMD: & TCP & RS232 Rahmen & Das BeagleBone sende den empfangenen Rahmen über seine RS232 Schnittstelle \\ \hline
- SQLCMD: & TCP & SQL Anfrage & Das BeagleBone führt die SQL Anfrage aus \\ \hline
+ RS232CMD: & TCP & Nachricht & Das BeagleBone sende den empfangenen Rahmen über seine RS232 Schnittstelle \\ \hline
 \end{tabularx}
 \caption{Ethernet Befehlsliste}
 \label{table_EthernetCommands}
 \end{center}
 \end{table}
 
+Der TCP/UDP-Server ist vor allem für die Kommunikation mit dem PC-Client zuständig. Um Mess-Server im Netzwerk zu finden, wird von ihm ein \textit{BeagleSendYourIP} Befehl als Broadcast-Nachricht versendet. Sollte ein Mess-Server diese Nachricht empfangen, antwortet er an die Sendeadresse mit der eigenen IP Adresse und dem eigenen Namen.\ 
+
+Über den \textit{RS232CMD:} Befehl kann von einem PC-Client aus direkt mit einem am RS232 Bus angeschlossenen Mess-Client kommuniziert werden. der TCP-Server dient dabei als Tunnel für die Kommunikation (siehe Abbildung \ref{figure_RS232Tunnel}). Anfragen werden vom Mess-Server angenommen und weitergeleitet. Die Antworten nehmen den umgekehrten Weg zurück. Zur Sicherstellung der alleinigen Verwendung der RS232 Schnitstelle, pausiert der TCP-Server die anderen Prozesse, die auf die Schnittstelle zugreifen, für die Dauer der Kommunikation.\ 
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth ]{img/general/RS232Tunnel.pdf}
+\caption{RS232 Tunnel}
+\label{figure_RS232Tunnel}
+\end{center}
+\end{figure}
+
+\newpage
 \subsection{Web Server und WLAN Hotspot}
 \label{section_WebServerWLANHotspot}
 
-Mit Hilfe eines Web Servers ist es auch lokal möglich eine Übersicht über die gesammelten Daten auf einem Mess-Server zu erhalten. Als Schnittstelle steht ein WLAN Hotspot zur Verfügung.\\
+Mit Hilfe eines Web Servers ist es auch lokal möglich eine Übersicht über die gesammelten Daten auf einem Mess-Server zu erhalten. Als Schnittstelle steht ein WLAN Hotspot zur Verfügung.\ 
 
 Als Webserver dient Lighttpd (auch: Lighty). Lighttpd ist laut \cite{bogus2008lighttpd} ein erweiterbarer, modularer, Single-Threaded, hoch hochperformanter Webserver, der selbst Apache oder Microsofts IIS in den meisten Einstellungen übertrifft. Besonders auf kleinen System mit begrenzten Ressourcen komme er häufig zum Einsatz. Trotzdem vertrauen auch große Webanbieter wie YouTube oder Wikipedia auf seine Effizienz.\\
 Zusätzlich sind das PHP und MySQL \ac{CGI} installiert um die Messergebnisse aus der Datenbank dynamisch darstellen zu können. 
@@ -193,7 +201,15 @@ Der Webserver ist sowohl über die normale Ethernet Verbindung als auch einen WL
 Als Hotspot Software dient Hostapd. Hostapd ist ein IEEE 802.11 Accesspoint und IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authentificator (vgl. \cite{LinuxWireless}) und verwaltet die Zugriffe auf den Hotspot.\\
 Zusätzlich müssen Geräten die sich über den Hotspot mit dem BeagleBone Black verbinden eine IP-Adresse zugewiesen werden. Dafür kommt der DNS- und DHCP-Server dnsmasq zum Einsatz.\\
 
-Das Webinterface bildet eine HTML, PHP, Javascript Seite.
+In Abbildung \ref{figure_Webinterface} ist das Webinterface zu sehen. Es zeigt die Messdaten die für einen Mess-Client aufgenommen wurden. Die Daten stellen dabei keine echten Messergebnisse dar. Sie dienen lediglich zur Veranschaulichung.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth ]{img/general/Webinterface.png}
+\caption{Webinterface}
+\label{figure_Webinterface}
+\end{center}
+\end{figure}
 \newpage
  
 \subsection{Datenbank Server}
@@ -211,12 +227,10 @@ Aus den Anforderungen ergibt sich folgendes \ac{ERM} (siehe Abbildung \ref{ERM})
 \end{center}
 \end{figure}
 
-Dieses Design ermöglicht die effiziente Verwaltung aller erforderlichen Daten. 
+Im folgenden wird näher auf die einzelnen Tabellen und ihre Beziehungen untereinander eingegangen. Außerdem werden die Attribute näher erläutert.
 
 \newpage
 \subsubsection{Tabellen}
-Im folgenden Abschnitt wird näher auf die einzelnen Tabellen eingegangen. 
-
 
 \textbf{Tabelle D\_Board}\\
 

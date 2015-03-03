@@ -108,7 +108,7 @@ Das dritte Byte repräsentiert den Befehl. Dieser gibt an, welche Aktion ausgef�
 \end{center}
 \end{table}
 
-Das vierte Byte ist der Unterbefehl. Damit ist es möglich einen Befehl genauer zu definieren. So kann beispielsweise der Befehl zum Auslesen eines \ac{ADC} Wertes durch den Unterbefehl genau auf einen von 64 \acp{ADC} präzisiert werden.
+Das vierte Byte ist der Unterbefehl. Damit ist es möglich einen Befehl genauer zu spezifizieren. So kann beispielsweise der Befehl zum Auslesen eines \ac{ADC} Wertes durch den Unterbefehl genau auf einen von 64 \acp{ADC} präzisiert werden.
 
 
 \textbf{5. Byte und folgend: Nutzdaten}
@@ -178,6 +178,17 @@ Sobald der Empfänger den rahmen erhält, verknüpft er alle Bytes erneut mittel
 
 Das Ergebnis 0 repräsentiert einen gültigen Rahmen und die Checksummenprüfung war erfolgreich.
 
+\subsection{Übertragung}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.55\textwidth ]{img/general/RS232Uebertragung.pdf}
+\caption{RS232 Übertragung}
+\label{figure_RS232Uebertragung}
+\end{center}
+\end{figure}
+
 
 \subsection{Befehle und Unterbefehle}
 
@@ -187,7 +198,7 @@ Eine Übersicht über die implementierten Befehle der RS232 Schnittstelle findet
 \begin{table}[H]
 \begin{center}
 \begin{tabularx}{\textwidth}{|X|c|X|c|}\hline 
- Command & Code & Subcommand & Datenbytes \\ \hline \hline
+ Befehl & Code & Unterbefehl & Datenbytes \\ \hline \hline
  ADC-Value & 0x00 & MUX-Kanal (0..63) & 2  \\ \hline
  Number Of Pulses & 0x04 & - & 1  \\ \hline
  Pulsewidth and -period & 0x05 & Pulsnummer (1..20) & 4  \\ \hline
@@ -203,4 +214,13 @@ Eine Übersicht über die implementierten Befehle der RS232 Schnittstelle findet
 \label{table_RS232Commands}
 \end{center}
 \end{table}
+
+\textbf{ADC-Value}\\
+Der Befehl liest oder schreibt den Messwert eines Sensors des Mess-Clients. Mit dem Unterbefehl muss einer der 64 Sensoren spezifiziert werden. Die Datenmenge beträgt 2 Byte.\ 
+
+\textbf{Number Of Pulses}\\
+Dieser Befehl liest oder schreibt die Anzahl der Impulse im Pulsmuster des Mess-Clients. Die maximale Anzahl ist 20.\ 
+
+\textbf{Pulsewidth and -period}\\
+
 

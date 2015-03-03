@@ -1,14 +1,14 @@
 \chapter{Grundlagen}
 \label{chapter_Grundlagen}
 
-Bei der Entwicklung des Teststandes kommen verschiedene Systeme, Schnittstellen und Konzepte zum Einsatz. Dieses Kapitel befasst sich mit der C++ Klassenbibliothek Qt, der Degradation und dem Embedded-Linux-System. Des Weiteren wird auf das Konzept einer Datenbank und der Evaluierung der beiden Datenbanksysteme MySQL und SQLite eingegangen.
+Bei der Entwicklung des Teststandes kommen verschiedene Systeme und Konzepte zum Einsatz. Dieses Kapitel befasst sich mit der C++ Klassenbibliothek Qt und der Frage, was ist die Degradation oder ein Embedded-Linux-System. Des Weiteren wird auf das Konzept einer Datenbank und der Evaluierung der beiden Datenbanksysteme MySQL und SQLite eingegangen.
 
 \section{Degradation}
 \label{section_Degradation}
-Der Hauptgrund für mechanisches Versagen im Lebenszyklus eines Systems oder Bauelementes, liegt an der langsamen Ansammlung von nicht reversiblen Schäden. Dieser Prozess ist bekannt als Degradation, vgl. \cite{zhou2011}:1586.\\
+Der Hauptgrund für mechanisches Versagen im Lebenszyklus eines Systems oder Bauelementes, liegt an der langsamen Ansammlung von nicht reversiblen Schäden. Dieser Prozess ist bekannt als Degradation (vgl. \cite{zhou2011}).\\
 Die Schwierigkeit liegt in der Feststellung des mechanischen Versagen in messbaren Schritten. So ist die Bestimmung der Lebenszeit über die Zeit bis zum Ausfall zeitaufwändig. Einfacher ist es die Leistung des Bauelementes oder Systems zu erfassen, z.B. die optische Leistung einer LED. Auf diesem Weg kann ein Trend ausgemacht werden.\\
 Um die Länge des Lebenszyklus eines Bauelementes bestimmen zu können, wird die Leistung dessen unter Last über einen langen Zeitraum hinweg aufgezeichnet. Anhand der daraus resultierenden Daten kann die zu erwartende Länge des Lebenszyklus ermittelt werden.\\
-In Abbildung \ref{figure_Degradation} ist ein Beispiel für erfasste Daten zu sehen. Sie zeigt die Veränderung der optischen Leistung über die Zeit. 
+In Abbildung \ref{figure_Degradation} ist ein Beispiel für erfasste Daten zu sehen. Sie zeigt die Veränderung der optischen Leistung über die Zeit von 7 verschiedenen \acp{LED}. 
 
  
 \begin{figure}[H]
@@ -23,9 +23,9 @@ In Abbildung \ref{figure_Degradation} ist ein Beispiel für erfasste Daten zu se
 
 \section{Qt}
 \label{section_Qt}
-Qt \cite{QtProject} ist eine umfangreiche C++-Klassenbibliothek zur Gestaltung und Entwicklung von Anwendungen. Vor allem bei Applikationen mit grafischen Benutzeroberflächen (englisch: \ac{GUI}) ist Qt sehr beliebt. \\
+Qt \cite{qtproject} ist eine umfangreiche C++-Klassenbibliothek zur Gestaltung und Entwicklung von Anwendungen. Vor allem bei Applikationen mit grafischen Benutzeroberflächen (englisch: \ac{GUI}) ist Qt sehr beliebt. \\
 Zusätzlich bringt Qt eine große Auswahl an Tools und Modulen mit sich, welche die Programmierung erheblich erleichtern (z.B. Netzwerkprogrammierung, Datenbankanbindung, OpenGL, etc.). \\
-Ein weiterer Vorteil ist die Plattformunabhängigkeit. So unterstützt Qt aktuell (Version 5.4, 10. Dezember 2014) einen Großteil der aktuellen Betriebssystem wie Windows, Linux, Android, iOS und einige mehr. Diese wird dadurch gegeben, dass Qt die meisten Systemaufrufe abstrahiert.
+Ein weiterer Vorteil ist die Plattformunabhängigkeit. So unterstützt Qt aktuell (Version 5.4, 10. Dezember 2014) einen Großteil der aktuellen Betriebssystem wie Windows, Linux, Android, iOS und einige mehr. Die hohe Kompatibilität wird dadurch gegeben, dass Qt die meisten Systemaufrufe abstrahiert.
 
 \subsection{Signale und Slots}
 \label{QtSignaleSlots}
@@ -51,6 +51,7 @@ Im Quellcode \ref{lst_QtEmit} wird das Signal \textit{clicked()} mittels \textit
 \subsection{Entwicklungsumgebung}
 Als Entwicklungsumgebung (englisch: \ac{IDE}) dient der Qt Creator (siehe Abbildung \ref{QtCreator}), welcher Teil des \ac{SDK} von Qt ist und sowohl auf Linux, Windows als auch Mac OS X zur Verfügung steht. Er kommt mit einem Debugger, einem integrierten grafischen \ac{GUI} Designer und einem Texteditor mit Funktionen wie Syntax-Hervorhebung und automatischer Vervollständigung. \\
 Dabei kommen gängigen Compiler wie MinGW unter Windows zum Einsatz und es besteht die Möglichkeit eigene Toolchains anzulegen. \\
+Eine Toolchain dient zum Übersetzen von Quellcode auf einem Host-System für ein Ziel-System. Sie setzt sich meistens aus einer Kette von Werkzeugen zusammen, welche nacheinander für die Übersetzung des Quellcodes sorgen. Somit ist es möglich, einen Programmcode auf einem Windowsrechner zu schreiben und anschließend für ein Linux-System zu übersetzen.
 
 \begin{figure}[h]
 \begin{center}
@@ -83,7 +84,7 @@ Aufgrund dieser Eigenschaften existieren allerdings auch Nachteile. So unterstü
 Des Weiteren ist SQLite aufgrund des Ein-Datei-Systems nur eingeschränkt skalierbar. Bei einer größeren Datenmenge oder erhöhten Anzahl an Zugriffen ist es nicht möglich diese Datei auf mehrere Systeme zu separieren, um somit die Last gleichmäßig zu verteilen.
 
 \textbf{MySQL} ist ein weiteres \ac{SQL} \ac{DBMS}, welches allerdings auf einer Serverarchitektur beruht. 
-Es ermöglicht die Verwaltung von Nutzern und Rechten. Außerdem ist das System gut hinsichtlich Performance und Größe zu skalieren. Zusätzlich bietet MySQL viele Möglichkeiten für Performanceanpassungen, wie z.B. Query-Caching. Beim Query-Caching werden Ergebnisse von SQL-Abfragen (englisch: SQL-Query) zwischengespeichert, so dass sie bei erneuter Abfrage bereits vorliegen.
+Es ermöglicht die Verwaltung von Nutzern und Rechten. Dadurch ist es ausgezeichnet für den gleichzeitigen Zugriff mehrerer Nutzer geeignet.\\ Außerdem ist das System gut hinsichtlich Performance und Größe zu skalieren, da die Last auf mehrere Server verteilbar ist. Zusätzlich bietet MySQL viele weitere Möglichkeiten für Performanceoptimierung, wie z.B. Query-Caching. Beim Query-Caching werden Ergebnisse von SQL-Abfragen (englisch: SQL-Query) zwischengespeichert, so dass sie bei erneuter Abfrage bereits vorliegen.
 \\
 Jedoch gibt es auch hier Nachteile. So ist die Konfiguration wesentlich schwerer und komplexer. Während bei SQLite kaum Konfigurationen nötig sind, müssen bei MySQL viele Einstellungen an das Host-System angepasst werden. Darunter fallen beispielsweise verschiedene Zwischenspeichergrößen und die Zugriffsrechte. Durch die Notwendigkeit eines Servers benötigt MySQL außerdem wesentlich mehr Ressourcen auf dem Host-System.
 
@@ -101,7 +102,7 @@ Ein Embedded Linux (deutsch: eingebettetes Linux) ist ein Betriebssystem, das au
 
 Das Embedded Linux System setzt sich aus einem Linux-Kernel nutzenden Rechner, dem Embedded Linux Betriebssystem mit für den Zielrechner passender Software und Werkzeugen für die Entwicklung zusammen. Diese Werkzeuge sind eine Entwicklungsumgebung mit Debugger und Cross-Compiler.
 
-Vorteil bei der Verwendung des Linux Kernel ist u.a. die Abstraktion der Hardware. Über die Schnittstelle des Kernels kann mit einfachen Systemaufrufen mit der Hardware kommuniziert werden ohne die genaue Hardware kennen (siehe Abbildung \ref{figure_KernelHardwareLayer}).\\
+Der Vorteil bei der Verwendung des Linux Kernel ist u.a. die Abstraktion der Hardware. Über die Schnittstelle des Kernels kann mit einfachen Systemaufrufen mit der Hardware kommuniziert werden ohne die genaue Hardware kennen (siehe Abbildung \ref{figure_KernelHardwareLayer}).\\
 
 \begin{figure}[h]
 \begin{center}

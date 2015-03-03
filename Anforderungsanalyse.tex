@@ -1,7 +1,7 @@
 
 \chapter{Anforderungsanalyse}
 \label{chapter_Anforderungsanalyse}
-Das Ziel dieser Arbeit ist es, einen Teststand zu entwickeln, der die Messung der Degradation von optoelektronischen Sendern ermöglicht. Dadurch soll eine Qualifizierung der Bauelemente erfolgen. In diesem Kapitel wird zunächst das Szenario näher beschrieben und anschließend die sich daraus entwickelnden Anforderungen definiert.
+Das Ziel dieser Arbeit ist es, einen Steuereinheit für einen Teststand zu entwickeln, der die Messung der Degradation von optoelektronischen Sendern ermöglicht. In diesem Kapitel wird zunächst das Szenario aus dem sich die Notwendigkeit des Systems ergibt näher beschrieben. Dann erfolgt eine Analyse der beteiligten Akteure und im Anschluss werden die Anforderungen definiert.
 
 \section{Szenario}
 Ein Unternehmen stellt verschiedene optoelektronischen Sensoren her. Zur Sicherstellung der Zuverlässigkeit der verwendeten \acp{LED} sollen diese mittels eines automatisierten Teststandes bezüglich ihres Degradationsverhaltens qualifiziert werden.
@@ -17,8 +17,8 @@ Ein Unternehmen stellt verschiedene optoelektronischen Sensoren her. Zur Sichers
 
 Der Teststand hat den in Abbildung \ref{figure_Szenario} zu sehenden Aufbau.
 In einem Ofen befinden sich mehrere Mess-Clients. An diesen Mess-Clients sind jeweils 64 \acp{DUT} fest angeschlossen, bei denen das Degradationsverhalten aufgezeichnet werden soll.
-Die Mess-Clients sind über einen Bus mit dem Mess-Server verbunden, welcher alle anfallenden Daten speichert.\\
-Von einem PC-Client wird dann auf den Mess-Server zugegriffen um die Daten abzugreifen und grafisch auszuwerten.\\
+Die Mess-Clients sind über einen Bus mit einem außerhalb des Ofens befindlichen Mess-Server verbunden, welcher zyklisch Messdaten von den Mess-Clients abruft und alle anfallenden Daten in einer Datenbank speichert.\\
+Von einem PC-Client kann auf den Mess-Server zugegriffen  werden, um die Messdaten zu beziehen und grafisch auszuwerten.\\
 
 \section{Analyse}
 
@@ -41,25 +41,53 @@ Als Mess-Server wird ein BeagleBone Black von Texas Instruments eingesetzt (sieh
 Die aktuelle Revision C arbeitet mit einem AM335x 1GHz ARM® Cortex-A8 Prozessor, verfügt über 512MB DDR3 RAM und 4GB 8-bit eMMC internen Flash Speicher. Als Spannungsversorgung dient ein 5V 2A Netzteil. Trotz der Kompaktheit des BeagleBone Black, bietet er somit trotzdem ein ausreichendes Maß an Performance.\\
 Auf ihm kommt ein eingebettetes Debian-GNU/Linux Betriebssystem (sieht Abschnitt \ref{section_EmbeddedLinux}) zum Einsatz. Wie auch \cite{schroeder2009embedded} sagt, ist es dadurch möglich die umfangreichen Linux-Funktionen wie die Paketverwaltung zu nutzen. Es bietet auch den Vorteil, dass eine große Ähnlichkeit zu PC-Distributionen wie Ubuntu besteht und somit die Linux Mechanismen einfach nutzbar sind. So kann das RS232 Interface beispielsweise wie eine normale Datei beschrieben und gelesen werden (sieht Abschnitt \ref{section_EmbeddedLinux}).
 
-Für die Kommunikation mit den anderen Akteuren im System, muss ein RS232 Bussystem und eine Ethernet Schnittstelle realisiert werden. Des Weiteren soll ein MySQL Datenbankserver auf dem Mess-Server die effiziente Verwaltung von Daten übernehmen. Zusätzlich wird eine Statusanzeige zur Überwachung des Mess-Servers entwickelt.
+Für die Kommunikation mit den anderen Akteuren im System, muss ein RS232 Bussystem und eine Ethernet Schnittstelle realisiert werden. Des Weiteren soll ein MySQL Datenbankserver auf dem Mess-Server die effiziente Verwaltung von Daten übernehmen. Zusätzlich soll eine Statusanzeige zur Überwachung des Mess-Servers entwickelt werden.
 
 
 \subsection{Mess-Client}
 \label{section_Mess-Client}
  
- \begin{figure}[!htb]
-\minipage{0.48\textwidth}
+ \begin{figure}[H]
+\minipage{0.43\textwidth}
   \includegraphics[width=\linewidth]{img/general/DegraBoardTop.jpg}
   \caption{Mess-Client Oberseite}\label{figure_DegraBoardTop}
 \endminipage\hfill
-\minipage{0.48\textwidth}%
+\minipage{0.43\textwidth}%
   \includegraphics[width=\linewidth]{img/general/DegraBoardBottom.jpg}
   \caption{Mess-Client Unterseite}\label{figure_DegraBoardBottom}
 \endminipage
 \end{figure}
 
-Ein Mess-Client (auch: Degradations Board) ist eine Leiterplatte auf der sich 64 optische Sensoren zur Messung von optischen Signalen befinden (siehe Abbildung \ref{figure_DegraBoardBottom} und \ref{figure_DegraBoardTop}). Auf jedem Mess-Client können somit bis zu 64 Prüfobjekte befestigt werden. In zyklischen Abständen werden mittels eines Mikrocontrollers die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\\
-Des Weiteren steuert er die Prüfobjekte mit einem Pulsmuster (englisch: pulse pattern) an. Dieses Muster ist konfigurierbar und wird an die unterschiedlichen Prüfobjekte angepasst. Ein Pulsmuster besteht aus bis zu 20 verschiedenen Impulsen, die periodisch wiederholt werden.\\
+Ein Mess-Client (auch: Degradations Board) ist eine Leiterplatte auf der sich 64 optische Sensoren zur Messung von optischen Signalen befinden (siehe Abbildung \ref{figure_DegraBoardBottom} und \ref{figure_DegraBoardTop}). Auf jedem Mess-Client können somit bis zu 64 Prüfobjekte befestigt werden. In zyklischen Abständen werden mittels eines Mikrocontrollers die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\ 
+
+Für die Konfiguration speichert der Mess-Client die Parameter in einem persistenten Speicher. Folgende Parameter stehen dabei zur Verfügung:
+
+\textbf{Name}\\
+Für die Identifikation hat jeder Mess-Client einen einen Namen der aus maximal 30 Zeichen bestehen kann. Er dient vor allem für die Unterscheidung der verschiedenen Mess-Clients.\ 
+
+\textbf{RS232 Adresse}\\
+Um über die RS232 Schnittstelle ansprechbar zu sein, verfügt jeder Mess-Client über eine Adresse. Lediglich wenn eine Nachricht diese Adresse beinhaltet, reagiert der Mess-Client. Die Adresse ist mit 7 Bit aufgelöst und bildet einen Adressraum von 128 Adressen.\ 
+
+\textbf{Messintervalle}\\
+Zur Regelung der Intervalle in denen Messwerte vom Mess-Server aufgezeichnet werden sollen, speichert der Mess-Client diese Informationen. Es ist möglich, Messintervalle für drei Zeiträume zu definieren.
+
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{img/general/Messintervalle.pdf}
+\caption{Messintervalle}
+\label{figure_Messintervalle}
+\end{center}
+\end{figure}
+
+In Abbildung \ref{figure_Messintervalle} ist ist die Unterteilung der Zeiträume und Messintervalle zu sehen. Dabei wird lediglich die Länge der Zeiträume angegeben.\\
+
+
+\textbf{Pulsmuster}\\
+Der Mess-Client steuert die Prüfobjekte mit einem Pulsmuster (englisch: pulse pattern) an. Dieses Muster ist konfigurierbar und wird an die unterschiedlichen Prüfobjekte angepasst. Ein Pulsmuster besteht aus bis zu 20 verschiedenen Impulsen, die periodisch wiederholt werden. In Abbildung \ref{figure_Pulsepattern} ist ein Pulsmuster zu sehen.\\
+
+
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.35\textwidth]{img/general/Pulsepattern.PNG}
@@ -69,8 +97,6 @@ Des Weiteren steuert er die Prüfobjekte mit einem Pulsmuster (englisch: pulse p
 \end{figure}
 
 
-Außerdem ist die Vorverstärkung der \ac{ADC}, die die optischen Sensoren auslesen, konfigurierbar. Da verschiedene Prüfobjekte auch unterschiedliche Leistungsmerkmale besitzen, werden damit die gemessenen Größen normalisiert.
-
 \subsection{PC-Client}
 \label{section_PC-Client}
 Der PC-Client stellt eine Qt Desktop-Anwendung mit einer Benutzeroberfläche zur Auswertung der Messdaten dar, die nicht im Rahmen dieser Bachelorarbeit entwickelt wird. Über die Ethernet Schnittstelle ruft er die Messdaten von dem Mess-Server ab und bereitet sie zur genaueren Auswertung grafisch auf.\\
@@ -78,12 +104,13 @@ Außerdem werden über die Desktop-Anwendung die Mess-Clients parametriert. Daf�
 Im laufenden Betrieb können die Mess-Clients von einem PC-Client aus per Fernzugriff verwaltet werden. Dies beinhaltet die Änderung der Parametrierung und das Auslesen der Messdaten. Dafür werden auf dem Mess-Client persistent Parameter gespeichert, welche über die RS232 Schnittstelle geschrieben und ausgelesen werden können.
 
 
+
 \section{Anforderungen}
-Folgende Anforderungen werden dabei an das System gestellt:
+Folgende Hauptanforderungen werden an das System gestellt:
 \begin{itemize}
 \item Individuelle Parametrierung der Prüfobjekte
 \item Automatische Erfassung der Messdaten
-\item Fernzugriff auf den Mess-Server
+\item Fernzugriff auf den Mess-Server zum Abrufen der Messdaten
 \end{itemize}
 \ 
 
@@ -92,7 +119,6 @@ Immer 64 Prüfobjekte befinden sich auf einem Mess-Client. Dabei sollen verschie
 Zum einen sollen die Intervalle in denen Messwerte aufgenommen werden konfigurierbar sein. Dies soll in mindestens 3 verschiedenen Intervallen möglich sein. In Tabelle \ref{table_Intervalle} ist ein Beispiel für die Messintervalle zu sehen. 
 
  
-
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{|l|l|}\hline
@@ -107,6 +133,7 @@ ab 5. Woche & 7 Tage\\ \hline
 \end{table}
 
 
+
 Des Weiteren soll für jeden Mess-Client ein Pulsepattern definierbar sein. Dieses Pulsepattern wird dann als Versorgungssignal für die \acp{DUT} verwendet.
 
 \textbf{Automatische Erfassung der Messdaten}\\
@@ -114,9 +141,8 @@ Die Messdaten der \acp{DUT} sollen zyklisch erfasst werden. Es soll die derzeiti
 Für den einfachen und effizienten Zugriff auf die Daten, sollen diese in einer \ac{SQL} Datenbank abgelegt werden. Dafür ist eine Kommunikationsschnittstelle zwischen der Datenbank und den Mess-Clients erforderlich, welcher über den Mess-Server realisiert werden soll.
 
 \textbf{Fernzugriff auf den Mess-Server}\\
-Zur Auswertung der Messdaten, soll es möglich sein, von einem PC-Arbeitsplatz aus eine Verbindung zu dem Mess-Server aufzubauen. Die Messdaten sollen dann grafisch auf dem PC-Client zur Auswertung aufbereitet werden.
+Zur Auswertung der Messdaten, soll es möglich sein, von einem PC-Arbeitsplatz aus eine Verbindung zu dem Mess-Server aufzubauen. Die Messdaten sollen grafisch auf dem PC-Client zur Auswertung aufbereitet werden.
 Auch soll ein Tunnelmodus direkten Zugriff von einem PC-Client auf einem Mess-Client ermöglichen. Dabei sollen die Parameter des Mess-Clients verändert werden können.
-
 
 Diese Basis-Anforderungen und einige zusätzliche Anforderungen können wie in Tabelle \ref{table_Anforderungen} in funktionale und nicht-funktionale Anforderungen unterteilt werden.
 
@@ -148,6 +174,22 @@ Funktional & Nutzer Fehler sollen abgefangen werden. & Fehler bei der Bedienung 
 
 
 
+%\begin{table}[H]
+%%\begin{center}
+%\begin{tabularx}{\textwidth}{|l|X|}\hline 
+
+% Parameter & Beschreibung \\ \hline
+% LTT Name & Erkennungsname zur Identifikation des Mess-Clients.  \\ \hline
+% Rs232-Address & Die Adresse, über die der Mess-Client auf Anfragen über die Rs232 Schnittstelle erreichbar ist. \\ \hline
+% Measurement Intervall & Die Zeitintervalle zwischen den Messungen. \\ \hline
+% Number Of Pulses & Anzahl der Impulse im Pulsmuster \\ \hline
+% Pulsewidth and -period & Länge der Periode und des Impulses  \\ \hline
+% DAC-Value & Vorverstärkung des Pulsmusters zur Ansteuerung der Prüfobjekte. \\ \hline
+%\end{tabularx}
+%%\caption{Parameter}
+%\label{table_MessClientParameter}
+%\end{center}
+%\end{table}
 
 
 

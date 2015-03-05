@@ -118,7 +118,7 @@ Die \ac{GUI} ist dabei in vier Tabs unterteilt.
 \end{center}
 \end{figure}
 
-Das Erste ist das Status-Tab (siehe Abbildung \ref{figure_MessServerGUIStatus}). Es zeigt die wichtigsten Statusdaten wie verfügbarer Speicher, die aktuelle Laufzeit und TCP Server Status an. Um auf einen Blick den Status des Systems zu erkennen wird mittels der Farben grün und rot ein positiver bzw. negativer Status signalisiert.
+Das Erste ist das Status-Tab (siehe Abbildung \ref{figure_MessServerGUIStatus}). Es zeigt die wichtigsten Statusdaten wie verfügbarer Speicher, die aktuelle Laufzeit und TCP Server Status an. Um auf einen Blick den Status des Systems zu erkennen wird mittels der Farben grün und rot ein positiver bzw. negativer Status signalisiert. Außerdem kann hier der WLAN Hotspot aktiviert und deaktiviert werden.
 
 \textbf{Events Tab}
 
@@ -130,7 +130,7 @@ Das Erste ist das Status-Tab (siehe Abbildung \ref{figure_MessServerGUIStatus}).
 \end{center}
 \end{figure}
 
-Im Events Tab werden wichtige Ereignisse dargestellt. 
+Im Events Tab (siehe Abbildung \ref{figure_MessServerGUIEvents}) werden wichtige Ereignisse dargestellt. Es sollen zwei Ereignisse dargestellt werden. Das erste Ereignis ist das Erkennen und Eingliedern eines neuen Mess-Clients. Es wird ausgelöst, wenn ein Mess-Client erfolgreich am System angemeldet und eingegliedert wurde. 
 
 \textbf{Boards Tab}
 
@@ -142,7 +142,7 @@ Im Events Tab werden wichtige Ereignisse dargestellt.
 \end{center}
 \end{figure}
 
-Das Boards Tab zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als aktiv werden Mess-Clients bezeichnet, die mit einer gültigen Adresse in der Datenbank eingetragen sind. Angezeigt werden der Name, die Adresse, die vergangene Zeit seit dem es das letzten mal erfolgreich kontaktiert wurde und die Anzahl der erfolgreichen aufgenommenen Messzyklen.
+Das Boards Tab (siehe Abbildung \ref{figure_MessServerGUIBoards}) zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als aktiv werden Mess-Clients bezeichnet, die mit einer gültigen Adresse in der Datenbank eingetragen sind. Angezeigt werden der Name, die Adresse, die vergangene Zeit seit dem es das letzten mal erfolgreich kontaktiert wurde und die Anzahl der erfolgreichen aufgenommenen Messzyklen. Sollte ein Mess-Client über längere Zeit nicht ansprechbar sein, wird dem Nutzer durch eine rote Markierung das Problem signalisiert.
 
 \textbf{Debug Tab}
 
@@ -154,7 +154,7 @@ Das Boards Tab zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als akt
 \end{center}
 \end{figure}
 
-Der Zweck des Debug Tabs ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein Fehler einfacher zu erkennen.
+Der Zweck des Debug Tabs (siehe Abbildung \ref{figure_MessServerGUIDebug}) ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein Fehler einfacher zu erkennen. Die Anzeige dient dabei zur Vor-Ort-Analyse von Fehlern. Die selben Informationen werden auch Intern auf dem Mess-Client in einer Logdatei gespeichert.
 
 
 \subsection{TCP/UDP Server}
@@ -183,7 +183,7 @@ Der TCP/UDP-Server ist vor allem für die Kommunikation mit dem PC-Client zustä
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.8\textwidth ]{img/general/RS232Tunnel.pdf}
+\includegraphics[width=0.7\textwidth ]{img/general/RS232Tunnel.pdf}
 \caption{RS232 Tunnel}
 \label{figure_RS232Tunnel}
 \end{center}
@@ -253,7 +253,7 @@ f\_Patternid & INTEGER FOREIGN KEY\\ \hline
 \end{table}
 
 
-Die Tabelle D\_Board (steht für Degradations-Board) speichert alle im System registrierten Mess-Clients. Jeder Mess-Client hat eine einzigartige Identifikationsnummer (\textit{p\_id}), welche gleichzeitig den Primärschlüssel (englisch: primary key) repräsentiert. Um die Mess-Clients später leserlich auseinanderhalten zu können, verfügen sie zusätzlich über einen Namen (\textit{label}), der einzigartig sein muss. Zur Kommunikation wird jedem Board eine einzigartige Adresse (\textit{address}) zugeordnet. Boards die eine Adresse haben, werden als aktive Boards bezeichnet. Es kann davon ausgegangen werden, dass sie innerhalb des Systems erreichbar sind. Außerdem ist auch möglich, dass ein Board keine Adresse hat. In diesem Fall ist das Board als inaktiv anzusehen. Die Daten sind zwar noch in der Datenbank, jedoch ist es nicht mehr erreichbar und es werden keine neuen Messwerte aufgenommen. Diese Inaktivität entsteht, wenn ein Board für eine zu lange Zeit nicht Erreichbar ist. Denn in einem solchen Fall, wird die Adresse aufgrund des beschränkten Adressraumes freigegeben. Zusätzlich besitzt Degradationsboard einen Zeitstempel (\textit{LastOnline}) für den Zeitpunkt der letzten erfolgreichen Kontaktaufnahme. Diese Information ist notwendig um die Dauer der Abwesenheit ermitteln und den Nutzer dahingehen in Kenntnis setzen zu können. Des Weiteren gibt es noch einen Zeitstempel (\textit{LastChecked}) für den letzten Zeitpunkt des Versuches einer Kontaktaufnahme, welcher notwendig ist, um unnötig häufige Kontaktversuche zu vermeiden. So soll ein Degradationsboard nicht häufiger als alle 10 Minuten kontaktiert werden um die Performance zu erhöhen. Zusätzlich folgt jedes Board genau einer Einstellung (Tabelle Setting). Diese Relation wird durch einen Fremdschlüssel (englisch: foreign key) mit der Identifikationsnummer einer Einstellung (\textit{f\_Settingid}) referenziert. Außerdem hat jedes Board ein PulsePattern (Tabelle Pattern) zur Ansteuerung der Prüfobjekte. Dieses wird durch die Identifikationsnummer eines Patterns(\textit{f\_Patternid}) angegeben.
+Die Tabelle D\_Board (steht für Degradations-Board) speichert alle im System registrierten Mess-Clients. Jeder Mess-Client hat eine einzigartige Identifikationsnummer (\textit{p\_id}), welche gleichzeitig den Primärschlüssel (englisch: primary key) repräsentiert. Um die Mess-Clients später leserlich auseinanderhalten zu können, verfügen sie zusätzlich über einen Namen (\textit{label}), der einzigartig sein muss. Zur Kommunikation wird jedem Board eine einzigartige Adresse (\textit{address}) zugeordnet. Boards die eine Adresse haben, werden als aktive Boards bezeichnet. Es kann davon ausgegangen werden, dass sie innerhalb des Systems erreichbar sind. Außerdem ist auch möglich, dass ein Board keine Adresse hat. In diesem Fall ist das Board als inaktiv anzusehen. Die Daten sind zwar noch in der Datenbank, jedoch ist es nicht mehr erreichbar und es werden keine neuen Messwerte aufgenommen. Diese Inaktivität entsteht, wenn ein Board für eine zu lange Zeit nicht Erreichbar ist. Denn in einem solchen Fall, wird die Adresse aufgrund des beschränkten Adressraumes freigegeben. Zusätzlich besitzt ein Degradationsboard einen Zeitstempel (\textit{LastOnline}) für den Zeitpunkt der letzten erfolgreichen Kontaktaufnahme. Diese Information ist notwendig um die Dauer der Abwesenheit ermitteln und den Nutzer dahingehen in Kenntnis setzen zu können. Des Weiteren gibt es noch einen Zeitstempel (\textit{LastChecked}) für den letzten Zeitpunkt des Versuches einer Kontaktaufnahme, welcher notwendig ist, um unnötig häufige Kontaktversuche zu vermeiden. So soll ein Degradationsboard nicht häufiger als alle 10 Minuten kontaktiert werden um die Performance zu erhöhen. Zusätzlich folgt jedes Board genau einer Einstellung (Tabelle Setting). Diese Relation wird durch einen Fremdschlüssel (englisch: foreign key) mit der Identifikationsnummer einer Einstellung (\textit{f\_Settingid}) referenziert. Außerdem hat jedes Board ein PulsePattern (Tabelle Pattern) zur Ansteuerung der Prüfobjekte. Dieses wird durch die Identifikationsnummer eines Patterns(\textit{f\_Patternid}) angegeben.
 
 
 \newpage
@@ -295,7 +295,7 @@ f\_Boardid & INTEGER FOREIGN KEY\\ \hline
 \end{center}
 \end{table}
 
-Die Tabelle DUT nimmt die einzelnen Prüfobjekte (\acp{DUT}) auf. Jedes Prüfobjekt gehört fest zu einem Degradationsboard. Dies wird durch den Fremdschlüssel mit der Identifikationsnummer des zu gehörenden Boardes (\textit{f\_Boardid}) referenziert.Außerdem hat jedes Prüfobjekt eine eindeutige Identifikationsnummer (\textit{p\_id}) als Primärschlüssel. Des Weiteren hat verfügt es über eine Bezeichnung (\textit{label}), um sich von den anderen Prüfobjekten des selben Boardes zu unterscheiden.
+Die Tabelle DUT nimmt die einzelnen Prüfobjekte (\acp{DUT}) auf. Jedes Prüfobjekt gehört fest zu einem Degradationsboard. Dies wird durch den Fremdschlüssel mit der Identifikationsnummer des zu gehörenden Boardes (\textit{f\_Boardid}) referenziert.Außerdem hat jedes Prüfobjekt eine eindeutige Identifikationsnummer (\textit{p\_id}) als Primärschlüssel. Des Weiteren verfügt es über eine Bezeichnung (\textit{label}), um sich von den anderen Prüfobjekten des selben Boardes zu unterscheiden.
 
 
 
@@ -313,8 +313,7 @@ label & VARCHAR(255)\\ \hline
 \end{center}
 \end{table}
 
-In der Pattern Tabelle sind die Muster für die Signale zur Ansteuerung der Prüfobjekte. Die Muster haben eine Identifikationsnummer (\textit{p\_id}) als Primärschlüssel und eine Bezeichnung (\textit{label}) für die Leserlichkeit. Die Tabelle fasst die Signale aus der PulsePattern Tabelle zusammen um einfacher referenziert werden zu können.
-
+In der Pattern Tabelle sind die Muster für die Signale zur Ansteuerung der Prüfobjekte. Die Muster haben eine Identifikationsnummer (\textit{p\_id}) als Primärschlüssel und eine Bezeichnung (\textit{label}) für die Leserlichkeit. Die Tabelle fasst die Signale aus der PulsePattern Tabelle zusammen um einfacher referenziert werden zu können.\\
 
 \textbf{Tabelle PulsePattern}\\
 
@@ -353,18 +352,4 @@ Time & TIMESTAMP DEFAULT CURRENT\_TIMESTAMP\\ \hline
 \end{table}
 
 In der Measurement Tabelle werden die Messwerte der einzelnen Prüfobjekte gespeichert. Der Primärschlüssel ist auch hier die Identifikationsnummer (\textit{p\_id}). Zu jedem Messeintrag gehört die aktuelle Temperatur (\textit{Temperatur}), der gelesene Messwert (\textit{value}) und die aktuelle Zeit (\textit{Time}).
-
-Wenn ein Board gelöscht wird, werden alle dazugehörigen Datenbankeinträge aus den anderen Tabellen auch gelöscht. Das soll unnötigen Daten in der Datenbank vorbeugen. Dafür sind die Fremdschlüssel in alles Tabellen außerhalb der D\_Board Tabelle mit dem Constraint \textit{ON DELETE CASCADE} versehen. Die sorgt für eine Löschung des betroffenen Eintrages, falls das referenzierte Attribut gelöscht wird. Da die Tabellen Setting und Pattern keine eigenen Verweise zu der Tabelle D\_Board haben, ist für diese Kaskadierung ein Trigger notwendig. \\
-Ein Trigger ist ein an eine Reaktion auf ein Ereignis. Das Ereignis ist die Löschung eines Eintrags in der D\_Board Tabelle. Daraufhin sollen die dazugehörigen Einträge in der Setting und der Pattern Tabelle gelöscht werden. Dafür wird ein Trigger erstellt (siehe Quellcode \ref{lst_Trigger}).\\
-
-\begin{lstlisting}[caption={onBoardDelete Trigger},label=lst_Trigger]
-Create Trigger onBoardDelete before delete on D_Board 
-for each row 
-Begin 
-delete from Setting 
-	where p_id = old.f_Settingid;
-delete from Pattern 
-	where p_id = old.f_Patternid;
-end;
-\end{lstlisting}
 

@@ -66,8 +66,28 @@ Im Quellcode \ref{lst_Logrotate} ist die entsprechende Konfiguration zu sehen. D
 
 \subsection{RS232 Kommunikation}
 
+Die Kommunikation von dem Mess-Server mit den Mess-Clients erfolgt sequentiell. Der Mess-Server stellt eine Anfrage und wartet anschließend für eine festgelegte Zeit auf eine Antwort. Die Antwort enthält bei fehlerfreier Kommunikation das invertierte Read/Write-Bit, sowie die gleiche RS232 Adresse und den selben Befehl/Unterbefehl wie bei der Anfrage. Bei einer Leseanfrage enthält die Antwort zusätzlich noch die angeforderten Daten.\\
 
-\subsection{Benutzeroberfläche}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\textwidth ]{img/general/RS232Uebertragung.pdf}
+\caption{RS232 Kommunikation: Leseanfrage}
+\label{figure_RS232Kommunikation}
+\end{center}
+\end{figure}
+
+Um Fehler bei der Kommunikation zu vermindern und die Erfolgschancen zu erhöhen, müssen fehlerhafte Übertragungen erkannt und wenn möglich korrigiert werden. Die Erkennung von Fehlern geschieht durch die Auswertung der Antwort eines Mess-Clients.
+
+Dabei können drei Szenarien auftreten:
+\begin{itemize}
+\item Keine Antwort: Innerhalb des Zeitlimits wurde keine Antwort empfangen.
+\item Falsche Antwort: Innerhalb des Zeitlimits wurde eine Antwort empfangen, jedoch entspricht sie nicht den Erwartungen.
+\item Prüfsummen-Fehler: Innerhalb des Zeitlimits wurde eine Antwort empfangen, jedoch ist die Prüfsumme nicht korrekt.
+\end{itemize}
+
+Zur Korrektur dieser Fehler werden Anfragen bis zu fünfmal in einem festgelegtem zeitlichen Abstand wiederholt gesendet. Sollte die Übertragung weiterhin fehlerhaft sein, ist der Mess-Client entweder nicht erreichbar oder es gibt einen Adresskonflikt auf dem RS232 Bus. Bei einem Adresskonflikt haben mehrere zwei oder mehr Mess-Clients die selbe RS232 Adresse. Das führt dazu, dass beide Mess-Clients auf die selben Anfragen reagieren und ihre Antworten sich auf dem RS232 Bus überlagern.
+
+
 
 
 \subsection{Datenbank}
@@ -79,8 +99,6 @@ GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'toor';
 \end{lstlisting}
 
 Mit dem Befehl im Quellcode \ref{lst_MySQLZugriffsrechte} erhalten alle Nutzer die sich mit dem Benutzernamen \textit{root} und dem Passwort \textit{toor} identifizieren, vollen Zugriff auf alle Datenbanken. Somit ist es möglich von überall aus eine Verbindung zum Datenbankserver aufzubauen und sämtlichen Daten abzurufen.\\
-\\
-
 
 Über einen langen Betriebszeitraum können sich große Mengen an Daten in der Datenbank ansammeln. Das hat zur Folge, dass die SQL-Abfragen nach nach bestimmten Daten sehr lange dauern können. Um dem Vorzubeugen werden Indexe für häufig abgefragte Daten erstellt.\\
 
@@ -92,7 +110,21 @@ CREATE INDEX measurement_time_idx on Measurement(Time);
 
 
 Der Quellcode \ref{lst_MySQLIndex} zeigt die Erzeugung eines Indexes. Der Index mit dem Namen \textit{measurement\_time\_idx} wird für die Spalte \textit{Time} in der Tabelle \textit{Measurement} angelegt. Vor Allem in der Tabelle \textit{Measurement} können sehr schnell große Mengen an Daten anfallen.\\
-Der Index für die Spalte \textit{Time} ist besonders gut geeignet. Denn um herauszufinden wann die letzte Messungen durchgeführt wurde, muss aus der Tabelle \textit{Measurement} das Messergebnis mit dem aktuellsten Zeitstempel ermittelt werden. Diese Abfrage kann bei 2 Millionen Einträgen ohne Index bis zu  2 Minuten dauern. Mit Index kann sie auf 4 Sekunden reduziert werden.
+Der Index für die Spalte \textit{Time} ist besonders gut geeignet. Denn um herauszufinden wann die letzte Messungen durchgeführt wurde, muss aus der Tabelle \textit{Measurement} das Messergebnis mit dem aktuellsten Zeitstempel ermittelt werden. Diese Abfrage kann bei 2 Millionen Einträgen ohne Index bis zu  2 Minuten dauern. Mit dem Index kann sie auf 4 Sekunden reduziert werden.
+
+Wenn ein Board gelöscht wird, werden alle dazugehörigen Datenbankeinträge aus den anderen Tabellen gelöscht. Das soll unnötigen Daten in der Datenbank vorbeugen. Dafür sind die Fremdschlüssel in allen Tabellen außerhalb der D\_Board Tabelle mit dem Constraint \textit{ON DELETE CASCADE} versehen. Die sorgt für eine Löschung des betroffenen Eintrages, falls das referenzierte Attribut gelöscht wird. Da die Tabellen Setting und Pattern keine eigenen Verweise zu der Tabelle D\_Board haben, ist für diese Kaskadierung ein Trigger notwendig. \\
+Ein Trigger ist ein an eine Reaktion auf ein Ereignis. Das Ereignis ist die Löschung eines Eintrags in der D\_Board Tabelle. Daraufhin sollen die dazugehörigen Einträge in der Setting und der Pattern Tabelle gelöscht werden. Dafür wird ein Trigger erstellt (siehe Quellcode \ref{lst_Trigger}).\\
+
+\begin{lstlisting}[caption={onBoardDelete Trigger},label=lst_Trigger]
+Create Trigger onBoardDelete before delete on D_Board 
+for each row 
+Begin 
+delete from Setting 
+	where p_id = old.f_Settingid;
+delete from Pattern 
+	where p_id = old.f_Patternid;
+end;
+\end{lstlisting}
 
 
 
@@ -105,13 +137,7 @@ backup und restore ?
 
 QT crosscompile?
 
-tcp server event gestuert
 
-rs232 timeouts messdatenerfassung
-
-datenbank index zur performanceverbesserung
-
-datenbank zugriff von außen direkt möglich
 
 LCD display energiesparmodus, wecken durch geste
 
@@ -119,11 +145,39 @@ LCD display energiesparmodus, wecken durch geste
 hw clock aktualisierung bei ntp verbindung
 
 
-stromverbrauch display, wlan brauch netzteil
 
-Captive Portal
+Captive Portal dnsmasq ,lighttpd
 
 
+
+\subsection{Webinterface}
+
+Das Webinterface soll nach der Verbindung über den WLAN Hotspot ohne eine spezielle Adresse manuell im Webbrowser aufrufen zu müssen erreichbar sein. Dafür wird der DNS Server dnsmasq so konfiguriert, dass alle Anfragen auf den Webserver umgeleitet werden.
+
+\begin{lstlisting}[caption={MySQL Index},label=lst_MySQLIndex]
+
+interface=wlan0
+dhcp-range=wlan0,192.168.10.10,192.168.10.50,4h
+address=/#/192.168.10.1
+
+\end{lstlisting}
 
 
 \subsection{Anwendung zur Messdatenauswertung}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\textwidth ]{img/general/PCClientMain.PNG}
+\caption{RS232 Kommunikation: Leseanfrage}
+\label{figure_RS232Kommunikation}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\textwidth ]{img/general/PCClientBoard.PNG}
+\caption{RS232 Kommunikation: Leseanfrage}
+\label{figure_RS232Kommunikation}
+\end{center}
+\end{figure}

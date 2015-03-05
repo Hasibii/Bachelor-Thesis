@@ -1,8 +1,8 @@
 \BOOKMARK [0][-]{toc.0}{Inhaltsverzeichnis}{}% 1
-\BOOKMARK [0][-]{chapter*.5}{Abbildungsverzeichnis}{}% 2
-\BOOKMARK [0][-]{chapter*.6}{Tabellenverzeichnis}{}% 3
-\BOOKMARK [0][-]{chapter*.7}{Quellcodeverzeichnis}{}% 4
-\BOOKMARK [0][-]{section*.8}{Abk\374rzungsverzeichnis}{}% 5
+\BOOKMARK [0][-]{chapter*.4}{Abbildungsverzeichnis}{}% 2
+\BOOKMARK [0][-]{chapter*.5}{Tabellenverzeichnis}{}% 3
+\BOOKMARK [0][-]{chapter*.6}{Quellcodeverzeichnis}{}% 4
+\BOOKMARK [0][-]{section*.7}{Abk\374rzungsverzeichnis}{}% 5
 \BOOKMARK [0][-]{chapter.1}{1 Einleitung}{}% 6
 \BOOKMARK [1][-]{section.1.1}{1.1 Motivation}{chapter.1}% 7
 \BOOKMARK [1][-]{section.1.2}{1.2 Aufbau der Arbeit}{chapter.1}% 8
@@ -39,10 +39,10 @@
 \BOOKMARK [1][-]{section.5.2}{5.2 Software}{chapter.5}% 39
 \BOOKMARK [2][-]{subsection.5.2.1}{5.2.1 Systemkonfiguration}{section.5.2}% 40
 \BOOKMARK [2][-]{subsection.5.2.2}{5.2.2 RS232 Kommunikation}{section.5.2}% 41
-\BOOKMARK [2][-]{subsection.5.2.3}{5.2.3 Benutzeroberfl\344che}{section.5.2}% 42
-\BOOKMARK [2][-]{subsection.5.2.4}{5.2.4 Datenbank}{section.5.2}% 43
+\BOOKMARK [2][-]{subsection.5.2.3}{5.2.3 Datenbank}{section.5.2}% 42
+\BOOKMARK [2][-]{subsection.5.2.4}{5.2.4 Webinterface}{section.5.2}% 43
 \BOOKMARK [2][-]{subsection.5.2.5}{5.2.5 Anwendung zur Messdatenauswertung}{section.5.2}% 44
 \BOOKMARK [0][-]{chapter.6}{6 Testen und Validieren}{}% 45
 \BOOKMARK [1][-]{section.6.1}{6.1 Speicherlecks}{chapter.6}% 46
 \BOOKMARK [0][-]{chapter.7}{7 Fazit und Ausblick}{}% 47
-\BOOKMARK [0][-]{section*.66}{Literaturverzeichnis}{}% 48
+\BOOKMARK [0][-]{section*.68}{Literaturverzeichnis}{}% 48

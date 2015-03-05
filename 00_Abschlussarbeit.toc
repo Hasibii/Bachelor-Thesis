@@ -34,17 +34,16 @@
 \contentsline {subsubsection}{\numberline {4.2.5.1}Tabellen}{26}{subsubsection.4.2.5.1}
 \contentsline {section}{\numberline {4.3}RS232 Protokoll}{30}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Aufbau}{31}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}\IeC {\"U}bertragung}{34}{subsection.4.3.2}
-\contentsline {subsection}{\numberline {4.3.3}Befehle und Unterbefehle}{34}{subsection.4.3.3}
-\contentsline {chapter}{\numberline {5}Implementierung}{35}{chapter.5}
-\contentsline {section}{\numberline {5.1}Hardware}{35}{section.5.1}
-\contentsline {section}{\numberline {5.2}Software}{35}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Systemkonfiguration}{35}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}RS232 Kommunikation}{37}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Benutzeroberfl\IeC {\"a}che}{37}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}Datenbank}{37}{subsection.5.2.4}
-\contentsline {subsection}{\numberline {5.2.5}Anwendung zur Messdatenauswertung}{38}{subsection.5.2.5}
-\contentsline {chapter}{\numberline {6}Testen und Validieren}{39}{chapter.6}
-\contentsline {section}{\numberline {6.1}Speicherlecks}{39}{section.6.1}
-\contentsline {chapter}{\numberline {7}Fazit und Ausblick}{40}{chapter.7}
-\contentsline {chapter}{Literaturverzeichnis}{i}{section*.67}
+\contentsline {subsection}{\numberline {4.3.2}Befehle und Unterbefehle}{35}{subsection.4.3.2}
+\contentsline {chapter}{\numberline {5}Implementierung}{37}{chapter.5}
+\contentsline {section}{\numberline {5.1}Hardware}{37}{section.5.1}
+\contentsline {section}{\numberline {5.2}Software}{37}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Systemkonfiguration}{37}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}RS232 Kommunikation}{39}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Benutzeroberfl\IeC {\"a}che}{39}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Datenbank}{39}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Anwendung zur Messdatenauswertung}{40}{subsection.5.2.5}
+\contentsline {chapter}{\numberline {6}Testen und Validieren}{41}{chapter.6}
+\contentsline {section}{\numberline {6.1}Speicherlecks}{41}{section.6.1}
+\contentsline {chapter}{\numberline {7}Fazit und Ausblick}{42}{chapter.7}
+\contentsline {chapter}{Literaturverzeichnis}{i}{section*.66}

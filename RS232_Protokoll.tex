@@ -28,7 +28,9 @@ Des Weiteren wird ein Paritätsbit für eine Paritätsprüfung eingesetzt. Diese
 \end{center}
 \end{table}
 
-Ein Rahmen des Protokolls besteht aus 4 Steuerbytes, 1 Checksummenbyte und maximal 30 Datenbytes. Durch diesen Aufbau können die Anforderungen erfüllt werden. Im folgenden Abschnitt wird auf die Zusammensetzung und die Funktion der einzelnen Bytes eingegangen.
+Ein Rahmen des Protokolls besteht aus 4 Steuerbytes, 1 Checksummenbyte und maximal 30 Bytes an Nutzdaten. Durch diesen Aufbau können die Anforderungen erfüllt werden. Im folgenden Abschnitt wird auf die Zusammensetzung und die Funktion der einzelnen Bytes eingegangen.\\
+
+
 
 
 \textbf{1. Byte: Adresse \& Read/Write}
@@ -44,22 +46,24 @@ Ein Rahmen des Protokolls besteht aus 4 Steuerbytes, 1 Checksummenbyte und maxim
 \end{center}
 \end{table}
 
-Das erste Byte des Übertragungsrahmens setzt sich aus 7 Adressbits und einem Lese-/Schreibbit zusammen. Die ersten 7 Bits (Addr0 - Addr6) bilden die Adresse des anzusteuernden Empfänger. Daraus ergibt sich ein Adressraum von möglichen 128 Adressen, wobei Adresse 0 für neue Mess-Clients zur einmaligen Anmeldung im System reserviert ist (siehe Abschnitt \ref{section_RS232Kommunikation}).\\
-Das höchste Bit ist das Lese-/Schreibbit. Der Mess-Client unterscheidet mithilfe dieses Bits, ob ein Befehl als Lese- oder Schreibzugriff interpretiert werden soll.\\
+Das erste Byte des Übertragungsrahmens setzt sich aus 7 Adressbits und einem Lese-/Schreibbit zusammen. Die ersten 7 Bit (Addr0 - Addr6) bilden die Adresse des anzusteuernden Empfänger. Daraus ergibt sich ein Adressraum von möglichen 128 Adressen, wobei Adresse 0 für neue Mess-Clients zur einmaligen Anmeldung im System reserviert ist (siehe Abschnitt \ref{section_messclientverwaltung}).\\
+Das höchste Bit ist das Lese-/Schreibbit. Mithilfe dieses Bits wird unterschieden, ob ein Befehl als Lese- oder Schreibzugriff interpretiert werden soll.\\
 
 \begin{table}[H]
 \begin{center}
 \begin{tabular}{|l|l|}\hline
  R/W Bit & Beschreibung \\ \hline
- 0 & Die Steuereinheit möchte lesen \\ \hline
- 1 & Die Steuereinheit möchte schreiben \\ \hline
+ 0 & Die Sender möchte lesen \\ \hline
+ 1 & Die Sender möchte schreiben \\ \hline
 \end{tabular}
 \caption{Read/Write}
 \label{table_RW}
 \end{center}
 \end{table}
 
-Ein Lesezugriff bedeutet immer, dass keine Daten übertragen werden.
+Ein Lesezugriff stellen dabei Anfragen dar. Dass heißt, dass keine Nutzdaten übertragen werden und eine Antwort des Empfängers mit den angeforderten Daten erwartet wird. Bei einem Schreibzugriff hingegen, werden immer Nutzdaten übertragen.\\
+
+\newpage
 
 \textbf{2. Byte: Rahmenlänge}
 
@@ -74,9 +78,10 @@ Ein Lesezugriff bedeutet immer, dass keine Daten übertragen werden.
 \end{center}
 \end{table}
 
-Das zweite Byte gibt die Länge des gesamten Rahmens inklusive Steuerbytes, Nutzdaten und Checksumme an.\\ Die minimale Rahmenlänge beträgt 5 Byte. Dabei handelt es sich um eine Übertragung ohne Nutzdaten und es werden lediglich die 4 Steuerbytes und das Byte für die Checksumme übertragen. Dies geschieht beispielsweise bei einer Leseanfrage.\\
+Das zweite Byte gibt die Länge des gesamten Rahmens inklusive Steuerbytes, Nutzdaten und Checksumme an. Die minimale Rahmenlänge beträgt 5 Byte. Dabei handelt es sich um eine Übertragung ohne Nutzdaten und es werden lediglich die 4 Steuerbytes und das Byte für die Checksumme übertragen. Dies geschieht beispielsweise bei einer Leseanfrage.\\
 Die maximale Rahmenlänge beträgt 35 Byte. Hierbei werden zusätzlich zu den 4 Steuerbytes und dem Byte für die Checksumme auch die maximale Nutzlast von 30 Byte übertragen. Dieser Fall kann beispielsweise bei Schreibzugriffen auftreten.\\
-Anhand der Länge kann eine erste Prüfung der Validität des Rahmens durchgeführt werden. Sollte die Zahl der empfangenen Bytes sich von der Rahmenlänge unterscheiden, kann von einem ungültigen Rahmen ausgegangen werden.
+Anhand der Länge kann eine erste Prüfung der Validität eines Rahmens durchgeführt werden. Sollte die Zahl der empfangenen Bytes sich von der Rahmenlänge unterscheiden, kann von einem ungültigen Rahmen ausgegangen werden.\\
+
 
 
 \textbf{3. Byte: Befehl}
@@ -92,8 +97,9 @@ Anhand der Länge kann eine erste Prüfung der Validität des Rahmens durchgefü
 \end{center}
 \end{table}
 
-Das dritte Byte repräsentiert den Befehl. Dieser gibt an, welche Aktion ausgeführt oder welcher Parameter angesprochen wird. Da insgesamt ein Byte für den Befehl zur Verfügung steht, sind bis zu 256 unterschiedliche Befehle zulässig.
+Das dritte Byte repräsentiert den Befehl. Dieser gibt an, welche Aktion ausgeführt oder welcher Parameter angesprochen wird. Da insgesamt ein Byte für den Befehl zur Verfügung steht, sind bis zu 256 unterschiedliche Befehle möglich.\\
 
+\newpage
 
 \textbf{4. Byte: Unterbefehl}
 
@@ -108,7 +114,8 @@ Das dritte Byte repräsentiert den Befehl. Dieser gibt an, welche Aktion ausgef�
 \end{center}
 \end{table}
 
-Das vierte Byte ist der Unterbefehl. Damit ist es möglich einen Befehl genauer zu spezifizieren. So kann beispielsweise der Befehl zum Auslesen eines \ac{ADC} Wertes durch den Unterbefehl genau auf einen von 64 \acp{ADC} präzisiert werden.
+Das vierte Byte ist der Unterbefehl. Damit ist es möglich einen Befehl genauer zu spezifizieren. So kann beispielsweise der Befehl zum Auslesen eines \ac{ADC} Wertes durch den Unterbefehl genau auf einen von 64 \acp{ADC} präzisiert werden. Im späteren Verlauf wird in Abschnitt \ref{section_BefehleUnterbefehle} näher auf die vorhandenen Befehle und Unterbefehle eingegangen.\\
+
 
 
 \textbf{5. Byte und folgend: Nutzdaten}
@@ -124,8 +131,10 @@ Das vierte Byte ist der Unterbefehl. Damit ist es möglich einen Befehl genauer 
 \end{center}
 \end{table}
 
-Das fünfte Byte und die darauf folgenden, tragen die Nutzdaten des Rahmens. Die Größe der Nutzdaten ist variable und lässt dich auf der Rahmenlänge ableiten. Bei zwei Byte Daten wird immer das höhere Byte zuerst übertragen.
+Das fünfte Byte und die darauf folgenden, tragen die Nutzdaten des Rahmens. Die Größe der Nutzdaten ist variable und lässt dich auf der Rahmenlänge ableiten. Bei zwei Byte Daten wird immer das höhere Byte zuerst übertragen.\\
 
+
+\newpage
 
 \textbf{Letztes Byte: Checksumme}
 
@@ -141,7 +150,8 @@ Das fünfte Byte und die darauf folgenden, tragen die Nutzdaten des Rahmens. Die
 \end{table}
 
 Das letzte Byte ist immer die Checksumme um sicherzustellen, dass alle Daten komplett und fehlerfrei übertragen wurden.\\
-Der Sender bildet dabei die Checksumme mittels einer XOR Verknüpfung aller Bytes eines Übertragungsrahmens. Beim Empfänger werden alle Bytes inklusive Checksumme erneut mit XOR Verknüpft, wobei ohne Fehler immer 0 das Ergebnis sein muss.
+Der Sender bildet dabei die Checksumme mittels einer XOR Verknüpfung aller Bytes eines Übertragungsrahmens. Beim Empfänger werden alle Bytes inklusive Checksumme erneut mit XOR Verknüpft, wobei ohne Fehler immer 0 das Ergebnis sein muss.\\
+
 
 \textbf{Beispiel}
 
@@ -178,20 +188,9 @@ Sobald der Empfänger den rahmen erhält, verknüpft er alle Bytes erneut mittel
 
 Das Ergebnis 0 repräsentiert einen gültigen Rahmen und die Checksummenprüfung war erfolgreich.
 
-\subsection{Übertragung}
-
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.55\textwidth ]{img/general/RS232Uebertragung.pdf}
-\caption{RS232 Übertragung}
-\label{figure_RS232Uebertragung}
-\end{center}
-\end{figure}
-
 
 \subsection{Befehle und Unterbefehle}
-
+\label{section_BefehleUnterbefehle}
 Für die Funktion des Systems sind verschiedene Befehle notwendig. Sie dienen zu Kommunikation zwischen den Akteuren.
 Eine Übersicht über die implementierten Befehle der RS232 Schnittstelle findet sich in Tabelle \ref{table_RS232Commands}.\\
 
@@ -207,7 +206,6 @@ Eine Übersicht über die implementierten Befehle der RS232 Schnittstelle findet
  Temperature & 0x08 & - & 1  \\ \hline
  LTT Name & 0x09 & - & 1..30  \\ \hline
  Rs232-Address & 0x0A & - & 1 \\ \hline
- Error & 0x0B & MUX-Channel (0..63) & 2  \\ \hline
  Measurement Intervall & 0x0C & Intervallnummer (0..2) & 4 \\ \hline
 \end{tabularx}
 \caption{RS232 Befehlsliste}
@@ -216,11 +214,26 @@ Eine Übersicht über die implementierten Befehle der RS232 Schnittstelle findet
 \end{table}
 
 \textbf{ADC-Value}\\
-Der Befehl liest oder schreibt den Messwert eines Sensors des Mess-Clients. Mit dem Unterbefehl muss einer der 64 Sensoren spezifiziert werden. Die Datenmenge beträgt 2 Byte.\ 
+Der Befehl liest den Messwert eines Sensors des Mess-Clients. Mit dem Unterbefehl muss einer der 64 Sensoren spezifiziert werden. Die Datenmenge beträgt 2 Byte.\ 
 
 \textbf{Number Of Pulses}\\
 Dieser Befehl liest oder schreibt die Anzahl der Impulse im Pulsmuster des Mess-Clients. Die maximale Anzahl ist 20.\ 
 
 \textbf{Pulsewidth and -period}\\
+Ändert ein Pulsbreiten-/Pulsperiodenpaar. Der Unterbefehl bestimmt die Position im Pulsmuster.\ 
 
+\textbf{DAC-Value}\\
+Ließt oder schreibt den Wert für die Vorverstärkung zur Ansteuerung der Prüfobjekte.\ 
+
+\textbf{Temperatur}\\
+Der Befehl ließt den Wert des Temperatursensors.\ 
+
+\textbf{LTT Name}\\
+Ließt oder schreibt des Namen des Kommunikationspartners.\ 
+
+\textbf{RS232-Adresse}\\
+Ließt oder schreibt die Adresse für die Rs232 Kommunikation des Kommunikationspartners.\ 
+
+\textbf{Measurement Intervall}\\
+Ließt oder schreibt die Konfiguration der Messintervalle. Der Unterbefehl gibt dabei den Zeitraum (1 bis 3) an.\ 
 

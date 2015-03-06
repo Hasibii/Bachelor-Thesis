@@ -1,6 +1,6 @@
 
 \section{Hardware}
-\label{ServerHardware}
+\label{section_Hardware}
 
 \begin{figure}[H]
 \begin{center}
@@ -65,8 +65,20 @@ Im folgenden Abschnitt wird auf beide Softwareteile eingegangen. Zunächst werde
 Die Verwaltung der Mess-Clients ist der Hauptprozess der Software. In diesem Programmteil wird die Kommunikation mit den Mess-Clients realisiert. Dabei sind die Grundaufgaben die Messdatenerfassung, das Erkennen von neuen Mess-Clients und die automatische Eingliederung dieser in das System.
 
 \subsubsection{Mess-Client Anmeldung}
-Um in das bestehende System eingegliedert zu werden, muss jeder Mess-Client sich bei dem Mess-Server anmelden. Dafür hat jeder neue Mess-Client die RS232 Adresse 0. Der Mess-Server überprüft in regelmäßigen Abständen, ob über die Adresse 0 ein Mess-Client erreichbar ist. Sobald dies der Fall ist, übermittelt der entsprechende Mess-Client seine Parametrierung an den Mess-Server. Anhand dieser Daten legt der Mess-Server automatisch neue Datenbankeinträge an.
 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.6\textwidth ]{img/general/MessClientAnmeldung.pdf}
+\caption{Mess-Client Anmeldung}
+\label{figure_MessClientAnmeldung}
+\end{center}
+\end{figure}
+ 
+ 
+Um in das bestehende System eingegliedert zu werden, muss jeder Mess-Client sich bei dem Mess-Server anmelden (siehe Abbildung \ref{figure_MessClientAnmeldung}). Dafür hat jeder neue Mess-Client die RS232 Adresse 0. Der Mess-Server überprüft in regelmäßigen Abständen, ob über die Adresse 0 ein Mess-Client erreichbar ist. Sobald dies der Fall ist, übermittelt der entsprechende Mess-Client seine Parametrierung an den Mess-Server. Die Parameter werden dann automatisch vom Mess-Server in der Datenbank abgelegt. Im Anschluss bekommt der Mess-Client eine neue Adresse zugewiesen über die er in Zukunft im System erreichbar ist.
+
+
+ 
 \subsubsection{Messdatenerfassung}
 
 Der Hauptzyklus der Software ruft kontinuierlich die Messdaten von den Mess-Clients ab. Dafür wird ständig geprüft ob Messungen erforderlich sind. Dies geschieht durch den Vergleich der vergangenen Zeit zur letzten Messung und den gegebenen Parametern für die Messintervalle. In der Tabelle \ref{table_ParameterMessintervalle} finden sich diese Parameter.\\
@@ -93,70 +105,16 @@ Ob eine Messung erforderlich ist, lässt sich aus den gegebenen Parametern ablei
 Anschließend wird geprüft ob der Mess-Client verfügbar ist. Dazu wird eine Namensanfrage über die RS232 Schnittstelle verschickt. Bei einer positiven Antwort wird dann eine Messung durchgeführt. Dabei werden alle \acp{ADC} der 64 möglichen \acp{DUT} mittels \textit{ADC-Value}-Befehls (siehe Tabelle \ref{table_RS232Commands}) ausgelesen. Sobald alle 64 Werte erfolgreich ermittelt sind, werden sie in der Datenbank abgelegt. \\
 Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zyklen erneut versucht eine Verbindung zu etablieren. Bei kontinuierlich erfolglosen Verbindungsversuchen, informiert das System den Nutzer nach einer festgelegten Zeit der Abwesenheit über die Unerreichbarkeit.
  
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.5\textwidth ]{img/general/Ablaufplan_Master.pdf}
-\caption{Ablaufplan}
-\label{figure_Ablaufplan_Master}
-\end{center}
-\end{figure}
- 
+
  
 \newpage
 \subsection{Benutzeroberfläche}
-Um die Anforderung der Statusüberwachnung zu erfüllen, verfügt das BeagleBone über eine \ac{GUI}. Sie bietet einen einfachen Überblick über die aktuellen Vorgänge und soll auf einen Blick den Status des Mess-Servers wiedergeben.\\
-Am oberen Rand der \ac{GUI} (sieht u.a. Abbildung \ref{figure_MessServerGUIStatus}) wird das aktuelle Datum und die aktuelle Uhrzeit angezeigt, sowie die derzeitige IP Adresse und der aktuelle Name. Am unteren Rand wird die derzeit ausführende Aktion in einer Statusnachricht ausgegeben.
-Die \ac{GUI} ist dabei in vier Tabs unterteilt.
+Um die Anforderung der Statusüberwachnung zu erfüllen, verfügt das BeagleBone über eine \ac{GUI}. Sie soll einen einfachen Überblick über die aktuellen Vorgänge bieten und auf einen Blick den Status des Mess-Servers wiedergeben.\\
 
-\textbf{Status Tab}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Status1.png}
-\caption{Mess-Server GUI: Status Tab}
-\label{figure_MessServerGUIStatus}
-\end{center}
-\end{figure}
-
-Das Erste ist das Status-Tab (siehe Abbildung \ref{figure_MessServerGUIStatus}). Es zeigt die wichtigsten Statusdaten wie verfügbarer Speicher, die aktuelle Laufzeit und TCP Server Status an. Um auf einen Blick den Status des Systems zu erkennen wird mittels der Farben grün und rot ein positiver bzw. negativer Status signalisiert. Außerdem kann hier der WLAN Hotspot aktiviert und deaktiviert werden.
-
-\textbf{Events Tab}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Events1.png}
-\caption{Mess-Server GUI: Events Tab}
-\label{figure_MessServerGUIEvents}
-\end{center}
-\end{figure}
-
-Im Events Tab (siehe Abbildung \ref{figure_MessServerGUIEvents}) werden wichtige Ereignisse dargestellt. Es sollen zwei Ereignisse dargestellt werden. Das erste Ereignis ist das Erkennen und Eingliedern eines neuen Mess-Clients. Es wird ausgelöst, wenn ein Mess-Client erfolgreich am System angemeldet und eingegliedert wurde. 
-
-\textbf{Boards Tab}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Boards1.png}
-\caption{Mess-Server GUI: Boards Tab}
-\label{figure_MessServerGUIBoards}
-\end{center}
-\end{figure}
-
-Das Boards Tab (siehe Abbildung \ref{figure_MessServerGUIBoards}) zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als aktiv werden Mess-Clients bezeichnet, die mit einer gültigen Adresse in der Datenbank eingetragen sind. Angezeigt werden der Name, die Adresse, die vergangene Zeit seit dem es das letzten mal erfolgreich kontaktiert wurde und die Anzahl der erfolgreichen aufgenommenen Messzyklen. Sollte ein Mess-Client über längere Zeit nicht ansprechbar sein, wird dem Nutzer durch eine rote Markierung das Problem signalisiert.
-
-\textbf{Debug Tab}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Debug2.png}
-\caption{Mess-Server GUI: Debug Tab}
-\label{figure_MessServerGUIDebug}
-\end{center}
-\end{figure}
-
-Der Zweck des Debug Tabs (siehe Abbildung \ref{figure_MessServerGUIDebug}) ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein Fehler einfacher zu erkennen. Die Anzeige dient dabei zur Vor-Ort-Analyse von Fehlern. Die selben Informationen werden auch Intern auf dem Mess-Client in einer Logdatei gespeichert.
+Status abhängig von freiem Disk Space, Boards erreichbar oder nicht, TCP Server
 
 
+\newpage
 \subsection{TCP/UDP Server}
 \label{section_TCPUDPServer}
 Um auf Netzwerkanfragen reagieren zu können, ist sowohl ein UDP-Server für Broadcast-Nachrichten als auch ein TCP-Server für die direkte Kommunikation realisiert.\\
@@ -193,30 +151,30 @@ Der TCP/UDP-Server ist vor allem für die Kommunikation mit dem PC-Client zustä
 \subsection{Web Server und WLAN Hotspot}
 \label{section_WebServerWLANHotspot}
 
-Mit Hilfe eines Web Servers ist es auch lokal möglich eine Übersicht über die gesammelten Daten auf einem Mess-Server zu erhalten. Als Schnittstelle steht ein WLAN Hotspot zur Verfügung.\ 
+Mit Hilfe eines Web Servers ist es auch lokal möglich eine Übersicht über die gesammelten Daten auf dem Mess-Server zu erhalten. Als Schnittstelle steht ein WLAN Hotspot zur Verfügung.\ 
 
 Als Webserver dient Lighttpd (auch: Lighty). Lighttpd ist laut \cite{bogus2008lighttpd} ein erweiterbarer, modularer, Single-Threaded, hoch hochperformanter Webserver, der selbst Apache oder Microsofts IIS in den meisten Einstellungen übertrifft. Besonders auf kleinen System mit begrenzten Ressourcen komme er häufig zum Einsatz. Trotzdem vertrauen auch große Webanbieter wie YouTube oder Wikipedia auf seine Effizienz.\\
-Zusätzlich sind das PHP und MySQL \ac{CGI} installiert um die Messergebnisse aus der Datenbank dynamisch darstellen zu können. 
+Zusätzlich sind das PHP und MySQL \ac{CGI} Modul installiert um die Messergebnisse aus der Datenbank dynamisch darstellen zu können. 
 
 Der Webserver ist sowohl über die normale Ethernet Verbindung als auch einen WLAN Hotspot erreichbar. Für die Realisierung des WLAN Hotspots wird ein EDIMAX EW-7811Un WLAN Dongle über den Host-USB Port des BeagleBone Black betrieben.\\
 Als Hotspot Software dient Hostapd. Hostapd ist ein IEEE 802.11 Accesspoint und IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authentificator (vgl. \cite{LinuxWireless}) und verwaltet die Zugriffe auf den Hotspot.\\
 Zusätzlich müssen Geräten die sich über den Hotspot mit dem BeagleBone Black verbinden eine IP-Adresse zugewiesen werden. Dafür kommt der DNS- und DHCP-Server dnsmasq zum Einsatz.\\
 
-In Abbildung \ref{figure_Webinterface} ist das Webinterface zu sehen. Es zeigt die Messdaten die für einen Mess-Client aufgenommen wurden. Die Daten stellen dabei keine echten Messergebnisse dar. Sie dienen lediglich zur Veranschaulichung.
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.8\textwidth ]{img/general/Webinterface.png}
-\caption{Webinterface}
-\label{figure_Webinterface}
+\includegraphics[width=0.8\textwidth]{img/general/WebinterfaceAufbau.pdf}
+\caption{Webinterface Aufbau}
+\label{ERM}
 \end{center}
 \end{figure}
+
 \newpage
  
 \subsection{Datenbank Server}
 \label{section_EntwurfDatenbank}
 
-Wie in vorangehenden Kapiteln bereits erwähnt, werden alle Messdaten und Betriebsparameter in einer MySQL-Daten abgelegt. Der Datenbankserver läuft auf dem BeagleBone Black und ist über das Netzwerk erreichbar.
+Wie in vorangehenden Kapiteln bereits erwähnt, werden alle Messdaten und Betriebsparameter in einer MySQL-Daten abgelegt. Der MySQL-Datenbankserver läuft auf dem BeagleBone Black und ist über das Netzwerk erreichbar.
 
 Aus den Anforderungen ergibt sich folgendes \ac{ERM} (siehe Abbildung \ref{ERM}). \\
 
@@ -228,11 +186,10 @@ Aus den Anforderungen ergibt sich folgendes \ac{ERM} (siehe Abbildung \ref{ERM})
 \end{center}
 \end{figure}
 
-Im folgenden wird näher auf die einzelnen Tabellen und ihre Beziehungen untereinander eingegangen. Außerdem werden die Attribute näher erläutert.
+\subsubsection{Tabellen}
+Im folgenden Abschnitt wird näher auf die einzelnen Tabellen und ihre Beziehungen untereinander eingegangen. Außerdem werden die Attribute näher erläutert.
 
 \newpage
-\subsubsection{Tabellen}
-
 \textbf{Tabelle D\_Board}\\
 
 \begin{table}[H]
@@ -253,7 +210,12 @@ f\_Patternid & INTEGER FOREIGN KEY\\ \hline
 \end{table}
 
 
-Die Tabelle D\_Board (steht für Degradations-Board) speichert alle im System registrierten Mess-Clients. Jeder Mess-Client hat eine einzigartige Identifikationsnummer (\textit{p\_id}), welche gleichzeitig den Primärschlüssel (englisch: primary key) repräsentiert. Um die Mess-Clients später leserlich auseinanderhalten zu können, verfügen sie zusätzlich über einen Namen (\textit{label}), der einzigartig sein muss. Zur Kommunikation wird jedem Board eine einzigartige Adresse (\textit{address}) zugeordnet. Boards die eine Adresse haben, werden als aktive Boards bezeichnet. Es kann davon ausgegangen werden, dass sie innerhalb des Systems erreichbar sind. Außerdem ist auch möglich, dass ein Board keine Adresse hat. In diesem Fall ist das Board als inaktiv anzusehen. Die Daten sind zwar noch in der Datenbank, jedoch ist es nicht mehr erreichbar und es werden keine neuen Messwerte aufgenommen. Diese Inaktivität entsteht, wenn ein Board für eine zu lange Zeit nicht Erreichbar ist. Denn in einem solchen Fall, wird die Adresse aufgrund des beschränkten Adressraumes freigegeben. Zusätzlich besitzt ein Degradationsboard einen Zeitstempel (\textit{LastOnline}) für den Zeitpunkt der letzten erfolgreichen Kontaktaufnahme. Diese Information ist notwendig um die Dauer der Abwesenheit ermitteln und den Nutzer dahingehen in Kenntnis setzen zu können. Des Weiteren gibt es noch einen Zeitstempel (\textit{LastChecked}) für den letzten Zeitpunkt des Versuches einer Kontaktaufnahme, welcher notwendig ist, um unnötig häufige Kontaktversuche zu vermeiden. So soll ein Degradationsboard nicht häufiger als alle 10 Minuten kontaktiert werden um die Performance zu erhöhen. Zusätzlich folgt jedes Board genau einer Einstellung (Tabelle Setting). Diese Relation wird durch einen Fremdschlüssel (englisch: foreign key) mit der Identifikationsnummer einer Einstellung (\textit{f\_Settingid}) referenziert. Außerdem hat jedes Board ein PulsePattern (Tabelle Pattern) zur Ansteuerung der Prüfobjekte. Dieses wird durch die Identifikationsnummer eines Patterns(\textit{f\_Patternid}) angegeben.
+Die Tabelle D\_Board (steht für Degradations-Board) speichert alle im System registrierten Mess-Clients. Jeder Mess-Client hat eine einzigartige Identifikationsnummer (\textit{p\_id}), welche gleichzeitig den Primärschlüssel (englisch: primary key) repräsentiert. Um die Mess-Clients später leserlich auseinanderhalten zu können, verfügen sie zusätzlich über einen Namen (\textit{label}), der einzigartig sein muss.\\
+Zur Kommunikation wird jedem Board eine einzigartige Adresse (\textit{address}) zugeordnet. Boards die eine Adresse haben, werden als aktive Boards bezeichnet. Es kann davon ausgegangen werden, dass sie innerhalb des Systems erreichbar sind. Außerdem ist auch möglich, dass ein Board keine Adresse hat. In diesem Fall ist das Board als inaktiv anzusehen. Die Daten sind zwar noch in der Datenbank, jedoch ist es nicht mehr erreichbar und es werden keine neuen Messwerte aufgenommen. Diese Inaktivität entsteht, wenn ein Board für eine zu lange Zeit nicht Erreichbar ist. Denn in einem solchen Fall, wird die Adresse aufgrund des beschränkten Adressraumes freigegeben.\\
+Jedes Degradationsboard besitzt einen Zeitstempel (\textit{LastOnline}) für den Zeitpunkt der letzten erfolgreichen Kontaktaufnahme. Diese Information ist notwendig um die Dauer der Abwesenheit ermitteln und den Nutzer dahingehen in Kenntnis setzen zu können.\\
+Des Weiteren gibt es noch einen Zeitstempel (\textit{LastChecked}) für den letzten Zeitpunkt des Versuches einer Kontaktaufnahme, welcher notwendig ist, um unnötig häufige Kontaktversuche zu vermeiden. So soll ein Degradationsboard nicht häufiger als alle 10 Minuten kontaktiert werden um die Performance zu erhöhen.\\
+Zusätzlich folgt jedes Board genau einer Einstellung (Tabelle Setting). Diese Relation wird durch einen Fremdschlüssel (englisch: foreign key) mit der Identifikationsnummer einer Einstellung (\textit{f\_Settingid}) referenziert.\\
+Außerdem hat jedes Board ein PulsePattern (Tabelle Pattern) zur Ansteuerung der Prüfobjekte. Dieses wird durch die Identifikationsnummer eines Patterns(\textit{f\_Patternid}) angegeben.
 
 
 \newpage
@@ -352,4 +314,7 @@ Time & TIMESTAMP DEFAULT CURRENT\_TIMESTAMP\\ \hline
 \end{table}
 
 In der Measurement Tabelle werden die Messwerte der einzelnen Prüfobjekte gespeichert. Der Primärschlüssel ist auch hier die Identifikationsnummer (\textit{p\_id}). Zu jedem Messeintrag gehört die aktuelle Temperatur (\textit{Temperatur}), der gelesene Messwert (\textit{value}) und die aktuelle Zeit (\textit{Time}).
+
+
+
 

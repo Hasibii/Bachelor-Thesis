@@ -2,8 +2,8 @@
 \select@language {ngerman}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1.1}{\ignorespaces Aufgezeichnete Degradation von verschiedenen LEDs. Zeigt die relative Abweichung der optischen Leistung \IeC {\"u}ber die Zeit.\relax }}{4}{figure.caption.10}
-\contentsline {figure}{\numberline {2.2.1}{\ignorespaces QtCreator Version 2.0.1\relax }}{6}{figure.caption.14}
+\contentsline {figure}{\numberline {2.1.1}{\ignorespaces Aufgezeichnete Degradation\relax }}{4}{figure.caption.10}
+\contentsline {figure}{\numberline {2.2.1}{\ignorespaces QtCreator Version 2.0.1 (Quelle: \cite {qtcreator})\relax }}{6}{figure.caption.14}
 \contentsline {figure}{\numberline {2.4.1}{\ignorespaces Links:Kommunikation zwischen Applikation und Hardware. Rechts: Beispiel Kommunikation zwischen Applikation und UART \IeC {\"u}ber den Kernel.\relax }}{8}{figure.caption.19}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1.1}{\ignorespaces Szenario\relax }}{9}{figure.caption.20}
@@ -19,17 +19,18 @@
 \contentsline {figure}{\numberline {4.1.4}{\ignorespaces LCD Cape\relax }}{17}{figure.caption.29}
 \contentsline {figure}{\numberline {4.1.5}{\ignorespaces Gestapelte Capes\relax }}{18}{figure.caption.32}
 \contentsline {figure}{\numberline {4.2.1}{\ignorespaces \IeC {\"U}bersicht Software\relax }}{18}{figure.caption.33}
-\contentsline {figure}{\numberline {4.2.2}{\ignorespaces Ablaufplan\relax }}{20}{figure.caption.36}
-\contentsline {figure}{\numberline {4.2.3}{\ignorespaces Mess-Server GUI: Status Tab\relax }}{21}{figure.caption.37}
-\contentsline {figure}{\numberline {4.2.4}{\ignorespaces Mess-Server GUI: Events Tab\relax }}{21}{figure.caption.38}
-\contentsline {figure}{\numberline {4.2.5}{\ignorespaces Mess-Server GUI: Boards Tab\relax }}{22}{figure.caption.39}
-\contentsline {figure}{\numberline {4.2.6}{\ignorespaces Mess-Server GUI: Debug Tab\relax }}{22}{figure.caption.40}
-\contentsline {figure}{\numberline {4.2.7}{\ignorespaces RS232 Tunnel\relax }}{23}{figure.caption.42}
-\contentsline {figure}{\numberline {4.2.8}{\ignorespaces Webinterface\relax }}{24}{figure.caption.44}
-\contentsline {figure}{\numberline {4.2.9}{\ignorespaces Entity Relationship Modell\relax }}{25}{figure.caption.46}
+\contentsline {figure}{\numberline {4.2.2}{\ignorespaces Mess-Client Anmeldung\relax }}{19}{figure.caption.34}
+\contentsline {figure}{\numberline {4.2.3}{\ignorespaces RS232 Tunnel\relax }}{22}{figure.caption.38}
+\contentsline {figure}{\numberline {4.2.4}{\ignorespaces Webinterface Aufbau\relax }}{23}{figure.caption.40}
+\contentsline {figure}{\numberline {4.2.5}{\ignorespaces Entity Relationship Modell\relax }}{24}{figure.caption.42}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.2.1}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{39}{figure.caption.65}
-\contentsline {figure}{\numberline {5.2.2}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{42}{figure.caption.66}
-\contentsline {figure}{\numberline {5.2.3}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{43}{figure.caption.67}
+\contentsline {figure}{\numberline {5.2.1}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{37}{figure.caption.61}
+\contentsline {figure}{\numberline {5.4.1}{\ignorespaces Webinterface\relax }}{40}{figure.caption.62}
+\contentsline {figure}{\numberline {5.5.1}{\ignorespaces Mess-Server GUI: Status Tab\relax }}{41}{figure.caption.63}
+\contentsline {figure}{\numberline {5.5.2}{\ignorespaces Mess-Server GUI: Events Tab\relax }}{41}{figure.caption.64}
+\contentsline {figure}{\numberline {5.5.3}{\ignorespaces Mess-Server GUI: Boards Tab\relax }}{42}{figure.caption.65}
+\contentsline {figure}{\numberline {5.5.4}{\ignorespaces Mess-Server GUI: Debug Tab\relax }}{42}{figure.caption.66}
+\contentsline {figure}{\numberline {5.6.1}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{43}{figure.caption.67}
+\contentsline {figure}{\numberline {5.6.2}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{43}{figure.caption.68}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

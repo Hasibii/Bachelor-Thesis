@@ -2,10 +2,18 @@
 \chapter{Testen und Validieren}
 \label{chapter_Testen_und_Validieren}
 
-Da das System in einem Langzeit-Teststand eingesetzt werden soll, ist die Zuverlässigkeit und die Betriebsfähigkeit über lange Zeiträume besonders wichtig. Es darf keine großen Performanceeinbußen bei langem Betrieb geben. In diesem Kapitel wird auf die Tests zur Sicherstellung dieser Kriterien eingegangen.
+Da das System in einem Langzeit-Teststand eingesetzt werden soll, ist die Zuverlässigkeit und die Betriebsfähigkeit über lange Zeiträume besonders wichtig. Es darf keine großen Performanceeinbußen oder lange Ausfälle beim Betrieb geben. In diesem Kapitel wird auf die Tests zur Sicherstellung dieser Kriterien eingegangen.
 
 \section{Speicherlecks}
 
 Ein häufiger Grund für Performanceeinbußen sind Speicherlecks (englisch: memory leak). Speicherlecks sind Fehler in der Programmierung der Speicherverwaltung, wodurch Speicher belegt, aber ungenutzt ist und nicht wieder freigegeben wird. Dabei kommt es zu einer immer größer werdenden Speichernutzung, bis der gesamte Speicher des Systems ausgelastet ist und es sich stark verlangsamt oder sogar Abstürzt.\\
-Diese Speicherlecks aufzuspüren ist keine leichte Aufgabe. \\
-Als Hilfe dient das Werkzeuge Valgrind \cite{valgrind}. Valgrind ist im Grunde eine virtuelle Maschine.
+Um Speicherlecks auszuschließen wurde die Steuerungssoftware mittels Valgrind \cite{valgrind} auf Speicherfehler überprüft. Dabei wurden alle Speicherlecks behoben.\\
+
+\section{Stromausfall}
+
+Nach einem Stromausfall muss das System binnen kürzester Zeit wieder einsatzbereit sein. Zur Sicherstellung dieser Eigenschaft wurden 20 Stromausfälle durch trennen und anschließend erneute verbinden der Stromversorgung simuliert.\\
+Bei 20 Versuchen ist das System ohne Probleme 
+
+\section{Testaufbau}
+
+Im Testaufbau werden zwei Mess-Clients an einen Mess-Server angeschlossen

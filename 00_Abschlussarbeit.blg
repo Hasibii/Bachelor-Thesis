@@ -2,7 +2,6 @@ This is BibTeX, Version 0.99dThe top-level auxiliary file: 00_Abschlussarbeit.au
 The style file: alphadin.bst
 A level-1 auxiliary file: 01_Titel.aux
 A level-1 auxiliary file: 02_Erklaerung.aux
-A level-1 auxiliary file: 03_Sperrvermerk.aux
 A level-1 auxiliary file: 04_Vorwort.aux
 A level-1 auxiliary file: 10_Einleitung.aux
 A level-1 auxiliary file: Grundlagen.aux
@@ -10,12 +9,7 @@ A level-1 auxiliary file: Anforderungsanalyse.aux
 A level-1 auxiliary file: 30_Konzeptentwicklung.aux
 A level-1 auxiliary file: Implementierung.aux
 A level-1 auxiliary file: 40_Testen_und_Validieren.aux
+A level-1 auxiliary file: FazitUndAusblick.aux
 A level-1 auxiliary file: part/04_abschlussbetrachtung.aux
 A level-1 auxiliary file: appendix/appendix.aux
 Database file #1: Literatur.bib
-Repeated entry---line 75 of file Literatur.bib
- : @misc{putty
- :            ,
-I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "QtProject"
-(There was 1 error message)

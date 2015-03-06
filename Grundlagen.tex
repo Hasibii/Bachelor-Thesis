@@ -6,15 +6,16 @@ Bei der Entwicklung des Teststandes kommen verschiedene Systeme und Konzepte zum
 \section{Degradation}
 \label{section_Degradation}
 Der Hauptgrund für mechanisches Versagen im Lebenszyklus eines Systems oder Bauelementes, liegt an der langsamen Ansammlung von nicht reversiblen Schäden. Dieser Prozess ist bekannt als Degradation (vgl. \cite{zhou2011}).\\
-Die Schwierigkeit liegt in der Feststellung des mechanischen Versagen in messbaren Schritten. So ist die Bestimmung der Lebenszeit über die Zeit bis zum Ausfall zeitaufwändig. Einfacher ist es die Leistung des Bauelementes oder Systems zu erfassen, z.B. die optische Leistung einer LED. Auf diesem Weg kann ein Trend ausgemacht werden.\\
+Die Schwierigkeit liegt in der Feststellung des mechanischen Versagen in messbaren Schritten.\\
+So ist die Bestimmung der Lebenszeit über die Zeit bis zum Ausfall zeitaufwändig. Einfacher ist es die Leistung des Bauelementes oder Systems zu erfassen, z.B. die optische Leistung einer \ac{LED}. Auf diesem Weg kann ein Trend ausgemacht werden.\\
 Um die Länge des Lebenszyklus eines Bauelementes bestimmen zu können, wird die Leistung dessen unter Last über einen langen Zeitraum hinweg aufgezeichnet. Anhand der daraus resultierenden Daten kann die zu erwartende Länge des Lebenszyklus ermittelt werden.\\
-In Abbildung \ref{figure_Degradation} ist ein Beispiel für erfasste Daten zu sehen. Sie zeigt die Veränderung der optischen Leistung über die Zeit von 7 verschiedenen \acp{LED}. 
+In Abbildung \ref{figure_Degradation} ist ein Beispiel für erfasste Daten zu sehen. Sie zeigt die Veränderung der optischen Leistung über die Zeit von 7 verschiedenen \acp{LED}.Sie zeigt die relative Abweichung der optischen Leistung über die Zeit. 
 
  
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{img/general/Degradation.png}
-\caption{Aufgezeichnete Degradation von verschiedenen LEDs. Zeigt die relative Abweichung der optischen Leistung über die Zeit.}
+\caption{Aufgezeichnete Degradation}
 \label{figure_Degradation}
 \end{center}
 \end{figure}
@@ -46,21 +47,21 @@ void Calculate::my_function(){
 }
 \end{lstlisting}
 
-Im Quellcode \ref{lst_QtEmit} wird das Signal \textit{clicked()} mittels \textit{emit}-Statement ausgelöst und der Slot des verbundenen Objekts aktiviert. Somit ist es möglich beispielsweise die GUI und den Hauptprogrammablauf von einander zu trennen und lediglich über Signale und Slots kommunizieren zu lassen. Dadurch agieren beide Teile komplett unabhängig von einander.
+Im Quellcode \ref{lst_QtEmit} wird das Signal \textit{clicked()} mittels \textit{emit}-Statement ausgelöst und der Slot des verbundenen Objektes aktiviert. Somit ist es möglich beispielsweise die GUI und den Hauptprogrammablauf von einander zu trennen und lediglich über Signale und Slots kommunizieren zu lassen. Dadurch agieren beide Teile komplett unabhängig von einander.
 
 \subsection{Entwicklungsumgebung}
 Als Entwicklungsumgebung (englisch: \ac{IDE}) dient der Qt Creator (siehe Abbildung \ref{QtCreator}), welcher Teil des \ac{SDK} von Qt ist und sowohl auf Linux, Windows als auch Mac OS X zur Verfügung steht. Er kommt mit einem Debugger, einem integrierten grafischen \ac{GUI} Designer und einem Texteditor mit Funktionen wie Syntax-Hervorhebung und automatischer Vervollständigung. \\
 Dabei kommen gängigen Compiler wie MinGW unter Windows zum Einsatz und es besteht die Möglichkeit eigene Toolchains anzulegen. \\
 Eine Toolchain dient zum Übersetzen von Quellcode auf einem Host-System für ein Ziel-System. Sie setzt sich meistens aus einer Kette von Werkzeugen zusammen, welche nacheinander für die Übersetzung des Quellcodes sorgen. Somit ist es möglich, einen Programmcode auf einem Windowsrechner zu schreiben und anschließend für ein Linux-System zu übersetzen.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{img/general/QtCreator.png}
-\caption{QtCreator Version 2.0.1}
+\caption{QtCreator Version 2.0.1 (Quelle: \protect\cite{qtcreator})}
 \label{QtCreator}
 \end{center}
 \end{figure}
-\newpage
+
 %Quellen:\\
 %http://de.wikipedia.org/wiki/Qt_%28Bibliothek%29
 %http://www.mathematik.uni-ulm.de/sai/ws02/cpp/070103/Qt.pdf
@@ -71,9 +72,9 @@ Eine Toolchain dient zum Übersetzen von Quellcode auf einem Host-System für ei
 \section{Datenbank}
 \label{section_Datenbank}
 
-Um große Mengen an Daten effizient verarbeiten zu können, ist der Einsatz eines \ac{DBMS} unumgänglich (vgl. \citep{saake2010datenbanken}).
+Um große Mengen an Daten effizient verarbeiten zu können, ist der Einsatz eines \ac{DBMS} ratsam (vgl. \citep{saake2010datenbanken}).
 
-Für das Speichern der Messdaten und Betriebsparameter wird daher eine \ac{SQL} \ac{DB} benötigt. Bei der Wahl des \ac{DBMS}, stehen mehrere Systeme zur Auswahl. Dabei kommen SQLite und MySQL aufgrund der kostenlosen Verfügbarkeit in die engere Auswahl.
+Für das Speichern von Daten und Betriebsparametern wird daher eine \ac{SQL} \ac{DB} benötigt. Bei der Wahl des \ac{DBMS}, stehen mehrere Systeme zur Auswahl. Dabei kommen SQLite und MySQL aufgrund der kostenlosen Verfügbarkeit in die engere Auswahl.
 Beide System haben ihre Vor- und Nachteile.
 
 
@@ -88,7 +89,7 @@ Es ermöglicht die Verwaltung von Nutzern und Rechten. Dadurch ist es ausgezeich
 \\
 Jedoch gibt es auch hier Nachteile. So ist die Konfiguration wesentlich schwerer und komplexer. Während bei SQLite kaum Konfigurationen nötig sind, müssen bei MySQL viele Einstellungen an das Host-System angepasst werden. Darunter fallen beispielsweise verschiedene Zwischenspeichergrößen und die Zugriffsrechte. Durch die Notwendigkeit eines Servers benötigt MySQL außerdem wesentlich mehr Ressourcen auf dem Host-System.
 
-Für das gegebene Projekt eignet sich das relationale \ac{DBMS} MySQL besser. Auch wenn SQLite einige Vorteile vor allem im eingebetteten Bereich besitzt, ist die fehlende Unterstützen von mehreren Nutzern gleichzeitig ein Ausschlusskriterium.
+Für diese Arbeit eignet sich das relationale \ac{DBMS} MySQL besser. Auch wenn SQLite einige Vorteile vor allem im eingebetteten Bereich besitzt, ist die fehlende Unterstützen von mehreren Nutzern gleichzeitig ein Ausschlusskriterium.
 
 \newpage
 

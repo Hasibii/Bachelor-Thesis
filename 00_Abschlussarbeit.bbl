@@ -10,15 +10,13 @@
 \bibitem[Ben05]{bender2005embedded}
 \textsc{Bender}, K.:
 \newblock \emph{Embedded Systems: Qualit{\"a}tsorientierte Entwickung}.
-\newblock Springer, 2005 \url{https://books.google.de/books?id=JoMfBAAAQBAJ}.
-  --
+\newblock Springer, 2005. --
 \newblock ISBN 9783540273707
 
 \bibitem[Bog08]{bogus2008lighttpd}
 \textsc{Bogus}, A.:
 \newblock \emph{Lighttpd}.
-\newblock Packt Publishing, Limited, 2008 (From Technologies to Solutions).
-\newblock \url{https://books.google.de/books?id=aId-yw-3gSoC}. --
+\newblock Packt Publishing, Limited, 2008 (From Technologies to Solutions). --
 \newblock ISBN 9781847192110
 
 \bibitem[Cap]{Capemgr}
@@ -33,7 +31,7 @@
 \newblock \url{http://www.linux-praxis.de/lpic1/manpages/logrotate.html}. --
 \newblock Zugriff am 02.03.2015
 
-\bibitem[QtP]{putty}
+\bibitem[QtP]{qtproject}
 \textsc{QtProject}:
 \newblock \emph{Qt}.
 \newblock \url{http://qt-project.org/}. --
@@ -42,8 +40,7 @@
 \bibitem[SGD09]{schroeder2009embedded}
 \textsc{Schr{\"o}der}, J. ; \textsc{Gockel}, T.  ; \textsc{Dillmann}, R.:
 \newblock \emph{Embedded Linux:}.
-\newblock Springer, 2009 (X. systems. press Series).
-\newblock \url{https://books.google.de/books?id=vpgrxY4hcHIC}. --
+\newblock Springer, 2009 (X. systems. press Series). --
 \newblock ISBN 9783540786191
 
 \bibitem[SSH10]{saake2010datenbanken}
@@ -52,11 +49,23 @@
 \newblock mitp, 2010 (Biber-Buch). --
 \newblock ISBN 9783826690570
 
+\bibitem[ubu]{putty}
+\textsc{ubuntuusers}:
+\newblock \emph{PuTTY}.
+\newblock \url{http://wiki.ubuntuusers.de/PuTTY}. --
+\newblock Zugriff am 02.03.2015
+
 \bibitem[Val]{valgrind}
-\textsc{Valgrind.org}:
+\textsc{ValgrindDevelopers}:
 \newblock \emph{Valgrind}.
 \newblock \url{http://valgrind.org/}. --
-\newblock Zugriff am 02.03.2015
+\newblock Zugriff am 06.03.2015
+
+\bibitem[Wik]{qtcreator}
+\textsc{Wikipedia}:
+\newblock \emph{Qt Creator}.
+\newblock \url{http://de.wikipedia.org/wiki/Qt_Creator}. --
+\newblock Zugriff am 06.03.2015
 
 \bibitem[Wir]{LinuxWireless}
 \textsc{Wireless}, Linux:
@@ -69,8 +78,7 @@
 \textsc{Yaghmour}, K. ; \textsc{Masters}, J. ; \textsc{Ben-Yossef}, G.  ;
   \textsc{Gerum}, P.:
 \newblock \emph{Building Embedded Linux Systems}.
-\newblock O'Reilly Media, 2008
-  \url{https://books.google.de/books?id=I-hVqkX6A9cC}. --
+\newblock O'Reilly Media, 2008. --
 \newblock ISBN 9780596555054
 
 \bibitem[ZSG11]{zhou2011}

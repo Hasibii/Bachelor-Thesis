@@ -14,8 +14,8 @@ Folgende Kriterien sollen dabei erfüllt werden:
 
 
 Um eine hohe Zuverlässigkeit gewährleisten zu können, wird eine geringe Bautrate von 2400 verwendet. Da nur geringe Datenmengen in großen Abständen auftreten, vermindert dass die Anfälligkeit der Übertragung gegenüber äußeren Einflüssen ohne dabei die Performance merkbar zu beeinflussen.\\
-Des Weiteren wird ein Paritätsbit für eine Paritätsprüfung eingesetzt. Dieses Bit gibt an, ob die Anzahl der Einsen des Datenblocks gerade oder ungerade ist. Der Wert verwendeten Even-Paritätsbit ist 1, wenn die Summe der Einsen gerade ist und 0 wenn sie ungerade ist. Dadurch können grobe Fehler bei der Übertragung ausgemacht und korrigiert werden.
-\newpage
+Des Weiteren wird ein Paritätsbit für eine Paritätsprüfung eingesetzt. Dieses Bit gibt an, ob die Anzahl der Einsen des Datenblocks gerade oder ungerade ist. Der Wert verwendeten Even-Paritätsbit ist 1, wenn die Summe der Einsen gerade ist und 0 wenn sie ungerade ist. Dadurch können grobe Fehler bei der Übertragung ausgemacht und korrigiert werden.\\
+
 \subsection{Aufbau}
 \begin{table}[H]
 \begin{center}
@@ -32,7 +32,7 @@ Ein Rahmen des Protokolls besteht aus 4 Steuerbytes, 1 Checksummenbyte und maxim
 
 
 
-
+\newpage
 \textbf{1. Byte: Adresse \& Read/Write}
 
 \begin{table}[H]
@@ -47,7 +47,7 @@ Ein Rahmen des Protokolls besteht aus 4 Steuerbytes, 1 Checksummenbyte und maxim
 \end{table}
 
 Das erste Byte des Übertragungsrahmens setzt sich aus 7 Adressbits und einem Lese-/Schreibbit zusammen. Die ersten 7 Bit (Addr0 - Addr6) bilden die Adresse des anzusteuernden Empfänger. Daraus ergibt sich ein Adressraum von möglichen 128 Adressen, wobei Adresse 0 für neue Mess-Clients zur einmaligen Anmeldung im System reserviert ist (siehe Abschnitt \ref{section_messclientverwaltung}).\\
-Das höchste Bit ist das Lese-/Schreibbit. Mithilfe dieses Bits wird unterschieden, ob ein Befehl als Lese- oder Schreibzugriff interpretiert werden soll.\\
+Das höchste Bit ist das Lese-/Schreibbit. Mithilfe dieses Bits wird unterschieden, ob ein Befehl als Lese- oder Schreibzugriff interpretiert werden soll.
 
 \begin{table}[H]
 \begin{center}
@@ -63,7 +63,6 @@ Das höchste Bit ist das Lese-/Schreibbit. Mithilfe dieses Bits wird unterschied
 
 Ein Lesezugriff stellen dabei Anfragen dar. Dass heißt, dass keine Nutzdaten übertragen werden und eine Antwort des Empfängers mit den angeforderten Daten erwartet wird. Bei einem Schreibzugriff hingegen, werden immer Nutzdaten übertragen.\\
 
-\newpage
 
 \textbf{2. Byte: Rahmenlänge}
 
@@ -99,7 +98,6 @@ Anhand der Länge kann eine erste Prüfung der Validität eines Rahmens durchgef
 
 Das dritte Byte repräsentiert den Befehl. Dieser gibt an, welche Aktion ausgeführt oder welcher Parameter angesprochen wird. Da insgesamt ein Byte für den Befehl zur Verfügung steht, sind bis zu 256 unterschiedliche Befehle möglich.\\
 
-\newpage
 
 \textbf{4. Byte: Unterbefehl}
 
@@ -114,7 +112,7 @@ Das dritte Byte repräsentiert den Befehl. Dieser gibt an, welche Aktion ausgef�
 \end{center}
 \end{table}
 
-Das vierte Byte ist der Unterbefehl. Damit ist es möglich einen Befehl genauer zu spezifizieren. So kann beispielsweise der Befehl zum Auslesen eines \ac{ADC} Wertes durch den Unterbefehl genau auf einen von 64 \acp{ADC} präzisiert werden. Im späteren Verlauf wird in Abschnitt \ref{section_BefehleUnterbefehle} näher auf die vorhandenen Befehle und Unterbefehle eingegangen.\\
+Das vierte Byte ist der Unterbefehl. Damit ist es möglich einen Befehl genauer zu spezifizieren. So kann beispielsweise der Befehl zum Auslesen eines Messwertes durch den Unterbefehl genau auf einen der 64 Prüfobjekte präzisiert werden. Im späteren Verlauf wird in Abschnitt \ref{section_BefehleUnterbefehle} näher auf die vorhandenen Befehle und Unterbefehle eingegangen.\\
 
 
 
@@ -157,7 +155,7 @@ Der Sender bildet dabei die Checksumme mittels einer XOR Verknüpfung aller Byte
 
 Sender:
  
-Es wird angenommen das folgender Rahmen übertragen wird.
+Es wird angenommen das folgender Rahmen übertragen werden soll.
 \begin{center}
 \begin{tabular}{|c|c|c|c|}\hline
   Adresse & Länge & Befehl & Unterbefehl \\ \hline
@@ -180,7 +178,7 @@ Anschließend wird die Checksumme als letztes Byte an den Rahmen an gehangen.
 
 Empfänger:
 
-Sobald der Empfänger den rahmen erhält, verknüpft er alle Bytes erneut mittels XOR um die Gültigkeit zu prüfen.
+Sobald der Empfänger den Rahmen erhält, verknüpft er alle Bytes erneut mittels XOR um die Gültigkeit zu prüfen.
 
 \begin{center}
 {\Large $1 \oplus 4 \oplus 9 \oplus 0 \oplus 13 = 0$}\\
@@ -214,10 +212,10 @@ Eine Übersicht über die implementierten Befehle der RS232 Schnittstelle findet
 \end{table}
 
 \textbf{ADC-Value}\\
-Der Befehl liest den Messwert eines Sensors des Mess-Clients. Mit dem Unterbefehl muss einer der 64 Sensoren spezifiziert werden. Die Datenmenge beträgt 2 Byte.\ 
+Liest den Messwert eines Sensors des Mess-Clients. Mit dem Unterbefehl muss einer der 64 Sensoren spezifiziert werden. Ein Messwert hat die Größe von 2 Byte.\ 
 
 \textbf{Number Of Pulses}\\
-Dieser Befehl liest oder schreibt die Anzahl der Impulse im Pulsmuster des Mess-Clients. Die maximale Anzahl ist 20.\ 
+Liest oder schreibt die Anzahl der Impulse im Pulsmuster des Mess-Clients. Die maximale Anzahl ist 20.\ 
 
 \textbf{Pulsewidth and -period}\\
 Ändert ein Pulsbreiten-/Pulsperiodenpaar. Der Unterbefehl bestimmt die Position im Pulsmuster.\ 

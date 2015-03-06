@@ -1,9 +1,7 @@
 \chapter{Implementierung}
 \label{chapter_Implementierung}
 
-\section{Hardware}
 
-\section{Software}
 
 Die Installation der Linux Software erfolgt mittels des Terminalemulator PuTTY \cite{putty}. Mit \mbox{PuTTY} wird eine \ac{SSH} Verbindung zu dem BeagleBone Black aufgebaut, wodurch ein direkter Zugriff auf das Linux Terminal des BeagleBone Black möglich ist. Mit dem Linux Paketmanager kann bei aktiver Internetverbindung die benötigte Software installiert werden.\ 
 
@@ -11,7 +9,7 @@ Bei der Implementierung der eigenen Software wird wie in Kapitel \ref{chapter_De
 Das Steuerungssoftware teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
 Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe Abschnitt \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.
 
-\subsection{Systemkonfiguration}
+\section{Systemkonfiguration}
 
 Beim Hochfahren des Mess-Servers sorgt das Linux Hintergrundprogramm systemd für die Ausführung alle nötigen Prozesse. Um zusätzlich die Steuerungssoftware zu starten, wird ein neuer Service erstellt und dem systemd mitgeteilt.\\
 
@@ -64,7 +62,7 @@ Im Quellcode \ref{lst_Logrotate} ist die entsprechende Konfiguration zu sehen. D
 
 
 
-\subsection{RS232 Kommunikation}
+\section{RS232 Kommunikation}
 
 Die Kommunikation von dem Mess-Server mit den Mess-Clients erfolgt sequentiell. Der Mess-Server stellt eine Anfrage und wartet anschließend für eine festgelegte Zeit auf eine Antwort. Die Antwort enthält bei fehlerfreier Kommunikation das invertierte Read/Write-Bit, sowie die gleiche RS232 Adresse und den selben Befehl/Unterbefehl wie bei der Anfrage. Bei einer Leseanfrage enthält die Antwort zusätzlich noch die angeforderten Daten.\\
 
@@ -90,7 +88,7 @@ Zur Korrektur dieser Fehler werden Anfragen bis zu fünfmal in einem festgelegte
 
 
 
-\subsection{Datenbank}
+\section{Datenbank}
 
 Die Datenbank muss aus dem Netzwerk erreichbar sein, damit die Messdaten von einem PC-Client abgerufen werden können. Bei einem MySQL Server ist dies jedoch nicht von Grund auf gegeben. Standardmäßig akzeptiert der MySQL Server nur Anfragen über die Localhost Adresse (IP-Adresse: 127.0.0.1). Deshalb müssen die Zugriffsrechte erst erteilt werden.\\
 
@@ -128,42 +126,87 @@ end;
 
 
 
-
-
-
-
-
-backup und restore ?
-
-QT crosscompile?
-
-
-
-LCD display energiesparmodus, wecken durch geste
-
-
-hw clock aktualisierung bei ntp verbindung
-
-
-
-Captive Portal dnsmasq ,lighttpd
-
-
-
-\subsection{Webinterface}
+\newpage
+\section{Webinterface}
 
 Das Webinterface soll nach der Verbindung über den WLAN Hotspot ohne eine spezielle Adresse manuell im Webbrowser aufrufen zu müssen erreichbar sein. Dafür wird der DNS Server dnsmasq so konfiguriert, dass alle Anfragen auf den Webserver umgeleitet werden.
 
-\begin{lstlisting}[caption={MySQL Index},label=lst_MySQLIndex]
-
+\begin{lstlisting}[caption={DHCP/DNS Konfiguration},label=lst_DNSKonfig]
 interface=wlan0
 dhcp-range=wlan0,192.168.10.10,192.168.10.50,4h
 address=/#/192.168.10.1
-
 \end{lstlisting}
 
+In Quellcode \ref{lst_DNSKonfig}
 
-\subsection{Anwendung zur Messdatenauswertung}
+
+In Abbildung \ref{figure_Webinterface} ist das Webinterface zu sehen. Es zeigt die Messdaten die für einen Mess-Client aufgenommen wurden. Die Daten stellen dabei keine echten Messergebnisse dar. Sie dienen lediglich zur Veranschaulichung.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.7\textwidth ]{img/general/Webinterface.png}
+\caption{Webinterface}
+\label{figure_Webinterface}
+\end{center}
+\end{figure}
+
+\newpage
+\section{Benutzeroberfläche}
+Am oberen Rand der \ac{GUI} (sieht u.a. Abbildung \ref{figure_MessServerGUIStatus}) wird das aktuelle Datum und die aktuelle Uhrzeit angezeigt, sowie die derzeitige IP Adresse und der aktuelle Name. Am unteren Rand wird die derzeit ausführende Aktion in einer Statusnachricht ausgegeben.
+Die \ac{GUI} ist dabei in vier Tabs unterteilt.
+
+
+\textbf{Status Tab}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Status1.png}
+\caption{Mess-Server GUI: Status Tab}
+\label{figure_MessServerGUIStatus}
+\end{center}
+\end{figure}
+
+Das Erste ist das Status-Tab (siehe Abbildung \ref{figure_MessServerGUIStatus}). Es zeigt die wichtigsten Statusdaten wie verfügbarer Speicher, die aktuelle Laufzeit und TCP Server Status an. Um auf einen Blick den Status des Systems zu erkennen wird mittels der Farben grün und rot ein positiver bzw. negativer Status signalisiert. Außerdem kann hier der WLAN Hotspot aktiviert und deaktiviert werden.
+
+\textbf{Events Tab}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Events1.png}
+\caption{Mess-Server GUI: Events Tab}
+\label{figure_MessServerGUIEvents}
+\end{center}
+\end{figure}
+
+Im Events Tab (siehe Abbildung \ref{figure_MessServerGUIEvents}) werden wichtige Ereignisse dargestellt. Es sollen zwei Ereignisse dargestellt werden. Das erste Ereignis ist das Erkennen und Eingliedern eines neuen Mess-Clients. Es wird ausgelöst, wenn ein Mess-Client erfolgreich am System angemeldet und eingegliedert wurde. 
+
+\textbf{Boards Tab}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Boards1.png}
+\caption{Mess-Server GUI: Boards Tab}
+\label{figure_MessServerGUIBoards}
+\end{center}
+\end{figure}
+
+Das Boards Tab (siehe Abbildung \ref{figure_MessServerGUIBoards}) zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als aktiv werden Mess-Clients bezeichnet, die mit einer gültigen Adresse in der Datenbank eingetragen sind. Angezeigt werden der Name, die Adresse, die vergangene Zeit seit dem es das letzten mal erfolgreich kontaktiert wurde und die Anzahl der erfolgreichen aufgenommenen Messzyklen. Sollte ein Mess-Client über längere Zeit nicht ansprechbar sein, wird dem Nutzer durch eine rote Markierung das Problem signalisiert.
+
+\textbf{Debug Tab}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.5\textwidth ]{img/GUI/Server_GUI_Debug2.png}
+\caption{Mess-Server GUI: Debug Tab}
+\label{figure_MessServerGUIDebug}
+\end{center}
+\end{figure}
+
+Der Zweck des Debug Tabs (siehe Abbildung \ref{figure_MessServerGUIDebug}) ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein Fehler einfacher zu erkennen. Die Anzeige dient dabei zur Vor-Ort-Analyse von Fehlern. Die selben Informationen werden auch Intern auf dem Mess-Client in einer Logdatei gespeichert.
+
+
+
+\section{Anwendung zur Messdatenauswertung}
 
 \begin{figure}[H]
 \begin{center}
@@ -181,3 +224,4 @@ address=/#/192.168.10.1
 \label{figure_RS232Kommunikation}
 \end{center}
 \end{figure}
+

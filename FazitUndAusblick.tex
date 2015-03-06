@@ -1,7 +1,8 @@
 \chapter{Fazit und Ausblick}
 \label{chapter_FazitUndAusblick}
-sicherheit mysql verbindung, webinterface maybe
 
-Lokale ausgabe messdaten für bestimmtes board über micro sd card
 
-Jedoch entstehen dadurch Sicherheitsrisiken, da lediglich die Benutzername und Passwort Kombination einen Schutz gegen unerlaubten Zugriff bietet. Außerdem existieren keine Restriktionen für die Anfragen die an den MySQL Server gestellt werden können, wodurch die Daten gefährdet sind.
+\section{Ausblick}
+
+In Zukunft könnte der Mess-Server in Funktionalität und Sicherheit weiter erweitert werden. So könnten die externen Zugriffe auf den MysQL Datenbankserver durch ein Webinterface abstrahiert werden. Das würde vor allem die Sicherheit des Datenbankservers erhöhen, da alle Zugriffe durch eine Webschnittstelle überwacht werden würden.\\
+Zur Erweiterung der Funktionen könnte eine lokale Ausgabe der Messdaten auf eine micro SD-Karte über den micro SD-Kartenslot ausgegeben werden. Des Weiteren wäre denkbar eine Logik zur Speicherung der Messdaten zu implementieren. Diese würde anstatt in festgelegten Intervallen, die Messwerte in nur bei signifikanter Änderung aufnehmen.Auch eine bessere Statusüberwachung wäre möglich. So könnte das System bei Ausfällen und Fehlern eine Nachricht per E-Mail an den Administrator senden. Denn im aktuellen Zustand muss der Administrator selbst aktiv den Status des Systems überprüfen.

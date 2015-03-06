@@ -8,7 +8,8 @@
   Publisher                = {Springer},
   Year                     = {2005},
 
-  ISBN                     = {9783540273707}
+  ISBN                     = {9783540273707},
+  Url                      = {https://books.google.de/books?id=JoMfBAAAQBAJ}
 }
 
 @Book{bogus2008lighttpd,
@@ -18,7 +19,8 @@
   Year                     = {2008},
   Series                   = {From Technologies to Solutions},
 
-  ISBN                     = {9781847192110}
+  ISBN                     = {9781847192110},
+  Url                      = {https://books.google.de/books?id=aId-yw-3gSoC}
 }
 
 @Misc{Capemgr,
@@ -66,7 +68,8 @@
   Year                     = {2009},
   Series                   = {X. systems. press Series},
 
-  ISBN                     = {9783540786191}
+  ISBN                     = {9783540786191},
+  Url                      = {https://books.google.de/books?id=vpgrxY4hcHIC}
 }
 
 @Misc{putty,
@@ -76,16 +79,6 @@
   Note                     = {Zugriff am 02.03.2015},
 
   Url                      = {http://wiki.ubuntuusers.de/PuTTY}
-}
-
-@Misc{qtcreator,
-  Title                    = {Qt Creator},
-
-  Author                   = {Wikipedia},
-  Note                     = {Zugriff am 06.03.2015},
-
-  Timestamp                = {26.01.2015},
-  Url                      = {http://de.wikipedia.org/wiki/Qt_Creator}
 }
 
 @Misc{LinuxWireless,
@@ -104,7 +97,8 @@
   Publisher                = {O'Reilly Media},
   Year                     = {2008},
 
-  ISBN                     = {9780596555054}
+  ISBN                     = {9780596555054},
+  Url                      = {https://books.google.de/books?id=I-hVqkX6A9cC}
 }
 
 @Article{zhou2011,

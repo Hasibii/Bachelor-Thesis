@@ -158,16 +158,10 @@ Zusätzlich sind das PHP und MySQL \ac{CGI} Modul installiert um die Messergebni
 
 Der Webserver ist sowohl über die normale Ethernet Verbindung als auch einen WLAN Hotspot erreichbar. Für die Realisierung des WLAN Hotspots wird ein EDIMAX EW-7811Un WLAN Dongle über den Host-USB Port des BeagleBone Black betrieben.\\
 Als Hotspot Software dient Hostapd. Hostapd ist ein IEEE 802.11 Accesspoint und IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authentificator (vgl. \cite{LinuxWireless}) und verwaltet die Zugriffe auf den Hotspot.\\
-Zusätzlich müssen Geräten die sich über den Hotspot mit dem BeagleBone Black verbinden eine IP-Adresse zugewiesen werden. Dafür kommt der DNS- und DHCP-Server dnsmasq zum Einsatz.\\
+Zusätzlich müssen Geräten die sich über den Hotspot mit dem BeagleBone Black verbinden eine IP-Adresse zugewiesen werden. Dafür kommt der DNS- und DHCP-Server dnsmasq zum Einsatz. Dnsmasq kann als DNS-Server auch alle Anfragen an die Adresse des Webservers umleiten. Somit ist es für den Nutzer nicht nötig, die Adresse des Webserver manuell eingeben zu müssen. Er kann einfach über einen Standard-Webbrowser eine beliebige Adresse aufrufen und wird automatisch an die Adresse des Webserver umgeleitet.\\
 
 
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.8\textwidth]{img/general/WebinterfaceAufbau.pdf}
-\caption{Webinterface Aufbau}
-\label{ERM}
-\end{center}
-\end{figure}
+
 
 \newpage
  

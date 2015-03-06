@@ -12,7 +12,7 @@ Die beiden Programmteile können unabhängig von einander agieren und kommunizie
 \section{Systemkonfiguration}
 
 Beim Hochfahren des Mess-Servers sorgt das Linux Hintergrundprogramm systemd für die Ausführung alle nötigen Prozesse. Um zusätzlich die Steuerungssoftware zu starten, wird ein neuer Service erstellt und dem systemd mitgeteilt.\\
-
+\newpage
 \begin{lstlisting}[caption={Systemd Service},label=lst_SystemdService]
 [Unit]
 Description=Boot Setup
@@ -128,7 +128,6 @@ end;
 
 \newpage
 \section{Webinterface}
-
 Das Webinterface soll nach der Verbindung über den WLAN Hotspot ohne eine spezielle Adresse manuell im Webbrowser aufrufen zu müssen erreichbar sein. Dafür wird der DNS Server dnsmasq so konfiguriert, dass alle Anfragen auf den Webserver umgeleitet werden.
 
 \begin{lstlisting}[caption={DHCP/DNS Konfiguration},label=lst_DNSKonfig]
@@ -137,7 +136,7 @@ dhcp-range=wlan0,192.168.10.10,192.168.10.50,4h
 address=/#/192.168.10.1
 \end{lstlisting}
 
-In Quellcode \ref{lst_DNSKonfig}
+Im Quellcode \ref{lst_DNSKonfig} ist die Konfiguration des DNS/DHCP Servers zu sehen. Er verwaltet die Verbindungen über das \textit{wlan0} Interface, was unter Linux dem WLAN Dongle entspricht. Das System selbst ist mit der IP Adresse 192.168.10.1 konfiguriert. Alle Anfragen werden von dem DNS Server auf diese Adresse umgeleitet. Für die IP-Adressvergabe des DHCP Servers ist der Bereich von 192.168.10.10 bis 192.168.10.50 vorgesehen. 
 
 
 In Abbildung \ref{figure_Webinterface} ist das Webinterface zu sehen. Es zeigt die Messdaten die für einen Mess-Client aufgenommen wurden. Die Daten stellen dabei keine echten Messergebnisse dar. Sie dienen lediglich zur Veranschaulichung.
@@ -149,6 +148,8 @@ In Abbildung \ref{figure_Webinterface} ist das Webinterface zu sehen. Es zeigt d
 \label{figure_Webinterface}
 \end{center}
 \end{figure}
+
+Die Daten für das Webinterface werden direkt aus der MySQL Datenbank bezogen und mittels des Javascript Diagramm Frameworks Highcharts \cite{highcharts} grafisch aufbereitet.
 
 \newpage
 \section{Benutzeroberfläche}

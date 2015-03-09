@@ -4,9 +4,18 @@
 In diesem abschließenden Kapitel bietet eine Zusammenfassung dieser Arbeit, sowie einen Ausblick für mögliche Verbesserungen und Erweiterungen für die Zukunft.
 
 \section{Zusammenfassung}
-Im Laufe dieser Arbeit wurde eine Steuereinheit für die Erfassung von Messdaten und Verwaltung und 
+Im Laufe dieser Arbeit wurde eine Steuereinheit für die Ansteuerung eines Langzeittests zur Erfassung des Degradationsverhaltens von \acp{LED} entwickelt. Zur Lösung dieser Aufgabe wurde in Kapitel \ref{chapter_Grundlagen} auf die Grundlagen der Qt C++ Klassenbibliothek und einer Datenbank eingegangen. Außerdem wurde sich mit der Definition der Begriffe \textit{Degradation} und \textit{Embedded-Linux-System} auseinander gesetzt.\ 
+
+In Kapitel \ref{chapter_Anforderungsanalyse} wurde das Szenario, welches als Motivation für diese Arbeit gilt, näher beleuchtet. Des Weiteren wurden die Akteure des Systems analysiert und daraus die Anforderung abgeleitet.\ 
+
+Im folgenden Kapitel \ref{chapter_Design} wurde zunächst das BeagleBone Black mit seinen Erweiterungen als Hardwarekomponente vorgestellt. Anschließend wurde das Design der Softwarekomponenten erklärt. Die Softwarekomponenten teilen sich dabei in zwei Teile. Zum Einen die Steuerungssoftware, die in C++ unter Zuhilfenahme der Qt Klassenbibliothek entwickelt wurde. Sie beinhaltet die Messdatenerfassung, die Mess-Client Verwaltung, einen TCP/UDP-Server und eine Statusüberwachung. Zum Anderen die Linux Softwarepakete, welche sich aus dem MySQL-Datenbankserver, dem lighttpd Webserver und dem hostapd WLAN Hotspot zusammensetzen.\ 
+
+Auf Implementierung des Designs wurde in Kapitel \ref{chapter_Implementierung} eingegangen. Dabei ging es um die Konfiguration des Linux-Systems und der Datenbank, sowie die Umsetzung der RS232 Kommunikation. Außerdem wurde die Implementierung der Statusüberwachung in Form einer grafischen Benutzeroberfläche näher beschrieben. Des Weiteren wurde die Konfiguration des Webinterfaces gezeigt.\ 
+
+Zum Abschluss wurde in Kapitel \ref{chapter_Testen_und_Validieren} die Lösung auf Fehler und Funktion geprüft. Dabei wurden mögliche Fehlerfälle aufgezeigt und die Grenzen des Systems beschrieben.
+
 \section{Ausblick}
 
-In Zukunft könnte der Mess-Server in Funktionalität und Sicherheit weiter erweitert werden. Der externen Zugriffe auf den MysQL Datenbankserver kann durch ein Webinterface abstrahiert werden. Das würde vor allem die Sicherheit des Datenbankservers erhöhen, da alle Zugriffe durch eine Webschnittstelle überwacht werden würden.\\
+In Zukunft könnte der Mess-Server in Funktionalität und Sicherheit erweitert werden. Der externen Zugriffe auf den MysQL Datenbankserver kann durch ein Webinterface abstrahiert werden. Das würde vor allem die Sicherheit des Datenbankservers erhöhen, da alle Zugriffe durch eine Webschnittstelle überwacht werden könnten.\\
 Zur Erweiterung der Funktionen könnte eine lokale Ausgabe der Messdaten auf eine Micro-SD-Karte über den Micro-SD-Kartenslot ausgegeben werden. Des Weiteren wäre denkbar eine Logik zur Speicherung der Messdaten zu implementieren. Diese würde anstatt in festgelegten Intervallen, die Messwerte in nur bei erreichen vorher festgelegter Kriterien aufnehmen. Wodurch redundante Messdaten vermindert werden könnten.\\
 Auch eine bessere Statusüberwachung wäre möglich. So könnte das System bei Ausfällen und Fehlern eine Nachricht per E-Mail an den Administrator senden. Denn im aktuellen Zustand muss der Administrator selbst aktiv den Status des Systems abrufen.

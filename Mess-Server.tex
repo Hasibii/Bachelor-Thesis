@@ -10,7 +10,7 @@
 \end{center}
 \end{figure}
 
-Das BeagleBone Black selbst ist bereits sehr Leistungsstark. Um jedoch weiter Funktionen und Schnittstellen hinzuzufügen, existieren Capes. Ein Cape ist eine für das BeagleBone konzipierte Erweiterung, die direkt auf das BeagleBone aufgesteckt werden kann. Die Treiber vieler dieser Capes sind bereits in dem Betriebssystem des BeagleBones integriert oder werden vom Hersteller bereitgestellt. Somit ist die Inbetriebnahme sehr komfortable.
+Das BeagleBone Black selbst ist bereits sehr Leistungsstark. Um jedoch weitere Funktionen und Schnittstellen hinzuzufügen, existieren so genannte Capes. Ein Cape ist eine für das BeagleBone konzipierte Erweiterung, die direkt auf das BeagleBone aufgesteckt werden kann. Die Treiber vieler dieser Capes sind bereits in dem Betriebssystem des BeagleBones integriert oder werden vom Hersteller bereitgestellt. Somit ist die Inbetriebnahme sehr komfortabel.
 
 
 \begin{figure}[H]
@@ -29,7 +29,7 @@ Das BeagleBone Black selbst ist bereits sehr Leistungsstark. Um jedoch weiter Fu
 \end{figure}
 
 
-Zur Kommunikation mit den Mess-Clients wird die \ac{UART} Schnittstelle des BeagleBone Black verwendet. Dafür wird ein RS232 Cape eingesetzt (siehe Abbildung \ref{figure_CapeRS232}). Das Cape führt die seriellen Ports UART0, UART1, UART2 und UART4 auf einen 9-poligen seriellen Stecker. Es bietet die Möglichkeit zwischen den verschiedenen Ports mittels eines Jumper auf dem Cape zu wechseln. Angeschlossen wird nach dem 3-wire Prinzip. Dabei werden lediglich Rx, Tx und die Masse verbunden. Somit ist keine Hardware-Flusssteuerung möglich.\ 
+Zur Kommunikation mit den Mess-Clients wird die \ac{UART} Schnittstelle des BeagleBone Black verwendet. Dafür wird ein RS232 Cape eingesetzt (siehe Abbildung \ref{figure_CapeRS232}). Das Cape führt die seriellen Ports UART0, UART1, UART2 und UART4 auf einen 9-poligen seriellen Stecker. Es bietet die Möglichkeit zwischen den verschiedenen Ports mittels eines Jumpers auf dem Cape zu wechseln. Angeschlossen wird nach dem 3-wire Prinzip. Dabei werden lediglich Rx, Tx und die Masse verbunden. Somit ist keine Hardware-Flusssteuerung möglich.\ 
 
 Da das BeagleBone Black kein eigenes \ac{RTC} Modul besitzt, wird auch dieses durch ein Cape hinzugefügt (siehe Abbildung \ref{figure_CapeRTC}). Es beinhaltet eine 3V Knopfbatterie um auch im Falle einer Stromunterbrechung die aktuelle Zeit nicht zu verlieren. Dies ist sehr wichtig, da es erforderlich ist, dass das BeagleBone die aktuelle Uhrzeit und das aktuelle Datum jederzeit kennt. Denn beim Erfassen der Messdaten wird ein Zeitstempel angelegt um die Daten später zeitlich zuordnen zu können. Sollte dieser Zeitstempel nicht korrekt sein, sind die Daten bei der Auswertung nicht gültig.\ 
 
@@ -58,7 +58,7 @@ Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird,
 \end{figure}
 
 Das Software System setzt sich aus zwei Teilen zusammen. Zum Einen die selbst entwickelte Software, welche in C++ unter Verwendung der Klassenbibliothek Qt (siehe Abschnitt \ref{section_Qt}) programmiert ist und zum Anderen die verschiedenen Softwarepakete die für das eingesetzte Linux Betriebssystem zur Verfügung stehen.\\
-Im folgenden Abschnitt wird auf beide Softwareteile eingegangen. Zunächst werden die Bestandteile Mess-Client Verwaltung, Benutzeroberfläche und TCP/UDP-Server der Qt Anwendung näher erläutert und anschließend wird auf Datenbankserver, den Webserver und WLAN Hotspot eingegangen.
+Im folgenden Abschnitt wird auf beide Softwareteile eingegangen. Zunächst werden die Bestandteile Mess-Client Verwaltung, Statusüberwachung und TCP/UDP-Server der Qt Anwendung näher erläutert und anschließend wird auf den Datenbankserver, den Webserver und den WLAN Hotspot eingegangen.
 
 \subsection{Mess-Client Verwaltung}
 \label{section_messclientverwaltung}
@@ -103,7 +103,7 @@ interval\_3 & Abstand zwischen den Messungen nach dem 2. Zeitraum\\ \hline
 Ob eine Messung erforderlich ist, lässt sich aus den gegebenen Parametern ableiten. So wird zuerst geprüft, welcher Zeitraum (\textit{duration\_int1-2}) derzeit zutrifft. Dazu wird die vergangene Zeit seit der ersten Messung mit dem Zeitraum abgeglichen. Sollten noch keine Ergebnisse vorhanden sein, ergibt dies die Erforderlichkeit einer Messung.\\ Wenn der passende Zeitraum ausgemacht ist, wird das dazugehörige Intervall zwischen den einzelnen Messungen (\textit{interval\_1-3}) ausgemacht. Dann wird geprüft, ob die vergangene Zeit seit der letzten Messung größer ist als dieses Intervall.\ 
 
 Anschließend wird geprüft ob der Mess-Client verfügbar ist. Dazu wird eine Namensanfrage über die RS232 Schnittstelle verschickt. Bei einer positiven Antwort wird dann eine Messung durchgeführt. Dabei werden alle \acp{ADC} der 64 möglichen \acp{DUT} mittels \textit{ADC-Value}-Befehls (siehe Tabelle \ref{table_RS232Commands}) ausgelesen. Sobald alle 64 Werte erfolgreich ermittelt sind, werden sie in der Datenbank abgelegt. \\
-Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zyklen erneut versucht eine Verbindung zu etablieren. Bei kontinuierlich erfolglosen Verbindungsversuchen, informiert das System den Nutzer nach einer festgelegten Zeit der Abwesenheit über die Unerreichbarkeit.
+Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zyklen erneut versucht eine Verbindung zu etablieren. Bei kontinuierlich erfolglosen Verbindungsversuchen informiert das System den Nutzer nach einer festgelegten Zeit der Abwesenheit über die Unerreichbarkeit.
  
 
  
@@ -114,7 +114,7 @@ Um die Anforderung der Statusüberwachung zu erfüllen, verfügt das BeagleBone 
 Es sollen die wichtigsten Funktionen für den Betrieb überwacht und angezeigt werden, sodass der Administrator informiert wird, sobald ein manuelles Eingreifen erforderlich ist.
 Überwacht werden die korrekte Funktion der angeschlossenen Mess-Clients und die lokale Systemauslastung des BeagleBone Blacks.\ 
 
-Zur Überwachung der Mess-Clients werden sie in drei Gruppen unterteilt. Alle Mess-Clients,die eine RS232 Adresse besitzen, gelten als aktiv. Mess-Clients denen keine RS232 Adresse zugewiesen ist, gelten als inaktiv. Sie sind zwar noch in der Datenbank gespeichert, wurden allerdings durch das Löschen der RS232 Adresse vom System abgemeldet.\\
+Zur Überwachung der Mess-Clients, werden sie in drei Gruppen unterteilt. Alle Mess-Clients, die eine RS232 Adresse besitzen, gelten als aktiv. Mess-Clients, denen keine RS232 Adresse zugewiesen ist, gelten als inaktiv. Sie sind zwar noch in der Datenbank gespeichert, wurden allerdings durch das Löschen der RS232 Adresse vom System abgemeldet.\\
 Die dritte und kritische Gruppe sind Mess-Clients denen eine RS232 Adresse zugewiesen ist, die aber nicht über den RS232 Bus erreichbar sind. Bei ihnen liegt mit großer Wahrscheinlichkeit ein Fehler vor, der vom Administrator manuell behoben werden muss.\ 
 
 Bei der Überwachung der Systemauslastung, ist vor allem die Speichernutzung interessant. Da das System über lange Zeiträume aktiv ist, fallen auch große Mengen an Daten an. Da allerdings nur ein beschränkter Speicherplatz zur Verfügung steht, wird der Nutzer über die Auslastung informiert. Im Notfall kann der Administrator Speicher durch das Löschen von nicht mehr relevanten Messdaten freigegeben.
@@ -238,7 +238,7 @@ interval\_3 & INTEGER\\ \hline
 \end{table}
 
 In der Tabelle Setting, werden die Einstellungen  für die verschiedenen Degradationsboards abgelegt. Jede Einstellung kann dabei mehreren Boards zugeordnet sein, wobei jedes Board nur eine Einstellung besitzt.\\
-Der Primärschlüssel der Tabelle ist die Identifikationsnummer (\textit{p\_id}) jeder Einstellung. Als Nächstes gibt es die Vorverstärkung (\textit{DAC}) der Pulsmuster auf den Degradationsboards. Mithilfe der Vorverstärkung werden die Signale zur Ansteuerung der Prüfobjekte für die bessere Analyse durch den Analog-Digital-Konverter verstärkt. Darauf folgend kommen die Parameter zur Konfiguration der Messintervalle (siehe auch Tabelle \ref{table_ParameterMessintervalle}). Sie bestimmen die Zeiträume (\textit{duration\_int1 + 2}) und die Abstände zwischen den Messungen (\textit{interval\_1-3}) innerhalb dieser Zeiträume.\\
+Der Primärschlüssel der Tabelle ist die Identifikationsnummer (\textit{p\_id}) jeder Einstellung. Als Nächstes gibt es die Einstellung für optische Leistung der Prüfobjekte (\textit{DAC}) auf den Degradationsboards. Mithilfe dieses Wertes wird die Leistung der Prüfobjekte für die bessere Analyse durch den Analog-Digital-Konverter angepasst. Darauf folgend kommen die Parameter zur Konfiguration der Messintervalle (siehe auch Tabelle \ref{table_ParameterMessintervalle}). Sie bestimmen die Zeiträume (\textit{duration\_int1 + 2}) und die Abstände zwischen den Messungen (\textit{interval\_1-3}) innerhalb dieser Zeiträume.\\
 
 \textbf{Tabelle DUT}\\
 
@@ -304,14 +304,15 @@ Parameter & Datentyp \\ \hline
 p\_id & INTEGER PRIMARY KEY \\ 
 Temperatur & INTEGER\\
 value & INTEGER\\
-Time & TIMESTAMP DEFAULT CURRENT\_TIMESTAMP\\ \hline
+Time & TIMESTAMP DEFAULT CURRENT\_TIMESTAMP\\ 
+f\_DUTid & INTEGER FOREIGN KEY\\ \hline
 \end{tabular}
 \caption{Tabelle Measurement}
 \label{table_TabelleMeasurement}
 \end{center}
 \end{table}
 
-In der Measurement Tabelle werden die Messwerte der einzelnen Prüfobjekte gespeichert. Der Primärschlüssel ist auch hier die Identifikationsnummer (\textit{p\_id}). Zu jedem Messeintrag gehört die aktuelle Temperatur (\textit{Temperatur}), der gelesene Messwert (\textit{value}) und die aktuelle Zeit (\textit{Time}).
+In der Measurement Tabelle werden die Messwerte der einzelnen Prüfobjekte gespeichert. Der Primärschlüssel ist auch hier die Identifikationsnummer (\textit{p\_id}). Zu jedem Messeintrag gehört die aktuelle Temperatur (\textit{Temperatur}), der gelesene Messwert (\textit{value}) und die aktuelle Zeit (\textit{Time}). Ein Messeintrag gehört immer zu einem Prüfobjekt. Über den Fremdschlüssel mit der Identifikationsnummer des Prüfobjektes (\textit{f\_DUTid}) wird diese Beziehung referenziert. 
 
 
 

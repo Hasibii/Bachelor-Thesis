@@ -40,12 +40,13 @@
 \contentsline {section}{\numberline {5.2}RS232 Kommunikation}{36}{section.5.2}
 \contentsline {section}{\numberline {5.3}Datenbank}{37}{section.5.3}
 \contentsline {section}{\numberline {5.4}Webinterface}{39}{section.5.4}
-\contentsline {section}{\numberline {5.5}Benutzeroberfl\IeC {\"a}che}{40}{section.5.5}
+\contentsline {section}{\numberline {5.5}BeagleBone Black Benutzeroberfl\IeC {\"a}che }{40}{section.5.5}
 \contentsline {chapter}{\numberline {6}Testen und Validieren}{42}{chapter.6}
-\contentsline {section}{\numberline {6.1}Speicherlecks}{42}{section.6.1}
-\contentsline {section}{\numberline {6.2}Stromausfall}{42}{section.6.2}
+\contentsline {section}{\numberline {6.1}Speicherverwaltung}{42}{section.6.1}
+\contentsline {section}{\numberline {6.2}Fehlerf\IeC {\"a}lle}{42}{section.6.2}
 \contentsline {section}{\numberline {6.3}Testaufbau}{43}{section.6.3}
-\contentsline {chapter}{\numberline {7}Zusammenfassung und Ausblick}{44}{chapter.7}
-\contentsline {section}{\numberline {7.1}Zusammenfassung}{44}{section.7.1}
-\contentsline {section}{\numberline {7.2}Ausblick}{44}{section.7.2}
+\contentsline {section}{\numberline {6.4}Grenzen}{44}{section.6.4}
+\contentsline {chapter}{\numberline {7}Zusammenfassung und Ausblick}{45}{chapter.7}
+\contentsline {section}{\numberline {7.1}Zusammenfassung}{45}{section.7.1}
+\contentsline {section}{\numberline {7.2}Ausblick}{46}{section.7.2}
 \contentsline {chapter}{Literaturverzeichnis}{i}{section*.67}

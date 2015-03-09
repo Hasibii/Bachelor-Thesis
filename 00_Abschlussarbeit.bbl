@@ -61,6 +61,12 @@
 \newblock \url{http://wiki.ubuntuusers.de/PuTTY}. --
 \newblock Zugriff am 02.03.2015
 
+\bibitem[Val]{valgrind}
+\textsc{ValgrindDevelopers}:
+\newblock \emph{Valgrind}.
+\newblock \url{http://valgrind.org/}. --
+\newblock Zugriff am 09.03.2015
+
 \bibitem[Wik]{qtcreator}
 \textsc{Wikipedia}:
 \newblock \emph{Qt Creator}.

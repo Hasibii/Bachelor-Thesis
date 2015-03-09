@@ -14,7 +14,7 @@ Folgende Kriterien sollen dabei erfüllt werden:
 
 
 Um eine hohe Zuverlässigkeit gewährleisten zu können, wird eine geringe Bautrate von 2400 verwendet. Da nur geringe Datenmengen in großen Abständen auftreten, vermindert dass die Anfälligkeit der Übertragung gegenüber äußeren Einflüssen ohne dabei die Performance merkbar zu beeinflussen.\\
-Des Weiteren wird ein Paritätsbit für eine Paritätsprüfung eingesetzt. Dieses Bit gibt an, ob die Anzahl der Einsen des Datenblocks gerade oder ungerade ist. Der Wert verwendeten Even-Paritätsbit ist 1, wenn die Summe der Einsen gerade ist und 0 wenn sie ungerade ist. Dadurch können grobe Fehler bei der Übertragung ausgemacht und korrigiert werden.\\
+Des Weiteren wird ein Paritätsbit für eine Paritätsprüfung eingesetzt. Dieses Bit gibt an, ob die Anzahl der Einsen des Datenblocks gerade oder ungerade ist. Der Wert, des verwendeten Even-Paritätsbits ist 1, wenn die Summe der Einsen gerade ist und 0 wenn sie ungerade ist. Dadurch können grobe Fehler bei der Übertragung ausgemacht und korrigiert werden.\\
 
 \subsection{Aufbau}
 \begin{table}[H]
@@ -46,7 +46,7 @@ Ein Rahmen des Protokolls besteht aus 4 Steuerbytes, 1 Checksummenbyte und maxim
 \end{center}
 \end{table}
 
-Das erste Byte des Übertragungsrahmens setzt sich aus 7 Adressbits und einem Lese-/Schreibbit zusammen. Die ersten 7 Bit (Addr0 - Addr6) bilden die Adresse des anzusteuernden Empfänger. Daraus ergibt sich ein Adressraum von möglichen 128 Adressen, wobei Adresse 0 für neue Mess-Clients zur einmaligen Anmeldung im System reserviert ist (siehe Abschnitt \ref{section_messclientverwaltung}).\\
+Das erste Byte des Übertragungsrahmens setzt sich aus 7 Adressbits und einem Lese-/Schreibbit zusammen. Die ersten 7 Bit (Addr0 - Addr6) bilden die Adresse des anzusteuernden Empfängers. Daraus ergibt sich ein Adressraum von möglichen 128 Adressen, wobei Adresse 0 für neue Mess-Clients zur einmaligen Anmeldung im System reserviert ist (siehe Abschnitt \ref{section_messclientverwaltung}).\\
 Das höchste Bit ist das Lese-/Schreibbit. Mithilfe dieses Bits wird unterschieden, ob ein Befehl als Lese- oder Schreibzugriff interpretiert werden soll.
 
 \begin{table}[H]
@@ -77,7 +77,7 @@ Ein Lesezugriff stellt dabei eine Anfragen dar. Dass heißt, dass keine Nutzdate
 \end{center}
 \end{table}
 
-Das zweite Byte gibt die Länge des gesamten Rahmens inklusive Steuerbytes, Nutzdaten und Checksumme an. Die minimale Rahmenlänge beträgt 5 Byte. Dabei handelt es sich um eine Übertragung ohne Nutzdaten und es werden lediglich die 4 Steuerbytes und das Byte für die Checksumme übertragen. Dies geschieht beispielsweise bei einer Leseanfrage.\\
+Das zweite Byte gibt die Länge des gesamten Rahmens inklusive Steuerbytes, Nutzdaten und Checksumme an. Die minimale Rahmenlänge beträgt 5 Bytes. Dabei handelt es sich um eine Übertragung ohne Nutzdaten und es werden lediglich die 4 Steuerbytes und das Byte für die Checksumme übertragen. Dies geschieht beispielsweise bei einer Leseanfrage.\\
 Die maximale Rahmenlänge beträgt 35 Byte. Hierbei werden zusätzlich zu den 4 Steuerbytes und dem Byte für die Checksumme auch die maximale Nutzlast von 30 Byte übertragen. Dieser Fall kann beispielsweise bei Schreibzugriffen auftreten.\\
 Anhand der Länge kann eine erste Prüfung der Validität eines Rahmens durchgeführt werden. Sollte die Zahl der empfangenen Bytes sich von der Rahmenlänge unterscheiden, kann von einem ungültigen Rahmen ausgegangen werden.\\
 
@@ -129,7 +129,7 @@ Das vierte Byte ist der Unterbefehl. Damit ist es möglich einen Befehl genauer 
 \end{center}
 \end{table}
 
-Das fünfte Byte und die darauf folgenden, tragen die Nutzdaten des Rahmens. Die Größe der Nutzdaten ist variable und lässt dich auf der Rahmenlänge ableiten. Bei zwei Byte Daten wird immer das höhere Byte zuerst übertragen.\\
+Das fünfte Byte und die darauf folgenden, tragen die Nutzdaten des Rahmens. Die Größe der Nutzdaten ist variabel und lässt sich von der Rahmenlänge ableiten. Bei 16 Bit Variablen wird immer im Big-Endian-Format übertragen. \\
 
 
 \newpage
@@ -147,7 +147,7 @@ Das fünfte Byte und die darauf folgenden, tragen die Nutzdaten des Rahmens. Die
 \end{center}
 \end{table}
 
-Das letzte Byte ist immer die Checksumme um sicherzustellen, dass alle Daten komplett und fehlerfrei übertragen wurden.\\
+Das letzte Byte ist immer die Checksumme, um sicherzustellen, dass alle Daten komplett und fehlerfrei übertragen wurden.\\
 Der Sender bildet dabei die Checksumme mittels einer XOR Verknüpfung aller Bytes eines Übertragungsrahmens. Beim Empfänger werden alle Bytes inklusive Checksumme erneut mit XOR Verknüpft, wobei ohne Fehler immer 0 das Ergebnis sein muss.\\
 
 
@@ -218,10 +218,10 @@ Liest den Messwert eines Sensors des Mess-Clients. Mit dem Unterbefehl muss eine
 Liest oder schreibt die Anzahl der Impulse im Pulsmuster des Mess-Clients. Die maximale Anzahl ist 20 und sie wird als 1 Byte Wert übertragen.\ 
 
 \textbf{Pulsewidth and -period}\\
-Liest oder schreibt  ein Pulsbreiten-/Pulsperiodenpaar. Der Unterbefehl bestimmt die Position im Pulsmuster. Sowohl die Pulsbreite als auch die Pulsperiode sind jeweils 2 Byte groß. Die ersten 2 Byte repräsentieren die Pulsbreite und die zweiten 2 Byte die Pulsperiode. Das höhere Byte wird zuerst übertragen. \ 
+Liest oder schreibt  ein Pulsbreiten-/Pulsperiodenpaar. Der Unterbefehl bestimmt die Position im Pulsmuster. Sowohl die Pulsbreite als auch die Pulsperiode sind jeweils 2 Byte groß. Die ersten 2 Byte repräsentieren die Pulsbreite und die zweiten 2 Byte die Pulsperiode. Die Übertragung erfolgt im Big-Endian-Format. \ 
 
 \textbf{DAC-Value}\\
-Liest oder schreibt den Wert für die Vorverstärkung zur Ansteuerung der Prüfobjekte. Sie ist 12 Bit groß und hat somit einen Wertebereich von 0 bis 4096. Das höhere Byte wird zuerst übertragen.\ 
+Liest oder schreibt den Wert für die optische Leistung der Prüfobjekte. Sie ist 12 Bit groß und hat somit einen Wertebereich von 0 bis 4096. Die Übertragung erfolgt im Big-Endian-Format.\ 
 
 \textbf{Temperatur}\\
 Der Befehl ließt den Wert des Temperatursensors. Er ist nur zum Lesen des Temperaturwertes gedacht und kann nicht zum schreiben verwendet werden. Es handelt sich um einen signed 1 Byte Wert. Der Wertebereich geht von 127 bis -127.\ 
@@ -233,5 +233,5 @@ Liest oder schreibt den Namen des Mess-Clients. Die maximale Zeichenlänge betr�
 Liest oder schreibt die Adresse für die Rs232 Kommunikation des Mess-Clients. Es handelt sich um einen 7 Bit Wert. Der Wertebereich geht von 0 bis 127 was 128 Adressen entspricht.\ 
 
 \textbf{Measurement Intervall}\\
-Liest oder schreibt die Konfiguration der Messintervalle. Der Unterbefehl gibt dabei den Zeitraum (1 bis 3) an. Die ersten 2 Byte enthalten das Intervall zwischen den Messungen und die zweiten 2 Byte den Zeitraum. Das höhere Byte wird zuerst übertragen.\ 
+Liest oder schreibt die Konfiguration der Messintervalle. Der Unterbefehl gibt dabei den Zeitraum (1 bis 3) an. Die ersten 2 Byte enthalten das Intervall zwischen den Messungen und die zweiten 2 Byte den Zeitraum. Die Übertragung erfolgt im Big-Endian-Format.\ 
 

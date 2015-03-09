@@ -81,18 +81,17 @@ Zur Regelung der Intervalle in denen Messwerte vom Mess-Server aufgezeichnet wer
 \end{center}
 \end{figure}
 
-In Abbildung \ref{figure_Messintervalle} ist ist die Unterteilung der Zeiträume und Messintervalle zu sehen. Dabei wird lediglich die Länge der Zeiträume angegeben.\\
-
+In Abbildung \ref{figure_Messintervalle} ist ist die Unterteilung der Zeiträume und Messintervalle zu sehen. Jeder definierte Zeitraum hat seine eigenes Messintervall, welches den Abstand zwischen den Messdatenabfragen bestimmt.\ 
 
 \textbf{Pulsmuster}\\
-Der Mess-Client steuert die Prüfobjekte mit einem Pulsmuster (englisch: pulse pattern) an. Dieses Muster ist konfigurierbar und wird an die unterschiedlichen Prüfobjekte angepasst. Ein Pulsmuster besteht aus bis zu 20 verschiedenen Impulsen, die periodisch wiederholt werden. Ein Impuls besteht dabei aus einer Periodendauer und einer Pulsbreite. In Abbildung \ref{figure_Pulsepattern} ist ein Pulsmuster zu sehen.\\
+Der Mess-Client steuert die Prüfobjekte mit einem Pulsmuster (englisch: pulse pattern) an. Dieses Muster ist konfigurierbar und wird an die unterschiedlichen Prüfobjekte angepasst. Ein Pulsmuster besteht aus bis zu 20 verschiedenen Pulsen, die periodisch wiederholt werden. Ein Puls besteht dabei aus einer Pulsperiode und einer Pulsbreite. In Abbildung \ref{figure_Pulsepattern} ist ein Pulsperiode/Pulsbreiten-Paar zu sehen.\\
 
 
 
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=0.35\textwidth]{img/general/Pulsepattern.PNG}
-\caption{Pulsmuster}
+\includegraphics[width=0.5\textwidth]{img/general/PulseMuster.png}
+\caption{Pulsperioden/Pulsbreiten-Paar}
 \label{figure_Pulsepattern}
 \end{center}
 \end{figure}
@@ -117,7 +116,7 @@ Folgende Hauptanforderungen werden an das System gestellt:
 
 \textbf{Individuelle Parametrierung der Prüfobjekte}\\
 Immer 64 Prüfobjekte befinden sich auf einem Mess-Client. Dabei sollen verschiedene Parameter für die Prüfobjekte berücksichtigt werden. 
-Zum einen sollen die Intervalle in denen Messwerte aufgenommen werden konfigurierbar sein. Dies soll in mindestens 3 verschiedenen Intervallen möglich sein. In Tabelle \ref{table_Intervalle} ist ein Beispiel für die Messintervalle zu sehen. 
+Zum Einen sollen die Intervalle in denen Messwerte aufgenommen werden konfigurierbar sein. Dies soll in mindestens 3 verschiedenen Intervallen möglich sein. In Tabelle \ref{table_Intervalle} ist ein Beispiel für die Messintervalle zu sehen. 
 
  
 \begin{table}[H]
@@ -135,11 +134,11 @@ ab 5. Woche & 7 Tage\\ \hline
 
 
 
-Des Weiteren soll für jeden Mess-Client ein Pulsepattern definierbar sein. Dieses Pulsepattern wird dann als Versorgungssignal für die \acp{DUT} verwendet.
+Zum Anderen soll für jeden Mess-Client ein Pulsepattern definierbar sein. Dieses Pulsepattern wird dann als Versorgungssignal für die \acp{DUT} verwendet.
 
 \textbf{Automatische Erfassung der Messdaten}\\
 Die Messdaten der \acp{DUT} sollen zyklisch erfasst werden. Es soll die derzeitige Temperatur im Ofen, der gemessene Wert des Sensors und ein Zeitstempel gespeichert werden. Dabei sollen, wie bereits erwähnt, die Intervalle zwischen den Messungen konfigurierbar sein.\\
-Für den einfachen und effizienten Zugriff auf die Daten, sollen diese in einer \ac{SQL} Datenbank abgelegt werden. Dafür ist eine Kommunikationsschnittstelle zwischen der Datenbank und den Mess-Clients erforderlich, welcher über den Mess-Server realisiert werden soll.
+Für den einfachen und effizienten Zugriff auf die Daten, sollen diese in einer \ac{SQL} Datenbank abgelegt werden. Dafür ist eine Kommunikationsschnittstelle zwischen der Datenbank und den Mess-Clients erforderlich, welcher über den Mess-Server realisiert wird.
 
 \textbf{Fernzugriff auf den Mess-Server}\\
 Zur Auswertung der Messdaten, soll es möglich sein, von einem PC-Arbeitsplatz aus eine Verbindung zu dem Mess-Server aufzubauen. Die Messdaten sollen grafisch auf dem PC-Client zur Auswertung aufbereitet werden.

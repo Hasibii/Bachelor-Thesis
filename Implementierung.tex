@@ -6,7 +6,7 @@
 Die Installation der Linux Software erfolgt mittels des Terminalemulator PuTTY \cite{putty}. Mit \mbox{PuTTY} wird eine \ac{SSH} Verbindung zu dem BeagleBone Black aufgebaut, wodurch ein direkter Zugriff auf das Linux Terminal des BeagleBone Black möglich ist. Mit dem Linux Paketmanager kann bei aktiver Internetverbindung die benötigte Software installiert werden.\ 
 
 Bei der Implementierung der eigenen Software wird wie in Kapitel \ref{chapter_Design} erwähnt, die Qt C++ Klassenbibliothek in der Version 4.8.6 verwendet. Für die komfortable Programmierung eignet sich der Qt Creator als Entwicklungsumgebung sehr gut. Er bietet die Möglichkeit direkt in der Entwicklungsumgebung eine Toolchain einzurichten. Diese erlaubt eine Programmierung des Codes auf einem normalen Windows Rechner, wobei der Code anschließend automatisch übersetzt und auf dem Zielsystem über eine \ac{SSH} Verbindung installiert wird. Verwendet wird dabei ein frei verfügbarer \ac{GCC}.\\
-Das Steuerungssoftware teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
+Die Steuerungssoftware teilt sich in einen sequentiellen Prozess für die Abfrage und Speicherung der Messwerte, sowie einen Event gesteuerten Prozess für die \ac{GUI} und die externe Kommunikation für die Fernzugriffe. 
 Die beiden Programmteile können unabhängig von einander agieren und kommunizieren ausschließlich über Signale und Slots (siehe Abschnitt \ref{QtSignaleSlots}). Durch diese Kapselung ist es möglich die beiden Programmteile durch andere Lösungen auszutauschen, welche lediglich die selben Signale und Slots unterstützen müssen.
 
 \section{Systemkonfiguration}
@@ -58,7 +58,7 @@ Alle Log-Nachrichten werden dabei in die Logdatei des systemd geschrieben. Die d
 }
 \end{lstlisting}
 
-Im Quellcode \ref{lst_Logrotate} ist die entsprechende Konfiguration zu sehen. Die maximale Größe der Logdateien ist dabei auf 100MB beschränkt um den internen Speicher von 4GB nicht zu sehr zu belasten. Wird diese Größe überschritten wird die Logdatei rotiert. Dabei wird ein Backup der aktuellen Logdatei erstellt und eine neue angelegt. Des Weiteren wird die Logdatei einmal pro Woche unabhängig von der Größe rotiert. Bei der Rotation werden die letzten 4 Logdateien gespeichert. Kommt eine Weitere dazu, wird die älteste gelöscht. Die maximale Größe von 100MB stellt dabei nur selten das Limit dar. So stehen die Logdateien für etwa 4 Wochen rückblickend zur Verfügung.
+Im Quellcode \ref{lst_Logrotate} ist die entsprechende Konfiguration zu sehen. Die maximale Größe der Logdateien ist dabei auf 100MB beschränkt um den internen Speicher von 4GB nicht zu sehr zu belasten. Wird diese Größe überschritten, wird die Logdatei rotiert. Dabei wird ein Backup der aktuellen Logdatei erstellt und eine neue angelegt. Des Weiteren wird die Logdatei einmal pro Woche unabhängig von der Größe rotiert. Bei der Rotation werden die letzten 4 Logdateien gespeichert. Kommt eine Weitere dazu, wird die älteste gelöscht. Die maximale Größe von 100MB stellt dabei nur selten das Limit dar. So stehen die Logdateien für etwa 4 Wochen rückblickend zur Verfügung.
 
 
 
@@ -83,7 +83,7 @@ Dabei können drei Szenarien auftreten:
 \item Prüfsummen-Fehler: Innerhalb des Zeitlimits wurde eine Antwort empfangen, jedoch ist die Prüfsumme nicht korrekt.
 \end{itemize}
 
-Zur Korrektur dieser Fehler werden Anfragen bis zu fünfmal in einem festgelegtem zeitlichen Abstand wiederholt gesendet. Sollte die Übertragung weiterhin fehlerhaft sein, ist der Mess-Client entweder nicht erreichbar oder es gibt einen Adresskonflikt auf dem RS232 Bus. Bei einem Adresskonflikt haben mehrere zwei oder mehr Mess-Clients die selbe RS232 Adresse. Das führt dazu, dass beide Mess-Clients auf die selben Anfragen reagieren und ihre Antworten sich auf dem RS232 Bus überlagern.
+Zur Korrektur dieser Fehler werden Anfragen bis zu fünfmal in einem festgelegtem zeitlichen Abstand wiederholt gesendet. Sollte die Übertragung weiterhin fehlerhaft sein, ist der Mess-Client entweder nicht erreichbar oder es gibt einen Adresskonflikt auf dem RS232 Bus. Bei einem Adresskonflikt haben zwei oder mehr Mess-Clients die selbe RS232 Adresse. Das führt dazu, dass beide Mess-Clients auf die selben Anfragen reagieren und ihre Antworten sich auf dem RS232 Bus überlagern. Was die Übertragung unleserlich macht.
 
 
 
@@ -96,7 +96,7 @@ Die Datenbank muss aus dem Netzwerk erreichbar sein, damit die Messdaten von ein
 GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'toor';
 \end{lstlisting}
 
-Mit dem Befehl im Quellcode \ref{lst_MySQLZugriffsrechte} erhalten alle Nutzer die sich mit dem Benutzernamen \textit{root} und dem Passwort \textit{toor} identifizieren, vollen Zugriff auf alle Datenbanken. Somit ist es möglich von überall aus eine Verbindung zum Datenbankserver aufzubauen und sämtlichen Daten abzurufen.\\
+Mit dem Befehl im Quellcode \ref{lst_MySQLZugriffsrechte} erhalten alle Nutzer die sich mit dem Benutzernamen \textit{root} und dem Passwort \textit{toor} identifizieren, vollen Zugriff auf alle Datenbanken. Somit ist es möglich von überall aus eine Verbindung zum Datenbankserver aufzubauen und sämtlichen Daten abzurufen.\ 
 
 Über einen langen Betriebszeitraum können sich große Mengen an Daten in der Datenbank ansammeln. Das hat zur Folge, dass die SQL-Abfragen nach nach bestimmten Daten sehr lange dauern können. Um dem Vorzubeugen werden Indexe für häufig abgefragte Daten erstellt.\\
 
@@ -108,7 +108,7 @@ CREATE INDEX measurement_time_idx on Measurement(Time);
 
 
 Der Quellcode \ref{lst_MySQLIndex} zeigt die Erzeugung eines Indexes. Der Index mit dem Namen \textit{measurement\_time\_idx} wird für die Spalte \textit{Time} in der Tabelle \textit{Measurement} angelegt. Vor Allem in der Tabelle \textit{Measurement} können sehr schnell große Mengen an Daten anfallen.\\
-Der Index für die Spalte \textit{Time} ist besonders gut geeignet. Denn um herauszufinden wann die letzte Messungen durchgeführt wurde, muss aus der Tabelle \textit{Measurement} das Messergebnis mit dem aktuellsten Zeitstempel ermittelt werden. Diese Abfrage kann bei 2 Millionen Einträgen ohne Index bis zu  2 Minuten dauern. Mit dem Index kann sie auf 4 Sekunden reduziert werden.
+Der Index für die Spalte \textit{Time} ist besonders gut geeignet. Denn um herauszufinden wann die letzte Messungen durchgeführt wurde, muss aus der Tabelle \textit{Measurement} das Messergebnis mit dem aktuellsten Zeitstempel ermittelt werden. Diese Abfrage kann bei 2 Millionen Einträgen ohne Index bis zu  2 Minuten dauern. Mit dem Index kann sie auf 4 Sekunden reduziert werden.\ 
 
 Wenn ein Board gelöscht wird, werden alle dazugehörigen Datenbankeinträge aus den anderen Tabellen gelöscht. Das soll unnötigen Daten in der Datenbank vorbeugen. Dafür sind die Fremdschlüssel in allen Tabellen außerhalb der D\_Board Tabelle mit dem Constraint \textit{ON DELETE CASCADE} versehen. Die sorgt für eine Löschung des betroffenen Eintrages, falls das referenzierte Attribut gelöscht wird. Da die Tabellen Setting und Pattern keine eigenen Verweise zu der Tabelle D\_Board haben, ist für diese Kaskadierung ein Trigger notwendig. \\
 Ein Trigger ist ein an eine Reaktion auf ein Ereignis. Das Ereignis ist die Löschung eines Eintrags in der D\_Board Tabelle. Daraufhin sollen die dazugehörigen Einträge in der Setting und der Pattern Tabelle gelöscht werden. Dafür wird ein Trigger erstellt (siehe Quellcode \ref{lst_Trigger}).\\
@@ -139,7 +139,7 @@ address=/#/192.168.10.1
 Im Quellcode \ref{lst_DNSKonfig} ist die Konfiguration des DNS/DHCP Servers zu sehen. Er verwaltet die Verbindungen über das \textit{wlan0} Interface, was unter Linux dem WLAN Dongle entspricht. Das System selbst ist mit der IP Adresse 192.168.10.1 konfiguriert. Alle Anfragen werden von dem DNS Server auf diese Adresse umgeleitet. Für die IP-Adressvergabe des DHCP Servers ist der Bereich von 192.168.10.10 bis 192.168.10.50 vorgesehen. 
 
 
-In Abbildung \ref{figure_Webinterface} ist das Webinterface zu sehen. Es zeigt die Messdaten die für einen Mess-Client aufgenommen wurden. Die Daten stellen dabei keine echten Messergebnisse dar. Sie dienen lediglich zur Veranschaulichung.
+In Abbildung \ref{figure_Webinterface} ist das Webinterface zu sehen. Es zeigt die Messdaten die für einen Mess-Client aufgenommen wurden. Die Daten stellen dabei keine echten Messergebnisse dar. Sie dienen lediglich der Veranschaulichung.
 
 \begin{figure}[H]
 \begin{center}
@@ -153,9 +153,7 @@ Die Daten für das Webinterface werden direkt aus der MySQL Datenbank bezogen un
 
 \newpage
 \section{Benutzeroberfläche}
-Am oberen Rand der \ac{GUI} (sieht u.a. Abbildung \ref{figure_MessServerGUIStatus}) wird das aktuelle Datum und die aktuelle Uhrzeit angezeigt, sowie die derzeitige IP Adresse und der aktuelle Name. Am unteren Rand wird die derzeit ausführende Aktion in einer Statusnachricht ausgegeben.
-Die \ac{GUI} ist dabei in vier Tabs unterteilt.
-
+Die \ac{GUI} ist soll die Anforderung der Statusüberwachung aus Abschnitt \ref{section_Statusüberwachung} erfüllen und ist dafür in vier Tabs unterteilt. Am oberen Rand der \ac{GUI} (sieht u.a. Abbildung \ref{figure_MessServerGUIStatus}) wird das aktuelle Datum und die aktuelle Uhrzeit angezeigt, sowie die derzeitige IP Adresse und der aktuelle Name. Am unteren Rand wird die derzeit ausführende Aktion in einer Statusnachricht ausgegeben.
 
 \textbf{Status Tab}
 
@@ -179,7 +177,7 @@ Das Erste ist das Status-Tab (siehe Abbildung \ref{figure_MessServerGUIStatus}).
 \end{center}
 \end{figure}
 
-Im Events Tab (siehe Abbildung \ref{figure_MessServerGUIEvents}) werden wichtige Ereignisse dargestellt. Es sollen zwei Ereignisse dargestellt werden. Das erste Ereignis ist das Erkennen und Eingliedern eines neuen Mess-Clients. Es wird ausgelöst, wenn ein Mess-Client erfolgreich am System angemeldet und eingegliedert wurde. 
+Im Events Tab (siehe Abbildung \ref{figure_MessServerGUIEvents}) werden wichtige Ereignisse dargestellt. Es sollen zwei Ereignisse dargestellt werden. Das bisher einzige Ereignis ist das Erkennen und Eingliedern eines neuen Mess-Clients. Es wird ausgelöst, wenn ein Mess-Client erfolgreich am System angemeldet und eingegliedert wurde. 
 
 \textbf{Boards Tab}
 
@@ -191,7 +189,7 @@ Im Events Tab (siehe Abbildung \ref{figure_MessServerGUIEvents}) werden wichtige
 \end{center}
 \end{figure}
 
-Das Boards Tab (siehe Abbildung \ref{figure_MessServerGUIBoards}) zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als aktiv werden Mess-Clients bezeichnet, die mit einer gültigen Adresse in der Datenbank eingetragen sind. Angezeigt werden der Name, die Adresse, die vergangene Zeit seit dem es das letzten mal erfolgreich kontaktiert wurde und die Anzahl der erfolgreichen aufgenommenen Messzyklen. Sollte ein Mess-Client über längere Zeit nicht ansprechbar sein, wird dem Nutzer durch eine rote Markierung das Problem signalisiert.
+Das Boards Tab (siehe Abbildung \ref{figure_MessServerGUIBoards}) zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als aktiv werden Mess-Clients bezeichnet, die mit einer gültigen Adresse in der Datenbank eingetragen sind. Angezeigt werden der Name, die Adresse, die vergangene Zeit seit dem es das letzten mal erfolgreich kontaktiert wurde und die Anzahl der erfolgreichen aufgenommenen Messzyklen. Sollte ein Mess-Client über längere Zeit nicht ansprechbar sein, wird dem Nutzer durch eine rote Markierung das Problem signalisiert. Außerdem ist der Status der Mess-Clients ablesbar.
 
 \textbf{Debug Tab}
 
@@ -205,24 +203,4 @@ Das Boards Tab (siehe Abbildung \ref{figure_MessServerGUIBoards}) zeigt die derz
 
 Der Zweck des Debug Tabs (siehe Abbildung \ref{figure_MessServerGUIDebug}) ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein Fehler einfacher zu erkennen. Die Anzeige dient dabei zur Vor-Ort-Analyse von Fehlern. Die selben Informationen werden auch Intern auf dem Mess-Client in einer Logdatei gespeichert.
 
-
-
-\section{Anwendung zur Messdatenauswertung}
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.7\textwidth ]{img/general/PCClientMain.PNG}
-\caption{RS232 Kommunikation: Leseanfrage}
-\label{figure_RS232Kommunikation}
-\end{center}
-\end{figure}
-
-
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=0.7\textwidth ]{img/general/PCClientBoard.PNG}
-\caption{RS232 Kommunikation: Leseanfrage}
-\label{figure_RS232Kommunikation}
-\end{center}
-\end{figure}
 

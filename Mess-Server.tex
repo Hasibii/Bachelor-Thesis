@@ -10,7 +10,7 @@
 \end{center}
 \end{figure}
 
-Das BeagleBone selbst ist bereits sehr Leistungsstark. Um jedoch weiter Funktionen und Schnittstellen hinzuzufügen, existieren Capes. Ein Cape ist eine für das BeagleBone konzipierte Erweiterung, die direkt auf das BeagleBone aufgesteckt werden kann. Die Treiber vieler dieser Capes sind bereits in dem Betriebssystem des BeagleBones integriert oder werden vom Hersteller bereitgestellt. Somit ist die Inbetriebnahme sehr komfortable.
+Das BeagleBone Black selbst ist bereits sehr Leistungsstark. Um jedoch weiter Funktionen und Schnittstellen hinzuzufügen, existieren Capes. Ein Cape ist eine für das BeagleBone konzipierte Erweiterung, die direkt auf das BeagleBone aufgesteckt werden kann. Die Treiber vieler dieser Capes sind bereits in dem Betriebssystem des BeagleBones integriert oder werden vom Hersteller bereitgestellt. Somit ist die Inbetriebnahme sehr komfortable.
 
 
 \begin{figure}[H]
@@ -57,7 +57,7 @@ Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird,
 \end{center}
 \end{figure}
 
-Das Software System setzt sich aus zwei Teilen zusammen. Zum Einen die selbst zu programmierende Software, welche in C++ unter Verwendung der Klassenbibliothek Qt (siehe Abschnitt \ref{section_Qt}) programmiert ist und zum Anderen die verschiedenen Softwarepakete die für das Linux Betriebssystem zur Verfügung stehen.\\
+Das Software System setzt sich aus zwei Teilen zusammen. Zum Einen die selbst entwickelte Software, welche in C++ unter Verwendung der Klassenbibliothek Qt (siehe Abschnitt \ref{section_Qt}) programmiert ist und zum Anderen die verschiedenen Softwarepakete die für das eingesetzte Linux Betriebssystem zur Verfügung stehen.\\
 Im folgenden Abschnitt wird auf beide Softwareteile eingegangen. Zunächst werden die Bestandteile Mess-Client Verwaltung, Benutzeroberfläche und TCP/UDP-Server der Qt Anwendung näher erläutert und anschließend wird auf Datenbankserver, den Webserver und WLAN Hotspot eingegangen.
 
 \subsection{Mess-Client Verwaltung}
@@ -100,26 +100,31 @@ interval\_3 & Abstand zwischen den Messungen nach dem 2. Zeitraum\\ \hline
 \end{table}
 
 
-Ob eine Messung erforderlich ist, lässt sich aus den gegebenen Parametern ableiten. So wird zuerst geprüft, welcher Zeitraum (\textit{duration\_int1-2}) derzeit zutrifft. Dazu wird die vergangene Zeit seit der ersten Messung mit dem Zeitraum abgeglichen. Sollten noch keine Ergebnisse vorhanden sein, ergibt dies die Erforderlichkeit einer Messung. Wenn der passende Zeitraum ausgemacht ist, wird das dazugehörige Intervall zwischen den einzelnen Messungen (\textit{interval\_1-3}) ausgemacht. Dann wird geprüft, ob die vergangene Zeit seit der letzten Messung größer ist als dieses Intervall.\ 
+Ob eine Messung erforderlich ist, lässt sich aus den gegebenen Parametern ableiten. So wird zuerst geprüft, welcher Zeitraum (\textit{duration\_int1-2}) derzeit zutrifft. Dazu wird die vergangene Zeit seit der ersten Messung mit dem Zeitraum abgeglichen. Sollten noch keine Ergebnisse vorhanden sein, ergibt dies die Erforderlichkeit einer Messung.\\ Wenn der passende Zeitraum ausgemacht ist, wird das dazugehörige Intervall zwischen den einzelnen Messungen (\textit{interval\_1-3}) ausgemacht. Dann wird geprüft, ob die vergangene Zeit seit der letzten Messung größer ist als dieses Intervall.\ 
 
 Anschließend wird geprüft ob der Mess-Client verfügbar ist. Dazu wird eine Namensanfrage über die RS232 Schnittstelle verschickt. Bei einer positiven Antwort wird dann eine Messung durchgeführt. Dabei werden alle \acp{ADC} der 64 möglichen \acp{DUT} mittels \textit{ADC-Value}-Befehls (siehe Tabelle \ref{table_RS232Commands}) ausgelesen. Sobald alle 64 Werte erfolgreich ermittelt sind, werden sie in der Datenbank abgelegt. \\
 Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zyklen erneut versucht eine Verbindung zu etablieren. Bei kontinuierlich erfolglosen Verbindungsversuchen, informiert das System den Nutzer nach einer festgelegten Zeit der Abwesenheit über die Unerreichbarkeit.
  
 
  
-\newpage
-\subsection{Benutzeroberfläche}
-Um die Anforderung der Statusüberwachnung zu erfüllen, verfügt das BeagleBone über eine \ac{GUI}. Sie soll einen einfachen Überblick über die aktuellen Vorgänge bieten und auf einen Blick den Status des Mess-Servers wiedergeben.\\
 
-Status abhängig von freiem Disk Space, Boards erreichbar oder nicht, TCP Server
+\subsection{Statusüberwachung}
+\label{section_Statusüberwachung}
+Um die Anforderung der Statusüberwachung zu erfüllen, verfügt das BeagleBone Black über eine \ac{GUI}. Sie soll einen einfachen Überblick über die aktuellen Vorgänge bieten und auf einen Blick den Status des Mess-Servers wiedergeben. Angezeigt wird die \ac{GUI} über das LCD Display Cape des BeagleBone Black.\\
+Es sollen die wichtigsten Funktionen für den Betrieb überwacht und angezeigt werden, sodass der Administrator informiert wird, sobald ein manuelles Eingreifen erforderlich ist.
+Überwacht werden die korrekte Funktion der angeschlossenen Mess-Clients und die lokale Systemauslastung des BeagleBone Blacks.\ 
+
+Zur Überwachung der Mess-Clients werden sie in drei Gruppen unterteilt. Alle Mess-Clients,die eine RS232 Adresse besitzen, gelten als aktiv. Mess-Clients denen keine RS232 Adresse zugewiesen ist, gelten als inaktiv. Sie sind zwar noch in der Datenbank gespeichert, wurden allerdings durch das Löschen der RS232 Adresse vom System abgemeldet.\\
+Die dritte und kritische Gruppe sind Mess-Clients denen eine RS232 Adresse zugewiesen ist, die aber nicht über den RS232 Bus erreichbar sind. Bei ihnen liegt mit großer Wahrscheinlichkeit ein Fehler vor, der vom Administrator manuell behoben werden muss.\ 
+
+Bei der Überwachung der Systemauslastung, ist vor allem die Speichernutzung interessant. Da das System über lange Zeiträume aktiv ist, fallen auch große Mengen an Daten an. Da allerdings nur ein beschränkter Speicherplatz zur Verfügung steht, wird der Nutzer über die Auslastung informiert. Im Notfall kann der Administrator Speicher durch das Löschen von nicht mehr relevanten Messdaten freigegeben.
 
 
-\newpage
 \subsection{TCP/UDP Server}
 \label{section_TCPUDPServer}
 Um auf Netzwerkanfragen reagieren zu können, ist sowohl ein UDP-Server für Broadcast-Nachrichten als auch ein TCP-Server für die direkte Kommunikation realisiert.\\
-Der UDP-Server dient dabei zur dynamischen Erkennung im Netzwerk. Dabei antwortet der Mess-Server auf Broadcast-Nachrichten mit seiner IP-Adresse und seinem Namen. Dies ermöglicht die einfache Eingliederung der Mess-Server in ein Netzwerk.
-Der TCP-Server nimmt RS232- und SQL-Befehle an und leitet diese weiter. Dies ermöglicht den Fernzugriff auf die einzelnen Mess-Clients über ein Netzwerk.\\
+Der UDP-Server dient dabei zur dynamischen Erkennung im Netzwerk. Der Mess-Server antwortet auf Broadcast-Nachrichten mit seiner IP-Adresse und seinem Namen. Dies ermöglicht die einfache Eingliederung der Mess-Server in ein Netzwerk.
+Der TCP-Server nimmt RS232-Befehle an und leitet diese weiter. Das ermöglicht den Fernzugriff auf die einzelnen Mess-Clients über ein Netzwerk. In Tabelle \ref{table_EthernetCommands} ist eine Liste der möglichen Befehle zu sehen.\\
 
 \begin{table}[H]
 \begin{center}
@@ -147,7 +152,7 @@ Der TCP/UDP-Server ist vor allem für die Kommunikation mit dem PC-Client zustä
 \end{center}
 \end{figure}
 
-\newpage
+
 \subsection{Web Server und WLAN Hotspot}
 \label{section_WebServerWLANHotspot}
 
@@ -163,8 +168,7 @@ Zusätzlich müssen Geräten die sich über den Hotspot mit dem BeagleBone Black
 
 
 
-\newpage
- 
+
 \subsection{Datenbank Server}
 \label{section_EntwurfDatenbank}
 
@@ -183,7 +187,7 @@ Aus den Anforderungen ergibt sich folgendes \ac{ERM} (siehe Abbildung \ref{ERM})
 \subsubsection{Tabellen}
 Im folgenden Abschnitt wird näher auf die einzelnen Tabellen und ihre Beziehungen untereinander eingegangen. Außerdem werden die Attribute näher erläutert.
 
-\newpage
+
 \textbf{Tabelle D\_Board}\\
 
 \begin{table}[H]
@@ -205,11 +209,11 @@ f\_Patternid & INTEGER FOREIGN KEY\\ \hline
 
 
 Die Tabelle D\_Board (steht für Degradations-Board) speichert alle im System registrierten Mess-Clients. Jeder Mess-Client hat eine einzigartige Identifikationsnummer (\textit{p\_id}), welche gleichzeitig den Primärschlüssel (englisch: primary key) repräsentiert. Um die Mess-Clients später leserlich auseinanderhalten zu können, verfügen sie zusätzlich über einen Namen (\textit{label}), der einzigartig sein muss.\\
-Zur Kommunikation wird jedem Board eine einzigartige Adresse (\textit{address}) zugeordnet. Boards die eine Adresse haben, werden als aktive Boards bezeichnet. Es kann davon ausgegangen werden, dass sie innerhalb des Systems erreichbar sind. Außerdem ist auch möglich, dass ein Board keine Adresse hat. In diesem Fall ist das Board als inaktiv anzusehen. Die Daten sind zwar noch in der Datenbank, jedoch ist es nicht mehr erreichbar und es werden keine neuen Messwerte aufgenommen. Diese Inaktivität entsteht, wenn ein Board für eine zu lange Zeit nicht Erreichbar ist. Denn in einem solchen Fall, wird die Adresse aufgrund des beschränkten Adressraumes freigegeben.\\
+Zur Kommunikation wird jedem Board eine einzigartige Adresse (\textit{address}) zugeordnet. Über den RS232 Bus ist es dann mittels dieser Adresse erreichbar.\\
 Jedes Degradationsboard besitzt einen Zeitstempel (\textit{LastOnline}) für den Zeitpunkt der letzten erfolgreichen Kontaktaufnahme. Diese Information ist notwendig um die Dauer der Abwesenheit ermitteln und den Nutzer dahingehen in Kenntnis setzen zu können.\\
 Des Weiteren gibt es noch einen Zeitstempel (\textit{LastChecked}) für den letzten Zeitpunkt des Versuches einer Kontaktaufnahme, welcher notwendig ist, um unnötig häufige Kontaktversuche zu vermeiden. So soll ein Degradationsboard nicht häufiger als alle 10 Minuten kontaktiert werden um die Performance zu erhöhen.\\
 Zusätzlich folgt jedes Board genau einer Einstellung (Tabelle Setting). Diese Relation wird durch einen Fremdschlüssel (englisch: foreign key) mit der Identifikationsnummer einer Einstellung (\textit{f\_Settingid}) referenziert.\\
-Außerdem hat jedes Board ein PulsePattern (Tabelle Pattern) zur Ansteuerung der Prüfobjekte. Dieses wird durch die Identifikationsnummer eines Patterns(\textit{f\_Patternid}) angegeben.
+Außerdem hat jedes Board ein Pulsmuster (Tabelle Pattern) zur Ansteuerung der Prüfobjekte. Dieses wird durch die Identifikationsnummer eines Pulsmusters(\textit{f\_Patternid}) angegeben.
 
 
 \newpage
@@ -234,7 +238,7 @@ interval\_3 & INTEGER\\ \hline
 \end{table}
 
 In der Tabelle Setting, werden die Einstellungen  für die verschiedenen Degradationsboards abgelegt. Jede Einstellung kann dabei mehreren Boards zugeordnet sein, wobei jedes Board nur eine Einstellung besitzt.\\
-Der Primärschlüssel der Tabelle ist die Identifikationsnummer (\textit{p\_id}) jeder Einstellung. Als Nächstes gibt es die Vorverstärkung (\textit{DAC}) der Empfänger auf den Degradationsboards. Mithilfe der Vorverstärkung werden die gemessenen Signale der Prüfobjekte für die bessere Analyse durch den Analog-Digital-Konverter verstärkt. Darauf folgend kommen die Parameter zur Konfiguration der Messintervalle (siehe auch Tabelle \ref{table_ParameterMessintervalle}). Sie bestimmen die Zeiträume (\textit{duration\_int1 + 2}) und die Abstände zwischen den Messungen (\textit{interval\_1-3}) innerhalb dieser Zeiträume.\\
+Der Primärschlüssel der Tabelle ist die Identifikationsnummer (\textit{p\_id}) jeder Einstellung. Als Nächstes gibt es die Vorverstärkung (\textit{DAC}) der Pulsmuster auf den Degradationsboards. Mithilfe der Vorverstärkung werden die Signale zur Ansteuerung der Prüfobjekte für die bessere Analyse durch den Analog-Digital-Konverter verstärkt. Darauf folgend kommen die Parameter zur Konfiguration der Messintervalle (siehe auch Tabelle \ref{table_ParameterMessintervalle}). Sie bestimmen die Zeiträume (\textit{duration\_int1 + 2}) und die Abstände zwischen den Messungen (\textit{interval\_1-3}) innerhalb dieser Zeiträume.\\
 
 \textbf{Tabelle DUT}\\
 
@@ -287,7 +291,7 @@ Pulse\_Period & INTEGER\\ \hline
 \end{center}
 \end{table}
 
-Die Tabelle PulsePattern enthält die Signale für die Muster in Tabelle Pattern. Die Identifikationsnummer des Musters(\textit{pf\_Patternid}) und die Position im Muster (\textit{p\_no}) dienen zusammen als ein Primärschlüssel. Die Identifikationsnummer des Musters(\textit{pf\_Patternid})dient dabei gleichzeitig als Fremdschlüssel und referenziert ein Muster. Dadurch ist es möglich sowohl die Zugehörigkeit zu einem spezifischen Muster als auch die Position in ihm einzigartig zu bestimmen. Die Signaldauer (\textit{Pulse\_Duration}) beschreibt die Dauer des aktiven Pegels innerhalb des Signals, während die Signalperiode (\textit{Pulse\_Period}) die Periodendauer des Signals angibt. So ergibt sich ein High-Pegel für die Dauer von $Pulse\_Duration$ und ein Low-Pegel für die Dauer von $Pulse\_Period - Pulse\_Duration$.\\
+Die Tabelle PulsePattern enthält die Signale für die Muster in Tabelle Pattern. Die Identifikationsnummer des Musters(\textit{pf\_Patternid}) und die Position im Muster (\textit{p\_no}) dienen zusammen als ein Primärschlüssel. Die Identifikationsnummer des Musters(\textit{pf\_Patternid})dient dabei gleichzeitig als Fremdschlüssel und referenziert ein Muster. Dadurch ist es möglich sowohl die Zugehörigkeit zu einem spezifischen Muster als auch die Position in ihm einzigartig zu bestimmen. Die Signaldauer (\textit{Pulse\_Duration}) beschreibt die Pulsbreite des aktiven Pegels innerhalb des Signals, während die Signalperiode (\textit{Pulse\_Period}) die Pulsperiodendauer des Signals angibt. So ergibt sich ein High-Pegel für die Dauer von $Pulse\_Duration$ und ein Low-Pegel für die Dauer von $Pulse\_Period - Pulse\_Duration$.\\
 
 \newpage
 

@@ -11,7 +11,7 @@
 \contentsline {figure}{\numberline {3.2.2}{\ignorespaces Mess-Client Oberseite\relax }}{11}{figure.caption.23}
 \contentsline {figure}{\numberline {3.2.3}{\ignorespaces Mess-Client Unterseite\relax }}{11}{figure.caption.23}
 \contentsline {figure}{\numberline {3.2.4}{\ignorespaces Messintervalle\relax }}{12}{figure.caption.24}
-\contentsline {figure}{\numberline {3.2.5}{\ignorespaces Pulsmuster\relax }}{12}{figure.caption.25}
+\contentsline {figure}{\numberline {3.2.5}{\ignorespaces Pulsperioden/Pulsbreiten-Paar\relax }}{12}{figure.caption.25}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1.1}{\ignorespaces \IeC {\"U}bersicht Hardware\relax }}{16}{figure.caption.28}
 \contentsline {figure}{\numberline {4.1.2}{\ignorespaces RS232 Cape\relax }}{17}{figure.caption.29}
@@ -21,16 +21,14 @@
 \contentsline {figure}{\numberline {4.2.1}{\ignorespaces \IeC {\"U}bersicht Software\relax }}{18}{figure.caption.33}
 \contentsline {figure}{\numberline {4.2.2}{\ignorespaces Mess-Client Anmeldung\relax }}{19}{figure.caption.34}
 \contentsline {figure}{\numberline {4.2.3}{\ignorespaces RS232 Tunnel\relax }}{22}{figure.caption.38}
-\contentsline {figure}{\numberline {4.2.4}{\ignorespaces Entity Relationship Modell\relax }}{24}{figure.caption.41}
+\contentsline {figure}{\numberline {4.2.4}{\ignorespaces Entity Relationship Modell\relax }}{23}{figure.caption.41}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.2.1}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{37}{figure.caption.60}
-\contentsline {figure}{\numberline {5.4.1}{\ignorespaces Webinterface\relax }}{40}{figure.caption.61}
-\contentsline {figure}{\numberline {5.5.1}{\ignorespaces Mess-Server GUI: Status Tab\relax }}{41}{figure.caption.62}
-\contentsline {figure}{\numberline {5.5.2}{\ignorespaces Mess-Server GUI: Events Tab\relax }}{41}{figure.caption.63}
-\contentsline {figure}{\numberline {5.5.3}{\ignorespaces Mess-Server GUI: Boards Tab\relax }}{42}{figure.caption.64}
-\contentsline {figure}{\numberline {5.5.4}{\ignorespaces Mess-Server GUI: Debug Tab\relax }}{42}{figure.caption.65}
-\contentsline {figure}{\numberline {5.6.1}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{43}{figure.caption.66}
-\contentsline {figure}{\numberline {5.6.2}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{43}{figure.caption.67}
+\contentsline {figure}{\numberline {5.2.1}{\ignorespaces RS232 Kommunikation: Leseanfrage\relax }}{36}{figure.caption.60}
+\contentsline {figure}{\numberline {5.4.1}{\ignorespaces Webinterface\relax }}{39}{figure.caption.61}
+\contentsline {figure}{\numberline {5.5.1}{\ignorespaces Mess-Server GUI: Status Tab\relax }}{40}{figure.caption.62}
+\contentsline {figure}{\numberline {5.5.2}{\ignorespaces Mess-Server GUI: Events Tab\relax }}{40}{figure.caption.63}
+\contentsline {figure}{\numberline {5.5.3}{\ignorespaces Mess-Server GUI: Boards Tab\relax }}{41}{figure.caption.64}
+\contentsline {figure}{\numberline {5.5.4}{\ignorespaces Mess-Server GUI: Debug Tab\relax }}{41}{figure.caption.65}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.3.1}{\ignorespaces Pulsmuster\relax }}{45}{figure.caption.68}
+\contentsline {figure}{\numberline {6.3.1}{\ignorespaces Pulsmuster\relax }}{43}{figure.caption.66}
 \addvspace {10\p@ }

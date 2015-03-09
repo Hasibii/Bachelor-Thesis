@@ -61,7 +61,7 @@ Das höchste Bit ist das Lese-/Schreibbit. Mithilfe dieses Bits wird unterschied
 \end{center}
 \end{table}
 
-Ein Lesezugriff stellen dabei Anfragen dar. Dass heißt, dass keine Nutzdaten übertragen werden und eine Antwort des Empfängers mit den angeforderten Daten erwartet wird. Bei einem Schreibzugriff hingegen, werden immer Nutzdaten übertragen.\\
+Ein Lesezugriff stellt dabei eine Anfragen dar. Dass heißt, dass keine Nutzdaten übertragen werden und eine Antwort des Empfängers mit den angeforderten Daten erwartet wird. Bei einem Schreibzugriff hingegen, werden immer Nutzdaten übertragen.\\
 
 
 \textbf{2. Byte: Rahmenlänge}
@@ -212,26 +212,26 @@ Eine Übersicht über die implementierten Befehle der RS232 Schnittstelle findet
 \end{table}
 
 \textbf{ADC-Value}\\
-Liest den Messwert eines Sensors des Mess-Clients. Mit dem Unterbefehl muss einer der 64 Sensoren spezifiziert werden. Ein Messwert hat die Größe von 2 Byte.\ 
+Liest den Messwert eines Sensors des Mess-Clients. Mit dem Unterbefehl muss einer der 64 Sensoren spezifiziert werden. Ein Messwert hat die Größe von 2 Byte. Dabei wird das höhere Byte zuerst übertragen.\ 
 
 \textbf{Number Of Pulses}\\
-Liest oder schreibt die Anzahl der Impulse im Pulsmuster des Mess-Clients. Die maximale Anzahl ist 20.\ 
+Liest oder schreibt die Anzahl der Impulse im Pulsmuster des Mess-Clients. Die maximale Anzahl ist 20 und sie wird als 1 Byte Wert übertragen.\ 
 
 \textbf{Pulsewidth and -period}\\
-Ändert ein Pulsbreiten-/Pulsperiodenpaar. Der Unterbefehl bestimmt die Position im Pulsmuster.\ 
+Liest oder schreibt  ein Pulsbreiten-/Pulsperiodenpaar. Der Unterbefehl bestimmt die Position im Pulsmuster. Sowohl die Pulsbreite als auch die Pulsperiode sind jeweils 2 Byte groß. Die ersten 2 Byte repräsentieren die Pulsbreite und die zweiten 2 Byte die Pulsperiode. Das höhere Byte wird zuerst übertragen. \ 
 
 \textbf{DAC-Value}\\
-Liest oder schreibt den Wert für die Vorverstärkung zur Ansteuerung der Prüfobjekte.\ 
+Liest oder schreibt den Wert für die Vorverstärkung zur Ansteuerung der Prüfobjekte. Sie ist 12 Bit groß und hat somit einen Wertebereich von 0 bis 4096. Das höhere Byte wird zuerst übertragen.\ 
 
 \textbf{Temperatur}\\
-Der Befehl ließt den Wert des Temperatursensors.\ 
+Der Befehl ließt den Wert des Temperatursensors. Er ist nur zum Lesen des Temperaturwertes gedacht und kann nicht zum schreiben verwendet werden. Es handelt sich um einen signed 1 Byte Wert. Der Wertebereich geht von 127 bis -127.\ 
 
 \textbf{LTT Name}\\
-Liest oder schreibt den Namen des Mess-Clients.\ 
+Liest oder schreibt den Namen des Mess-Clients. Die maximale Zeichenlänge beträgt 30 Zeichen. Das erste Zeichen wird auch zuerst übertragen.\ 
 
 \textbf{RS232-Adresse}\\
-Liest oder schreibt die Adresse für die Rs232 Kommunikation des Mess-Clients.\ 
+Liest oder schreibt die Adresse für die Rs232 Kommunikation des Mess-Clients. Es handelt sich um einen 7 Bit Wert. Der Wertebereich geht von 0 bis 127 was 128 Adressen entspricht.\ 
 
 \textbf{Measurement Intervall}\\
-Liest oder schreibt die Konfiguration der Messintervalle. Der Unterbefehl gibt dabei den Zeitraum (1 bis 3) an.\ 
+Liest oder schreibt die Konfiguration der Messintervalle. Der Unterbefehl gibt dabei den Zeitraum (1 bis 3) an. Die ersten 2 Byte enthalten das Intervall zwischen den Messungen und die zweiten 2 Byte den Zeitraum. Das höhere Byte wird zuerst übertragen.\ 
 

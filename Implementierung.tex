@@ -11,7 +11,7 @@ Die beiden Programmteile können unabhängig von einander agieren und kommunizie
 
 \section{Systemkonfiguration}
 
-Beim Hochfahren des Mess-Servers sorgt das Linux Hintergrunddienst systemd für die Ausführung aller nötigen Prozesse. Um zusätzlich die Steuerungssoftware zu starten, wird ein neuer Service erstellt und dem systemd mitgeteilt.\\
+Beim Hochfahren des Mess-Servers sorgt das Linux Hintergrunddienst systemd für die Ausführung aller nötigen Prozesse. Systemd ist unter Linux der Prozess mit der ID 1. Er ist der Initialisierungsprozess und wird als erster Prozess gestartet. Des Weiteren übernimmt er den Start und die Überwachung aller anderen Prozesse die beim Systemstart ausgeführt werden. Diese Prozesse werden auch Service genannt. Um zusätzlich die Steuerungssoftware zu starten, wird ein neuer Service erstellt und dem systemd mitgeteilt.\\
 \newpage
 \begin{lstlisting}[caption={Systemd Service},label=lst_SystemdService]
 [Unit]
@@ -26,7 +26,7 @@ RestartSec=30
 WantedBy=multi-user.target
 \end{lstlisting}
 
-Im Quellcode \ref{lst_SystemdService} ist die Konfiguration des Services zu sehen. Er wird beim Systemstart automatisch gestartet und führt anschließend ein Script aus, das das System konfiguriert und die Qt Anwendung startet. Des Weiteren wird der Service automatisch erneut ausgeführt, falls ein Fehler, der die Qt Anwendung beendet, auftritt. Dadurch soll sichergestellt werden, dass das System jederzeit verfügbar ist.\ 
+Im Quellcode \ref{lst_SystemdService} ist die Konfiguration des Services zu sehen. Er wird beim Systemstart automatisch gestartet und führt anschließend ein Script aus, das das System konfiguriert und die Qt Anwendung startet. Des Weiteren wird der Service automatisch erneut ausgeführt, falls ein Fehler, der die Qt Anwendung beendet, auftritt. Dadurch soll sichergestellt werden, dass das System jederzeit verfügbar ist. Die Datei mit dem Quellcode des Services wird im Verzeichnis des systemd abgelegt.\ 
 
 Das Systemstart Script initialisiert zunächst das RS232 Cape, das \ac{RTC} Cape und die Systemuhr. Anschließend führt es die Qt Anwendung aus.\\ 
 
@@ -41,7 +41,7 @@ cd /root/Progs
 ./LTT_MeasMaster_GUI -qws
 \end{lstlisting}
 
-Im Quellcode \ref{lst_SystemstartScript} ist das Systemstart Script zu sehen. Für die Initialisierung des RTC und RS232 Capes erfolgt über den für das BeagleBone Black verfügbaren Cape Manager (capemgr). Der Capemgr \cite{Capemgr} dient zum einfachen Einbinden von Capes in das System. Er lädt unter Anderem die benötigten Treiber und reserviert die nötigen \ac{GPIO} Pins.\ 
+Im Quellcode \ref{lst_SystemstartScript} ist das Systemstart Script zu sehen. Für die Initialisierung des RTC und RS232 Capes erfolgt über den für das BeagleBone Black verfügbaren Cape Manager (capemgr). Der Capemgr \cite{Capemgr} dient zum einfachen Einbinden von Capes in das System. Er lädt unter anderem die benötigten Treiber und reserviert die nötigen \ac{GPIO} Pins. Das Script befindet sich im Verzeichnis \textit{/usr/bin/}.\ 
 
 Da das BeagleBone Black über keine persistente Uhr verfügt, wird nachdem die beiden Capes initialisiert sind die Systemuhr mithilfe der Uhrzeit des RTC Capes gestellt. Die Uhrzeit muss zu jeder Zeit korrekt sein, damit das System fehlerfrei funktioniert.\\
 Nach der Konfiguration wird die Qt Steuerungssoftware ausgeführt. Sie wird dabei weiterhin vom systemd überwacht und im Fehlerfall neu gestartet.\ 

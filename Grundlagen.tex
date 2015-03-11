@@ -8,8 +8,9 @@ Bei der Entwicklung des Teststandes kommen verschiedene Systeme und Konzepte zum
 Der Hauptgrund für mechanisches Versagen im Lebenszyklus eines Systems oder Bauelementes, liegt an der langsamen Ansammlung von nicht reversiblen Schäden. Dieser Prozess ist bekannt als Degradation (vgl. \cite{zhou2011}).\\
 Die Schwierigkeit liegt in der Feststellung des mechanischen Versagens in messbaren Schritten.\\
 So ist die Bestimmung der Lebenszeit über die Zeit bis zum Ausfall zeitaufwändig. Einfacher ist es die Leistung des Bauelementes oder Systems zu erfassen, z.B. die optische Leistung einer \ac{LED}. Auf diesem Weg kann ein Trend ausgemacht werden.\\
-Um die Länge des Lebenszyklus eines Bauelementes bestimmen zu können, wird die Leistung dessen unter Last über einen langen Zeitraum hinweg aufgezeichnet. Anhand der daraus resultierenden Daten kann die zu erwartende Länge des Lebenszyklus ermittelt werden.\\
-In Abbildung \ref{figure_Degradation} ist ein Beispiel für erfasste Daten zu sehen. Sie zeigt die relative Abweichung der optischen Leistung über die Zeit von sieben verschiedenen \acp{LED}. 
+Um die Länge des Lebenszyklus eines Bauelementes bestimmen zu können, wird die Leistung dessen unter Last über einen langen Zeitraum hinweg aufgezeichnet. Anhand der daraus resultierenden Daten kann die zu erwartende Länge des Lebenszyklus ermittelt werden.\ 
+
+In Abbildung \ref{figure_Degradation} ist ein Beispiel für erfasste Daten zu sehen. Sie zeigt die relative Abweichung der optischen Leistung über die Zeit von sieben verschiedenen \acp{LED}. Bei der durch die rote Kurve repräsentierten LED dürfte nach den hier vorliegenden Messergebnissen nicht davon ausgegangen werden, dass nach 20.000 Stunden mehr als 70\% der ursprünglichen Lichtleistung vorhanden ist. Dagegen deutet die grüne Kurve bereits nach 5.000 Stunden auf eine sehr hohe Lebenserwartung der entsprechenden LED hin. Diese Aussagen können nur getroffen werden, da über einen sehr langen Zeitraum Messungen in sehr kurzem Abstand gemessen wurden.
 
  
 \begin{figure}[H]
@@ -47,7 +48,7 @@ void Calculate::my_function(){
 }
 \end{lstlisting}
 
-Im Quellcode \ref{lst_QtEmit} wird das Signal \textit{clicked()} mittels \textit{emit}-Statement ausgelöst und der Slot des verbundenen Objektes aktiviert. Somit ist es möglich beispielsweise die GUI und den Hauptprogrammablauf von einander zu trennen und lediglich über Signale und Slots kommunizieren zu lassen. Dadurch agieren beide Teile komplett unabhängig von einander.
+Im Quellcode \ref{lst_QtEmit} wird das Signal \textit{clicked()} nun mittels \textit{emit}-Statement ausgelöst und der Slot des verbundenen Objektes aktiviert. Dadurch wird die Funktion \textit{addAB()} ausgeführt. Somit ist es möglich beispielsweise die GUI und den Hauptprogrammablauf von einander zu trennen und lediglich über Signale und Slots kommunizieren zu lassen. Dadurch agieren beide Teile komplett unabhängig von einander.
 
 \subsection{Entwicklungsumgebung}
 Als Entwicklungsumgebung (englisch: \ac{IDE}) dient der Qt Creator (siehe Abbildung \ref{QtCreator}), welcher Teil des \ac{SDK} von Qt ist und sowohl auf Linux, Windows als auch Mac OS X zur Verfügung steht. Er kommt mit einem Debugger, einem integrierten \ac{GUI} Designer und einem Texteditor mit Funktionen wie Syntax-Hervorhebung und automatischer Vervollständigung. \\

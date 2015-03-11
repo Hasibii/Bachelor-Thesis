@@ -30,23 +30,26 @@
 \contentsline {subsection}{\numberline {4.2.2}Status\IeC {\"u}berwachung}{20}{subsection.4.2.2}
 \contentsline {subsection}{\numberline {4.2.3}TCP/UDP Server}{21}{subsection.4.2.3}
 \contentsline {subsection}{\numberline {4.2.4}Web Server und WLAN Hotspot}{22}{subsection.4.2.4}
-\contentsline {subsection}{\numberline {4.2.5}Datenbank Server}{23}{subsection.4.2.5}
+\contentsline {subsection}{\numberline {4.2.5}Datenbank Server}{24}{subsection.4.2.5}
 \contentsline {subsubsection}{\numberline {4.2.5.1}Tabellen}{24}{subsubsection.4.2.5.1}
-\contentsline {section}{\numberline {4.3}RS232 Protokoll}{28}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Aufbau}{28}{subsection.4.3.1}
-\contentsline {subsection}{\numberline {4.3.2}Befehle und Unterbefehle}{32}{subsection.4.3.2}
-\contentsline {chapter}{\numberline {5}Implementierung}{34}{chapter.5}
-\contentsline {section}{\numberline {5.1}Systemkonfiguration}{34}{section.5.1}
-\contentsline {section}{\numberline {5.2}RS232 Kommunikation}{36}{section.5.2}
-\contentsline {section}{\numberline {5.3}Datenbank}{37}{section.5.3}
-\contentsline {section}{\numberline {5.4}Webinterface}{39}{section.5.4}
-\contentsline {section}{\numberline {5.5}BeagleBone Black Benutzeroberfl\IeC {\"a}che }{40}{section.5.5}
-\contentsline {chapter}{\numberline {6}Testen und Validieren}{42}{chapter.6}
-\contentsline {section}{\numberline {6.1}Speicherverwaltung}{42}{section.6.1}
-\contentsline {section}{\numberline {6.2}Fehlerf\IeC {\"a}lle}{42}{section.6.2}
-\contentsline {section}{\numberline {6.3}Testaufbau}{43}{section.6.3}
-\contentsline {section}{\numberline {6.4}Grenzen}{44}{section.6.4}
-\contentsline {chapter}{\numberline {7}Zusammenfassung und Ausblick}{45}{chapter.7}
-\contentsline {section}{\numberline {7.1}Zusammenfassung}{45}{section.7.1}
-\contentsline {section}{\numberline {7.2}Ausblick}{46}{section.7.2}
-\contentsline {chapter}{Literaturverzeichnis}{i}{section*.67}
+\contentsline {section}{\numberline {4.3}RS232 Protokoll}{29}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Aufbau}{29}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Befehle und Unterbefehle}{33}{subsection.4.3.2}
+\contentsline {chapter}{\numberline {5}Implementierung}{35}{chapter.5}
+\contentsline {section}{\numberline {5.1}Systemkonfiguration}{35}{section.5.1}
+\contentsline {section}{\numberline {5.2}RS232 Kommunikation}{37}{section.5.2}
+\contentsline {section}{\numberline {5.3}Datenbank}{38}{section.5.3}
+\contentsline {section}{\numberline {5.4}Webinterface}{40}{section.5.4}
+\contentsline {section}{\numberline {5.5}BeagleBone Black Benutzeroberfl\IeC {\"a}che }{41}{section.5.5}
+\contentsline {chapter}{\numberline {6}Testen und Validieren}{43}{chapter.6}
+\contentsline {section}{\numberline {6.1}Speicherverwaltung}{43}{section.6.1}
+\contentsline {section}{\numberline {6.2}Fehlerf\IeC {\"a}lle}{44}{section.6.2}
+\contentsline {section}{\numberline {6.3}Testaufbau}{44}{section.6.3}
+\contentsline {section}{\numberline {6.4}Grenzen}{45}{section.6.4}
+\contentsline {chapter}{\numberline {7}Zusammenfassung und Ausblick}{47}{chapter.7}
+\contentsline {section}{\numberline {7.1}Zusammenfassung}{47}{section.7.1}
+\contentsline {section}{\numberline {7.2}Ausblick}{48}{section.7.2}
+\contentsline {chapter}{Literaturverzeichnis}{i}{section*.69}
+\contentsline {chapter}{Anhang}{iii}{section*.71}
+\contentsline {chapter}{\numberline {A}Schaltplan und Layout des Mess-Clients}{iii}{appendix.A}
+\contentsline {chapter}{\numberline {B}Inhalt der beigef\IeC {\"u}gten CD-ROM}{vii}{appendix.B}

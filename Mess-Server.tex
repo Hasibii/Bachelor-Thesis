@@ -122,9 +122,11 @@ Bei der Überwachung der Systemauslastung, ist vor allem die Speichernutzung int
 
 \subsection{TCP/UDP Server}
 \label{section_TCPUDPServer}
-Um auf Netzwerkanfragen reagieren zu können, ist sowohl ein UDP-Server für Broadcast-Nachrichten als auch ein TCP-Server für die direkte Kommunikation realisiert.\\
-Der UDP-Server dient dabei zur dynamischen Erkennung im Netzwerk. Der Mess-Server antwortet auf Broadcast-Nachrichten mit seiner IP-Adresse und seinem Namen. Dies ermöglicht die einfache Eingliederung der Mess-Server in ein Netzwerk.
-Der TCP-Server nimmt RS232-Befehle an und leitet diese weiter. Das ermöglicht den Fernzugriff auf die einzelnen Mess-Clients über ein Netzwerk. In Tabelle \ref{table_EthernetCommands} ist eine Liste der möglichen Befehle zu sehen.\\
+Um auf Netzwerkanfragen reagieren zu können, ist sowohl ein UDP-Server für Broadcast-Nachrichten als auch ein TCP-Server für die direkte Kommunikation realisiert.\ 
+
+Der UDP-Server dient dabei zur dynamischen Erkennung von Mess-Servern im Netzwerk. Das \ac{UDP} ist ein verbindungsloses Netzwerkprotokoll. Es werden Nachrichten an ein Ziel versandt, ohne eine Rückmeldung zu erwarten. Dabei handelt es sich um eine nicht-zuverlässige, ungesichertes und ungeschütztes Protokoll. Diese Art der Übertragung eignet sich vor allem für das Aufspüren von Kommunikationspartnern. Es kann eine UDP-Nachricht gleichzeitig an alle möglichen Adressen von Kommunikationspartnern im Netzwerk verschickt werden, um diese zu ermitteln. Das geschieht meist über die Broadcast-Adresse eines Netzwerkes. Über die Broadcast-Adresse können alle Teilnehmer eines Netzes gleichzeitig angesprochen werden. Der Mess-Server antwortet auf Broadcast-Nachrichten mit seiner IP-Adresse und seinem Namen. Dies ermöglicht die einfache Eingliederung der Mess-Server in ein bestehendes System.\ 
+
+Das \ac{TCP} ist im Gegensatz zu \ac{UDP} ein verbindungsorientiertes Netzwerkprotokoll. Es ist ein zuverlässiges Übertragungsprotokoll und stellt die Gültigkeit der Übertragung sicher. Der TCP-Server nimmt RS232-Befehle an und leitet diese weiter. Das ermöglicht den Fernzugriff auf die einzelnen Mess-Clients über ein Netzwerk. In Tabelle \ref{table_EthernetCommands} ist eine Liste der möglichen Befehle zu sehen.\\
 
 \begin{table}[H]
 \begin{center}
@@ -158,16 +160,17 @@ Der TCP/UDP-Server ist vor allem für die Kommunikation mit dem PC-Client zustä
 
 Mit Hilfe eines Web Servers ist es auch lokal möglich eine Übersicht über die gesammelten Daten auf dem Mess-Server zu erhalten. Als Schnittstelle steht ein WLAN Hotspot zur Verfügung.\ 
 
-Als Webserver dient Lighttpd (auch: Lighty). Lighttpd ist laut \cite{bogus2008lighttpd} ein erweiterbarer, modularer, Single-Threaded, hoch hochperformanter Webserver, der selbst Apache oder Microsofts IIS in den meisten Einstellungen übertrifft. Besonders auf kleinen System mit begrenzten Ressourcen komme er häufig zum Einsatz. Trotzdem vertrauen auch große Webanbieter wie YouTube oder Wikipedia auf seine Effizienz.\\
+Als Webserver dient Lighttpd (auch: Lighty). Er stellt das Webinterface für Clients zum Abruf zur Verfügung. Lighttpd ist laut \cite{bogus2008lighttpd} ein erweiterbarer, modularer, Single-Threaded, hoch hochperformanter Webserver, der selbst Apache oder Microsofts IIS in den meisten Einstellungen übertrifft. Besonders auf kleinen System mit begrenzten Ressourcen komme er häufig zum Einsatz. Trotzdem vertrauen auch große Webanbieter wie YouTube oder Wikipedia auf seine Effizienz.\\
 Zusätzlich sind das PHP und MySQL \ac{CGI} Modul installiert um die Messergebnisse aus der Datenbank dynamisch darstellen zu können. 
 
-Der Webserver ist sowohl über die normale Ethernet Verbindung als auch einen WLAN Hotspot erreichbar. Für die Realisierung des WLAN Hotspots wird ein EDIMAX EW-7811Un WLAN Dongle über den Host-USB Port des BeagleBone Black betrieben.\\
+Der Webserver ist sowohl über die normale Ethernet Verbindung als auch einen WLAN Hotspot erreichbar. Für die Realisierung des WLAN Hotspots wird ein EDIMAX EW-7811Un WLAN Dongle über den Host-USB Port des BeagleBone Black betrieben. Der Hotspot ermöglicht den drahtlosen Zugriff auf den Mess-Server. Er stellt eine Verbindungspunkt für drahtlose Verbindungen dar.\\
 Als Hotspot Software dient Hostapd. Hostapd ist ein IEEE 802.11 Accesspoint und IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authentificator (vgl. \cite{LinuxWireless}) und verwaltet die Zugriffe auf den Hotspot.\\
 Zusätzlich müssen Geräten die sich über den Hotspot mit dem BeagleBone Black verbinden eine IP-Adresse zugewiesen werden. Dafür kommt der DNS- und DHCP-Server dnsmasq zum Einsatz. Dnsmasq kann als DNS-Server auch alle Anfragen an die Adresse des Webservers umleiten. Somit ist es für den Nutzer nicht nötig, die Adresse des Webserver manuell eingeben zu müssen. Er kann einfach über einen Standard-Webbrowser eine beliebige Adresse aufrufen und wird automatisch an die Adresse des Webserver umgeleitet.\\
 
 
 
 
+\newpage
 
 \subsection{Datenbank Server}
 \label{section_EntwurfDatenbank}

@@ -16,7 +16,7 @@ Ein Unternehmen stellt verschiedene optoelektronische Sensoren her. Zur Sicherst
 \end{figure}
 
 Der Teststand hat den in Abbildung \ref{figure_Szenario} zu sehenden Aufbau.
-In einem Temperaturschrank befinden sich mehrere Mess-Clients. An diesen Mess-Clients sind jeweils 64 \acp{DUT} fest angeschlossen, bei denen das Degradationsverhalten aufgezeichnet werden soll.
+In einem Temperaturschrank befinden sich mehrere Mess-Clients. An diesen Mess-Clients sind jeweils 64 \acp{DUT} fest angeschlossen, bei denen das Degradationsverhalten aufgezeichnet werden soll. Dazu befindet sich gegenüber jedes \ac{DUT} eine Photodiode, die als Empfänger dient und die Auswertung der von den \acp{DUT} abgegebenen optischen Leistung ermöglicht.\\
 Die Mess-Clients sind über einen Bus mit einem außerhalb des Temperaturschrankes befindlichen Mess-Server verbunden, welcher zyklisch Messdaten von den Mess-Clients abruft und alle anfallenden Daten in einer Datenbank speichert.\\
 Von einem PC-Client kann auf den Mess-Server zugegriffen  werden, um die Messdaten zu beziehen und grafisch auszuwerten.\\
 
@@ -137,7 +137,7 @@ ab 5. Woche & 7 Tage\\ \hline
 Zum Anderen soll für jeden Mess-Client ein Pulsepattern definierbar sein. Dieses Pulsepattern wird dann als Ansteuerungssignal für die \acp{DUT} verwendet.
 
 \textbf{Automatische Erfassung der Messdaten}\\
-Die Messdaten der \acp{DUT} sollen zyklisch erfasst werden. Es soll die derzeitige Temperatur im Ofen, der gemessene Wert des Sensors und ein Zeitstempel gespeichert werden. Dabei sollen, wie bereits erwähnt, die Intervalle zwischen den Messungen konfigurierbar sein.\\
+Die Messdaten der \acp{DUT} sollen zyklisch erfasst werden. Es soll die derzeitige Temperatur im Temperaturschrank, der gemessene Wert des Empfängers und ein Zeitstempel gespeichert werden. Dabei sollen, wie bereits erwähnt, die Intervalle zwischen den Messungen konfigurierbar sein.\\
 Für den einfachen und effizienten Zugriff auf die Daten sollen sie in einer \ac{SQL} Datenbank abgelegt werden. Dafür ist eine Kommunikationsschnittstelle zwischen der Datenbank und den Mess-Clients erforderlich, welche über den Mess-Server realisiert wird.
 
 \textbf{Fernzugriff auf den Mess-Server}\\

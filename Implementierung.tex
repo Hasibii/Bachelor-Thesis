@@ -11,7 +11,7 @@ Die beiden Programmteile können unabhängig von einander agieren und kommunizie
 
 \section{Systemkonfiguration}
 
-Beim Hochfahren des Mess-Servers sorgt der Linux Hintergrunddienst systemd für die Ausführung aller nötigen Prozesse. Systemd ist unter Linux der Prozess mit der ID 1. Er ist der Initialisierungsprozess und wird als erster Prozess gestartet. Des Weiteren übernimmt er den Start und die Überwachung aller anderen Prozesse die beim Systemstart ausgeführt werden. Diese Prozesse werden auch Service genannt. Um zusätzlich die Steuerungssoftware zu starten, wird ein neuer Service erstellt und dem systemd mitgeteilt.\\
+Beim Hochfahren des Mess-Servers sorgt das Linux Hintergrunddienst systemd für die Ausführung aller nötigen Prozesse. Um zusätzlich die Steuerungssoftware zu starten, wird ein neuer Service erstellt und dem systemd mitgeteilt.\\
 \newpage
 \begin{lstlisting}[caption={Systemd Service},label=lst_SystemdService]
 [Unit]
@@ -26,7 +26,7 @@ RestartSec=30
 WantedBy=multi-user.target
 \end{lstlisting}
 
-Im Quellcode \ref{lst_SystemdService} ist die Konfiguration des Services zu sehen. Er wird beim Systemstart automatisch gestartet und führt anschließend ein Script aus, das das System konfiguriert und die Qt Anwendung startet. Des Weiteren wird der Service automatisch erneut ausgeführt, falls ein Fehler, der die Qt Anwendung beendet, auftritt. Dadurch soll sichergestellt werden, dass das System jederzeit verfügbar ist. Die Datei mit dem Quellcode des Services wird im Verzeichnis des systemd abgelegt.\ 
+Im Quellcode \ref{lst_SystemdService} ist die Konfiguration des Services zu sehen. Er wird beim Systemstart automatisch gestartet und führt anschließend ein Script aus, das das System konfiguriert und die Qt Anwendung startet. Des Weiteren wird der Service automatisch erneut ausgeführt, falls ein Fehler, der die Qt Anwendung beendet, auftritt. Dadurch soll sichergestellt werden, dass das System jederzeit verfügbar ist.\ 
 
 Das Systemstart Script initialisiert zunächst das RS232 Cape, das \ac{RTC} Cape und die Systemuhr. Anschließend führt es die Qt Anwendung aus.\\ 
 
@@ -41,12 +41,12 @@ cd /root/Progs
 ./LTT_MeasMaster_GUI -qws
 \end{lstlisting}
 
-Im Quellcode \ref{lst_SystemstartScript} ist das Systemstart Script zu sehen. Für die Initialisierung des RTC und RS232 Capes erfolgt über den für das BeagleBone Black verfügbaren Cape Manager (capemgr). Der Capemgr \cite{Capemgr} dient zum einfachen Einbinden von Capes in das System. Er lädt unter anderem die benötigten Treiber und reserviert die nötigen \ac{GPIO} Pins. Das Script befindet sich im Verzeichnis \textit{/usr/bin/}.\ 
+Im Quellcode \ref{lst_SystemstartScript} ist das Systemstart Script zu sehen. Für die Initialisierung des RTC und RS232 Capes erfolgt über den für das BeagleBone Black verfügbaren Cape Manager (capemgr). Der Capemgr \cite{Capemgr} dient zum einfachen Einbinden von Capes in das System. Er lädt unter Anderem die benötigten Treiber und reserviert die nötigen \ac{GPIO} Pins.\ 
 
 Da das BeagleBone Black über keine persistente Uhr verfügt, wird nachdem die beiden Capes initialisiert sind die Systemuhr mithilfe der Uhrzeit des RTC Capes gestellt. Die Uhrzeit muss zu jeder Zeit korrekt sein, damit das System fehlerfrei funktioniert.\\
 Nach der Konfiguration wird die Qt Steuerungssoftware ausgeführt. Sie wird dabei weiterhin vom systemd überwacht und im Fehlerfall neu gestartet.\ 
 
-Alle Log-Nachrichten werden dabei in die Logdatei des systemd geschrieben. Die dadurch anfallenden Datenmengen überschreiten jedoch schnell die Kapazitäten der Hardware des BeagleBone Blacks. Weshalb zur Organisation der Logdateien die im Linux Betriebssystem mitgelieferte Software logrotate \cite{logrotate} eingesetzt wird. Logrotate übernimmt die automatische Rotation, Kompression und Löschung von Logdateien.\\
+Alle Log-Nachrichten werden dabei in die Logdatei des systemd geschrieben. Die dadurch anfallenden Datenmengen überschreiten dabei schnell die Kapazitäten der Hardware des BeagleBone Blacks. Deshalb wird zur Organisation der Logdateien die im Linux Betriebssystem mitgelieferte Software logrotate \cite{logrotate} eingesetzt. Logrotate übernimmt die automatische Rotation, Kompression und Löschung von Logdateien.\\
 
 \begin{lstlisting}[caption={Logrotate},label=lst_Logrotate]
 /var/log/daemon.log
@@ -58,13 +58,13 @@ Alle Log-Nachrichten werden dabei in die Logdatei des systemd geschrieben. Die d
 }
 \end{lstlisting}
 
-Im Quellcode \ref{lst_Logrotate} ist die entsprechende Konfiguration zu sehen. Die maximale Größe der Logdateien ist dabei auf 100MB beschränkt um den internen Speicher von 4GB nicht zu sehr zu belasten. Wird diese Größe überschritten, wird die Logdatei rotiert. Dabei wird ein komprimiertes Backup der aktuellen Logdatei erstellt und eine neue angelegt. Des Weiteren wird die Logdatei einmal pro Woche unabhängig von der Größe rotiert. Bei der Rotation werden die letzten vier Logdateien gespeichert. Kommt eine Weitere dazu, wird die älteste gelöscht. Die maximale Größe von 100MB stellt dabei nur selten das Limit dar. So stehen die Logdateien für etwa 4 Wochen rückblickend zur Verfügung.
+Im Quellcode \ref{lst_Logrotate} ist die entsprechende Konfiguration zu sehen. Die maximale Größe der Logdateien ist dabei auf 100MB beschränkt um den internen Speicher von 4GB nicht zu sehr zu belasten. Wird diese Größe überschritten, wird die Logdatei rotiert. Dabei wird ein Backup der aktuellen Logdatei erstellt und eine neue angelegt. Des Weiteren wird die Logdatei einmal pro Woche unabhängig von der Größe rotiert. Bei der Rotation werden die letzten 4 Logdateien gespeichert. Kommt eine Weitere dazu, wird die älteste gelöscht. Die maximale Größe von 100MB stellt dabei nur selten das Limit dar. So stehen die Logdateien für etwa 4 Wochen rückblickend zur Verfügung.
 
 
 
 \section{RS232 Kommunikation}
 
-Die Kommunikation von dem Mess-Server mit den Mess-Slaves erfolgt sequentiell. Der Mess-Server stellt eine Anfrage und wartet anschließend für eine festgelegte Zeit auf eine Antwort. Die Antwort enthält bei fehlerfreier Kommunikation das invertierte Read/Write-Bit, sowie die gleiche RS232 Adresse und den selben Befehl/Unterbefehl wie bei der Anfrage. Bei einer Leseanfrage enthält die Antwort zusätzlich noch die angeforderten Daten.\\
+Die Kommunikation von dem Mess-Server mit den Mess-Clients erfolgt sequentiell. Der Mess-Server stellt eine Anfrage und wartet anschließend für eine festgelegte Zeit auf eine Antwort. Die Antwort enthält bei fehlerfreier Kommunikation das invertierte Read/Write-Bit, sowie die gleiche RS232 Adresse und den selben Befehl/Unterbefehl wie bei der Anfrage. Bei einer Leseanfrage enthält die Antwort zusätzlich noch die angeforderten Daten.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -74,7 +74,7 @@ Die Kommunikation von dem Mess-Server mit den Mess-Slaves erfolgt sequentiell. D
 \end{center}
 \end{figure}
 
-Um Fehler bei der Kommunikation zu vermindern und die Erfolgschancen zu erhöhen, müssen fehlerhafte Übertragungen erkannt und wenn möglich korrigiert werden. Die Erkennung von Fehlern geschieht durch die Auswertung der Antwort eines Mess-Slaves.
+Um Fehler bei der Kommunikation zu vermindern und die Erfolgschancen zu erhöhen, müssen fehlerhafte Übertragungen erkannt und wenn möglich korrigiert werden. Die Erkennung von Fehlern geschieht durch die Auswertung der Antwort eines Mess-Clients.
 
 Dabei können drei Szenarien auftreten:
 \begin{itemize}
@@ -83,7 +83,7 @@ Dabei können drei Szenarien auftreten:
 \item Prüfsummen-Fehler: Innerhalb des Zeitlimits wurde eine Antwort empfangen, jedoch ist die Prüfsumme nicht korrekt.
 \end{itemize}
 
-Zur Korrektur dieser Fehler werden Anfragen bis zu fünf mal in einem festgelegten zeitlichen Abstand wiederholt gesendet. Sollte die Übertragung weiterhin fehlerhaft sein, ist der Mess-Slave entweder nicht erreichbar oder es gibt einen Adresskonflikt auf dem RS232 Bus. Bei einem Adresskonflikt haben zwei oder mehr Mess-Slaves die selbe RS232 Adresse. Das führt dazu, dass beide Mess-Slaves auf die selben Anfragen reagieren und ihre Antworten sich auf dem RS232 Bus überlagern. Was die Übertragung unleserlich macht.
+Zur Korrektur dieser Fehler werden Anfragen bis zu fünf mal in einem festgelegten zeitlichen Abstand wiederholt gesendet. Sollte die Übertragung weiterhin fehlerhaft sein, ist der Mess-Client entweder nicht erreichbar oder es gibt einen Adresskonflikt auf dem RS232 Bus. Bei einem Adresskonflikt haben zwei oder mehr Mess-Clients die selbe RS232 Adresse. Das führt dazu, dass beide Mess-Clients auf die selben Anfragen reagieren und ihre Antworten sich auf dem RS232 Bus überlagern. Was die Übertragung unleserlich macht.
 
 
 
@@ -139,7 +139,7 @@ address=/#/192.168.10.1
 Im Quellcode \ref{lst_DNSKonfig} ist die Konfiguration des DNS/DHCP Servers zu sehen. Er verwaltet die Verbindungen über das \textit{wlan0} Interface, was unter Linux dem WLAN Dongle entspricht. Das System selbst ist mit der IP Adresse 192.168.10.1 konfiguriert. Alle Anfragen werden von dem DNS Server auf diese Adresse umgeleitet. Für die IP-Adressvergabe des DHCP Servers ist der Bereich von 192.168.10.10 bis 192.168.10.50 vorgesehen. 
 
 
-In Abbildung \ref{figure_Webinterface} ist das Webinterface zu sehen. Es zeigt die Messdaten die für einen Mess-Slave aufgenommen wurden. Die Daten stellen dabei keine echten Messergebnisse dar. Sie dienen lediglich der Veranschaulichung.
+In Abbildung \ref{figure_Webinterface} ist das Webinterface zu sehen. Es zeigt die Messdaten die für einen Mess-Client aufgenommen wurden. Die Daten stellen dabei keine echten Messergebnisse dar. Sie dienen lediglich der Veranschaulichung.
 
 \begin{figure}[H]
 \begin{center}
@@ -177,7 +177,7 @@ Das Erste ist das Status-Tab (siehe Abbildung \ref{figure_MessServerGUIStatus}).
 \end{center}
 \end{figure}
 
-Im Events Tab (siehe Abbildung \ref{figure_MessServerGUIEvents}) werden wichtige Ereignisse dargestellt. Es sollen zwei Ereignisse dargestellt werden. Das bisher einzige Ereignis ist das Erkennen und Eingliedern eines neuen Mess-Slaves. Es wird ausgelöst, wenn ein Mess-Slave erfolgreich am System angemeldet und eingegliedert wurde. 
+Im Events Tab (siehe Abbildung \ref{figure_MessServerGUIEvents}) werden wichtige Ereignisse dargestellt. Es sollen zwei Ereignisse dargestellt werden. Das bisher einzige Ereignis ist das Erkennen und Eingliedern eines neuen Mess-Clients. Es wird ausgelöst, wenn ein Mess-Client erfolgreich am System angemeldet und eingegliedert wurde. 
 
 \textbf{Boards Tab}
 
@@ -189,7 +189,7 @@ Im Events Tab (siehe Abbildung \ref{figure_MessServerGUIEvents}) werden wichtige
 \end{center}
 \end{figure}
 
-Das Boards Tab (siehe Abbildung \ref{figure_MessServerGUIBoards}) zeigt die derzeit aktiven Mess-Slaves in einer Liste an. Als aktiv werden Mess-Slaves bezeichnet, die mit einer gültigen Adresse in der Datenbank eingetragen sind. Angezeigt werden der Name, die Adresse, die vergangene Zeit seit dem es das letzten mal erfolgreich kontaktiert wurde und die Anzahl der erfolgreichen aufgenommenen Messzyklen. Sollte ein Mess-Slave über längere Zeit nicht ansprechbar sein, wird dem Nutzer durch eine rote Markierung das Problem signalisiert. Außerdem ist der Status der Mess-Slaves ablesbar.
+Das Boards Tab (siehe Abbildung \ref{figure_MessServerGUIBoards}) zeigt die derzeit aktiven Mess-Clients in einer Liste an. Als aktiv werden Mess-Clients bezeichnet, die mit einer gültigen Adresse in der Datenbank eingetragen sind. Angezeigt werden der Name, die Adresse, die vergangene Zeit seit dem es das letzten mal erfolgreich kontaktiert wurde und die Anzahl der erfolgreichen aufgenommenen Messzyklen. Sollte ein Mess-Client über längere Zeit nicht ansprechbar sein, wird dem Nutzer durch eine rote Markierung das Problem signalisiert. Außerdem ist der Status der Mess-Clients ablesbar.
 
 \textbf{Debug Tab}
 
@@ -201,6 +201,6 @@ Das Boards Tab (siehe Abbildung \ref{figure_MessServerGUIBoards}) zeigt die derz
 \end{center}
 \end{figure}
 
-Der Zweck des Debug Tabs (siehe Abbildung \ref{figure_MessServerGUIDebug}) ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein, Fehler einfacher zu erkennen. Die Anzeige dient dabei zur Vor-Ort-Analyse von Fehlern. Die selben Informationen werden auch intern auf dem Mess-Slave in einer Logdatei gespeichert.
+Der Zweck des Debug Tabs (siehe Abbildung \ref{figure_MessServerGUIDebug}) ist es die im Programmcode erzeugten Nachrichten anzuzeigen. Somit soll es möglich sein, Fehler einfacher zu erkennen. Die Anzeige dient dabei zur Vor-Ort-Analyse von Fehlern. Die selben Informationen werden auch intern auf dem Mess-Client in einer Logdatei gespeichert.
 
 

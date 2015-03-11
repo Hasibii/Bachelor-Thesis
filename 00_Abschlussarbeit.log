@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  11 MAR 2015 16:06
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.12.9)  11 MAR 2015 19:24
 entering extended mode
 **00_Abschlussarbeit.tex
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\00_Abschlussarbeit.tex
@@ -1237,11 +1237,7 @@ LaTeX Warning: Label `figure_GestapelteCapes' multiply defined.
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\40_Testen_und_Validieren.aux)
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\FazitUndAusblick.aux)
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\part/04_abschlussbetrachtung.au
-x) (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Anhang.aux
-
-LaTeX Warning: Label `anhang_cd' multiply defined.
-
-))
+x) (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Anhang.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 264.
 LaTeX Font Info:    ... okay on input line 264.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 264.
@@ -1257,10 +1253,10 @@ LaTeX Font Info:    ... okay on input line 264.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 264.
 LaTeX Font Info:    ... okay on input line 264.
 LaTeX Font Info:    Try loading font information for T1+ptm on input line 264.
- (C:\MikTex\tex\latex\psnfss\t1ptm.fd
+
+(C:\MikTex\tex\latex\psnfss\t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-)
-(C:\MikTex\tex\context\base\supp-pdf.mkii
+) (C:\MikTex\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count199
 \scratchdimen=\dimen200
@@ -1365,7 +1361,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 6.
  (C:\MikTex\tex\latex\amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<img/general/unilogo.png, id=219, 174.1707pt x 41.4348pt>
+<img/general/unilogo.png, id=227, 174.1707pt x 41.4348pt>
 File: img/general/unilogo.png Graphic file (type png)
 
 <use img/general/unilogo.png>
@@ -1514,12 +1510,12 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
 Kapitel 2.
 Package acronym Info: Label `acro:LED' newly defined as it shall be overridden
 although it is yet undefined on input line 10.
-<img/general/Degradation.png, id=504, 1138.2525pt x 578.16pt>
-File: img/general/Degradation.png Graphic file (type png)
+<img/general/DegradationMin.png, id=514, 905.63344pt x 451.6875pt>
+File: img/general/DegradationMin.png Graphic file (type png)
 
-<use img/general/Degradation.png>
-Package pdftex.def Info: img/general/Degradation.png used on input line 18.
-(pdftex.def)             Requested size: 375.57779pt x 190.76692pt.
+<use img/general/DegradationMin.png>
+Package pdftex.def Info: img/general/DegradationMin.png used on input line 18.
+(pdftex.def)             Requested size: 375.57779pt x 187.31586pt.
  [3
 
 
@@ -1539,8 +1535,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--41
 
  []
 
-[4 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/Degradation.png>
-]
+[4 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/DegradationMin.p
+ng>]
 LaTeX Font Info:    Try loading font information for OMS+ptm on input line 44.
  (C:\MikTex\tex\latex\psnfss\omsptm.fd
 File: omsptm.fd 
@@ -1552,7 +1548,7 @@ although it is yet undefined on input line 54.
 Package acronym Info: Label `acro:SDK' newly defined as it shall be overridden
 although it is yet undefined on input line 54.
 
-<img/general/QtCreator.png, id=525, 963.6pt x 770.88pt>
+<img/general/QtCreator.png, id=536, 963.6pt x 770.88pt>
 File: img/general/QtCreator.png Graphic file (type png)
 
 <use img/general/QtCreator.png>
@@ -1580,7 +1576,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
-<img/general/Kernel_Hardware_Layer.pdf, id=562, 852.18375pt x 274.02374pt>
+<img/general/Kernel_Hardware_Layer.pdf, id=573, 852.18375pt x 274.02374pt>
 File: img/general/Kernel_Hardware_Layer.pdf Graphic file (type pdf)
 
 <use img/general/Kernel_Hardware_Layer.pdf>
@@ -1591,7 +1587,7 @@ ne 111.
 e_Layer.pdf>]
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Anforderungsanalyse.tex
 Kapitel 3.
-<img/general/Szenario.png, id=571, 757.83125pt x 620.3175pt>
+<img/general/Szenario.png, id=582, 757.83125pt x 620.3175pt>
 File: img/general/Szenario.png Graphic file (type png)
 
 <use img/general/Szenario.png>
@@ -1609,7 +1605,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 18--22
 
 
  <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/Szenario.png (PNG 
-copy)>] <img/general/BeagleBoneBlack.png, id=579, 427.8384pt x 230.5413pt>
+copy)>] <img/general/BeagleBoneBlack.png, id=590, 427.8384pt x 230.5413pt>
 File: img/general/BeagleBoneBlack.png Graphic file (type png)
 
 <use img/general/BeagleBoneBlack.png>
@@ -1620,14 +1616,14 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 41.
  [10 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/BeagleBoneBlac
 k.png (PNG copy)>]
-<img/general/DegraBoardTop.jpg, id=588, 469.755pt x 469.755pt>
+<img/general/DegraBoardTop.jpg, id=599, 469.755pt x 469.755pt>
 File: img/general/DegraBoardTop.jpg Graphic file (type jpg)
 
 <use img/general/DegraBoardTop.jpg>
 Package pdftex.def Info: img/general/DegraBoardTop.jpg used on input line 52.
 (pdftex.def)             Requested size: 201.86885pt x 201.86885pt.
 
-<img/general/DegraBoardBottom.jpg, id=589, 469.755pt x 469.755pt>
+<img/general/DegraBoardBottom.jpg, id=600, 469.755pt x 469.755pt>
 File: img/general/DegraBoardBottom.jpg Graphic file (type jpg)
 
 <use img/general/DegraBoardBottom.jpg>
@@ -1637,7 +1633,7 @@ Package pdftex.def Info: img/general/DegraBoardBottom.jpg used on input line 56
  [11 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/DegraBoardTop.
 jpg> <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/DegraBoardBott
 om.jpg>]
-<img/general/Messintervalle.pdf, id=597, 642.4pt x 151.56625pt>
+<img/general/Messintervalle.pdf, id=608, 642.4pt x 151.56625pt>
 File: img/general/Messintervalle.pdf Graphic file (type pdf)
 
 <use img/general/Messintervalle.pdf>
@@ -1648,7 +1644,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
 
-<img/general/PulseMuster.png, id=600, 346.29375pt x 240.14719pt>
+<img/general/PulseMuster.png, id=611, 346.29375pt x 240.14719pt>
 File: img/general/PulseMuster.png Graphic file (type png)
 
 <use img/general/PulseMuster.png>
@@ -1682,8 +1678,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 164--164
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--164
-[]|\T1/ptm/m/n/12 Ein pa-ra-me-trier-ter Mess-Client
+Underfull \hbox (badness 1648) in paragraph at lines 164--164
+\T1/ptm/m/n/12 Slaves sol-len au-to-ma-tisch in das
  []
 
 
@@ -1705,7 +1701,7 @@ Underfull \hbox (badness 3158) in paragraph at lines 164--164
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\30_Konzeptentwicklung.tex
 Kapitel 4.
 (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Mess-Server.tex
-<img/general/UebersichtMaster.pdf, id=630, 793.96625pt x 336.25626pt>
+<img/general/UebersichtMaster.pdf, id=641, 793.96625pt x 336.25626pt>
 File: img/general/UebersichtMaster.pdf Graphic file (type pdf)
 
 <use img/general/UebersichtMaster.pdf>
@@ -1713,21 +1709,21 @@ Package pdftex.def Info: img/general/UebersichtMaster.pdf used on input line 7.
 
 (pdftex.def)             Requested size: 375.57779pt x 159.06662pt.
 
-<img/general/CapeRS232.png, id=631, 457.71pt x 505.89pt>
+<img/general/CapeRS232.png, id=642, 457.71pt x 505.89pt>
 File: img/general/CapeRS232.png Graphic file (type png)
 
 <use img/general/CapeRS232.png>
 Package pdftex.def Info: img/general/CapeRS232.png used on input line 18.
 (pdftex.def)             Requested size: 140.84256pt x 155.66638pt.
 
-<img/general/CapeRTC.png, id=632, 457.71pt x 505.89pt>
+<img/general/CapeRTC.png, id=643, 457.71pt x 505.89pt>
 File: img/general/CapeRTC.png Graphic file (type png)
 
 <use img/general/CapeRTC.png>
 Package pdftex.def Info: img/general/CapeRTC.png used on input line 22.
 (pdftex.def)             Requested size: 140.84256pt x 155.66638pt.
 
-<img/general/CapeLCD.png, id=633, 457.71pt x 505.89pt>
+<img/general/CapeLCD.png, id=644, 457.71pt x 505.89pt>
 File: img/general/CapeLCD.png Graphic file (type png)
 
 <use img/general/CapeLCD.png>
@@ -1745,7 +1741,7 @@ although it is yet undefined on input line 32.
 Package acronym Info: Label `acro:RTC' newly defined as it shall be overridden
 although it is yet undefined on input line 34.
 
-<img/general/GestapelteCapes2.JPG, id=645, 745.8264pt x 377.2494pt>
+<img/general/GestapelteCapes2.JPG, id=656, 745.8264pt x 377.2494pt>
 File: img/general/GestapelteCapes2.JPG Graphic file (type jpg)
 
 <use img/general/GestapelteCapes2.JPG>
@@ -1756,7 +1752,7 @@ Package pdftex.def Info: img/general/GestapelteCapes2.JPG used on input line 41
  <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/CapeRTC.png> <C:/U
 sers/TNieter/Documents/git/Bachelor-Thesis/img/general/CapeLCD.png (PNG copy)>]
 
-<img/general/UebersichtMasterSoftware.pdf, id=652, 859.21pt x 366.36874pt>
+<img/general/UebersichtMasterSoftware.pdf, id=663, 859.21pt x 366.36874pt>
 File: img/general/UebersichtMasterSoftware.pdf Graphic file (type pdf)
 
 <use img/general/UebersichtMasterSoftware.pdf>
@@ -1766,7 +1762,7 @@ Package pdftex.def Info: img/general/UebersichtMasterSoftware.pdf used on input
  [18 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/GestapelteCape
 s2.JPG> <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/UebersichtM
 asterSoftware.pdf>]
-<img/general/MessClientAnmeldung.pdf, id=659, 441.65pt x 298.11375pt>
+<img/general/MessClientAnmeldung.pdf, id=670, 441.65pt x 298.11375pt>
 File: img/general/MessClientAnmeldung.pdf Graphic file (type pdf)
 
 <use img/general/MessClientAnmeldung.pdf>
@@ -1779,10 +1775,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--85
  []
 
 [19 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/MessClientAnmel
-dung.pdf>]
-Package acronym Info: Label `acro:ADC' newly defined as it shall be overridden
-although it is yet undefined on input line 105.
- [20]
+dung.pdf>] [20]
 Package acronym Info: Label `acro:UDP' newly defined as it shall be overridden
 although it is yet undefined on input line 127.
 Package acronym Info: Label `acro:TCP' newly defined as it shall be overridden
@@ -1792,7 +1785,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
-[21] <img/general/RS232Tunnel.pdf, id=685, 596.2275pt x 198.7425pt>
+[21] <img/general/RS232Tunnel.pdf, id=695, 596.2275pt x 198.7425pt>
 File: img/general/RS232Tunnel.pdf Graphic file (type pdf)
 
 <use img/general/RS232Tunnel.pdf>
@@ -1810,23 +1803,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 166--169
 Package acronym Info: Label `acro:ERM' newly defined as it shall be overridden
 although it is yet undefined on input line 180.
 
+Underfull \hbox (badness 5091) in paragraph at lines 180--181
+[]\T1/ptm/m/n/12 Aus den An-for-de-run-gen er-gibt sich für die Da-ten-bank fol
+-gen-des [][][]Entity-Relationship-
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
-<img/general/ER_Diagramm.pdf, id=702, 844.15375pt x 733.74126pt>
+<img/general/ER_Diagramm.pdf, id=712, 844.15375pt x 733.74126pt>
 File: img/general/ER_Diagramm.pdf Graphic file (type pdf)
 
 <use img/general/ER_Diagramm.pdf>
 Package pdftex.def Info: img/general/ER_Diagramm.pdf used on input line 184.
 (pdftex.def)             Requested size: 422.52054pt x 367.26158pt.
-
+ [24 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/ER_Diagramm.pd
+f>]
 Underfull \hbox (badness 10000) in paragraph at lines 194--195
 
  []
 
-[24 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/ER_Diagramm.pdf
->] [25]
+[25]
 Underfull \hbox (badness 10000) in paragraph at lines 224--225
 
  []
@@ -1946,6 +1945,12 @@ Package acronym Info: Label `acro:GPIO' newly defined as it shall be overridden
 
 although it is yet undefined on input line 44.
 [36]
+Underfull \hbox (badness 1377) in paragraph at lines 49--50
+\T1/ptm/m/n/12 an-fal-len-den Da-ten-men-gen über-schrei-ten je-doch schnell di
+e Ka-pa-zi-tä-ten der Hard-wa-re des
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 49--50
 
  []
@@ -1955,7 +1960,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
  []
 
-<img/general/RS232Uebertragung.pdf, id=970, 536.0025pt x 128.48pt>
+<img/general/RS232Uebertragung.pdf, id=980, 536.0025pt x 128.48pt>
 File: img/general/RS232Uebertragung.pdf Graphic file (type pdf)
 
 <use img/general/RS232Uebertragung.pdf>
@@ -1978,7 +1983,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 113--115
 
  []
 
-[39] <img/general/Webinterface.png, id=1009, 718.93594pt x 331.99031pt>
+[39] <img/general/Webinterface.png, id=1019, 718.93594pt x 331.99031pt>
 File: img/general/Webinterface.png Graphic file (type png)
 
 <use img/general/Webinterface.png>
@@ -1986,7 +1991,7 @@ Package pdftex.def Info: img/general/Webinterface.png used on input line 146.
 (pdftex.def)             Requested size: 328.62788pt x 151.7549pt.
  [40 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/Webinterface.p
 ng>]
-<img/GUI/Server_GUI_Status1.png, id=1024, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Status1.png, id=1034, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Status1.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Status1.png>
@@ -1994,7 +1999,7 @@ Package pdftex.def Info: img/GUI/Server_GUI_Status1.png used on input line 162.
 
 (pdftex.def)             Requested size: 234.73523pt x 133.01443pt.
 
-<img/GUI/Server_GUI_Events1.png, id=1026, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Events1.png, id=1036, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Events1.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Events1.png>
@@ -2002,7 +2007,7 @@ Package pdftex.def Info: img/GUI/Server_GUI_Events1.png used on input line 174.
 
 (pdftex.def)             Requested size: 234.73523pt x 133.01443pt.
 
-<img/GUI/Server_GUI_Boards1.png, id=1028, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Boards1.png, id=1038, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Boards1.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Boards1.png>
@@ -2012,7 +2017,7 @@ Package pdftex.def Info: img/GUI/Server_GUI_Boards1.png used on input line 186.
  [41 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/GUI/Server_GUI_Status1
 .png> <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/GUI/Server_GUI_Events
 1.png>]
-<img/GUI/Server_GUI_Debug2.png, id=1034, 481.8pt x 273.02pt>
+<img/GUI/Server_GUI_Debug2.png, id=1044, 481.8pt x 273.02pt>
 File: img/GUI/Server_GUI_Debug2.png Graphic file (type png)
 
 <use img/GUI/Server_GUI_Debug2.png>
@@ -2032,18 +2037,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 12--14
 
 
 
-] <img/general/Testaufbau.png, id=1046, 832.5504pt x 555.0336pt>
+] <img/general/Testaufbau.png, id=1056, 832.5504pt x 555.0336pt>
 File: img/general/Testaufbau.png Graphic file (type png)
 
 <use img/general/Testaufbau.png>
 Package pdftex.def Info: img/general/Testaufbau.png used on input line 24.
 (pdftex.def)             Requested size: 328.62788pt x 219.08766pt.
  [44 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/Testaufbau.png
->]
+>] [45]
 
-LaTeX Warning: Command \" invalid in math mode on input line 52.
+LaTeX Warning: Command \" invalid in math mode on input line 53.
 
-[45]) [46] (C:\Users\TNieter\Documents\git\Bachelor-Thesis\FazitUndAusblick.tex
+) [46] (C:\Users\TNieter\Documents\git\Bachelor-Thesis\FazitUndAusblick.tex
 Kapitel 7.
 ) [47
 
@@ -2078,15 +2083,22 @@ Underfull \hbox (badness 3291) in paragraph at lines 71--75
 
 ]) [2] (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Anhang.tex
 Anhang A.
+<img/general/BeagleBeschreibung.jpg, id=1109, 756.8275pt x 496.85625pt>
+File: img/general/BeagleBeschreibung.jpg Graphic file (type jpg)
+
+<use img/general/BeagleBeschreibung.jpg>
+Package pdftex.def Info: img/general/BeagleBeschreibung.jpg used on input line 
+11.
+(pdftex.def)             Requested size: 469.47046pt x 308.2069pt.
 
 
 pdfTeX warning: pdflatex (file C:/Users/TNieter/Documents/git/Bachelor-Thesis/D
 esign.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> a
 llowed
-<Design.pdf, id=1099, 845.1575pt x 597.23125pt>
+<Design.pdf, id=1110, 845.1575pt x 597.23125pt>
 File: Design.pdf Graphic file (type pdf)
  <use Design.pdf>
-Package pdftex.def Info: Design.pdf used on input line 12.
+Package pdftex.def Info: Design.pdf used on input line 19.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 
 
@@ -2095,7 +2107,7 @@ esign.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> a
 llowed
 File: Design.pdf Graphic file (type pdf)
 <use Design.pdf>
-Package pdftex.def Info: Design.pdf used on input line 12.
+Package pdftex.def Info: Design.pdf used on input line 19.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 
 
@@ -2106,33 +2118,34 @@ llowed
 
 
 
-]
+ <C:/Users/TNieter/Documents/git/Bachelor-Thesis/img/general/BeagleBeschreibung
+.jpg>]
 
 pdfTeX warning: pdflatex (file C:/Users/TNieter/Documents/git/Bachelor-Thesis/D
 esign.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> a
 llowed
-<Design.pdf, id=1107, page=1, 845.1575pt x 597.23125pt>
+<Design.pdf, id=1118, page=1, 845.1575pt x 597.23125pt>
 File: Design.pdf Graphic file (type pdf)
 
 <use Design.pdf, page 1>
-Package pdftex.def Info: Design.pdf, page1 used on input line 12.
+Package pdftex.def Info: Design.pdf, page1 used on input line 19.
 (pdftex.def)             Requested size: 845.15544pt x 597.22978pt.
 File: Design.pdf Graphic file (type pdf)
  <use Design.pdf, page 1>
-Package pdftex.def Info: Design.pdf, page1 used on input line 12.
+Package pdftex.def Info: Design.pdf, page1 used on input line 19.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: Design.pdf Graphic file (type pdf)
  <use Design.pdf, page 1>
-Package pdftex.def Info: Design.pdf, page1 used on input line 12.
+Package pdftex.def Info: Design.pdf, page1 used on input line 19.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: Design.pdf Graphic file (type pdf)
 
 <use Design.pdf, page 1>
-Package pdftex.def Info: Design.pdf, page1 used on input line 12.
+Package pdftex.def Info: Design.pdf, page1 used on input line 19.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: Design.pdf Graphic file (type pdf)
  <use Design.pdf, page 1>
-Package pdftex.def Info: Design.pdf, page1 used on input line 12.
+Package pdftex.def Info: Design.pdf, page1 used on input line 19.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
  [4 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/Design.pdf, page is rotated
  90 degrees>]
@@ -2140,61 +2153,61 @@ Package pdftex.def Info: Design.pdf, page1 used on input line 12.
 pdfTeX warning: pdflatex (file C:/Users/TNieter/Documents/git/Bachelor-Thesis/D
 esign.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> a
 llowed
-<Design.pdf, id=1115, page=2, 845.1575pt x 597.23125pt>
+<Design.pdf, id=1126, page=2, 845.1575pt x 597.23125pt>
 File: Design.pdf Graphic file (type pdf)
 
 <use Design.pdf, page 2>
-Package pdftex.def Info: Design.pdf, page2 used on input line 12.
+Package pdftex.def Info: Design.pdf, page2 used on input line 19.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: Design.pdf Graphic file (type pdf)
  <use Design.pdf, page 2>
-Package pdftex.def Info: Design.pdf, page2 used on input line 12.
+Package pdftex.def Info: Design.pdf, page2 used on input line 19.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 File: Design.pdf Graphic file (type pdf)
  <use Design.pdf, page 2>
-Package pdftex.def Info: Design.pdf, page2 used on input line 12.
+Package pdftex.def Info: Design.pdf, page2 used on input line 19.
 (pdftex.def)             Requested size: 845.19412pt x 597.25711pt.
 
 [5 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/Design.pdf, page is rotated 
-90 degrees>] <Schaltung.pdf, id=1123, 845.1575pt x 1195.46625pt>
+90 degrees>] <Schaltung.pdf, id=1134, 845.1575pt x 1195.46625pt>
 File: Schaltung.pdf Graphic file (type pdf)
 
 <use Schaltung.pdf>
-Package pdftex.def Info: Schaltung.pdf used on input line 16.
+Package pdftex.def Info: Schaltung.pdf used on input line 23.
 (pdftex.def)             Requested size: 845.15544pt x 1195.46333pt.
 File: Schaltung.pdf Graphic file (type pdf)
  <use Schaltung.pdf>
-Package pdftex.def Info: Schaltung.pdf used on input line 16.
+Package pdftex.def Info: Schaltung.pdf used on input line 23.
 (pdftex.def)             Requested size: 845.15544pt x 1195.46333pt.
 
-<Schaltung.pdf, id=1126, page=1, 845.1575pt x 1195.46625pt>
+<Schaltung.pdf, id=1137, page=1, 845.1575pt x 1195.46625pt>
 File: Schaltung.pdf Graphic file (type pdf)
 
 <use Schaltung.pdf, page 1>
-Package pdftex.def Info: Schaltung.pdf, page1 used on input line 16.
+Package pdftex.def Info: Schaltung.pdf, page1 used on input line 23.
 (pdftex.def)             Requested size: 845.15544pt x 1195.46333pt.
 File: Schaltung.pdf Graphic file (type pdf)
  <use Schaltung.pdf, page 1>
-Package pdftex.def Info: Schaltung.pdf, page1 used on input line 16.
+Package pdftex.def Info: Schaltung.pdf, page1 used on input line 23.
 (pdftex.def)             Requested size: 597.61578pt x 845.32114pt.
 File: Schaltung.pdf Graphic file (type pdf)
 
 <use Schaltung.pdf, page 1>
-Package pdftex.def Info: Schaltung.pdf, page1 used on input line 16.
+Package pdftex.def Info: Schaltung.pdf, page1 used on input line 23.
 (pdftex.def)             Requested size: 597.61578pt x 845.32114pt.
 File: Schaltung.pdf Graphic file (type pdf)
  <use Schaltung.pdf, page 1>
-Package pdftex.def Info: Schaltung.pdf, page1 used on input line 16.
+Package pdftex.def Info: Schaltung.pdf, page1 used on input line 23.
 (pdftex.def)             Requested size: 597.61578pt x 845.32114pt.
 File: Schaltung.pdf Graphic file (type pdf)
 
 <use Schaltung.pdf, page 1>
-Package pdftex.def Info: Schaltung.pdf, page1 used on input line 16.
+Package pdftex.def Info: Schaltung.pdf, page1 used on input line 23.
 (pdftex.def)             Requested size: 597.61578pt x 845.32114pt.
  [6 <C:/Users/TNieter/Documents/git/Bachelor-Thesis/Schaltung.pdf>]
 Anhang B.
 
-Underfull \hbox (badness 10000) in alignment at lines 31--31
+Underfull \hbox (badness 10000) in alignment at lines 39--39
 [][] 
  []
 
@@ -2223,7 +2236,7 @@ x) (C:\Users\TNieter\Documents\git\Bachelor-Thesis\Anhang.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 432.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 432.
 Package rerunfilecheck Info: File `00_Abschlussarbeit.out' has not changed.
-(rerunfilecheck)             Checksum: 40A9D2E74FC87F18D9D9A7340AA2981A;3604.
+(rerunfilecheck)             Checksum: D4A1A57C860C443837C8EEA7DBACDCED;3692.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -2231,10 +2244,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 432.
  ) 
 Here is how much of TeX's memory you used:
- 20097 strings out of 493921
- 298104 string characters out of 3154494
- 535295 words of memory out of 3000000
- 22507 multiletter control sequences out of 15000+200000
+ 20104 strings out of 493921
+ 298373 string characters out of 3154494
+ 535343 words of memory out of 3000000
+ 22512 multiletter control sequences out of 15000+200000
  96185 words of font info for 100 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  57i,18n,78p,2231b,1413s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2247,9 +2260,9 @@ fonts/type1/public/lm/lmmi12.pfb><C:/MikTex/fonts/type1/public/lm/lmr12.pfb><C:
 elvetic/uhvb8a.pfb><C:/MikTex/fonts/type1/urw/times/utmb8a.pfb><C:/MikTex/fonts
 /type1/urw/times/utmr8a.pfb><C:/MikTex/fonts/type1/urw/times/utmr8a.pfb><C:/Mik
 Tex/fonts/type1/urw/times/utmri8a.pfb>
-Output written on 00_Abschlussarbeit.pdf (66 pages, 27509362 bytes).
+Output written on 00_Abschlussarbeit.pdf (66 pages, 27577030 bytes).
 PDF statistics:
- 1242 PDF objects out of 1440 (max. 8388607)
- 274 named destinations out of 1000 (max. 500000)
- 608 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1253 PDF objects out of 1440 (max. 8388607)
+ 275 named destinations out of 1000 (max. 500000)
+ 629 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,14 +1,14 @@
 \chapter{Zusammenfassung und Ausblick}
 \label{chapter_FazitUndAusblick}
 
-In diesem abschließenden Kapitel bietet eine Zusammenfassung dieser Arbeit, sowie einen Ausblick für mögliche Verbesserungen und Erweiterungen für die Zukunft.
+Dieses abschließenden Kapitel bietet eine Zusammenfassung dieser Arbeit, sowie einen Ausblick für mögliche Verbesserungen und Erweiterungen für die Zukunft.
 
 \section{Zusammenfassung}
 Im Laufe dieser Arbeit wurde eine Steuereinheit für die Ansteuerung eines Langzeittests zur Erfassung des Degradationsverhaltens von \acp{LED} entwickelt. Zur Lösung dieser Aufgabe wurde in Kapitel \ref{chapter_Grundlagen} auf die Grundlagen der Qt C++ Klassenbibliothek und einer Datenbank eingegangen. Außerdem wurde sich mit der Definition der Begriffe \textit{Degradation} und \textit{Embedded-Linux-System} auseinander gesetzt.\ 
 
 In Kapitel \ref{chapter_Anforderungsanalyse} wurde das Szenario, welches als Motivation für diese Arbeit gilt, näher beleuchtet. Des Weiteren wurden die Akteure des Systems analysiert und daraus die Anforderung abgeleitet.\ 
 
-Im folgenden Kapitel \ref{chapter_Design} wurde zunächst das BeagleBone Black mit seinen Erweiterungen als Hardwarekomponente vorgestellt. Anschließend wurde das Design der Softwarekomponenten erklärt. Die Softwarekomponenten teilen sich dabei in zwei Teile. Zum Einen die Steuerungssoftware, die in C++ unter Zuhilfenahme der Qt Klassenbibliothek entwickelt wurde. Sie beinhaltet die Messdatenerfassung, die Mess-Client Verwaltung, einen TCP/UDP-Server und eine Statusüberwachung. Zum Anderen die Linux Softwarepakete, welche sich aus dem MySQL-Datenbankserver, dem lighttpd Webserver und dem hostapd WLAN Hotspot zusammensetzen.\ 
+Im folgenden Kapitel \ref{chapter_Design} wurde zunächst das BeagleBone Black mit seinen Erweiterungen als Hardwarekomponente vorgestellt. Anschließend wurde das Design der Softwarekomponenten erklärt. Die Softwarekomponenten teilen sich dabei in zwei Teile. Zum Einen die Steuerungssoftware, die in C++ unter Zuhilfenahme der Qt Klassenbibliothek entwickelt wurde. Sie beinhaltet die Messdatenerfassung, die Mess-Slave Verwaltung, einen TCP/UDP-Server und eine Statusüberwachung. Zum Anderen die Linux Softwarepakete, welche sich aus dem MySQL-Datenbankserver, dem lighttpd Webserver und dem hostapd WLAN Hotspot zusammensetzen.\ 
 
 Auf Implementierung des Designs wurde in Kapitel \ref{chapter_Implementierung} eingegangen. Dabei ging es um die Konfiguration des Linux-Systems und der Datenbank, sowie die Umsetzung der RS232 Kommunikation. Außerdem wurde die Implementierung der Statusüberwachung in Form einer grafischen Benutzeroberfläche näher beschrieben. Des Weiteren wurde die Konfiguration des Webinterfaces gezeigt.\ 
 

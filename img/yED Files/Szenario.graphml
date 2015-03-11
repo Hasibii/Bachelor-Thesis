@@ -30,9 +30,9 @@
       <data key="d5">
         <y:ShapeNode>
           <y:Geometry height="52.88000000000005" width="81.87200000000007" x="1438.8386666666656" y="559.5200000000002"/>
-          <y:Fill color="#339966" transparent="false"/>
+          <y:Fill color="#CCFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="custom" textColor="#000000" visible="true" width="82.3544921875" x="-0.24124609374985084" y="15.251767578125055">Mess Client<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="custom" textColor="#000000" visible="true" width="81.52685546875" x="0.17257226562514916" y="15.251767578125055">Mess Slave<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -47,7 +47,7 @@
       <data key="d5">
         <y:ShapeNode>
           <y:Geometry height="141.9905859375" width="178.00000000000023" x="1161.3916661783855" y="578.8152929687501"/>
-          <y:Fill color="#CCCCFF" transparent="false"/>
+          <y:Fill color="#99CCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="24" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="138.6953125" x="19.65234375" y="54.294121093749936">Mess Server<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -64,9 +64,9 @@
       <data key="d5">
         <y:ShapeNode>
           <y:Geometry height="52.88000000000005" width="81.87200000000007" x="1535.3319999999994" y="559.6200000000001"/>
-          <y:Fill color="#339966" transparent="false"/>
+          <y:Fill color="#CCFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="custom" textColor="#000000" visible="true" width="82.3544921875" x="-0.24124609374985084" y="15.251767578125055">Mess Client<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="custom" textColor="#000000" visible="true" width="81.52685546875" x="0.17257226562514916" y="15.251767578125055">Mess Slave<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -81,9 +81,9 @@
       <data key="d5">
         <y:ShapeNode>
           <y:Geometry height="52.88000000000005" width="81.87200000000007" x="1631.8253333333332" y="559.6200000000001"/>
-          <y:Fill color="#339966" transparent="false"/>
+          <y:Fill color="#CCFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="custom" textColor="#000000" visible="true" width="82.3544921875" x="-0.24124609374985084" y="15.251767578125055">Mess Client<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" modelName="custom" textColor="#000000" visible="true" width="81.52685546875" x="0.17257226562514916" y="15.251767578125055">Mess Slave<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>

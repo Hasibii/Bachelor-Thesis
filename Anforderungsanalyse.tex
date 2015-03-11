@@ -16,13 +16,13 @@ Ein Unternehmen stellt verschiedene optoelektronische Sensoren her. Zur Sicherst
 \end{figure}
 
 Der Teststand hat den in Abbildung \ref{figure_Szenario} zu sehenden Aufbau.
-In einem Temperaturschrank befinden sich mehrere Mess-Clients. An diesen Mess-Clients sind jeweils 64 \acp{DUT} fest angeschlossen, bei denen das Degradationsverhalten aufgezeichnet werden soll. Dazu befindet sich gegenüber jedes \ac{DUT} eine Photodiode, die als Empfänger dient und die Auswertung der von den \acp{DUT} abgegebenen optischen Leistung ermöglicht.\\
-Die Mess-Clients sind über einen Bus mit einem außerhalb des Temperaturschrankes befindlichen Mess-Server verbunden, welcher zyklisch Messdaten von den Mess-Clients abruft und alle anfallenden Daten in einer Datenbank speichert.\\
+In einem Temperaturschrank befinden sich mehrere Mess-Slaves. An diesen Mess-Slaves sind jeweils 64 \acp{DUT} fest angeschlossen, bei denen das Degradationsverhalten aufgezeichnet werden soll. Dazu befindet sich gegenüber jedes \ac{DUT} eine Photodiode, die als Empfänger dient und die Auswertung der von den \acp{DUT} abgegebenen optischen Leistung ermöglicht.\\
+Die Mess-Slaves sind über einen Bus mit einem außerhalb des Temperaturschrankes befindlichen Mess-Server verbunden, welcher zyklisch Messdaten von den Mess-Slaves abruft und alle anfallenden Daten in einer Datenbank speichert.\\
 Von einem PC-Client kann auf den Mess-Server zugegriffen  werden, um die Messdaten zu beziehen und grafisch auszuwerten.\\
 
 \section{Analyse}
 
-Die Akteure des Systems sind der Mess-Server, Mess-Client und PC-Client. Im Zuge dieser Arbeit soll der Mess-Server realisiert werden. Wobei die Interaktionsfähigkeit mit den anderen Akteuren sichergestellt werden muss.
+Die Akteure des Systems sind der Mess-Server, Mess-Slave und PC-Client. Im Zuge dieser Arbeit soll der Mess-Server realisiert werden. Wobei die Interaktionsfähigkeit mit den anderen Akteuren sichergestellt werden muss.
 
 
 \subsection{Mess-Server}
@@ -44,32 +44,32 @@ Auf ihm kommt ein eingebettetes Debian-GNU/Linux Betriebssystem (siehe Abschnitt
 Für die Kommunikation mit den anderen Akteuren im System muss ein RS232 Bussystem und eine Ethernet Schnittstelle realisiert werden. Des Weiteren soll ein MySQL Datenbankserver auf dem Mess-Server die effiziente Verwaltung von Daten übernehmen. Zusätzlich soll eine Statusanzeige zur Überwachung des Mess-Servers entwickelt werden.
 
 
-\subsection{Mess-Client}
-\label{section_Mess-Client}
+\subsection{Mess-Slave}
+\label{section_Mess-Slave}
  
  \begin{figure}[H]
 \minipage{0.43\textwidth}
   \includegraphics[width=\linewidth]{img/general/DegraBoardTop.jpg}
-  \caption{Mess-Client Oberseite}\label{figure_DegraBoardTop}
+  \caption{Mess-Slave Oberseite}\label{figure_DegraBoardTop}
 \endminipage\hfill
 \minipage{0.43\textwidth}%
   \includegraphics[width=\linewidth]{img/general/DegraBoardBottom.jpg}
-  \caption{Mess-Client Unterseite}\label{figure_DegraBoardBottom}
+  \caption{Mess-Slave Unterseite}\label{figure_DegraBoardBottom}
 \endminipage
 \end{figure}
 
-Ein Mess-Client (auch: Degradations Board) ist eine Leiterplatte auf der sich 64 optische Empfängern zur Messung von optischen Signalen befinden (siehe Abbildung \ref{figure_DegraBoardBottom} und \ref{figure_DegraBoardTop}). Auf jedem Mess-Client können somit bis zu 64 Prüfobjekte befestigt werden. In zyklischen Abständen werden mittels eines Mikrocontrollers die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\ 
+Ein Mess-Slave (auch: Degradationsboard) ist eine Leiterplatte auf der sich 64 optische Empfänger zur Messung von optischen Signalen befinden (siehe Abbildung \ref{figure_DegraBoardBottom} und \ref{figure_DegraBoardTop}). Auf jedem Mess-Slave können somit bis zu 64 Prüfobjekte befestigt werden. In zyklischen Abständen werden mittels eines Mikrocontrollers die Messdaten der Prüfobjekte aufgenommen und über eine RS232-Schnittstelle zur Verfügung gestellt.\ 
 
-Für die Konfiguration speichert der Mess-Client die Parameter in einem persistenten Speicher. Folgende Parameter stehen dabei zur Verfügung:
+Für die Konfiguration speichert der Mess-Slave die Parameter in einem persistenten Speicher. Folgende Parameter stehen dabei zur Verfügung:
 
 \textbf{Name}\\
-Für die Identifikation hat jeder Mess-Client einen Namen der aus maximal 30 Zeichen bestehen kann. Er dient vor allem für die Identifizierung der verschiedenen Mess-Clients.\ 
+Für die Identifikation hat jeder Mess-Slave einen Namen der aus maximal 30 Zeichen bestehen kann. Er dient vor allem für die Identifizierung der verschiedenen Mess-Slaves.\ 
 
 \textbf{RS232 Adresse}\\
-Um über die RS232 Schnittstelle ansprechbar zu sein, verfügt jeder Mess-Client über eine Adresse. Lediglich wenn eine Nachricht diese Adresse beinhaltet, reagiert der Mess-Client. Die Adresse ist mit 7 Bit aufgelöst und bildet einen Adressraum von 128 Adressen.\ 
+Um über die RS232 Schnittstelle ansprechbar zu sein, verfügt jeder Mess-Slave über eine Adresse. Lediglich wenn eine Nachricht diese Adresse beinhaltet, reagiert der Mess-Slave. Die Adresse ist mit 7 Bit aufgelöst und bildet einen Adressraum von 128 Adressen.\ 
 
 \textbf{Messintervalle}\\
-Zur Steuerung der Intervalle, in denen Messwerte vom Mess-Server aufgezeichnet werden sollen, speichert der Mess-Client diese Informationen. Es ist möglich, Messintervalle für drei Zeiträume zu definieren.
+Zur Steuerung der Intervalle, in denen Messwerte vom Mess-Server aufgezeichnet werden sollen, speichert der Mess-Slave diese Informationen. Es ist möglich, Messintervalle für drei Zeiträume zu definieren.
 
 
 
@@ -84,7 +84,7 @@ Zur Steuerung der Intervalle, in denen Messwerte vom Mess-Server aufgezeichnet w
 In Abbildung \ref{figure_Messintervalle} ist ist die Unterteilung der Zeiträume und Messintervalle zu sehen. Jeder definierte Zeitraum hat seine eigenes Messintervall, welches den Abstand zwischen den Messdatenabfragen bestimmt.\ 
 
 \textbf{Pulsmuster}\\
-Der Mess-Client steuert die Prüfobjekte mit einem Pulsmuster (englisch: pulse pattern) an. Dieses Muster ist konfigurierbar und wird an die unterschiedlichen Prüfobjekte angepasst. Ein Pulsmuster besteht aus bis zu 20 verschiedenen Pulsen, die periodisch wiederholt werden. Ein Puls besteht dabei aus einer Pulsperiode und einer Pulsbreite. In Abbildung \ref{figure_Pulsepattern} ist ein Pulsperiode/Pulsbreiten-Paar zu sehen.\\
+Der Mess-Slave steuert die Prüfobjekte mit einem Pulsmuster (englisch: pulse pattern) an. Dieses Muster ist konfigurierbar und wird an die unterschiedlichen Prüfobjekte angepasst. Ein Pulsmuster besteht aus bis zu 20 verschiedenen Pulsen, die periodisch wiederholt werden. Ein Puls besteht dabei aus einer Pulsperiode und einer Pulsbreite. In Abbildung \ref{figure_Pulsepattern} ist ein Pulsperiode/Pulsbreiten-Paar zu sehen.\\
 
 
 
@@ -100,8 +100,8 @@ Der Mess-Client steuert die Prüfobjekte mit einem Pulsmuster (englisch: pulse p
 \subsection{PC-Client}
 \label{section_PC-Client}
 Der PC-Client stellt eine Qt Desktop-Anwendung mit einer Benutzeroberfläche zur Auswertung der Messdaten dar, die nicht im Rahmen dieser Bachelorarbeit entwickelt wird. Über die Ethernet Schnittstelle ruft er die Messdaten von dem Mess-Server ab und bereitet sie zur genaueren Auswertung grafisch auf.\\
-Außerdem werden über die Desktop-Anwendung die Mess-Clients parametriert. Dafür wird ein Mess-Client lokal über die RS232 Schnittstelle an den PC-Client angeschlossen. Dies ist notwendig, da einige Parameter in Abhängigkeit von den Prüfobjekten eingestellt werden müssen.\\
-Im laufenden Betrieb können die Mess-Clients von einem PC-Client aus per Fernzugriff verwaltet werden. Dies beinhaltet die Änderung der Parametrierung und das Auslesen der Messdaten. Dafür werden auf dem Mess-Client persistent Parameter gespeichert, welche über die RS232 Schnittstelle geschrieben und ausgelesen werden können.
+Außerdem werden über die Desktop-Anwendung die Mess-Slaves parametriert. Dafür wird ein Mess-Slave lokal über die RS232 Schnittstelle an den PC-Client angeschlossen. Dies ist notwendig, da einige Parameter in Abhängigkeit von den Prüfobjekten eingestellt werden müssen.\\
+Im laufenden Betrieb können die Mess-Slaves von einem PC-Client aus per Fernzugriff verwaltet werden. Dies beinhaltet die Änderung der Parametrierung und das Auslesen der Messdaten. Dafür werden auf dem Mess-Slave persistent Parameter gespeichert, welche über die RS232 Schnittstelle geschrieben und ausgelesen werden können.
 
 
 
@@ -115,7 +115,7 @@ Folgende Hauptanforderungen werden an das System gestellt:
 \ 
 
 \textbf{Individuelle Parametrierung der Prüfobjekte}\\
-Immer 64 Prüfobjekte befinden sich auf einem Mess-Client. Dabei sollen verschiedene Parameter für die Prüfobjekte berücksichtigt werden. 
+Immer 64 Prüfobjekte befinden sich auf einem Mess-Slave. Dabei sollen verschiedene Parameter für die Prüfobjekte berücksichtigt werden. 
 Zum Einen sollen die Intervalle in denen Messwerte aufgenommen werden konfigurierbar sein. Dies soll in mindestens 3 verschiedenen Intervallen möglich sein. In Tabelle \ref{table_Intervalle} ist ein Beispiel für die Messintervalle zu sehen. 
 
  
@@ -134,17 +134,17 @@ ab 5. Woche & 7 Tage\\ \hline
 
 
 
-Zum Anderen soll für jeden Mess-Client ein Pulsepattern definierbar sein. Dieses Pulsepattern wird dann als Ansteuerungssignal für die \acp{DUT} verwendet.
+Zum Anderen soll für jeden Mess-Slave ein Pulsmuster definierbar sein. Dieses Pulsmuster wird dann als Ansteuerungssignal für die \acp{DUT} verwendet.
 
 \textbf{Automatische Erfassung der Messdaten}\\
 Die Messdaten der \acp{DUT} sollen zyklisch erfasst werden. Es soll die derzeitige Temperatur im Temperaturschrank, der gemessene Wert des Empfängers und ein Zeitstempel gespeichert werden. Dabei sollen, wie bereits erwähnt, die Intervalle zwischen den Messungen konfigurierbar sein.\\
-Für den einfachen und effizienten Zugriff auf die Daten sollen sie in einer \ac{SQL} Datenbank abgelegt werden. Dafür ist eine Kommunikationsschnittstelle zwischen der Datenbank und den Mess-Clients erforderlich, welche über den Mess-Server realisiert wird.
+Für den einfachen und effizienten Zugriff auf die Daten sollen sie in einer \ac{SQL} Datenbank abgelegt werden. Dafür ist eine Kommunikationsschnittstelle zwischen der Datenbank und den Mess-Slaves erforderlich, welche über den Mess-Server realisiert wird.
 
 \textbf{Fernzugriff auf den Mess-Server}\\
 Zur Auswertung der Messdaten soll es möglich sein, von einem PC-Arbeitsplatz aus eine Verbindung zu dem Mess-Server aufzubauen. Die Messdaten sollen grafisch auf dem PC-Client zur Auswertung aufbereitet werden.
-Auch soll ein Tunnelmodus direkten Zugriff von einem PC-Client auf einem Mess-Client ermöglichen. Dabei sollen die Parameter des Mess-Clients verändert werden können.
+Auch soll ein Tunnelmodus direkten Zugriff von einem PC-Client auf einen Mess-Slave ermöglichen. Dabei sollen die Parameter des Mess-Slaves verändert werden können.
 
-Diese Basis-Anforderungen und einige zusätzliche Anforderungen können wie in Tabelle \ref{table_Anforderungen} in funktionale und nicht-funktionale Anforderungen unterteilt werden.
+Diese Basis-Anforderungen und einige zusätzliche Sekundäranforderungen können wie in Tabelle \ref{table_Anforderungen} in funktionale und nicht-funktionale Anforderungen unterteilt werden.
 
 
 \begin{table}[H]
@@ -154,7 +154,7 @@ Art & Anforderung & Kommentar \\ \hline
 Nicht-Funktional & Das System soll jederzeit verfügbar sein. & Bei Fehlern soll das System ohne große Ausfallzeit wieder Einsatzbereit sein. Zuverlässigkeit ist sehr wichtig.\\ \hline
 Nicht-Funktional & Das Benutzerinterface soll zeitnah auf Anfragen reagieren. & Um Benutzerfreundlichkeit zu gewährleisten, soll auf Nutzeranfragen ohne lange Wartezeiten reagiert werden. \\ \hline
 Funktional & Das System soll das Degradationsverhalten eines \ac{DUT} aufnehmen & Hauptanforderung des Systems. Messdaten sollen zu einem \ac{DUT} gesammelt werden, um den Grad der Degradation bestimmen zu können. \\ \hline
-Funktional & Neue, bereits parametrierte Mess-Clients sollen automatisch in das System integrierbar sein. & Ein parametrierter Mess-Client kann direkt an den Kommunikationsbus angeschlossen werden.\\ \hline
+Funktional & Neue, bereits parametrierte Mess-Slaves sollen automatisch in das System integrierbar sein. & Ein parametrierter Mess-Slave kann direkt an den Kommunikationsbus angeschlossen werden.\\ \hline
 Funktional & Zyklische Erfassung von Messdaten. & Intervalle der Messdatenerfassung sind konfigurierbar.\\ \hline
 Funktional & Messdaten sollen grafisch dargestellt werden. & Um die Daten auswerten zu können sollen sie grafisch aufbereitet werden.\\ \hline
 Funktional & Die Messdaten sollen in einer Datenbank abgelegt werden. & Zum einfachen und effizienten Zugriff auf die Daten.\\ \hline
@@ -166,31 +166,6 @@ Funktional & Nutzer Fehler sollen abgefangen werden. & Fehler bei der Bedienung 
 \label{table_Anforderungen}
 \end{center}
 \end{table}
-
-
-
-
-
-
-
-
-%\begin{table}[H]
-%%\begin{center}
-%\begin{tabularx}{\textwidth}{|l|X|}\hline 
-
-% Parameter & Beschreibung \\ \hline
-% LTT Name & Erkennungsname zur Identifikation des Mess-Clients.  \\ \hline
-% Rs232-Address & Die Adresse, über die der Mess-Client auf Anfragen über die Rs232 Schnittstelle erreichbar ist. \\ \hline
-% Measurement Intervall & Die Zeitintervalle zwischen den Messungen. \\ \hline
-% Number Of Pulses & Anzahl der Impulse im Pulsmuster \\ \hline
-% Pulsewidth and -period & Länge der Periode und des Impulses  \\ \hline
-% DAC-Value & Vorverstärkung des Pulsmusters zur Ansteuerung der Prüfobjekte. \\ \hline
-%\end{tabularx}
-%%\caption{Parameter}
-%\label{table_MessClientParameter}
-%\end{center}
-%\end{table}
-
 
 
 

@@ -15,14 +15,13 @@
   <graph edgedefault="directed" id="G">
     <data key="d0"/>
     <node id="n0">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="40.0" width="75.0" x="470.0" y="108.0"/>
           <y:Fill color="#CCFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="67.345703125" x="3.8271484375" y="3.298828125">Neuer
-Mess-Client<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" modelName="custom" textColor="#000000" visible="true" width="66.68359375" x="4.158203125" y="3.298828125">Neuer
+Mess-Slave<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -34,7 +33,6 @@ Mess-Client<y:LabelModel>
       </data>
     </node>
     <node id="n1">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="40.0" width="75.0" x="135.0" y="108.0"/>
@@ -52,7 +50,6 @@ Mess-Client<y:LabelModel>
       </data>
     </node>
     <node id="n2">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="244.0" width="222.0" x="230.5" y="108.0"/>
@@ -64,7 +61,6 @@ Mess-Client<y:LabelModel>
       </data>
     </node>
     <node id="n3">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="183.0" width="15.0" x="500.0" y="169.0"/>
@@ -83,7 +79,6 @@ Mess-Client<y:LabelModel>
       </data>
     </node>
     <node id="n4">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="183.0" width="15.0" x="165.0" y="169.0"/>
@@ -102,7 +97,6 @@ Mess-Client<y:LabelModel>
       </data>
     </node>
     <edge id="e0" source="n4" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="7.49182261537166" sy="-77.63537642869525" tx="-7.4765625" ty="-77.63537642869525"/>
@@ -115,7 +109,6 @@ Mess-Client<y:LabelModel>
       </data>
     </edge>
     <edge id="e1" source="n3" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-7.4765625" sy="-52.5" tx="7.4765625" ty="-52.5"/>
@@ -128,7 +121,6 @@ Mess-Client<y:LabelModel>
       </data>
     </edge>
     <edge id="e2" source="n3" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-7.5390625" sy="23.083534902461167" tx="7.478176854822749" ty="23.083534902461167"/>
@@ -141,7 +133,6 @@ Mess-Client<y:LabelModel>
       </data>
     </edge>
     <edge id="e3" source="n4" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="7.483335551116198" sy="76.03532744163965" tx="-7.5390625" ty="76.03532744163965"/>
@@ -154,7 +145,6 @@ Mess-Client<y:LabelModel>
       </data>
     </edge>
     <edge id="e4" source="n0" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -165,7 +155,6 @@ Mess-Client<y:LabelModel>
       </data>
     </edge>
     <edge id="e5" source="n1" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -176,7 +165,6 @@ Mess-Client<y:LabelModel>
       </data>
     </edge>
     <edge id="e6" source="n4" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

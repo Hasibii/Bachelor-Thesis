@@ -29,11 +29,11 @@ Das BeagleBone Black selbst ist bereits sehr Leistungsstark. Um jedoch weitere F
 \end{figure}
 
 
-Zur Kommunikation mit den Mess-Clients wird die \ac{UART} Schnittstelle des BeagleBone Black verwendet. Dafür wird ein RS232 Cape eingesetzt (siehe Abbildung \ref{figure_CapeRS232}). Das Cape führt die seriellen Ports UART0, UART1, UART2 und UART4 auf einen 9-poligen seriellen Stecker. Es bietet die Möglichkeit zwischen den verschiedenen Ports mittels eines Jumpers auf dem Cape zu wechseln. Angeschlossen wird nach dem 3-wire Prinzip. Dabei werden lediglich Rx, Tx und die Masse verbunden. Somit ist keine Hardware-Flusssteuerung möglich.\ 
+Zur Kommunikation mit den Mess-Slaves wird die \ac{UART} Schnittstelle des BeagleBone Black verwendet. Dafür wird ein RS232 Cape eingesetzt (siehe Abbildung \ref{figure_CapeRS232}). Das Cape führt die seriellen Ports UART0, UART1, UART2 und UART4 auf einen 9-poligen seriellen Stecker. Es bietet die Möglichkeit zwischen den verschiedenen Ports mittels eines Jumpers auf dem Cape zu wechseln. Angeschlossen wird nach dem 3-wire Prinzip. Dabei werden lediglich Rx, Tx und die Masse verbunden. Somit ist keine Hardware-Flusssteuerung möglich.\ 
 
 Da das BeagleBone Black kein eigenes \ac{RTC} Modul besitzt, wird auch dieses durch ein Cape hinzugefügt (siehe Abbildung \ref{figure_CapeRTC}). Es beinhaltet eine 3V Knopfbatterie um auch im Falle einer Stromunterbrechung die aktuelle Zeit nicht zu verlieren. Dies ist sehr wichtig, da es erforderlich ist, dass das BeagleBone die aktuelle Uhrzeit und das aktuelle Datum jederzeit kennt. Denn beim Erfassen der Messdaten wird ein Zeitstempel angelegt um die Daten später zeitlich zuordnen zu können. Sollte dieser Zeitstempel nicht korrekt sein, sind die Daten bei der Auswertung nicht gültig.\ 
 
-Um die Statusanzeige detailliert darstellen zu können, wird ein resistives LCD-Touchscreen Display eingesetzt. Es hat eine Größe von 4,3 Zoll bei einer Auflösung von 480x272 Pixeln. Dabei handelt es sich ebenso um ein Cape (siehe Abbildung \ref{figure_CapeLCD}) . Dadurch ist es möglich, das BeagleBone Black trotz den Erweiterungen kompakt zu halten. Denn die Capes sind untereinander stapelbar (siehe Abbildung \ref{figure_GestapelteCapes}).\ 
+Um die Statusanzeige detailliert darstellen zu können, wird ein resistives LCD-Touchscreen Display eingesetzt. Es hat eine Größe von 4,3 Zoll bei einer Auflösung von 480x272 Pixeln. Dabei handelt es sich ebenso um ein Cape (siehe Abbildung \ref{figure_CapeLCD}) . Dadurch ist es möglich, das BeagleBone Black trotz der Erweiterungen kompakt zu halten. Denn die Capes sind untereinander stapelbar (siehe Abbildung \ref{figure_GestapelteCapes}).\ 
 
 
 \begin{figure}[H]
@@ -58,30 +58,30 @@ Die USB Schnittstelle, welche zur Programmierung des BeagleBones verwendet wird,
 \end{figure}
 
 Das Software System setzt sich aus zwei Teilen zusammen. Zum Einen die selbst entwickelte Software, welche in C++ unter Verwendung der Klassenbibliothek Qt (siehe Abschnitt \ref{section_Qt}) programmiert ist und zum Anderen die verschiedenen Softwarepakete die für das eingesetzte Linux Betriebssystem zur Verfügung stehen.\\
-Im folgenden Abschnitt wird auf beide Softwareteile eingegangen. Zunächst werden die Bestandteile Mess-Client Verwaltung, Statusüberwachung und TCP/UDP-Server der Qt Anwendung näher erläutert und anschließend wird auf den Datenbankserver, den Webserver und den WLAN Hotspot eingegangen.
+Im folgenden Abschnitt wird auf beide Softwareteile eingegangen. Zunächst werden die Bestandteile Mess-Slave Verwaltung, Statusüberwachung und TCP/UDP-Server der Qt Anwendung näher erläutert und anschließend wird auf den Datenbankserver, den Webserver und den WLAN Hotspot eingegangen.
 
-\subsection{Mess-Client Verwaltung}
+\subsection{Mess-Slave Verwaltung}
 \label{section_messclientverwaltung}
-Die Verwaltung der Mess-Clients ist der Hauptprozess der Software. In diesem Programmteil wird die Kommunikation mit den Mess-Clients realisiert. Dabei sind die Grundaufgaben die Messdatenerfassung, das Erkennen von neuen Mess-Clients und die automatische Eingliederung dieser in das System.
+Die Verwaltung der Mess-Slaves ist der Hauptprozess der Software. In diesem Programmteil wird die Kommunikation mit den Mess-Slaves realisiert. Dabei sind die Grundaufgaben die Messdatenerfassung, das Erkennen von neuen Mess-Slaves und die automatische Eingliederung dieser in das System.
 
-\subsubsection{Mess-Client Anmeldung}
+\subsubsection{Anmeldung}
 
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=0.6\textwidth ]{img/general/MessClientAnmeldung.pdf}
-\caption{Mess-Client Anmeldung}
+\caption{Mess-Slave Anmeldung}
 \label{figure_MessClientAnmeldung}
 \end{center}
 \end{figure}
  
  
-Um in das bestehende System eingegliedert zu werden, muss jeder Mess-Client sich bei dem Mess-Server anmelden (siehe Abbildung \ref{figure_MessClientAnmeldung}). Dafür hat jeder neue Mess-Client die RS232 Adresse 0. Der Mess-Server überprüft in regelmäßigen Abständen, ob über die Adresse 0 ein Mess-Client erreichbar ist. Sobald dies der Fall ist, übermittelt der entsprechende Mess-Client seine Parametrierung an den Mess-Server. Die Parameter werden dann automatisch vom Mess-Server in der Datenbank abgelegt. Im Anschluss bekommt der Mess-Client eine neue Adresse zugewiesen über die er in Zukunft im System erreichbar ist.
+Um in das bestehende System eingegliedert zu werden, muss jeder Mess-Slave sich bei dem Mess-Server anmelden (siehe Abbildung \ref{figure_MessClientAnmeldung}). Dafür hat jeder neue Mess-Slave die RS232 Adresse 0. Der Mess-Server überprüft in regelmäßigen Abständen, ob über die Adresse 0 ein Mess-Slave erreichbar ist. Sobald dies der Fall ist, übermittelt der entsprechende Mess-Slave seine Parametrierung an den Mess-Server. Die Parameter werden dann automatisch vom Mess-Server in der Datenbank abgelegt. Im Anschluss bekommt der Mess-Slave eine neue Adresse zugewiesen über die er in Zukunft im System erreichbar ist.
 
 
  
 \subsubsection{Messdatenerfassung}
 
-Der Hauptzyklus der Software ruft kontinuierlich die Messdaten von den Mess-Clients ab. Dafür wird ständig geprüft ob Messungen erforderlich sind. Dies geschieht durch den Vergleich der vergangenen Zeit zur letzten Messung und den gegebenen Parametern für die Messintervalle. In der Tabelle \ref{table_ParameterMessintervalle} finden sich diese Parameter.\\
+Der Hauptzyklus der Software ruft kontinuierlich die Messdaten von den Mess-Slaves ab. Dafür wird ständig geprüft ob Messungen erforderlich sind. Dies geschieht durch den Vergleich der vergangenen Zeit zur letzten Messung und den gegebenen Parametern für die Messintervalle. In Tabelle \ref{table_ParameterMessintervalle} finden sich diese Parameter.\\
 
 
 \begin{table}[H]
@@ -102,7 +102,7 @@ interval\_3 & Abstand zwischen den Messungen nach dem 2. Zeitraum\\ \hline
 
 Ob eine Messung erforderlich ist, lässt sich aus den gegebenen Parametern ableiten. So wird zuerst geprüft, welcher Zeitraum (\textit{duration\_int1-2}) derzeit zutrifft. Dazu wird die vergangene Zeit seit der ersten Messung mit dem Zeitraum abgeglichen. Sollten noch keine Ergebnisse vorhanden sein, ergibt dies die Erforderlichkeit einer Messung.\\ Wenn der passende Zeitraum ausgemacht ist, wird das dazugehörige Intervall zwischen den einzelnen Messungen (\textit{interval\_1-3}) ausgemacht. Dann wird geprüft, ob die vergangene Zeit seit der letzten Messung größer ist als dieses Intervall.\ 
 
-Anschließend wird geprüft ob der Mess-Client verfügbar ist. Dazu wird eine Namensanfrage über die RS232 Schnittstelle verschickt. Bei einer positiven Antwort wird dann eine Messung durchgeführt. Dabei werden alle \acp{ADC} der 64 möglichen \acp{DUT} mittels \textit{ADC-Value}-Befehls (siehe Tabelle \ref{table_RS232Commands}) ausgelesen. Sobald alle 64 Werte erfolgreich ermittelt sind, werden sie in der Datenbank abgelegt. \\
+Anschließend wird geprüft, ob der Mess-Slave verfügbar ist. Dazu wird eine Namensanfrage über die RS232 Schnittstelle verschickt. Bei einer positiven Antwort wird dann eine Messung durchgeführt. Dabei werden alle Empfänger der 64 möglichen \acp{DUT} mittels \textit{ADC-Value}-Befehls (siehe Tabelle \ref{table_RS232Commands}) ausgelesen. Sobald alle 64 Werte erfolgreich ermittelt sind, werden sie in der Datenbank abgelegt. \\
 Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zyklen erneut versucht eine Verbindung zu etablieren. Bei kontinuierlich erfolglosen Verbindungsversuchen informiert das System den Nutzer nach einer festgelegten Zeit der Abwesenheit über die Unerreichbarkeit.
  
 
@@ -112,10 +112,10 @@ Sollte keine Antwort auf die Namensanfrage erfolgen, wird in den nächsten Zykle
 \label{section_Statusüberwachung}
 Um die Anforderung der Statusüberwachung zu erfüllen, verfügt das BeagleBone Black über eine \ac{GUI}. Sie soll einen einfachen Überblick über die aktuellen Vorgänge bieten und auf einen Blick den Status des Mess-Servers wiedergeben. Angezeigt wird die \ac{GUI} über das LCD Display Cape des BeagleBone Black.\\
 Es sollen die wichtigsten Funktionen für den Betrieb überwacht und angezeigt werden, sodass der Administrator informiert wird, sobald ein manuelles Eingreifen erforderlich ist.
-Überwacht werden die korrekte Funktion der angeschlossenen Mess-Clients und die lokale Systemauslastung des BeagleBone Blacks.\ 
+Überwacht werden die korrekte Funktion der angeschlossenen Mess-Slaves und die lokale Systemauslastung des BeagleBone Blacks.\ 
 
-Zur Überwachung der Mess-Clients, werden sie in drei Gruppen unterteilt. Alle Mess-Clients, die eine RS232 Adresse besitzen, gelten als aktiv. Mess-Clients, denen keine RS232 Adresse zugewiesen ist, gelten als inaktiv. Sie sind zwar noch in der Datenbank gespeichert, wurden allerdings durch das Löschen der RS232 Adresse vom System abgemeldet.\\
-Die dritte und kritische Gruppe sind Mess-Clients denen eine RS232 Adresse zugewiesen ist, die aber nicht über den RS232 Bus erreichbar sind. Bei ihnen liegt mit großer Wahrscheinlichkeit ein Fehler vor, der vom Administrator manuell behoben werden muss.\ 
+Zur Überwachung der Mess-Slaves, werden sie in drei Gruppen unterteilt. Alle Mess-Slaves, die eine RS232 Adresse besitzen, gelten als aktiv. Mess-Slaves, denen keine RS232 Adresse zugewiesen ist, gelten als inaktiv. Sie sind zwar noch in der Datenbank gespeichert, wurden allerdings durch das Löschen der RS232 Adresse vom System abgemeldet.\\
+Die dritte und kritische Gruppe sind Mess-Slaves denen eine RS232 Adresse zugewiesen ist, die aber nicht über den RS232 Bus erreichbar sind. Bei ihnen liegt mit großer Wahrscheinlichkeit ein Fehler vor, der vom Administrator manuell behoben werden muss.\ 
 
 Bei der Überwachung der Systemauslastung, ist vor allem die Speichernutzung interessant. Da das System über lange Zeiträume aktiv ist, fallen auch große Mengen an Daten an. Da allerdings nur ein beschränkter Speicherplatz zur Verfügung steht, wird der Nutzer über die Auslastung informiert. Im Notfall kann der Administrator Speicher durch das Löschen von nicht mehr relevanten Messdaten freigegeben.
 
@@ -126,7 +126,7 @@ Um auf Netzwerkanfragen reagieren zu können, ist sowohl ein UDP-Server für Bro
 
 Der UDP-Server dient dabei zur dynamischen Erkennung von Mess-Servern im Netzwerk. Das \ac{UDP} ist ein verbindungsloses Netzwerkprotokoll. Es werden Nachrichten an ein Ziel versandt, ohne eine Rückmeldung zu erwarten. Dabei handelt es sich um eine nicht-zuverlässige, ungesichertes und ungeschütztes Protokoll. Diese Art der Übertragung eignet sich vor allem für das Aufspüren von Kommunikationspartnern. Es kann eine UDP-Nachricht gleichzeitig an alle möglichen Adressen von Kommunikationspartnern im Netzwerk verschickt werden, um diese zu ermitteln. Das geschieht meist über die Broadcast-Adresse eines Netzwerkes. Über die Broadcast-Adresse können alle Teilnehmer eines Netzes gleichzeitig angesprochen werden. Der Mess-Server antwortet auf Broadcast-Nachrichten mit seiner IP-Adresse und seinem Namen. Dies ermöglicht die einfache Eingliederung der Mess-Server in ein bestehendes System.\ 
 
-Das \ac{TCP} ist im Gegensatz zu \ac{UDP} ein verbindungsorientiertes Netzwerkprotokoll. Es ist ein zuverlässiges Übertragungsprotokoll und stellt die Gültigkeit der Übertragung sicher. Der TCP-Server nimmt RS232-Befehle an und leitet diese weiter. Das ermöglicht den Fernzugriff auf die einzelnen Mess-Clients über ein Netzwerk. In Tabelle \ref{table_EthernetCommands} ist eine Liste der möglichen Befehle zu sehen.\\
+Das \ac{TCP} ist im Gegensatz zu \ac{UDP} ein verbindungsorientiertes Netzwerkprotokoll. Es ist ein zuverlässiges Übertragungsprotokoll und stellt die Gültigkeit der Übertragung sicher. Der TCP-Server nimmt RS232-Befehle an und leitet diese weiter. Das ermöglicht den Fernzugriff auf die einzelnen Mess-Slaves über ein Netzwerk. In Tabelle \ref{table_EthernetCommands} ist eine Liste der möglichen Befehle zu sehen.\\
 
 \begin{table}[H]
 \begin{center}
@@ -141,9 +141,9 @@ Das \ac{TCP} ist im Gegensatz zu \ac{UDP} ein verbindungsorientiertes Netzwerkpr
 \end{center}
 \end{table}
 
-Der TCP/UDP-Server ist vor allem für die Kommunikation mit dem PC-Client zuständig. Um Mess-Server im Netzwerk zu finden, wird von ihm ein \textit{BeagleSendYourIP} Befehl als Broadcast-Nachricht versendet. Sollte ein Mess-Server diese Nachricht empfangen, antwortet er an die Sendeadresse mit der eigenen IP Adresse und dem eigenen Namen.\ 
+Der TCP/UDP-Server ist vor allem für die Kommunikation mit dem PC-Client zuständig. Um Mess-Server im Netzwerk zu finden, wird vom PC-Client ein \textit{BeagleSendYourIP}-Befehl als Broadcast-Nachricht versendet. Sollte ein Mess-Server diese Nachricht empfangen, antwortet er an die Sendeadresse mit der eigenen IP Adresse und dem eigenen Namen.\ 
 
-Über den \textit{RS232CMD:} Befehl kann von einem PC-Client aus direkt mit einem am RS232 Bus angeschlossenen Mess-Client kommuniziert werden. der TCP-Server dient dabei als Tunnel für die Kommunikation (siehe Abbildung \ref{figure_RS232Tunnel}). Anfragen werden vom Mess-Server angenommen und weitergeleitet. Die Antworten nehmen den umgekehrten Weg zurück. Zur Sicherstellung der alleinigen Verwendung der RS232 Schnitstelle, pausiert der TCP-Server die anderen Prozesse, die auf die Schnittstelle zugreifen, für die Dauer der Kommunikation.\ 
+Über den \textit{RS232CMD:} Befehl kann von einem PC-Client aus direkt mit einem am RS232 Bus angeschlossenen Mess-Slave kommuniziert werden. Der TCP-Server dient dabei als Tunnel für die Kommunikation (siehe Abbildung \ref{figure_RS232Tunnel}). Anfragen werden vom Mess-Server angenommen und weitergeleitet. Die Antworten nehmen den umgekehrten Weg zurück. Zur Sicherstellung der alleinigen Verwendung der RS232 Schnitstelle, pausiert der TCP-Server die anderen Prozesse, die auf die Schnittstelle zugreifen, für die Dauer der Kommunikation.\ 
 
 
 \begin{figure}[H]
@@ -165,7 +165,7 @@ Zusätzlich sind das PHP und MySQL \ac{CGI} Modul installiert um die Messergebni
 
 Der Webserver ist sowohl über die normale Ethernet Verbindung als auch einen WLAN Hotspot erreichbar. Für die Realisierung des WLAN Hotspots wird ein EDIMAX EW-7811Un WLAN Dongle über den Host-USB Port des BeagleBone Black betrieben. Der Hotspot ermöglicht den drahtlosen Zugriff auf den Mess-Server. Er stellt eine Verbindungspunkt für drahtlose Verbindungen dar.\\
 Als Hotspot Software dient Hostapd. Hostapd ist ein IEEE 802.11 Accesspoint und IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authentificator (vgl. \cite{LinuxWireless}) und verwaltet die Zugriffe auf den Hotspot.\\
-Zusätzlich müssen Geräten die sich über den Hotspot mit dem BeagleBone Black verbinden eine IP-Adresse zugewiesen werden. Dafür kommt der DNS- und DHCP-Server dnsmasq zum Einsatz. Dnsmasq kann als DNS-Server auch alle Anfragen an die Adresse des Webservers umleiten. Somit ist es für den Nutzer nicht nötig, die Adresse des Webserver manuell eingeben zu müssen. Er kann einfach über einen Standard-Webbrowser eine beliebige Adresse aufrufen und wird automatisch an die Adresse des Webserver umgeleitet.\\
+Zusätzlich müssen Geräten die sich über den Hotspot mit dem BeagleBone Black verbinden eine IP-Adresse zugewiesen werden. Dafür kommt der DNS- und DHCP-Server dnsmasq zum Einsatz. Dnsmasq kann als DNS-Server auch alle Anfragen an die Adresse des Webservers umleiten. Somit ist es für den Nutzer nicht nötig, die Adresse des Webserver manuell einzugeben. Er kann einfach über einen Standard-Webbrowser eine beliebige Adresse aufrufen und wird automatisch an die Adresse des Webservers umgeleitet.\\
 
 
 
@@ -177,7 +177,7 @@ Zusätzlich müssen Geräten die sich über den Hotspot mit dem BeagleBone Black
 
 Wie in vorangehenden Kapiteln bereits erwähnt, werden alle Messdaten und Betriebsparameter in einer MySQL-Daten abgelegt. Der MySQL-Datenbankserver läuft auf dem BeagleBone Black und ist über das Netzwerk erreichbar.
 
-Aus den Anforderungen ergibt sich folgendes \ac{ERM} (siehe Abbildung \ref{ERM}). \\
+Aus den Anforderungen ergibt sich für die Datenbank folgendes \ac{ERM} (siehe Abbildung \ref{ERM}). \\
 
 \begin{figure}[H]
 \begin{center}
@@ -190,7 +190,7 @@ Aus den Anforderungen ergibt sich folgendes \ac{ERM} (siehe Abbildung \ref{ERM})
 \subsubsection{Tabellen}
 Im folgenden Abschnitt wird näher auf die einzelnen Tabellen und ihre Beziehungen untereinander eingegangen. Außerdem werden die Attribute näher erläutert.
 
-
+\newpage
 \textbf{Tabelle D\_Board}\\
 
 \begin{table}[H]
@@ -211,8 +211,8 @@ f\_Patternid & INTEGER FOREIGN KEY\\ \hline
 \end{table}
 
 
-Die Tabelle D\_Board (steht für Degradations-Board) speichert alle im System registrierten Mess-Clients. Jeder Mess-Client hat eine einzigartige Identifikationsnummer (\textit{p\_id}), welche gleichzeitig den Primärschlüssel (englisch: primary key) repräsentiert. Um die Mess-Clients später leserlich auseinanderhalten zu können, verfügen sie zusätzlich über einen Namen (\textit{label}), der einzigartig sein muss.\\
-Zur Kommunikation wird jedem Board eine einzigartige Adresse (\textit{address}) zugeordnet. Über den RS232 Bus ist es dann mittels dieser Adresse erreichbar.\\
+Die Tabelle D\_Board (auch: Degradations-Board) speichert alle im System registrierten Mess-Slaves. Jeder Mess-Slave hat eine einzigartige Identifikationsnummer (\textit{p\_id}), welche gleichzeitig den Primärschlüssel (englisch: primary key) repräsentiert. Um die Mess-Slaves später leserlich auseinanderhalten zu können, verfügen sie zusätzlich über einen Namen (\textit{label}), der einzigartig sein muss.\\
+Zur Kommunikation wird jedem Mess-Slave (auch:Degradationsboard) eine einzigartige Adresse (\textit{address}) zugeordnet. Über den RS232 Bus ist er dann mittels dieser Adresse erreichbar.\\
 Jedes Degradationsboard besitzt einen Zeitstempel (\textit{LastOnline}) für den Zeitpunkt der letzten erfolgreichen Kontaktaufnahme. Diese Information ist notwendig um die Dauer der Abwesenheit ermitteln und den Nutzer dahingehen in Kenntnis setzen zu können.\\
 Des Weiteren gibt es noch einen Zeitstempel (\textit{LastChecked}) für den letzten Zeitpunkt des Versuches einer Kontaktaufnahme, welcher notwendig ist, um unnötig häufige Kontaktversuche zu vermeiden. So soll ein Degradationsboard nicht häufiger als alle 10 Minuten kontaktiert werden um die Performance zu erhöhen.\\
 Zusätzlich folgt jedes Board genau einer Einstellung (Tabelle Setting). Diese Relation wird durch einen Fremdschlüssel (englisch: foreign key) mit der Identifikationsnummer einer Einstellung (\textit{f\_Settingid}) referenziert.\\
@@ -241,7 +241,7 @@ interval\_3 & INTEGER\\ \hline
 \end{table}
 
 In der Tabelle Setting, werden die Einstellungen  für die verschiedenen Degradationsboards abgelegt. Jede Einstellung kann dabei mehreren Boards zugeordnet sein, wobei jedes Board nur eine Einstellung besitzt.\\
-Der Primärschlüssel der Tabelle ist die Identifikationsnummer (\textit{p\_id}) jeder Einstellung. Als Nächstes gibt es die Einstellung für optische Leistung der Prüfobjekte (\textit{DAC}) auf den Degradationsboards. Mithilfe dieses Wertes wird die Leistung der Prüfobjekte für die bessere Analyse durch den Analog-Digital-Konverter angepasst. Darauf folgend kommen die Parameter zur Konfiguration der Messintervalle (siehe auch Tabelle \ref{table_ParameterMessintervalle}). Sie bestimmen die Zeiträume (\textit{duration\_int1 + 2}) und die Abstände zwischen den Messungen (\textit{interval\_1-3}) innerhalb dieser Zeiträume.\\
+Der Primärschlüssel der Tabelle ist die Identifikationsnummer (\textit{p\_id}) jeder Einstellung. Als Nächstes gibt es die Einstellung für optische Leistung der Prüfobjekte (\textit{DAC}) auf den Degradationsboards. Mithilfe dieses Wertes wird die Leistung der Prüfobjekte für die bessere Analyse durch die optischen Empfänger angepasst. Darauf folgend kommen die Parameter zur Konfiguration der Messintervalle (siehe auch Tabelle \ref{table_ParameterMessintervalle}). Sie bestimmen die Zeiträume (\textit{duration\_int1 + 2}) und die Abstände zwischen den Messungen (\textit{interval\_1-3}) innerhalb dieser Zeiträume.\\
 
 \textbf{Tabelle DUT}\\
 
@@ -294,7 +294,7 @@ Pulse\_Period & INTEGER\\ \hline
 \end{center}
 \end{table}
 
-Die Tabelle PulsePattern enthält die Signale für die Muster in Tabelle Pattern. Die Identifikationsnummer des Musters(\textit{pf\_Patternid}) und die Position im Muster (\textit{p\_no}) dienen zusammen als ein Primärschlüssel. Die Identifikationsnummer des Musters(\textit{pf\_Patternid})dient dabei gleichzeitig als Fremdschlüssel und referenziert ein Muster. Dadurch ist es möglich sowohl die Zugehörigkeit zu einem spezifischen Muster als auch die Position in ihm einzigartig zu bestimmen. Die Signaldauer (\textit{Pulse\_Duration}) beschreibt die Pulsbreite des aktiven Pegels innerhalb des Signals, während die Signalperiode (\textit{Pulse\_Period}) die Pulsperiodendauer des Signals angibt. So ergibt sich ein High-Pegel für die Dauer von $Pulse\_Duration$ und ein Low-Pegel für die Dauer von $Pulse\_Period - Pulse\_Duration$.\\
+Die Tabelle PulsePattern enthält die Signale für die Muster in Tabelle Pattern. Die Identifikationsnummer des Musters (\textit{pf\_Patternid}) und die Position im Muster (\textit{p\_no}) dienen zusammen als ein Primärschlüssel. Die Identifikationsnummer des Musters (\textit{pf\_Patternid}) dient dabei gleichzeitig als Fremdschlüssel und referenziert ein Muster. Dadurch ist es möglich, sowohl die Zugehörigkeit zu einem spezifischen Muster, als auch die Position in ihm einzigartig zu bestimmen. Die Signaldauer (\textit{Pulse\_Duration}) beschreibt die Pulsbreite des aktiven Pegels innerhalb des Signals, während die Signalperiode (\textit{Pulse\_Period}) die Pulsperiodendauer des Signals angibt. So ergibt sich ein High-Pegel für die Dauer von $Pulse\_Duration$ und ein Low-Pegel für die Dauer von $Pulse\_Period - Pulse\_Duration$.\\
 
 \newpage
 

@@ -15,7 +15,6 @@
   <graph edgedefault="directed" id="G">
     <data key="d0"/>
     <node id="n0">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="144.0" width="282.0" x="352.0" y="255.5"/>
@@ -27,7 +26,6 @@
       </data>
     </node>
     <node id="n1">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="144.0" width="282.0" x="70.0" y="255.5"/>
@@ -39,7 +37,6 @@
       </data>
     </node>
     <node id="n2">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="85.0" width="95.0" x="79.0" y="284.0"/>
@@ -57,7 +54,6 @@
       </data>
     </node>
     <node id="n3">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="85.0" width="95.0" x="305.0" y="284.0"/>
@@ -75,13 +71,12 @@
       </data>
     </node>
     <node id="n4">
-      <data key="d5"/>
       <data key="d6">
         <y:ShapeNode>
           <y:Geometry height="85.0" width="95.0" x="531.0" y="284.0"/>
           <y:Fill color="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="67.345703125" x="13.8271484375" y="33.1494140625">Mess-Client<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="66.68359375" x="14.158203125" y="33.1494140625">Mess-Slave<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -93,7 +88,6 @@
       </data>
     </node>
     <edge id="e0" source="n2" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="1.5" sy="-25.5" tx="0.5" ty="-25.5"/>
@@ -106,7 +100,6 @@
       </data>
     </edge>
     <edge id="e1" source="n3" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="2.5" sy="-26.418918918918905" tx="-10.5" ty="-26.418918918918916"/>
@@ -119,7 +112,6 @@
       </data>
     </edge>
     <edge id="e2" source="n3" target="n2">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.5" sy="24.5" tx="5.5" ty="24.5"/>
@@ -132,7 +124,6 @@
       </data>
     </edge>
     <edge id="e3" source="n4" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-1.5" sy="25.5" tx="-1.5" ty="25.5"/>
